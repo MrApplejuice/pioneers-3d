@@ -56,3 +56,4 @@ m4
 # Eclipse files
 /.cproject
 /.project
+*.o
