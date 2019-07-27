@@ -1,0 +1,48 @@
+How to modify the server protocol version
+=========================================
+
+Protocol version handling
+-------------------------
+When a new feature is introduced in the server, the protocol version must be incremented. Per release cycle only one increment is necessary.
+The client exchanges the protocol version it knows with the server. The server can then determine whether it needs to send backwards compatible messages to the client.
+
+The protocol version in the server must be at least the protocol version in the client. (Newer clients will be rejected by older servers).
+Servers with the newer protocol can already be running on the metaserver at pioneers.game-host.org.
+
+Adjust code
+-----------
+configure.ac:
+Modify the line AC_INIT. The format of second argument of this line is [protocol.release]. If only a release change, add one (1) to the release value. Nothing else needs to be changed. If the change is a protocol change, add one (1) to the protocol, and set the release to one (1).
+common/game.h:
+Insert before the link FIRST_VERSION a new enum value. Place in the comment a short description of the type of protocol change. Modify the assignment to LATEST_VERSION.
+common/game.c:
+Extend client_version_type_conversions to included the enum and a string. The string must be unique. Place a new version on the top of the array.
+
+If the change is a game rule, add the parameter to game_params. When the parameter is an integer, try to use zero as a default value and FALSE for a boolean. When an older client connects to a game that has these new rules inactive, it will not receive messages that a certain rule is unknown. (E.g. when city walls are zero, a 0.10 client would not be notified). In the client the rule should be shown in the 'Current Game Settings' dialog.
+
+In the following section convention is used:
+V_PREV: The protocol version of the last release
+V_NEW: The protocol version of the upcoming release
+V_XXX: The protocol version that was already mentioned in the code
+
+The protocol will probably be one of the following changes:
+- A message was used for an older client, but no longer for a new client:
+  Replace LASTEST_VERSION by V_PREV
+  player_broadcast(.., V_XXX, V_PREV, ...)
+- A message can be used for old and new clients:
+  No change required
+- A message can only be understood by a new client:
+  player_broadcast(..., V_NEW, LATEST_VERSION, ...)
+- A message has changed its parameters:
+  player_broadcast(..., V_XXX, V_PREV, ...) (old parameters)
+  player_broadcast(..., V_NEW, LATEST_VERSION, ...) (new parameters)
+
+The client does not need to have compatibility code.
+
+Check whether the editor needs to be updated.
+
+Check whether all is working OK: Connect with a client from the last release to the new server. If the new rule is not in use, the player should not see any warning.
+
+Release time
+------------
+Only at the time of the release the version number in the lobbybot is adjusted.

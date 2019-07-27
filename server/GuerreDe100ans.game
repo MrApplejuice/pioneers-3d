@@ -1,0 +1,60 @@
+title La guerre de 100 ans
+domestic-trade
+num-players 4
+sevens-rule 0
+victory-points 16
+num-roads 40
+num-bridges 0
+num-ships 40
+num-settlements 10
+num-cities 5
+num-city-walls 0
+resource-count 20
+develop-road 4
+develop-monopoly 4
+develop-plenty 4
+develop-chapel 2
+develop-university 2
+develop-governor 2
+develop-library 2
+develop-market 2
+develop-soldier 30
+use-pirate
+island-discovery-bonus 1
+# v1.0, 2003-07-02 Initial version
+# v1.1, 2006-09-10 Added pirate and island-discovery
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# 
+desc Copyright 2003, 2006 LT-P <LT-P@LT-P.net>
+desc 
+desc Please provide some feedback ;)
+chits 8,9,5,6,4,9,8,10,5,6,10,6,5,9,8,5,6,4,9,8,3,2,10,12,3,4,9,5,3,11,4,4,10,11,5,9,10,12,5,4,2,9,2,4,10,11,12,9,11,10,3,4,2,5,8,9,5,6,4,9,8,10,5,6,10,6,5,9,8,5,6,4,9,8,3,2,10,12,3,4,9,5,3,11,4,4,10,11,5,9,10,12,5,4,2,9,2,4,10,11,12,9,11,10,3,12,4,2,5,8,9,5,6,4,9,8,5,10,5,6,10,6,5,9,8,5,6,4,9,8,3,2,4,10,12,3,4,9,5,3,11,4,4,10,11,5,9,10
+map
+s,s,s,t0,t1,t2,t3,p4,h5,h6,h7,p8,p9,p10,f11,f12
+s,s,s,s,p13,p14,t15,p16,f17,p18,f19,t20,t21,f22,f23,s
+s,s,s,s,s,p24,p25,sw1,f26,p27,h28,f29,p30,f31,f32,sg3
+s,s,s,p33,s,s,s,t34,t35,h36,f37,m38,m39,p40,f41,p42
+s,s,s,p43,f44,p45,f46,p47,h48,t49,m50,m51,s?0,m52,m53,m54
+s,p55,t56,t57,m58,h59,f60,f61,h62,t63,s,s,s,s,sl0,s
+s,p64,m65,m66,f67,m68,m69,s?0,t70,s,s,s,s,s,s,p71
+s,t72,sl0,p73,p74,sw0,p75,s,s,s,s,s,s,s,sb0,m76
+s,s,s,s,s,s,s,s,s,s,s,s,s,h77,m78,h79
+s,s,s,s,s,s,s,s,s,p80,h81,t82,sg0,f83,f84,t85
+s,s,s,s,s,s,s,s,s,h86,t87,p88,p89,s,t90,p91
+s,s,s,s,s,s,s,p92,s,m93,f94,f95,f96,s,s,p97
+s,s,sl5,s,s,s,s,m98,s,p99,f100,t101,f102,p103,f104,s?4
+m105,m106,t107,m108,s,s,so0,s,s?5,m109,p110,p111,t112,t113,p114,f115
+p116,p117,h118,p119,f120,p121,f122,m123,m124,m125,f126,f127,t128,t129,t130,p131
+t132,t133,t134,h135,t136,t137,h138,t139,t140,f141,p142,f143,h144,p145,f146,f147
+.

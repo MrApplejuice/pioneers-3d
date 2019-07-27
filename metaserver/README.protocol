@@ -1,0 +1,256 @@
+Description of the protocol of the metaserver
+=============================================
+Here the details of metaserver protocol are described.
+This is the protocol the metaserver speaks, the remote instances are
+either Pioneers clients or Pioneers servers.
+
+For each instance speaking the protocol (metaserver, server, and
+client) the accepted messages, sent replies and actions taken are listed.
+
+Possible extensions
+===================
+These are the possible extensions that were written down by Roman Hodek near the release of the 1.0 protocol, which have not been implemented yet.
+
+ - metaservers can talk to each other for game list merging, load
+   balancing etc.
+
+   This doesn't affect servers and clients at all
+
+The protocol per program
+========================
+
+Metaserver
+----------
+Listens on port 5557.
+Accepts connections from clients (searches) and from servers (registrations).
+Has a list of locally running games.
+
+MS on accept prints "welcome to the pioneers-metaserver version FOO"
+and sets peer state to UNKNOWN
+
+Exception: If MS started with -r (redirect) option, it just sends
+"goto OTHERSERVER" and closes the connection.
+
+Accepted messages in state UNKNOWN and CLIENT:
+ - "version FOO"
+   MS remembers client version of MS proto
+ - "listservers"
+   set state to CLIENT
+   send list of known servers
+   the format is a block of the following form for each known server:
+     "server"
+     "host=FOO"
+     "port=FOO"
+     "version=FOO"
+     "max=FOO"
+     "curr=FOO"
+     "vpoints=FOO" if client MS proto version >= 1.0
+     "sevenrule=FOO" if client MS proto version >= 1.0
+     "terrain=FOO" if client MS proto version >= 1.0
+     "title=FOO" if client MS proto version >= 1.0
+     "map=FOO" if client MS proto version < 1.0
+     "comment=FOO" if client MS proto version < 1.0
+     "end"
+ - "listtypes"
+   set state to CLIENT
+   send list of known games types
+   the format is a block of the following form for each known game:
+     "title=FOO"
+   At the end of the list the MS closes the connection
+ - "create TERRAIN MAXPLAYERS VPOINTS SEVENSRULE AIPLAYERS GAMENAME"
+   set state to CLIENT
+   tries to start new server with received parameters
+     (the new server is ordered to register at _this_ metaserver)
+   if successful, send
+     "host=FOO"
+     "port=FOO"
+     "started"
+   else print an error message, e.g.:
+     "fork failed"
+     "cannot exec"
+     "badly formatted request"
+ - "server"
+   set state to SERVER_ALMOST
+ - "capability"
+  set state to CLIENT
+  send list of capabilities
+   - "create games" when the MS can start new games
+   - "send game settings" removed, has never been in use
+   - "deregister dead connections" when the MS closes the connection after a time out
+  send "end"
+
+Note: "server" shouldn't be accepted in CLIENT state, only in UNKNOWN.
+Currently, both are in the same switch case, could be implemented with
+a fall-through.
+
+Accepted messages in state SERVER_ALMOST and SERVER:
+ - "host=FOO"
+ - "port=FOO"
+ - "version=FOO"
+ - "max=FOO"
+ - "curr=FOO"
+ - "terrain=FOO"
+ - "title=FOO"
+ - "vpoints=FOO"
+ - "sevenrule=FOO"
+ - "map=FOO"
+   meta proto 0.0 compat: mapped to terrain=
+ - "comment=FOO"
+   meta proto 0.0 compat: mapped to title=
+For all the above, the MS stores the info
+If all the following conditions are met, the state is set to SERVER:
+ - host non-empty
+ - port > 0
+ - version non-empty
+ - max >= 0
+ - curr >= 0
+ - terrain non-empty
+ - title non-empty
+ - vpoints non-empty
+ - sevenrule non-empty
+As an exception, for MS proto < 1.0, vpoints and sevenrule aren't
+needed and are assigned as '?' if not set
+Additionally, the 'host' and 'port' fields are pre-set at accept time
+with the values of getpeername() (IP is reverse-looked up), so the
+server isn't required to send them.
+
+Additional accepted messages in state SERVER_ALMOST and SERVER:
+ - "begin"
+   close connection
+   Note: is obsolete and not in use
+
+For connections in state SERVER, the MS sends "hello" every 8 minutes
+and expects "yes" as reply (keep-alive ping)
+The other states have a keep-alive ping of 30 seconds.
+
+SERVER
+------
+when started and directed to register at a MS, it connects to MS and
+sets state to SIGNON
+
+accepted messages in states SIGNON and REDIRECT:
+ - "goto SERVER [PORT]"
+   set state to REDIRECT
+   try another connection to SERVER/PORT (default port if no PORT sent;
+   max. 10 goto msgs are accepted)
+ - "welcome.*version FOO"
+   remembers MS proto version
+   set state to SERVER_LIST
+   send "version FOO", where FOO is own MS proto version
+   send "server"
+   send game parameters:
+     "port=FOO"
+     "version=FOO" (client-server proto version)
+     "max=FOO"
+     "curr=FOO"
+     "host=FOO" if hostname defined
+     "vpoints=FOO" if MS proto >= 1.0
+     "sevenrule=FOO" if MS proto >= 1.0
+     "terrain=FOO" if MS proto >= 1.0
+     "title=FOO" if MS proto >= 1.0
+     "map=FOO" if MS proto < 1.0
+     "comment=FOO" if MS proto < 1.0
+
+accepted messages in state SERVER_LIST:
+ - "hello"
+   send "yes"
+   (ping reply)
+
+Whenever the number of players changes, sends "curr=FOO"
+
+
+CLIENT
+------
+
+Connect to the metaserver
+~~~~~~~~~~~~~~~~~~~~~~~~~
+When requested by the user by a button, the client connects to the MS and sets
+the state to SIGNON.
+
+accepted messages in states SIGNON and REDIRECT:
+ - "goto SERVER [PORT]"
+   set state to REDIRECT
+   try another connection to SERVER/PORT (default port if no PORT sent;
+   max. 10 goto msgs are accepted)
+ - "welcome.*version FOO"
+   remembers MS proto version
+   if MS proto < 1.0, prints warning that MS cannot start servers
+   if MS proto >= 1.0, sends "version FOO", where FOO is own MS proto version
+   sends "capability" and enters state CAPABILITY for MS proto >= 1.0
+   sends "listservers" or "client" for MS proto >= 1.0 or < 1.0, resp.
+
+
+accepted messages in state LIST:
+ - "server"
+   starts a new row in the dialog internally
+ - "end"
+   shows new row in dialog internally
+ - "host=FOO"
+ - "port=FOO"
+ - "version=FOO" (client-server proto version)
+ - "max=FOO"
+ - "curr=FOO"
+ - "vpoints=FOO"
+ - "sevenrule=FOO"
+ - "terrain=FOO"
+ - "title=FOO"
+ - "map=FOO"
+   meta proto 0.0 compat: mapped to terrain=
+ - "comment=FOO"
+   meta proto 0.0 compat: mapped to title=
+ The metaserver will close the connection when all servers have been listed.
+
+accepted messages in state CAPABILITY:
+ - the capabilities that the client needs are stored
+ - "end"
+   sends "listservers" or "client" for MS proto >= 1.0 or < 1.0, resp.
+
+Create a new game dialog
+~~~~~~~~~~~~~~~~~~~~~~~~
+When requested by the user to create a new server via metaserver,
+client connects to MS and sets state to SIGNON.
+It doesn't parse the welcome line again.
+Then it sends "listtypes", and sets state to LIST
+
+accepted messages in state LIST:
+ - "title=FOO" (FOO: game name)
+   add name to combo box
+ - other messages are ignored
+
+The connection is closed by MS after list is finished.
+
+Start a new game
+~~~~~~~~~~~~~~~~
+When requested by the user to create a new server via metaserver,
+client connects to MS and sets state to SIGNON.
+It doesn't parse the welcome line again.
+Then it sends
+  "create TERRAIN MAXPLAYERS VPOINTS SEVENSRULE AIPLAYERS GAMENAME"
+and sets state to LIST
+
+accepted messages in state LIST:
+ - "host=FOO"
+   info is stored in connect dialog entry
+ - "port=FOO"
+   info is stored in connect dialog entry
+ - "started"
+   create dialog is destroyed
+ - anything else:
+   reported as error message to user
+
+
+Version history
+===============
+Protocol 1.3: released 2006-02-09 as Pioneers 0.9.55
+Protocol 1.2: released 2005-04-06 as Gnocatan 0.9.6
+Protocol 1.1: released 2005-02-03 as Gnocatan 0.8.1.52
+Protocol 1.0: released 2002-05-13 as Gnocatan 0.6.99 (beta for 0.7)
+Unversioned protocol was used before the Gnocatan 0.7 series
+
+Protocol changes
+================
+
+Change of protocol 1.2 -> 1.3
+-----------------------------
+When the metaserver is not capable of creating new games, the 'create' command
+is disabled. A 'bad command' will be sent.

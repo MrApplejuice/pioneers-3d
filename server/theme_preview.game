@@ -1,0 +1,73 @@
+title Theme tester
+strict-trade
+domestic-trade
+num-players 4
+sevens-rule 0
+victory-points 10
+num-roads 15
+num-bridges 4
+num-ships 4
+num-settlements 5
+num-cities 4
+num-city-walls 10
+resource-count 19
+develop-road 2
+develop-monopoly 2
+develop-plenty 2
+develop-chapel 1
+develop-university 1
+develop-governor 1
+develop-library 1
+develop-market 1
+develop-soldier 13
+chits 2,3,4,5,9,10,6,8,6,8,6,8,3,2,2,2,2,2
+map
+h0,f1,m2,p3,t4,d5,g6
+sb2,sg2,so2,sw2,sl2,s?2,-
+h7,f8,m9,p10,t11,d12,g13
+h14,f15,m16,p17,t18,g19,-
+.
+nosetup 4 0 0
+nosetup 4 0 5
+nosetup 4 1 0
+nosetup 5 0 0
+nosetup 5 0 1
+nosetup 5 0 5
+
+# theme_preview.game
+# v1.0, 2010-09-21
+# Copyright 2010 Roland Clobus <rclobus@rclobus.nl>
+
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+# This theme can be used to test new themes. It contains all elements.
+#
+# How to use:
+# 1) Start the server
+#  $ pioneers-server-console --file theme_preview.game --admin-port 5555
+#
+# 2) Start a client on localhost, port 5556
+#
+# 3) Cheat:
+#  $ nc localhost 5555
+#  admin fix-dice 2
+#
+# 4) Add enough players and roll the dice once.
+#
+# A two has been rolled, and all different display forms of the tile
+# are visible.
+#
+# This game is not to be installed in the regular distribution of Pioneers.
+# It is not intended to be played.

@@ -1,0 +1,83 @@
+# English (United Kingdom) translation for pioneers
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the pioneers package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Pioneers 15.4-1\n"
+"Report-Msgid-Bugs-To: pioneers@packages.debian.org\n"
+"POT-Creation-Date: 2013-03-22 12:32+0100\n"
+"PO-Revision-Date: 2010-01-03 05:53+0000\n"
+"Last-Translator: Philipp Kleinhenz <Unknown>\n"
+"Language-Team: English (United Kingdom) <en_GB@li.org>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-03-28 01:32+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+msgid "Port range for creating new games on the metaserver:"
+msgstr "Port range for creating new games on the metaserver:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+msgid ""
+"The metaserver can create new games, so players don't need to install and "
+"run the pioneers server. The ports which are used for these games can be "
+"specified. If this field is left empty, the metaserver will disable its game "
+"creation functionality."
+msgstr ""
+"The metaserver can create new games, so players don't need to install and "
+"run the pioneers server. The ports which are used for these games can be "
+"specified. If this field is left empty, the metaserver will disable its game "
+"creation functionality."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+msgid ""
+"If the value is not empty, it must be two port numbers, separated by a minus "
+"sign."
+msgstr ""
+"If the value is not empty, it must be two port numbers, separated by a minus "
+"sign."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:2001
+msgid "Server name for created games:"
+msgstr "Server name for created games:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:2001
+msgid ""
+"In some cases, the name the metaserver uses for itself when creating new "
+"games is incorrect. If this field is not left empty, it is used to override "
+"the detected hostname."
+msgstr ""
+"In some cases, the name the metaserver uses for itself when creating new "
+"games is incorrect. If this field is not left empty, it is used to override "
+"the detected hostname."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:3001
+msgid "Extra arguments to pass to the metaserver:"
+msgstr "Extra arguments to pass to the metaserver:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:3001
+msgid ""
+"These arguments are passed to the metaserver.\n"
+" * --redirect: Redirect clients to another metaserver"
+msgstr ""
+"These arguments are passed to the metaserver.\n"
+" * --redirect: Redirect clients to another metaserver"

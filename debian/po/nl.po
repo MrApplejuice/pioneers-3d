@@ -1,0 +1,83 @@
+# Dutch translation for pioneers debconf templates.
+# Copyright 2008 Bas Wijnen <wijnen@debian.org>
+# Copyright 2013 Roland Clobus <rclobus@rclobus.nl>
+# This file is distributed under the same license as the pioneers package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Pioneers 15.4-1\n"
+"Report-Msgid-Bugs-To: pioneers@packages.debian.org\n"
+"POT-Creation-Date: 2013-03-22 12:32+0100\n"
+"PO-Revision-Date: 2008-05-25 09:22+0200\n"
+"Last-Translator: Roland Clobus <rclobus@rclobus.nl>\n"
+"Language-Team: nl <debian-l10n-dutch@lists.debian.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+msgid "Port range for creating new games on the metaserver:"
+msgstr ""
+"Poorten om te gebruiken voor het starten van nieuwe spellen door de "
+"metaserver:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+msgid ""
+"The metaserver can create new games, so players don't need to install and "
+"run the pioneers server. The ports which are used for these games can be "
+"specified. If this field is left empty, the metaserver will disable its game "
+"creation functionality."
+msgstr ""
+"De metaserver kan nieuwe spellen starten. Spelers hoeven dan de pioneers "
+"server niet te draaien. De poorten die gebruikt worden voor deze spellen "
+"kunnen worden ingesteld. Wordt dit veld leeg gelaten, dan zal de metaserver "
+"geen spellen opstarten."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+msgid ""
+"If the value is not empty, it must be two port numbers, separated by a minus "
+"sign."
+msgstr ""
+"Als het veld niet leeg is, moet het twee poortnummers zijn, gescheiden door "
+"een minteken."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:2001
+msgid "Server name for created games:"
+msgstr "Servernaam voor opgestarte spellen:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:2001
+msgid ""
+"In some cases, the name the metaserver uses for itself when creating new "
+"games is incorrect. If this field is not left empty, it is used to override "
+"the detected hostname."
+msgstr ""
+"In sommige gevallen is de naam die de metaserver zichzelf geeft bij het "
+"starten van nieuwe spellen incorrect. Als dit veld niet leeg is, wordt de "
+"waarde gebruikt in plaats van de gedetecteerde computernaam."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:3001
+msgid "Extra arguments to pass to the metaserver:"
+msgstr "Extra argumenten voor de metaserver:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:3001
+msgid ""
+"These arguments are passed to the metaserver.\n"
+" * --redirect: Redirect clients to another metaserver"
+msgstr ""
+"Deze argumenten worden meegegeven aan de metaserver.\n"
+" * --redirect: Verwijs clients naar een andere metaserver."

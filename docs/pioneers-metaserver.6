@@ -1,0 +1,97 @@
+.TH pioneers-metaserver 6 "February 24, 2013" "pioneers"
+.SH NAME
+pioneers-metaserver \- metaserver for Pioneers
+
+.SH SYNOPSIS
+.B pioneers-metaserver
+.RI [ options ]
+
+.SH DESCRIPTION
+.B Pioneers
+is an implementation of the popular, award-winning "Settlers of Catan"
+board game.  It uses a client/server model for networked play. This program
+provides a piece of network infrastructure that helps match pioneers clients to
+pioneers servers. Casual players of pioneers probably do not need to run this
+program.
+
+.SH OPTIONS
+
+.TP
+.B \-?, \-\-help
+Print a short help text and exit.
+
+.TP
+.B \-d, \-\-daemon
+Run in daemon mode.
+
+.TP
+.BI "\-P, \-\-pidfile" " pidfile"
+.RI "Write the pid to " pidfile " (implies -d)"
+
+.TP
+.BI "\-r, \-\-redirect" " location"
+.RI "Redirect to another metaserver running at " location "."
+
+.TP
+.BI "\-s, \-\-servername" " hostname"
+.RI "Use " hostname " as hostname when creating servers."
+
+.TP
+.BI "\-p, \-\-port\-range" " from" \- "to"
+.RI "Use ports in the range " from "-" to " (inclusive) to start servers."
+When this range is not specified, the metaserver will not be able to create
+new games.
+
+.TP
+.B \-\-debug
+Enable debug messages.
+
+.TP
+.B \-\-syslog-debug
+Duplicate the messages of the syslog to the console.
+
+.TP
+.B \-\-version
+Show version information.
+
+.SH ENVIRONMENT
+The default settings of the metaserver can be influenced with the
+following three environment variables:
+.TP 
+.B PIONEERS_METASERVER
+The hostname the metaserver will use when creating new games. This should
+be a hostname that can be resolved by all clients that will connect.
+.TP 
+.B PIONEERS_SERVER_CONSOLE
+.RB "The path (including the filename) to " pioneers-server-console "."
+If it contains only a filename and no path or if it is not set, the PATH
+variable in the environment is used to locate the program.
+.TP
+.B PIONEERS_DIR
+The path to the game definition files.
+If it is not set, the default installation path will be used.
+
+.SH FILES
+.B /usr/share/games/pioneers/*.game
+.RS
+Game definitions
+.RE
+
+.SH SIGNALS
+.B SIGINT
+.RS
+Shutdown the metaserver gracefully (can also be used to check for memory leaks)
+.RE
+
+.SH AUTHOR
+This manual page was written by Jeff Breidenbach <jab@debian.org>,
+and updated by Roland Clobus <rclobus@rclobus.nl> and
+Bas Wijnen <shevek@fmf.nl>.
+Pioneers was written by Dave Cole <dave@dccs.com.au>, Andy Heroff
+<aheroff@mediaone.net>, and Roman Hodek <roman@hodek.net>, with
+contributions from many other developers on the Internet; see the
+AUTHORS file in the pioneers distribution or the help->about dialog in one of
+the graphical programs for a complete list of contributing authors.
+
+.SH SEE ALSO
+.BR pioneers(6) ", " pioneers-server-gtk(6) ", " pioneers-server-console(6)

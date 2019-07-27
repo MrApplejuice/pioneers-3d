@@ -1,0 +1,615 @@
+2019-07-17  Jose Riha <jose1711@gmail.com>
+	* sk.po: Updated translation
+
+2019-06-30  Jose Riha <jose1711@gmail.com>
+	* sk.po: New translation
+	
+2017-03-14  Cyril C. <cyrilc81@users.sourceforge.net>
+	* fr.po: Plural forms for dice. Fixes SF bug #296
+	
+2016-09-15  Roland Clobus <rclobus@rclobus.nl>
+	* de.po: Changed shortcut keys that were used twice
+
+2016-08-28  Roland Clobus <rclobus@rclobus.nl>
+	* de.po: Copied strings from the Gtk code
+	* all: Line number update for 15.4
+
+2016-07-04  Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Updated to 15.4
+
+2016-06-24  Jaume Badiella <myotis@drac.com>
+	* ca.po: Unified translation of 'metaserver'
+
+2016-06-15  Jaume Badiella <myotis@drac.com>
+	* ca.po: Updated to 15.4
+
+2016-06-11  Jean-Charles GRANGER <traduction@vecteur.org>
+	* fr.po: Updated to 15.4
+
+2016-06-10  Roland Clobus <rclobus@rclobus.nl>
+	* all: Line number update for 15.4. Some button texts were previously
+	in Gtk (OK, Cancel,...)
+	* en_GB.po, nl.po: Updated to 15.4
+	* fr.po: Fixed typos. Fixes SF bug #291
+
+2015-05-31  Roland Clobus <rclobus@rclobus.nl>
+	* ca.po: Added a missing semicolon
+
+2014-07-07  Roland Clobus <rclobus@rclobus.nl>
+	* all: Line number update for 15.2
+	* en_GB.po: Updated to 15.2
+	* nl.po: Updated to 15.2, fixed the desktop files
+
+2014-05-05  Gerald <gera2ld@163.com>
+	* zh_CN.po: New translation. Simplified Chinese.
+
+2013-12-01  Petri Jooste <petri.jooste@gmail.com>
+	* af.po: Updated to 15.1
+
+2013-09-29  Roland Clobus <rclobus@rclobus.nl>
+	* de.po: updated spelling of metaserver. Added a few translations.
+
+2013-09-19  Roland Clobus <rclobus@rclobus.nl>
+	* ca.po: updated spelling of metaserver
+
+2013-09-18  KAMO Tomoyuki <kto@miomio.jp>
+	* ja.po: Updated to 15.1
+
+2013-09-15  Jean-Charles GRANGER <traduction@vecteur.org>
+	* fr.po: Updated to 15.1
+
+2013-09-15  Jaume Badiella <myotis@drac.com>
+	* ca.po: Updated to 15.1
+
+2013-09-15  Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: 100% and updated spelling of metaserver
+
+2013-09-11  Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Updated to 15.1
+
+2013-09-08  Roland Clobus <rclobus@rclobus.nl>
+	* all: Added some translation hints and performed a line number update.
+	* en_GB.po: Updated to 15.1
+	* nl.po: Updated to 15.1
+
+2013-09-01  Roland Clobus <rclobus@rclobus.nl>
+	* all: msguntypot for metaserver spelling issues.
+	* en_GB.po: Updated for metaserver spelling.
+
+2013-08-29  Roland Clobus <rclobus@rclobus.nl>
+	* ca.po, da.po, sv.po, de.po, ja.po, gl.po, cs.po, fr.po, es.po, nl.po,
+	hu.po: Import from Launchpad
+
+2013-02-08  Roland Clobus <rclobus@rclobus.nl>	
+	* de.po, es.po, ja.po: Fixed for 'make update-po'.
+
+2013-01-22  Jaume Badiella <myotis@drac.com>
+	* ca.po: Added missing translations, fixed copyright message.
+
+2013-01-20  Jaume Badiella <myotis@drac.com>
+	* ca.po: Added translation to Catalan.
+
+2012-11-02  Roland Clobus <rclobus@rclobus.nl>
+	* nl.po: Straat/weg, riddermacht/handelsroute: consequent maken termen.
+
+2012-09-09  Roland Clobus <rclobus@rclobus.nl>
+	* de.po, es.po: Import from Launchpad
+
+2012-09-08  KAMO Tomoyuki <kto@miomio.jp>
+	* ja.po: Updated to 14.1 (Import from Launchpad)
+
+2012-06-01  Roland Clobus <rclobus@rclobus.nl>
+	* all: Fixed a typo in a new string for 14.1
+
+2012-05-28  Roland Clobus <rclobus@rclobus.nl>
+	* all: Line number update for 14.1
+
+2012-05-27  Roland Clobus <rclobus@rclobus.nl>
+	* gl.po, hu.po, pt.po: /me says ... -> use /me in all translations
+	* gl.po, hu.po: Added reviewed items of Launchpad
+
+2012-05-26  DeigoJ <diegojromerolopez@gmail.com>
+	* es.po: Updated to 0.12.5 (Import from Launchpad)
+
+2012-05-26  Pit Garbe <piiit@gmx.de>
+	* de.po: Updated to 0.12.5 (Import from Launchpad)
+
+2012-05-24  Filipe Roque <flip.roque@gmail.com>
+	* pt.po: Updated to 14.1
+
+2012-05-23  Jean-Charles GRANGER <traduction@vecteur.org>
+	* fr.po: Updated to 14.1
+
+2012-05-22  Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Updated to 14.1
+
+2012-05-19  Roland Clobus <rclobus@rclobus.nl>
+	* all: Updated for 14.1
+	* nl.po: Updated to 14.1
+	* en_GB.po: Updated to 14.1
+
+2012-04-27  Roland Clobus <rclobus@rclobus.nl>
+	* en_GB.po: Fixed the strings with |
+
+2012-01-17  Roland Clobus <rclobus@rclobus.nl>
+	* nl.po: Removed an extra space.
+
+2011-10-30  Roland Clobus <rclobus@rclobus.nl>
+	* af.po, de.po, sv.po: Fixed 'Spectator' translations.
+	* nl.po: Fixed a typo.
+	* all: Updated line numbers for the 0.12.5 release.
+
+2011-10-24  Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Modifications for the View menu.
+
+2011-10-24  Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Updated for 0.12.5
+
+2011-10-23  Jean-Charles GRANGER <traduction@vecteur.org>
+	* fr.po: Updated for 0.12.5
+
+2011-10-22  Roland Clobus <rclobus@rclobus.nl>
+	* all: Updated for 0.12.5 string freeze.
+	* en_GB.po, nl.po: Updated for 0.12.5
+
+2011-02-13  Roland Clobus <rclobus@rclobus.nl>
+	* nl.po: Undo -> Ongedaan maken
+
+2011-01-28  Roland Clobus <rclobus@rclobus.nl>
+	* nl.po: Typo.
+
+2011-01-26  Roland Clobus <rclobus@rclobus.nl>
+	* all: Adjustment of line numbers for 0.12.4 release.
+
+2011-01-22  Michael Wiktowy <michael.wiktowy@gmail.com>
+	* es.po: Also the fuzzy translations.
+
+2011-01-16  Roland Clobus <rclobus@rclobus.nl>
+	* af.po, cs.po, da.po, es.po, pt.po: Synchronized with Launchpad.
+
+2011-01-16  Michael Wiktowy <michael.wiktowy@gmail.com>
+	* es.po: Added missing translations.
+
+2010-11-27  Roland Clobus <rclobus@rclobus.nl>
+	* ja.po, pt.po, sv.po: Updated the trivial changes.
+
+2010-11-25  Roland Clobus <rclobus@rclobus.nl>
+	* es.po, gl.po, hu.po: Updated the trivial changes.
+
+2010-11-23  Roland Clobus <rclobus@rclobus.nl>
+	* af.po, cs.po, da.po: Updated the trivial changes.
+
+2010-11-16  Roland Clobus <rclobus@rclobus.nl>
+	* de.po: Updated the trivial changes.
+
+2010-11-10  Jean-Charles GRANGER <traduction@vecteur.org>
+	* fr.po: Updated for 0.12.4
+
+2010-10-26  Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Updated for 0.12.4
+
+2010-10-26  Roland Clobus <rclobus@rclobus.nl>
+	* all: Updated for 0.12.4 string freeze
+	* nl.po, en_GB.po: Updated for 0.12.4
+	* all: Added rule for plurals
+
+2010-10-26  Roland Clobus <rclobus@rclobus.nl>
+	* all: Updated for 0.12.4 string freeze
+
+2010-10-08  Roland Clobus <rclobus@rclobus.nl>
+	* POTFILES.in: Added common/gtk/common_gtk.c
+	* all: Synchronised from 0.12.3 branch
+
+2010-04-06  Roland Clobus <rclobus@rclobus.nl>
+	* LINGUAS, gl.po: Added translation to Galician by
+	Indalecio Freiría Santos.
+	* nl.po: Added missing keyboard shortcuts.
+	* sv.po: Updated from Launchpad.net
+	* cs.po, pt.po: Updated from Launchpad.net
+
+2010-04-04  Roland Clobus <rclobus@rclobus.nl>
+	* de.po: Updated from Launchpad.net
+
+2010-03-27  Roland Clobus <rclobus@rclobus.nl>
+	* all: Based on svn 1488 (branch 0.12.3) and 1524: Use en_US spelling
+	(canceled and monopolize)
+	* en_GB.po: Imported from Launchpad, thanks to Philipp Kleinhenz.
+	This translation inspired the spelling correction to en_US in the
+	source code.
+	* check-spelling.sh: Script to check the spelling of a language.
+
+2010-03-25  Roland Clobus <rclobus@rclobus.nl>
+	* nl.po: Another round of spell checking
+
+2010-03-18  Roland Clobus <rclobus@rclobus.nl>
+	* es.po: Merged with Launchpad 2010-03-11 19:48+0000
+	* nl.po: Use a spell checker
+
+2010-03-11 Roland Clobus <rclobus@rclobus.nl>
+	* de.po: Improvement suggested by Jochen Kemnade on Launchpad
+
+2010-01-24 Roland Clobus <rclobus@bigfoot.com>
+	* nl.po: Fixed a translation and removed a few wrong word separations
+
+2009-11-04 Roland Clobus <rclobus@bigfoot.com>
+	* all: Final line number update for 0.12.3
+
+2009-10-25 Roland Clobus <rclobus@bigfoot.com>
+	* fr.po: Fixed a typo found by agendacobra
+
+2009-10-20 Roland Clobus <rclobus@bigfoot.com>
+	* it.po: Fixed some double keyboard shortcuts
+
+2009-10-20 Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Updated to 0.12.3
+
+2009-10-18 Jean-Charles GRANGER <traduction@vecteur.org>
+	* fr.po: Updated to 0.12.3
+
+2009-10-18 Roland Clobus <rclobus@bigfoot.com>
+	* fr.po: Fixed some double keyboard shortcuts
+
+2009-10-16 Roland Clobus <rclobus@bigfoot.com>
+	* fr.po: Synchronisation with Launchpad.net
+
+2009-10-15 Roland Clobus <rclobus@bigfoot.com>
+	* all: Line number update for 0.12.3
+	* nl.po: Updated to 0.12.3, fixed a typo
+	* ja.po: Synchronisation with Launchpad.net
+	* pt:po: Synchronisation with Launchpad.net
+
+2008-05-01 Roland Clobus <rclobus@bigfoot.com>
+	* fr.po, hu.po, it.po, nl.po, sv.po: Update 0.12.1 to 0.12.2
+	* da.po, de.po, es.po, fr.po, hu.po, pt.po: Synchronisation with
+	Launchpad.net
+	* all: Line number update to 0.12.2
+	
+2008-04-27 Roland Clobus <rclobus@bigfoot.com>
+	* all: Line number update for 0.12.1
+
+2008-04-27 Filipe Roque <flip.roque@gmail.com>
+	* pt.po: Synchronisation with Launchpad.net
+
+2008-04-27 Roland Clobus <rclobus@bigfoot.com>
+	* fr.nl, nl.po, hu.po, it.po, sv.po: Version 0.11.4 is actually 0.12.1
+	* nl.po: Synchronisation with Launchpad.net
+	
+2008-04-09 Ferenc Bánhidi <bferike@mailbox.hu>
+	* hu.po: Updated to 0.11.4
+
+2008-04-01 Jean-Charles GRANGER <traduction@vecteur.org>
+	* fr.po: Updated to 0.11.4
+
+2008-04-01 Daniel Nylander <po@danielnylander.se>
+	* sv.po: Updated to 0.11.4
+
+2008-04-01 Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Updated to 0.11.4
+
+2008-04-01 Jean-Charles GRANGER <traduction@vecteur.org>
+	* fr.po: Added the missing strings
+
+2008-03-27 Roland Clobus <rclobus@bigfoot.com>
+	* nl.po: Updated to 0.11.4
+	
+2008-03-26 Roland Clobus <rclobus@bigfoot.com>
+	* all: Updated for the string freeze of 0.11.4 (added
+	translator_credits), this is the 'real' string freeze.
+	
+2008-03-25 Roland Clobus <rclobus@bigfoot.com>
+	* all: String freeze for 0.11.4
+	
+2008-03-23 Ladislav Dobias <lada-preklad@dobias.info>
+	* cs.po: New Czech translation
+	
+2008-03-23 Roland Clobus <rclobus@bigfoot.com>
+	Synchronisation with Launchpad.net (2008-03-13)
+	* af.po, da.po, de.po, es.po, fr.po, hu.po, it.po, ja.po, nl.po,
+	pt.po, sv.po: Synchronisation with Launchpad.net (2008-03-13),
+	most changes are whitespaces at the end of strings.
+	* es.po: Some modifications by Kiba-Kun <kibafang@gmail.com>
+
+2008-03-23 Roland Clobus <rclobus@bigfoot.com>
+	* af.po, de.po, hu.po, nl.po, pt.po: Converted to utf-8
+
+2007-12-09 Filipe Roque <flip.roque@gmail.com>
+	* pt.po: New Portuguese translation
+
+2007-12-09 Carson (http://launchpad.net/~nanker)
+	* da.po: New Danish translation
+
+2007-12-09 Roland Clobus <rclobus@bigfoot.com>
+	* all: Reverted changes made 2007-11-22, because it is not time for a 
+	release yet.
+
+2007-11-22 Roland Clobus <rclobus@bigfoot.com>
+	* all: Updated linenumbers for 0.11.4 release
+	* nl.po: Update for 0.11.4
+
+2007-10-07 Roland Clobus <rclobus@bigfoot.com>
+	* all: Updated linenumbers for 0.11.3 release
+	* de.po, fr.po, hu.po, it.po, ja.po, nl.po, sv.po: Updated version
+	number to 0.11.3
+
+2007-08-05 Roland Clobus <rclobus@bigfoot.com>
+	* all: Updated linenumbers for 0.11.2 release
+
+2007-07-22 Roland Clobus <rclobus@bigfoot.com>
+	* all: Updated to 0.11.1 release
+
+2007-07-22 Pit Garbe <piiit@gmx.de>
+	* de.po: Small update
+
+2007-07-21 Ferenc Bánhidi <bferike@mailbox.hu>
+	* hu.po: Updated for 0.11.1
+
+2007-07-20 Yasuhiko Takasugi <takasugi@flcl.org>
+	* ja.po: Small update
+
+2007-07-19 Yasuhiko Takasugi <takasugi@flcl.org>
+	* ja.po: Updated to 0.11.1
+
+2007-07-18 Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Updated to 0.11.1
+
+2007-07-17 Daniel Nylander <po@danielnylander.se>
+	* sv.po: Updated to 0.11.1
+
+2007-07-17 Jean-Charles GRANGER <traduction@vecteur.org>
+	* fr.po: Updated
+
+2007-07-16 Jean-Charles GRANGER <traduction@vecteur.org>
+	* fr.po: Updated to 0.11.1
+
+2007-07-14 Pit Garbe <piiit@gmx.de>
+	* de.po: Updated to 0.11.1
+
+2007-07-12 Roland Clobus <rclobus@bigfoot.com>
+	* nl.po: Updated to 0.11.1
+	* All: updated the *.po files for the pending release
+	  The strings for player shape and the robber fix have also been
+	  added.
+
+2007-05-13 Roland Clobus <rclobus@bigfoot.com>
+	* POTFILES.in: editor/gtk/game-settings.c was renamed to
+	common/gtk/game-rules.c
+	* POTFILES.in: common/game.c also contains translatable strings
+
+2007-04-08 Yasuhiko Takasugi <takasugi@flcl.org>
+	* ja.po: Updated (File date 2007-01-28)
+
+2007-04-08 Daniel Nylander <po@danielnylander.se>
+	* sv.po: Updated to 0.10.2 (File date 2007-01-10)
+
+2006-11-17 Roland Clobus <rclobus@bigfoot.com>
+	* All Project-Id-Version fields use the same style
+
+2006-11-16 Jean-Charles GRANGER <traduction@vecteur.org>
+	* fr.po: Updated
+
+2006-11-16 Petri Jooste <petri.jooste@gmail.com>
+	* af.po: Updated
+
+2006-11-14 Roland Clobus <rclobus@bigfoot.com>
+	* ja.po: Fixed the last fuzzy translation
+	
+2006-11-13 Yasuhiko Takasugi <takasugi@flcl.org>
+	* ja.po: Updated
+
+2006-11-10 Jean-Charles GRANGER <traduction@vecteur.org>
+	* fr.po: Updated
+	
+2006-11-10 Petri Jooste <petri.jooste@gmail.com> 
+	* af.po: Updated
+
+2006-11-10 Yasuhiko Takasugi <takasugi@flcl.org>
+	* ja.po: Added initial version
+	
+2006-10-19 Petri Jooste <petri.jooste@gmail.com> 
+	* af.po: Added initial version
+
+2006-10-17 Roland Clobus <rclobus@bigfoot.com>
+	* de.po: Added shortcuts for the resources in the editor
+	
+2006-10-17 Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Updated to 0.10.2
+	
+2006-09-16 Roland Cloubs <rclobus@bigfoot.com>	
+	* Release 0.10.2
+	
+2006-09-13 Roland Clobus <rclobus@bigfoot.com>
+	* Updated templates for release 0.10.2
+	* nl.po: Updated
+	
+2006-08-30 Roland Clobus <rclobus@bigfoot.com>
+	* nl.po: Fixed a typo
+
+2006-08-26 Roland Clobus <rclobus@bigfoot.com>
+	* Last update before the release of 0.10.1
+	
+2006-08-23 Marco Antonio Giraldo <m.a.giraldo@rug.nl>
+	* es.po: Some corrections
+
+2006-08-21 Marco Antonio Giraldo <m.a.giraldo@rug.nl>
+	* es.po: Updated
+
+2006-08-20 Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Updated and converted to utf8
+
+2006-08-18 Daniel Nylander <po@danielnylander.se>
+	* sv.po: Updated
+
+2006-08-17 Roland Clobus <rclobus@bigfoot.com>
+	* Updated templates for release 0.10.1
+	* nl.po: Updated
+	
+2006-08-11 Pit Garbe <piiit@gmx.de>
+	* de.po: Small correction
+	
+2006-08-10 Roland Clobus <rclobus@bigfoot.com>
+	* Updated templates for 0.10.1
+	* nl.po: Updated for 0.10.1
+	
+2006-08-06 Roland Clobus <rclobus@bigfoot.com>	
+	* de.po: Use Lehm instead of Stein for brick
+	
+2006-08-05 Roland Clobus <rclobus@bigfoot.com>
+	* POTFILES.in: added client/ai/lobbybot.c, removed client/common/chat.c
+	
+2006-07-24 Roland Clobus <rclobus@bigfoot.com>
+	* it.po: Restored old translations for quote-view.c
+	
+2006-07-05 Roland Clobus <rclobus@bigfoot.com>
+	* Translation markup removed for g_error and g_warning messages
+	* Updated all templates
+
+2006-07-05 Ronny Standtke <Ronny.Standtke@gmx.net>
+	* POTFILES.in: added missing quote-view.c
+	* de.po: Added missing translations
+	
+2006-06-23 Daniel Nylander <po@danielnylander.se>
+	* sv.po: Updated for 0.9.64
+
+2006-06-23 Pit Garbe <piiit@gmx.de>
+	* de.po: Updated for 0.9.64
+	
+2006-05-28 Roland Clobus <rclobus@bigfoot.com>
+	* Regenerated all, update case changes
+	
+2006-05-24 LT-P <LT-P@LT-P.net>
+	* fr.po: Some updates
+	
+2006-05-24 Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Updated for 0.9.62 (621t)
+	
+2006-05-23 Roland Clobus <rclobus@bigfoot.com>
+	* Updated templates for 0.9.62
+	* nl.po: Updated for 0.9.62 (621t)
+	
+2006-03-08 Ferenc Bánhidi <banhidi@inf.elte.hu>
+	* hu.po: Updated for 0.9.61
+
+2006-03-08 Roland Clobus <rclobus@bigfoot.com>
+	* fr.po: Updated translations for ports
+	
+2006-03-08 Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Minor updates
+	
+2006-03-07 LT-P <LT-P@LT-P.net>
+	* fr.po: Updated for 0.9.61, changed encoding to UTF-8
+
+2006-03-07 Daniel Nylander <po@danielnylander.se>
+	* sv.po : Updated for 0.9.61
+	
+2006-03-04 Roland Clobus <rclobus@bigfoot.com>
+	* nl.po: Updated for 0.9.61
+	
+2006-03-04 Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Updated for 0.9.61
+	
+2006-02-02 Daniel Nylander <po@danielnylander.se>
+	* sv.po: Added the missing translations
+
+2006-01-25 Roland Clobus <rclobus@bigfoot.com>
+	* nl.po: Added the new strings
+	* de.po, fr.po, it.po: Removed some obviously wrong translated fuzzy
+	entries
+	* Updated line numbers to match 0.9.49
+
+2006-01-12 Daniel Nylander <po@danielnylander.se>
+	* sv.po: Added Swedish translation
+
+2005-12-30 Roland Clobus <rclobus@bigfoot.com>
+	* nl.po: Fixed a typo
+	
+2005-12-21 Roland Clobus <rclobus@bigfoot.com>
+	* Updated the translations to match the 0.9.40 release
+	* nl.po: Added one translation
+	
+2005-11-16 Roland Clobus <rclobus@bigfoot.com>
+	* nl.po: Fixed 2 typos
+	
+2005-10-02 Roland Clobus <rclobus@bigfoot.com>
+	* Updated line numbers to match 0.9.32
+
+2005-09-09 Ferenc Bánhidi <banhidi@inf.elte.hu>
+	* hu.po: Added Hungarian translation
+	
+2005-08-14 Roland Clobus <rclobus@bigfoot.com>
+	* Added formatting tags to modified strings in 0.9.22
+	* nl.po: Added a new string
+
+2005-07-14 Roland Clobus <rclobus@bigfoot.com>
+	* Updated the translations for the shortcut keys in the toolbar,
+	removed again in 0.9.19
+	
+2005-07-06 Giancarlo Capella <giancarlo@comm.cc>
+	* it.po: Updated to 0.9.17
+
+2005-07-03 Roland Clobus <rclobus@bigfoot.com>
+	* Updated for Q_() patch
+
+2005-07-03 Jens Seidel <jensseidel@users.sf.net>
+	* de.po: Minor translation update (Debian bug #314082)
+	
+2005-06-30 Roland Clobus <rclobus@bigfoot.com>
+	* nl.po, pioneers.pot: Complete Gnocatan free
+
+2005-06-25 Steve Langasek <vorlon@debian.org>
+	* pioneers.pot: new gettext package name
+	* de.po, es.po, fr.po, it.po, nl.po: sync translations to
+	  match the Gnocatan->Pioneers rebranding, where possible
+	* de.po, nl.po: fix up a C string translation in each of these
+	  files which gets rejected by current gettext as being invalid
+
+2005-06-05 Roland Clobus <rclobus@bigfoot.com>
+	* fr.po, nl.po: Updated for Q_() patch
+	
+2005-05-01 Roland Clobus <rclobus@bigfoot.com>
+	* Updated to build 0.9.11
+	
+2005-04-26 Roland Clobus <rclobus@bigfoot.com>
+	* nl.po: Updated Dutch translations to CVS 0.9.10
+	* it.po: Removed clearly wrong Italian translations
+	
+2005-03-20 Roland Clobus <rclobus@bigfoot.com>
+	* Updated to build 0.8.1.57
+	
+2005-03-02 Roland Clobus <rclobus@bigfoot.com>
+	* Updated to build 0.8.1.54
+	
+2005-02-03 Roland Clobus <rclobus@bigfoot.com>
+	* Updated translations to build 0.8.1.52
+	* es.po: Removed some clearly wrong translations
+	
+2005-01-09 Roland Clobus <rclobus@bigfoot.com>
+	* Marked several clearly wrong translations as not translated instead
+	of fuzzy.
+	
+2004-11-21 Roland Clobus <rclobus@bigfoot.com>
+	* Applied bold tags to translations, where applicable
+	
+2004-11-05 LT-P <LT-P@LT-P.net>
+	* fr.po: Spelling corrections
+	
+2004-10-27 Roland Clobus <rclobus@bigfoot.com>
+	* Updated all files to fit 0.8.1.41
+	* nl.po: Added the missing translations. Changed translation of 'chat'
+	
+2004-10-13 Roland Clobus <rclobus@bigfoot.com>
+	* nl.po: fixing a typo
+	
+2004-10-01 Roland Clobus <rclobus@bigfoot.com>
+	* POTFILES.in: Regenerated from scratch, removed admin-gtk.c (old)
+	* Updated all files to fit 0.8.1.37
+	
+2004-09-26 Roland Clobus <rclobus@bigfoot.com>
+	* .cvsignore: Added Makefile.in.in, it is a generated file
+	* POTFILES.in: Added client/ai/greedy.c, server/turn.c
+	
+2004-09-15 Arjen Schrijver <a.schrijver@skydec.nl>
+	* nl.po: fixing a typo
+	
+2004-09-15 Roland Clobus <rclobus@bigfoot.com>
+	* ChangeLog: Added the ChangeLog again, it is required for 
+	'make distcheck' and automake-1.7

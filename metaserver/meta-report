@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+use strict;
+use Time::Local;
+use Socket;
+
+$ENV{PATH} = '/bin:/usr/bin:/usr/sbin';
+my $server = $ARGV[1] || $ENV{'PIONEERS_METASERVER'} || $ENV{'GNOCATAN_META_SERVER'} || 'pioneers.debian.net';
+my $iaddr = gethostbyname($server);
+my $meta_addr = sockaddr_in(5557, $iaddr);
+my $proto = getprotobyname('tcp');
+
+$| = 1;
+socket(SOCK, PF_INET, SOCK_STREAM, $proto) || die "socket: $!\n";
+connect(SOCK, $meta_addr) || die "Could not connect to metaserver: $!\n";
+my $old = select(SOCK); $| = 1; select($old);
+
+my $req = $ARGV[0] || "client";
+my $vers = $ARGV[2] || "1.0";
+scalar <SOCK>;
+
+print SOCK "version $vers\n";
+print SOCK "$req\n";
+while (<SOCK>) {
+	print;
+}
+close(SOCK);
+
+exit 0;

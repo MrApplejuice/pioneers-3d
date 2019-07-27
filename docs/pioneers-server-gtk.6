@@ -1,0 +1,74 @@
+.TH pioneers-server-gtk 6 "January 8, 2012" "pioneers"
+.SH NAME
+pioneers-server-gtk \- graphical game server for Pioneers
+
+.SH SYNOPSIS
+.B pioneers-server-gtk
+.RI [ options ]
+
+.SH DESCRIPTION
+This manual page documents briefly the
+.B pioneers-server-gtk
+command.
+.PP
+.B Pioneers
+is an implementation of the popular, award-winning "Settlers of Catan"
+board game for the GNOME desktop environment.  It uses a client/server
+model for networked play of between two and eight players.  This program
+provides a GUI-configurable stand-alone server which you connect to
+from 
+.B pioneers
+itself.
+
+.SH OPTIONS
+Pioneers accepts the standard GTK+ commandline options.
+
+.SH ENVIRONMENT
+The default settings of the server can be influenced with the
+following three environment variables:
+.TP 
+.B PIONEERS_METASERVER
+The hostname of the metaserver when no metaserver is specified in the
+user interface. (The settings file takes precedence)
+.TP
+.B PIONEERS_SERVER_NAME
+The hostname of the server.
+If it is not set, the hostname is determined by 
+.BR hostname(1) .
+(The settings file takes precedence)
+.TP 
+.B PIONEERS_DIR
+The path to the game definition files.
+If it is not set, the default installation path will be used.
+
+.SH FILES
+.B /usr/share/games/pioneers/*.game
+and
+.B $XDG_DATA_HOME/pioneers/*.game
+.RS
+Game definitions
+.RE
+.B /usr/share/pixmaps/pioneers-server.png
+.RS
+Game icon
+.RE
+.B $XDG_CONFIG_HOME/pioneers-server
+.RS
+Saved settings
+.RE
+.B /usr/share/games/pioneers/computer_names
+.RS 
+A list of names the computer player can use
+.RE
+
+.SH AUTHOR
+This manual page was written by Steve Langasek <vorlon@debian.org>,
+and updated by Roland Clobus <rclobus@bigfoot.com>.
+Pioneers was written by Dave Cole <dave@dccs.com.au>, Andy Heroff
+<aheroff@mediaone.net>, and Roman Hodek <roman@hodek.net>, with
+contributions from many other developers on the Internet; see the
+AUTHORS file in the pioneers distribution for a complete list of
+contributing authors.
+
+.SH SEE ALSO
+.BR pioneers(6) ", " pioneers-server-console(6) ", " pioneersai(6)

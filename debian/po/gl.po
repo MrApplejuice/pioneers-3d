@@ -1,0 +1,118 @@
+# Galician translation of pioneers's debconf templates
+# This file is distributed under the same license as the pioneers package.
+# Copyright 2008 Jacobo Tarrio <jtarrio@debian.org>.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pioneers\n"
+"Report-Msgid-Bugs-To: pioneers@packages.debian.org\n"
+"POT-Creation-Date: 2013-03-22 12:32+0100\n"
+"PO-Revision-Date: 2008-05-12 23:52+0100\n"
+"Last-Translator: Jacobo Tarrio <jtarrio@debian.org>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+#, fuzzy
+#| msgid "Port range for creating new games on the meta-server:"
+msgid "Port range for creating new games on the metaserver:"
+msgstr "Rango de portos para a creación de novos xogos no metaservidor:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+#, fuzzy
+#| msgid ""
+#| "The meta-server can create new games, so players don't need to install "
+#| "and run the pioneers server. The ports which are used for these games can "
+#| "be specified. If this field is left empty, the meta-server will disable "
+#| "its game creation functionality."
+msgid ""
+"The metaserver can create new games, so players don't need to install and "
+"run the pioneers server. The ports which are used for these games can be "
+"specified. If this field is left empty, the metaserver will disable its game "
+"creation functionality."
+msgstr ""
+"O metaservidor pode crear novos xogos, de xeito que os xogadores non "
+"precisan de instalar e executar o servidor de pioneers. Pódense especificar "
+"os portos a usar para eses xogos. Se se deixa o campo baleiro, o "
+"metaservidor ha desactivar a funcionalidade de creación de xogos."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+msgid ""
+"If the value is not empty, it must be two port numbers, separated by a minus "
+"sign."
+msgstr ""
+"Se o valor non está baleiro, debe consistir en dous números de porto "
+"separados por un guión (-)."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:2001
+msgid "Server name for created games:"
+msgstr "Nome do servidor para os xogos creados:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:2001
+#, fuzzy
+#| msgid ""
+#| "In some cases, the name the meta-server uses for itself when creating new "
+#| "games is incorrect. If this field is not left empty, it is used to "
+#| "override the detected hostname."
+msgid ""
+"In some cases, the name the metaserver uses for itself when creating new "
+"games is incorrect. If this field is not left empty, it is used to override "
+"the detected hostname."
+msgstr ""
+"Nalgúns casos, o nome que emprega o metaservidor para si mesmo ao crear "
+"novos xogos é incorrecto. Se este campo non se deixa baleiro, hase empregar "
+"para empregar no canto do nome detectado."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:3001
+#, fuzzy
+#| msgid "Extra arguments to pass to the meta-server:"
+msgid "Extra arguments to pass to the metaserver:"
+msgstr "Argumentos adicionais a pasar ao metaservidor:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:3001
+#, fuzzy
+#| msgid ""
+#| "These arguments are passed to the meta-server. There are only two "
+#| "sensible arguments:\n"
+#| " * --syslog-debug: Send debugging output to syslog\n"
+#| " * --redirect: Redirect clients to another meta-server"
+msgid ""
+"These arguments are passed to the metaserver.\n"
+" * --redirect: Redirect clients to another metaserver"
+msgstr ""
+"Hanse pasar estes argumentos ao metaservidor. Só hai dous argumentos "
+"útiles:\n"
+" * --syslog-debug: Enviar información de depuración a syslog\n"
+" * --redirect: Redirixir os clientes a outro metaservidor"
+
+#~ msgid "Run the pioneers meta-server?"
+#~ msgstr "¿Executar o metaservidor de pioneers?"
+
+#~ msgid ""
+#~ "Pioneers contains a meta-server, which can be used to find networked "
+#~ "games. The meta-server needs to run in a central location, so that all "
+#~ "players can find it. There is a public meta-server at pioneers.debian."
+#~ "net. Most people do not need to run a meta-server on their computer."
+#~ msgstr ""
+#~ "Pioneers contén un metaservidor, que se pode empregar para buscar xogos "
+#~ "en rede. O metaservidor precisa de se executar nunha ubicación central na "
+#~ "que tódolos xogadores o poidan atopar. Hai un metaservidor público en "
+#~ "pioneers.debian.net. A maioría da xente non precisa de ter un "
+#~ "metaservidor no seu ordenador."

@@ -1,0 +1,299 @@
+Subversion release 15.5
+* Fix for #298: Allow trade after a road building development card
+* Use more modern helper libraries for the inline help
+* Minor code quality improvements
+
+Subversion release 15.4
+
+* New theme Nouvellia, by Brian Mansberger
+* Fixed rendering issues in ccFlickr theme
+* Improvements for the MinGW port
+* Fix for #290: check for the winning condiation at the beginning of the turn
+* Fix for #285part2: Fixed unplayable development card
+* Use the default about dialog
+* Framework change: replaced glib-gettextize by intltool
+* GTK+3 deprecation checks are turned off per default
+* Minor code quality improvements
+
+Subversion release 15.3
+
+* Relicense of the desktop icons to CC-BY-SA-4.0
+
+Subversion release 15.2
+
+* Ported from GTK+2 to GTK+3
+* A new computer player, by Rodrigo Espiga Gómez
+
+Subversion release 15.1
+* Full IPv6 support
+* More graphics are in vector format instead of bitmaps
+* A map preview is shown when creating a game from the client
+* A toolbar is added to the editor
+* Added a dice deck instead of rolling the dice completely randomly
+* The computer player uses more various chat messages
+* Code cleanup, including fixed memory leaks
+* The Microsoft Windows port now also has a server
+
+Subversion release 14.1
+* New features:
+  * Added the game comments to the editor. With thanks to Micah Bunting
+  * Added island discovery bonus in the editor. With thanks to Micah Bunting
+  * Spectators see the nosetup nodes
+  * Editor uses shortcuts for games folders
+  * Large icons for the GNOME3 desktop
+
+* Bugfixes:
+  * Speedup of server-gtk
+  * Setting the avatar icon works again
+  * Trade is possible again in games without interplayer trade
+  * Right-click in the editor shows the menu again
+  * Code cleanup (Preparation for Gtk+3, hardening flags, memory leaks, ...)
+
+Subversion release 0.12.5
+* New features:
+  * These features were written by Micah Bunting:
+    * The maps in the editor can be manipulated more easily
+    * The map can be zoomed
+    * Full screen mode
+  * Notifications. With thanks to Patrick
+* Bugfixes:
+  * Cosmetic fixes to the way the map is drawn
+  * Fixed some crashes involving the pirate
+  * Fixed some memory leaks in the meta server
+
+Subversion release 0.12.4
+* New features:
+  * Added a logbot type computer player. With thanks to Andreas Steinel
+  * New map: North Americ by Ron Yorgason
+  * New map: Ubuntuland by Matt Perry
+  * Added a close button on tab pages. With thanks to Anti Sullin
+  * Use AVAHI, With thanks to Andreas Steinel
+  * In the connect dialog, the games can be sorted
+  * Computer player uses the soldier cards and monopoly cards better
+  * New theme ccFlickr, by Aaron Williamson
+  * Tooltips for the development cards. With thanks to Aaron Williamson
+  * The editor can set/unset nosetup nodes
+* Bugfixes
+  * Fixed the FreeCIV-like and Wesnoth-like themes
+  * The computer player is more stable
+  * The meta-server is more stable
+  * Use the correct size for the icons in the context menu in the editor
+
+Subversion release 0.12.3
+* New feature: Look in $XDG_DATA_HOME/pioneers/themes for themes
+* New feature: Look in $XDG_DATA_HOME/pioneers for games
+* Fixed IPv4 vs IPv6 connection issues when adding local computer players
+* Some cosmetic changes
+
+Subversion Snapshot release 0.12.2
+* Bugfix: Rejected trade was not sent
+* Bugfix: Tournament mode used seconds instead of minutes
+* Translation updates
+
+Subversion Snapshot release 0.12.1
+* Removed double menu entries
+* New feature: the moment of checking for victory can be influenced. With
+  thanks to Lalo Martins.
+* Use scrollbars, so Pioneers will work correctly on smaller screens.
+* Fixes for DoS that could stop the server.
+* The computer player will not attempt to buy development cards when none are
+  available.
+* Changed the order of distributing player numbers when (re)connecting.
+* Fixes for the new OpenBSD port.
+* All names of the computer players are unique. With thanks to
+  chrysn@users.sourceforge.net
+* Easier selection of meta servers.
+* Games created by the meta server will automatically add computer players
+  after a minute.
+* Tournament mode: the timer will only be started when a player enters the
+  game, and the timer will be reset when the last player leaves before the time
+  has elapsed.
+* Fixed a crash that could occur after many trades.
+* A new command line option to ./configure: '--enable-protocol=IPv4'. When
+  this is given (needed for the *BSD ports), only connections on IPv4 are made.
+* New language: Czech
+* New board: South Africa
+
+Subversion Snapshot release 0.11.3
+* Update for the server only: resolved issues for servers that run for a long
+  time.
+
+Subversion Snapshot release 0.11.2
+* Fixed a bug: It as not possible to press the OK button when discard cards
+  after a seven was rolled
+
+Subversion Snapshot release 0.11.1
+* New languages: Afrikaans and Japanese
+* Added customizable player icons
+* Added winnable check in the server and editor
+* New game feature: city walls
+* Map preview in the server
+* Cluster development cards of the same type
+* The chat panel can be moved to the right
+* Lauch the client from the server
+* Cosmetic changes
+* Various bugfixes
+* The 0.11 server can also handle 0.10 clients
+
+Subversion Snapshot release 0.10.2
+* Added --version for all executables
+* Workaround for a Gtk+ bug
+* The metaserver unregisters inactive servers
+* The contents of the tarball is more complete
+* Various bugfixes
+
+Subversion Snapshot release 0.10.1
+* Build script updated for easier building
+* Switch between games without quitting the client
+* Victory points for discovering an island
+* More strings are translatable
+* Announce new players when they enter the game
+* Lobby + robot
+* Better handling for disconnected players
+* Register games with the correct hostname at the metaserver
+* Various bugfixes
+
+Subversion Snapshot release 0.9.64
+* Fix for the bugs introduced in 0.9.63 and 0.9.62
+
+Subversion Snapshot release 0.9.63
+* Minimum required versions: Glib 2.6, Gtk+ 2.6
+* Does not use Gtk+ 2.8 icons anymore
+
+Subversion Snapshot release 0.9.62
+* Several cosmetic changes
+* You can now choose to connect as a spectator
+* Several small fixes
+* Visual display of the resources
+* New quote tab page
+
+Subversion Snapshot release 0.9.61
+* Manual updated
+* Several small fixes
+
+Security release 0.9.55
+* Fixes the meta server for meta servers that do allow the creation of new
+  games
+
+Security release 0.9.54 [revoked]
+* Fixes crashes in the public meta server
+
+CVS Snapshot release 0.9.49
+* New theme, based on Battle of Wesnoth
+* Configure script updated
+* Added Swedish translation
+* Client and server chat length limited to safer lengths
+* Windows installer checks for the Gtk+ runtime
+* Several small bugs fixed, code cleanup
+
+CVS Snapshot release 0.9.40
+* Released Microsoft Windows Native port, requires Gtk+ runtime libraries
+* Fink port patches integrated
+* New icons
+* Fixed the server to allow connections of many players at once
+* Several small bugs fixed
+
+CVS Snapshot release 0.9.33
+* Fixed infinite loop when AI tries to trade for something that is not in the
+  bank anymore
+* Fixed PPC: the cursor on the map is now working again
+* Introduced extra options to ./configure
+* Workaround for Gtk-bug with button
+* Added Hungarian translation
+* Several small bugs fixed
+* Added several portability patches
+
+CVS Snapshot release 0.9.23
+* Fixed: Several bug fixes
+* New: Left panel shows information during the game
+
+First release of Pioneers 0.9.19
+* An editor has been added
+* The AI is stronger, can also play on maps with gold
+* We have a new name: Pioneers
+* Pioneers client runs under Cygwin (server not yet implemented)
+* New maps have been added
+* Bug fixes, and code cleanup
+
+CVS Snapshot release 0.8.1.59
+Random player seating order
+Metaserver can serve a limited number of games
+Updated man pages
+
+CVS Snapshot release 0.8.1.54
+Fix for maritime trade
+
+CVS Snapshot release 0.8.1.53
+Update of gnocatan.spec
+Fixed about dialog
+Less severe errors when writing new themes or games
+Disabled 'Add Computer Player' button in server when gnocatanai is not installed
+New functionality in meta server: it will tell whether it supports creation of new games
+
+CVS Snapshot release 0.8.1.51
+Restored compatibility with Gtk+-2.0 and 2.2
+Restored compatibility with FreeBSD
+
+CVS Snapshot release 0.8.1.50
+Fixed reconnect during distribution of gold
+Tiles can be excluded from shuffling
+
+CVS Snapshot release 0.8.1.48
+New about dialog
+Player did not get a turn when playing a second game with the same client
+Made rules for building roads near 'nosetup' nodes more strict
+
+CVS Snapshot release 0.8.1.45
+Reconnect fixed when robber active
+Cosmetic fix on initial size of the map
+
+CVS Snapshot release 0.8.1.43
+Bugfixes
+Fixed crash with cursor on the border of a map
+
+CVS Snapshot release 0.8.1.42
+New preference dialog
+Development cards cleared when playing second game
+
+CVS Snapshot release 0.8.1.40
+New again: probability dots are back
+Code cleanup
+
+CVS Snapshot release 0.8.1.39
+New: single click building
+Fixed: longest road detection
+
+CVS Snapshot release 0.8.1.38
+New: commandline for the client
+New: compiles with Gtk-2.0, 2.2 and 2.4
+Fixed: replaces 127.0.0.1 with localhost
+
+CVS Snapshot release 0.8.1.37
+
+What's new/fixed:
+* Gnocatan can now build the console-only applications if GNOME2/Gtk+ is not
+  found
+* Several cosmetic changes in the client
+* Fixed a bug in the ai when playing too many soldier cards
+* Server-gtk remembers the previous map
+* Quick fix applied for crash after pressing 'Reject Trade'
+* Italian translation added
+* Removed a few memory leaks
+
+Release 0.8.1.30
+
+What's new/fixed:
+* Fixed many bugs regarding the 'Trade Page'
+* Fixed AI losing resources when offering a trade
+* Fixed AI choosing unavailable resources when playing the Year of Plenty card
+* New connection scheme
+* Added tooltips in the server-gtk
+* New image for the splash screen, provided by Tobias Jakobs
+* Fixed bugs regarding the Road Building card
+* Connection as spectator in a game with more than 8 players+spectators is possible
+* Updated the log in the console
+* Minor user interface issues
+
+Release 0.8.1.16
+
+Previous release on SF

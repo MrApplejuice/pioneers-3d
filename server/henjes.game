@@ -1,0 +1,38 @@
+title SmallEurope
+domestic-trade
+num-players 4
+sevens-rule 0
+victory-points 18
+num-roads 20
+num-bridges 0
+num-ships 15
+num-settlements 8
+num-cities 6
+num-city-walls 0
+resource-count 20
+develop-road 4
+develop-monopoly 4
+develop-plenty 4
+develop-chapel 1
+develop-university 1
+develop-governor 1
+develop-library 1
+develop-market 1
+develop-soldier 15
+# created 11/2003
+desc by Robert Henjes <robert.henjes@web.de>
+chits 3,5,6,3,4,3,11,11,10,11,9,10,2,5,4,3,6,3,12,8,8,11,12,8,2,5,6,2,9,3,12,11,10,11,6,11,2,5,4,10,6,3,4,9,3,12,9,12,2,5,11,8,4,3,3,11,8,11,9,8,2,5,2,3,11,8,10,3,10,11,9,12,4,12,4,3,6,3,6,11,10,5,9,11
+map
+s,g0+,p1,s,s,s,s,m2,t3,t4,h5,t6
+s,s?1,s,s,s,s,m7,t8,t9,h10,t11,g12+
+s,s,s,s,s,m13,m14,t15,sl0,t16,f17,t18
+s,s,p19,s,s,s,t20,s,t21,f22,h23,t24
+s,s,sw0,p25,s,p26,sl5,s,t27,h28,t29,f30
+s,s,s?5,s,s?5,p31,t32,h33,t34,p35,h36,p37
+s,s,t38,t39,f40,t41,f42,t43,f44,m45,m46,f47
+s,s,h48,f49,h50,t51,t52,m53,f54,p55,m56,t57
+s,m58,m59,m60,p61,m62,m63,m64,f65,h66,m67,s
+f68,t69,h70,f71,s,s,f72,s,m73,p74,s,s
+s,f75,f76,f77,sg2,s,s,f78,s,f79,t80,m81
+s,s,s,s,s,g82+,s,s,s,s?1,d83,g84+
+.

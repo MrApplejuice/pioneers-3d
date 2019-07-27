@@ -1,0 +1,6 @@
+debian/tmp/usr/games/pioneers
+debian/tmp/usr/games/pioneers-editor
+debian/tmp/usr/games/pioneers-server-gtk
+debian/tmp/usr/share/applications/pioneers-editor.desktop
+debian/tmp/usr/share/applications/pioneers-server-gtk.desktop
+debian/tmp/usr/share/applications/pioneers.desktop

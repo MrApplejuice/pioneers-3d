@@ -1,0 +1,121 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:		pioneers-metaserver
+# Required-Start:	$syslog $network $remote_fs
+# Required-Stop:	$syslog $network $remote_fs
+# Default-Start:	2 3 4 5
+# Default-Stop:		0 1 6
+# Short-Description:	Metaserver for Pioneers
+# Description:		Start a metaserver for Pioneers, to allow
+#			clients to find servers.
+### END INIT INFO
+
+# The defaults below can be overridden in /etc/default/pioneers-metaserver
+CONFIG_FILE=/etc/default/pioneers-metaserver
+
+# Port range
+PORT_RANGE="5560-5569"
+
+# Arguments to metaserver.
+METASERVER_ARGS=""
+
+# Reported hostname for servers started by the metaserver.
+METASERVER_NAME="`dnsdomainname --fqdn`"
+
+# Arguments to start-stop-daemon.
+ARGS="--make-pidfile --quiet --chuid nobody:nogroup"
+
+# File for storing the pid.  You probably don't need to change this.
+PIDFILE=/run/pioneers-metaserver.pid
+
+# End of variable list.
+
+if test -r $CONFIG_FILE; then
+	. $CONFIG_FILE
+fi
+
+test -z "$PORT_RANGE" || PORT_RANGE="--port-range $PORT_RANGE"
+test -z "$METASERVER_NAME" || METASERVER_NAME="--servername $METASERVER_NAME"
+
+export PIONEERS_METASERVER
+NAME=pioneers-metaserver
+DESC="metaserver for Pioneers"
+DAEMON=/usr/games/pioneers-metaserver
+ARGS="--pidfile $PIDFILE --exec $DAEMON $ARGS"
+START_ARGS="--background --oknodo --start $ARGS -- $PORT_RANGE $METASERVER_ARGS $METASERVER_NAME"
+STOP_ARGS="--oknodo --stop $ARGS"
+
+if test ! -x "$DAEMON"; then
+	echo "$DAEMON does not exist"
+	exit 0
+fi
+
+. /lib/lsb/init-functions
+
+#
+# Start the daemon.
+#
+do_start()
+{
+	PATH=$PATH:/usr/games
+	export PATH
+	start-stop-daemon $START_ARGS
+	RETVAL="$?"
+	if [ "$RETVAL" -eq 0 ]; then
+		# It might be that the daemon is not started
+		# (see start-stop-daemon --background for explanation)
+
+		# Wait a little bit to allow the daemon to start
+		sleep 1
+		start-stop-daemon --status $ARGS
+		RETVAL="$?"
+		case "$RETVAL" in
+			0) ;;
+			*) RETVAL=1 ;;
+		esac
+	fi
+	return "$RETVAL"
+}
+
+#
+# Stop the daemon and clean up.
+#
+do_stop()
+{
+	start-stop-daemon $STOP_ARGS
+	RETVAL="$?"
+	[ "$RETVAL" -eq 0 ] && rm -f $PIDFILE
+	return "$RETVAL"
+}
+
+case "$1" in
+	start)
+		log_daemon_msg "Starting $DESC" "$NAME"
+		do_start
+		log_end_msg $?
+		;;
+	stop)
+		log_daemon_msg "Stopping $DESC" "$NAME"
+		do_stop
+		log_end_msg $?
+		;;
+	restart|force-reload)
+		log_daemon_msg "Restarting $DESC" "$NAME"
+		if do_stop; then
+			do_start
+			log_end_msg $?
+		else
+			log_end_msg $?
+		fi
+		;;
+	status)
+		status_of_proc "$NAME" "$DESC"
+		;;
+	*)
+		log_success_msg "Usage: /etc/init.d/pioneers-metaserver {start|stop|restart|force-reload|status}"
+		exit 1
+		;;
+esac
+
+exit 0

@@ -1,0 +1,35 @@
+title 5/6-player
+random-terrain
+domestic-trade
+num-players 5
+sevens-rule 0
+victory-points 10
+num-roads 15
+num-bridges 0
+num-ships 0
+num-settlements 5
+num-cities 4
+num-city-walls 0
+resource-count 24
+develop-road 3
+develop-monopoly 3
+develop-plenty 3
+develop-chapel 1
+develop-university 1
+develop-governor 1
+develop-library 1
+develop-market 1
+develop-soldier 19
+desc Default layout for 5 or 6 players
+chits 2,5,4,8,10,11,6,4,9,12,12,3,8,5,6,3,10,9,3,9,2,5,8,4,11,6,10,11
+map
+-,-,s?5,s,sw4,s,-,-
+-,s,m0,m1,m2,sw4,-,-
+-,s?5,m3,m4,m5,h6,s,-
+s,h7,h8,h9,h10,h11,sg3,-
+s?0,p12,p13,p14,p15,p16,p17,s
+s,f18,f19,f20,f21,f22,sl3,-
+-,s?1,d23,d24,t25,t26,s,-
+-,s,t27,t28,t29,s?2,-,-
+-,-,so1,s,sb2,s,-,-
+.

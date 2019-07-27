@@ -1,0 +1,6 @@
+screen -t "meta" 0 ./meta.sh
+screen -t "local lobby" 1 ./locallobby.sh
+screen -t "local lobbybot" 2 ./locallobbybot.sh
+screen -t "remote lobby" 3 ./remotelobby.sh
+screen -t "remote lobbybot" 4 ./remotelobbybot.sh
+detach

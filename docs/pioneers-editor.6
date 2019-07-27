@@ -1,0 +1,59 @@
+.TH pioneers-editor 6 "January 8, 2012" "pioneers"
+.SH NAME
+pioneers-editor \- Editor for the Pioneers boardgame
+
+.SH SYNOPSIS
+.B pioneers-editor
+.BI [ filename ]
+
+.SH DESCRIPTION
+This manual page documents briefly the
+.B pioneers-editor
+command.
+.PP
+Pioneers is an implementation of the popular, award-winning "Settlers of
+Catan" board game for the GNOME desktop environment.  It uses a client/server
+model for networked play of between two and eight players.  You will need to
+connect to a machine running either \fBpioneers-server-gtk\fP or
+\fBpioneers-server-console\fP to play.  An AI client, \fBpioneersai\fP, is
+also available.
+.PP
+.B Pioneers-editor
+can be used to create new board layouts.  Clicking on the plus and minus signs
+on the side of the board will increase and decrease the board size
+respectively.  Left clicking on a tile allows one to select the terrain type;
+Middle or right clicking allows one to set the chit number or port type and
+orientation.  The chit number can also be set by pressing the number key(s)
+while the pointer is hovering over the tile.
+.PP
+In the settings tab, several game settings can be adjusted.
+
+.SH PLAYING
+Games created with pioneers-editor can be played with pioneers-server-gtk and
+pioneers-server-console, if they are installed in the global game directory.
+Alternatively, they can be played with pioneers-server-console, by using the
+.I \-\-file
+option.
+
+.SH OPTIONS
+Pioneers-editor accepts the standard GTK+/GNOME commandline options.  See
+.I pioneers-editor --help
+for details.
+
+.SH FILES
+.B /usr/share/games/pioneers/*.game
+.RS
+Global game files.  Games which are installed here can be selected by title,
+and played from pioneers-server-gtk.
+
+.SH AUTHOR
+This manual page was written by Bas Wijnen <shevek@fmf.nl>.
+Pioneers was written by Dave Cole <dave@dccs.com.au>, Andy Heroff
+<aheroff@mediaone.net>, and Roman Hodek <roman@hodek.net>, with
+contributions from many other developers on the Internet; see the
+AUTHORS file in the pioneers distribution for a complete list of
+contributing authors.
+
+.SH SEE ALSO
+.BR pioneers(6) ", " pioneers-server-gtk(6) ", " pioneers-server-console(6) ", "
+.B pioneersai(6)

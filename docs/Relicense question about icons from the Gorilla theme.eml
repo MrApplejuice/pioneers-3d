@@ -1,0 +1,132 @@
+Return-path: <jimmac@gmail.com>
+Envelope-to: rclobus@rclobus.nl
+Delivery-date: Fri, 24 Oct 2014 13:29:16 +0200
+Received: from mail-wg0-f50.google.com ([74.125.82.50]:39842)
+	by cp14.c-panel-server.com with esmtps (TLSv1:RC4-SHA:128)
+	(Exim 4.82)
+	(envelope-from <jimmac@gmail.com>)
+	id 1Xhd3P-002xsR-H2
+	for rclobus@rclobus.nl; Fri, 24 Oct 2014 13:29:16 +0200
+Received: by mail-wg0-f50.google.com with SMTP id a1so842413wgh.33
+        for <rclobus@rclobus.nl>; Fri, 24 Oct 2014 04:29:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type;
+        bh=Xzte0Z3I81g9zyVk24JjK5l+ZhjdovTLGan7oNS02/0=;
+        b=nObMAtxCS6LQ9BiL2g/cuqb+JQP0MCcMeeEMv2zdU5u0NZKNjCxI/kz/6n4H0/kb/t
+         YXYOppNVWhHlIfbMLj2YhFkAu5jWfC3h6CQJHpga7d9148cm41gG5mikJdWaU+Orysx/
+         URjckM9g9nz/49cfKmy7LESaOFiVx3YEXWbkwh+O1Ky0aMj3xh5ChrBCgIBNpgzsT7gb
+         phw1VIEf7oMEecNguG8WW2A2auYd4CxIYpJAUTq5KtFgz3XWSRmZgVC86Gk9/YhKPRru
+         6Kz6bpze9UF/d8Zt5Nw8q7DlugPPxFqJwT212WDZ3DVb9CwYWNIe2oogqzeViIp2Wp1z
+         Beuw==
+MIME-Version: 1.0
+X-Received: by 10.180.75.7 with SMTP id y7mr3501212wiv.72.1414150151133; Fri,
+ 24 Oct 2014 04:29:11 -0700 (PDT)
+Received: by 10.216.168.3 with HTTP; Fri, 24 Oct 2014 04:29:11 -0700 (PDT)
+In-Reply-To: <5449EEE4.6050206@rclobus.nl>
+References: <5449EEE4.6050206@rclobus.nl>
+Date: Fri, 24 Oct 2014 13:29:11 +0200
+Message-ID: <CAGRB1QKrOR692mbxt=Z3vRb3O8fqt_PFdu8CKCOdhh8_ursGdA@mail.gmail.com>
+Subject: Re: Relicense question about icons from the Gorilla theme
+From: Jakub Steiner <jimmac@gmail.com>
+To: Roland Clobus <rclobus@rclobus.nl>
+Content-Type: text/plain; charset=UTF-8
+X-Spam-Status: No, score=-2.0
+X-Spam-Score: -19
+X-Spam-Bar: --
+X-Ham-Report: Spam detection software, running on the system "cp14.c-panel-server.com", has
+ identified this incoming email as possible spam.  The original message
+ has been attached to this so you can view it (if it isn't spam) or label
+ similar future email.  If you have any questions, see
+ root\@localhost for details.
+ 
+ Content preview:  Not being a lawyer, I don't think you're free to change the
+    license to a newer one automatically, but I hereby do give you the premission
+    to relicense the work under CCBYSA 4. cheers On Fri, Oct 24, 2014 at 8:17
+    AM, Roland Clobus wrote: > Hello Jakub Steiner, > > The game Pioneers [1]
+    uses some parts of the beautiful icons that you > have created for the Gorilla
+    theme (around 2007) [2]. At that time > you've licensed them as CC-BY-SA
+   2.0 and CC-BY-SA 2.5. Recently a bug > was filed in the Debian issue tracker
+    [3] that recommends relicensing or > replacement. > > If I understand the
+    license correctly, you do not need to relicense the > original images (computer.svg
+    and edit-find-replace.svg) and the derived > work can be licensed in any
+   newer version of the CC-BY-SA license. Am I > correct or do you need to relicense
+    that work under a newer version of > the CC-BY-SA license yourself? > > If
+    you do not need to relicense, I would like to ask you whether it is > OK
+   that I will license the derived work as CC-BY-SA 4.0. > > The current images
+    are at [4] [5] [6]. > > With kind regards, > Roland Clobus > Developer for
+    Pioneers > > [1] http://pio.sf.net > [2] > https://download.gnome.org/teams/art.gnome.org/themes/icon/ICON-Gorilla.tar.bz2
+    > [3] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=765319 > [4] > https://sourceforge.net/p/pio/code/HEAD/tree/trunk/pioneers/client/gtk/data/style-ai.svg
+    > [5] > https://sourceforge.net/p/pio/code/HEAD/tree/trunk/pioneers/server/gtk/pioneers-server.svg
+    > [6] > https://sourceforge.net/p/pio/code/HEAD/tree/trunk/pioneers/editor/gtk/pioneers-editor.svg
+    > > [...] 
+ 
+ Content analysis details:   (-2.0 points, 5.0 required)
+ 
+  pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail provider
+                             (jimmac[at]gmail.com)
+  0.0 URIBL_BLOCKED          ADMINISTRATOR NOTICE: The query to URIBL was blocked.
+                             See
+                             http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+                              for more information.
+                             [URIs: gnome.org]
+ -1.9 BAYES_00               BODY: Bayes spam probability is 0 to 1%
+                             [score: 0.0000]
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from author's
+                             domain
+  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily valid
+ -0.1 DKIM_VALID             Message has at least one valid DKIM or DK signature
+X-Spam-Flag: NO
+
+Not being a lawyer, I don't think you're free to change the license to
+a newer one automatically, but I hereby do give you the premission to
+relicense the work under CCBYSA 4.
+
+
+cheers
+
+On Fri, Oct 24, 2014 at 8:17 AM, Roland Clobus <rclobus@rclobus.nl> wrote:
+> Hello Jakub Steiner,
+>
+> The game Pioneers [1] uses some parts of the beautiful icons that you
+> have created for the Gorilla theme (around 2007) [2]. At that time
+> you've licensed them as CC-BY-SA 2.0 and CC-BY-SA 2.5. Recently a bug
+> was filed in the Debian issue tracker [3] that recommends relicensing or
+> replacement.
+>
+> If I understand the license correctly, you do not need to relicense the
+> original images (computer.svg and edit-find-replace.svg) and the derived
+> work can be licensed in any newer version of the CC-BY-SA license. Am I
+> correct or do you need to relicense that work under a newer version of
+> the CC-BY-SA license yourself?
+>
+> If you do not need to relicense, I would like to ask you whether it is
+> OK that I will license the derived work as CC-BY-SA 4.0.
+>
+> The current images are at [4] [5] [6].
+>
+> With kind regards,
+> Roland Clobus
+> Developer for Pioneers
+>
+> [1] http://pio.sf.net
+> [2]
+> https://download.gnome.org/teams/art.gnome.org/themes/icon/ICON-Gorilla.tar.bz2
+> [3] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=765319
+> [4]
+> https://sourceforge.net/p/pio/code/HEAD/tree/trunk/pioneers/client/gtk/data/style-ai.svg
+> [5]
+> https://sourceforge.net/p/pio/code/HEAD/tree/trunk/pioneers/server/gtk/pioneers-server.svg
+> [6]
+> https://sourceforge.net/p/pio/code/HEAD/tree/trunk/pioneers/editor/gtk/pioneers-editor.svg
+>
+>
+
+
+
+-- 
+Jakub Steiner <jimmac@gmail.com>
+http://jimmac.musichall.cz

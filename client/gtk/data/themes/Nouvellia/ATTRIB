@@ -1,0 +1,41 @@
+/* Pioneers - Implementation of the excellent Settlers of Catan board game.
+ *   Go buy a copy.
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
+Nouvellia theme by Brian Mansberger <brian.mansberger@posteo.de>
+
+The Nouvellia theme uses the following images that are licensed under CC0 1.0
+Universal (CC0 1.0) Public Domain Dedication License
+(https://creativecommons.org/publicdomain/zero/1.0/):
+
+* "Wheat 9" by Chris
+  http://www.clker.com/clipart-wheat-9.html
+  http://www.clker.com/cliparts/p/Y/4/r/p/T/wheat.svg
+* "Tree" by cgillis73
+  https://openclipart.org/detail/121447/tree-by-cgillis73
+  https://openclipart.org/download/121447/just-a-tree.svg
+* "Architetto -- pecorella" by francesco_rollandin
+  https://openclipart.org/detail/33043/pecorella-by-francesco_rollandin
+  https://openclipart.org/download/33043/pecorella.svg
+* "Cactus" by lordoftheloch
+  https://openclipart.org/detail/201901/cactus-by-lordoftheloch-201901
+  https://openclipart.org/download/201901/cactus.svg
+* "Cow Skull" by valessiobrito
+  https://openclipart.org/detail/2994/cow-skull-by-valessiobrito
+  https://openclipart.org/download/2994/valessiobrito-Cow-Skull.svg
+
+The remainder of the artwork was my own.

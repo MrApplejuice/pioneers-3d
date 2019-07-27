@@ -1,0 +1,4094 @@
+# Danish translation for Pioneers
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the pioneers package.
+# carson (http://launchpad.net/~nanker), 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Pioneers 0.11.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-14 16:51+0100\n"
+"PO-Revision-Date: 2008-04-29 09:36+0000\n"
+"Last-Translator: carson\n"
+"Language-Team: Danish <da@li.org>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2008-04-29 09:36+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+"Plural-Forms: nplurals=2; plural=(n!=1)\n"
+
+#. Commandline pioneersai: chromosome-file
+#: ../client/ai/ai.c:90
+msgid "Chromosome File"
+msgstr ""
+
+#. Commandline pioneersai: server
+#: ../client/ai/ai.c:93
+msgid "Server Host"
+msgstr "Server vært"
+
+#. Commandline pioneersai: port
+#: ../client/ai/ai.c:96
+msgid "Server Port"
+msgstr "Server port"
+
+#. Commandline pioneersai: name
+#: ../client/ai/ai.c:99
+msgid "Computer name (mandatory)"
+msgstr "Computer navn (frivilligt)"
+
+#. Commandline pioneersai: time
+#: ../client/ai/ai.c:102
+msgid "Time to wait between turns (in milliseconds)"
+msgstr "Ventetid mellem ture (i millisekunder)"
+
+#. Commandline pioneersai: chat-free
+#: ../client/ai/ai.c:105
+msgid "Stop computer player from talking"
+msgstr "Stop computerspillers snak"
+
+#. Commandline pioneersai: algorithm
+#: ../client/ai/ai.c:108
+msgid "Type of computer player"
+msgstr "Type af computerspiller"
+
+#. Commandline option of ai: enable debug logging
+#. Commandline option of client: enable debug logging
+#. Commandline option of metaserver: enable debug logging
+#. Commandline option of server-gtk: enable debug logging
+#. Commandline option of server: enable debug logging
+#: ../client/ai/ai.c:111 ../client/gtk/offline.c:67 ../metaserver/main.c:631
+#: ../server/gtk/main.c:1170 ../server/main.c:159
+msgid "Enable debug messages"
+msgstr "Aktivér fejlmeddelelser"
+
+#. Commandline option of ai: version
+#. Commandline option of client: version
+#. Commandline option of editor: version
+#. Commandline option of metaserver: version
+#. Commandline option of server-gtk: version
+#. Commandline option of server-console: version
+#: ../client/ai/ai.c:114 ../client/gtk/offline.c:70 ../editor/gtk/editor.c:1843
+#: ../metaserver/main.c:637 ../server/gtk/main.c:1173 ../server/main.c:114
+msgid "Show version information"
+msgstr "Vis versionsinformation"
+
+#. Long description in the commandline for pioneersai: help
+#: ../client/ai/ai.c:125
+msgid "- Computer player for Pioneers"
+msgstr "- computerspilller for Pioneers"
+
+#: ../client/ai/ai.c:137 ../client/gtk/offline.c:196
+#: ../editor/gtk/editor.c:1888 ../metaserver/main.c:687
+#: ../server/gtk/main.c:1223 ../server/main.c:226
+#, c-format
+msgid "Pioneers version:"
+msgstr "Pioneers version:"
+
+#. ai commandline error
+#: ../client/ai/ai.c:160
+#, c-format
+msgid "A name must be provided.\n"
+msgstr "Et navn skal angives.\n"
+
+#: ../client/ai/ai.c:171
+#, c-format
+msgid "Type of computer player: %s\n"
+msgstr "Type af computerspiller: %s\n"
+
+#: ../client/ai/ai.c:202
+msgid "The game is already full. I'm leaving."
+msgstr "Spillet er fyldt op. Jeg smutter."
+
+#. AI chat at the start of the turn
+#: ../client/ai/ai.c:230
+msgid "Ok, let's go!"
+msgstr "OK lad os komme igang!"
+
+#. AI chat at the start of the turn
+#: ../client/ai/ai.c:232
+msgid "I'll beat you all now! ;)"
+msgstr "Jeg slår jer alle nu!:)"
+
+#. AI chat at the start of the turn
+#: ../client/ai/ai.c:234
+msgid "Now for another try..."
+msgstr "Nu et nyt forsøg.."
+
+#. AI chat when one resource is received
+#: ../client/ai/ai.c:239
+msgid "At least I get something..."
+msgstr "Endelig får jeg noget..."
+
+#. AI chat when one resource is received
+#: ../client/ai/ai.c:241
+msgid "One is better than none..."
+msgstr "En er bedre end ingenting..."
+
+#. AI chat when more than one resource is received
+#: ../client/ai/ai.c:246
+msgid "Wow!"
+msgstr "Wow!"
+
+#. AI chat when more than one resource is received
+#: ../client/ai/ai.c:248
+msgid "Ey, I'm becoming rich ;)"
+msgstr "Ups, jeg er ved at blive rig :)"
+
+#. AI chat when more than one resource is received
+#: ../client/ai/ai.c:250
+msgid "This is really a good year!"
+msgstr "Dette er et super år!"
+
+#. AI chat when other players receive more than one resource
+#: ../client/ai/ai.c:255
+msgid "You really don't deserve that much!"
+msgstr "Du fortjener ikke såå meget!"
+
+#. AI chat when other players receive more than one resource
+#: ../client/ai/ai.c:257
+msgid "You don't know what to do with that many resources ;)"
+msgstr "Du aner jo ikke hvad du skal bruge så mange ressourser til :)"
+
+#. AI chat when other players receive more than one resource
+#: ../client/ai/ai.c:259
+msgid "Ey, wait for my robber and lose all this again!"
+msgstr "Hej - vent på min røver og tab det hele igen!"
+
+#. AI chat when it moves the robber
+#: ../client/ai/ai.c:264
+msgid "Hehe!"
+msgstr "He he !"
+
+#. AI chat when it moves the robber
+#: ../client/ai/ai.c:266
+msgid "Go, robber, go!"
+msgstr "Afsted røver!"
+
+#. AI chat when the robber is moved to it
+#: ../client/ai/ai.c:271
+msgid "You bastard!"
+msgstr "Din snydepels!"
+
+#. AI chat when the robber is moved to it
+#: ../client/ai/ai.c:273
+msgid "Can't you move that robber somewhere else?!"
+msgstr "Kan du ikke flytte den røver et andet sted hen?!"
+
+#. AI chat when the robber is moved to it
+#: ../client/ai/ai.c:275
+msgid "Why always me??"
+msgstr "Hvorfor er det altid mig?!"
+
+#. AI chat when it must discard resources
+#: ../client/ai/ai.c:280
+msgid "Oh no!"
+msgstr "Åh nej!"
+
+#. AI chat when it must discard resources
+#: ../client/ai/ai.c:282
+msgid "Grrr!"
+msgstr "Hmmmm!"
+
+#. AI chat when it must discard resources
+#: ../client/ai/ai.c:284
+msgid "Who the hell rolled that 7??"
+msgstr "Hvem fanden slog den 7'er??"
+
+#. AI chat when it must discard resources
+#: ../client/ai/ai.c:286
+msgid "Why always me?!?"
+msgstr "Hvorfor altid mig??!"
+
+#. AI chat when other players must discard
+#: ../client/ai/ai.c:291
+msgid "Say good bye to your cards... :)"
+msgstr "Hils farvel til dine kort... :)"
+
+#. AI chat when other players must discard
+#: ../client/ai/ai.c:293
+msgid "*evilgrin*"
+msgstr "*ondt grin*"
+
+#. AI chat when other players must discard
+#: ../client/ai/ai.c:295
+msgid "/me says farewell to your cards ;)"
+msgstr "/me siger farvel til dine kort ;)"
+
+#. AI chat when other players must discard
+#: ../client/ai/ai.c:297
+msgid "That's the price for being rich... :)"
+msgstr "Det er prisen for at være rig... :)"
+
+#. AI chat when someone steals from it
+#: ../client/ai/ai.c:302
+msgid "Ey! Where's that card gone?"
+msgstr "Ups! Hvor er det kort blevet af?"
+
+#. AI chat when someone steals from it
+#: ../client/ai/ai.c:304
+msgid "Thieves! Thieves!!"
+msgstr "Tyve! Tyve!"
+
+#. AI chat when someone steals from it
+#: ../client/ai/ai.c:306
+msgid "Wait for my revenge..."
+msgstr "Vent på min hævn..."
+
+#. AI chat when someone plays the monopoly card
+#: ../client/ai/ai.c:311
+msgid "Oh no :("
+msgstr "Åh nej :("
+
+#. AI chat when someone plays the monopoly card
+#: ../client/ai/ai.c:313
+msgid "Must this happen NOW??"
+msgstr "Skal det ske lige NU??"
+
+#. AI chat when someone plays the monopoly card
+#: ../client/ai/ai.c:315
+msgid "Args"
+msgstr "Arhh"
+
+#. AI chat when it has the largest army
+#: ../client/ai/ai.c:320
+msgid "Hehe, my soldiers rule!"
+msgstr "He he - det er mine soldater der styrer!"
+
+#. AI chat when another player that the largest army
+#: ../client/ai/ai.c:325
+msgid "First robbing us, then grabbing the points..."
+msgstr "Først røver de os - badefter snupper de pointene..."
+
+#. AI chat when it has the longest road
+#: ../client/ai/ai.c:330
+msgid "See that road!"
+msgstr "Se den vej!"
+
+#. AI chat when another player has the longest road
+#: ../client/ai/ai.c:335
+msgid "Pf, you won't win with roads alone..."
+msgstr "Veje alene giver ingen sejer..."
+
+#: ../client/ai/ai.c:434
+#, c-format
+msgid "Received error from server: %s.  Quitting\n"
+msgstr "Modtog fejl fra server: %s. Afslutter\n"
+
+#. AI chat when it wins
+#: ../client/ai/ai.c:446 ../client/ai/genetic.c:2766
+msgid "Yippie!"
+msgstr "Juhuu!"
+
+#. AI chat when another player wins
+#: ../client/ai/ai.c:449 ../client/ai/genetic.c:2777
+msgid "My congratulations"
+msgstr "Tillykke !"
+
+#: ../client/ai/genetic.c:1277 ../client/ai/greedy.c:961
+msgid "No settlements in stock to use for setup"
+msgstr "Ingen bebyggelse klar på lager til brug"
+
+#: ../client/ai/genetic.c:1284 ../client/ai/greedy.c:968
+msgid "There is no place to setup a settlement"
+msgstr "Der er intet sted at placere en bebyggelse"
+
+#: ../client/ai/genetic.c:1311 ../client/ai/greedy.c:992
+msgid "No roads in stock to use for setup"
+msgstr "Ingen veje klar på lager til brug"
+
+#: ../client/ai/genetic.c:1329 ../client/ai/greedy.c:1009
+msgid "There is no place to setup a road"
+msgstr "Der er intet sted at placere en vej"
+
+#: ../client/ai/genetic.c:2651 ../client/ai/greedy.c:1784
+msgid "Rejecting trade.\n"
+msgstr "Afviste handel\n"
+
+#. Translators: don't translate '/help'
+#: ../client/ai/lobbybot.c:80
+msgid ""
+"Hello, welcome to the lobby. I am a simple robot. Type '/help' in the chat "
+"to see the list of commands I know."
+msgstr ""
+"Hej, velkommen til forhallen. Jeg er bare en simpel robot. Skriv '/help' i "
+"chatten for at få en liste over kommandoer jeg kender."
+
+#. Translators: don't translate '/help'
+#: ../client/ai/lobbybot.c:107
+msgid "'/help' shows this message again"
+msgstr "'/help' viser denne meddelelse igen"
+
+#. Translators: don't translate '/why'
+#: ../client/ai/lobbybot.c:110
+msgid "'/why' explains the purpose of this strange board layout"
+msgstr "'/why' forklarer formålet med denne mærkeligt udseende spilleplade"
+
+#. Translators: don't translate '/news'
+#: ../client/ai/lobbybot.c:113
+msgid "'/news' tells the last released version"
+msgstr "'/news' fortæller om seneste version"
+
+#. AI chat that explains '/why'
+#: ../client/ai/lobbybot.c:119
+msgid ""
+"This board is not intended to be a game that can be played. Instead, players "
+"can find eachother here, and decide which board they want to play. Then, one "
+"of the players will host the proposed game by starting a server, and "
+"registers it at the metaserver. The other players can subsequently "
+"disconnect from the lobby, and enter that game."
+msgstr ""
+"Denne spilleplade er ikke tænkt som et spil du kan spille. Istedet kan "
+"spillere finde hinanden og bestemme hvilken plade de vil spille på. Derefter "
+"kan en af spillerne være vært for spillet ved at starte en server og "
+"registrere den som metaserver. De andre spillere kan herefter en af gangen "
+"forlade forhallen og deltage i spillet."
+
+#: ../client/ai/lobbybot.c:130
+msgid "The last released version of Pioneers is"
+msgstr "Den seneste version af Pioneers er"
+
+#. The lobbybot leaves when a game is starting
+#: ../client/ai/lobbybot.c:146
+msgid "The game is starting. I'm not needed anymore. Goodbye."
+msgstr "Spillet er under opstart. Jeg er ikke nødvendig længere. Farvel."
+
+#: ../client/common/client.c:105
+msgid "Waiting"
+msgstr "Venter"
+
+#: ../client/common/client.c:107
+msgid "Idle"
+msgstr "Ledig"
+
+#: ../client/common/client.c:532
+msgid "We have been kicked out of the game.\n"
+msgstr "Vi er blevet smidt ud af spillet.\n"
+
+#. Network status: offline
+#: ../client/common/client.c:535 ../client/common/client.c:990
+#: ../client/gtk/gui.c:1532
+msgid "Offline"
+msgstr "Offline"
+
+#: ../client/common/client.c:556
+#, c-format
+msgid "Error (%s): %s\n"
+msgstr "Fejl (%s): %s\n"
+
+#: ../client/common/client.c:565 ../client/common/client.c:576
+#, c-format
+msgid "Notice: %s\n"
+msgstr "Bemærk: %s\n"
+
+#: ../client/common/client.c:693
+#, c-format
+msgid "%s does not receive any %s, because the bank is empty.\n"
+msgstr "%s modtager ikke noget %s, fordi banken er tom.\n"
+
+#: ../client/common/client.c:706
+#, c-format
+msgid "%s only receives %s, because the bank didn't have any more.\n"
+msgstr "%s modtager kun %s, fordi banken ikke har mere.\n"
+
+#: ../client/common/client.c:716
+#, c-format
+msgid "%s receives %s.\n"
+msgstr "%s modtager %s.\n"
+
+#. Year of Plenty
+#: ../client/common/client.c:724 ../client/common/client.c:2663
+#, c-format
+msgid "%s takes %s.\n"
+msgstr "%s tager %s.\n"
+
+#: ../client/common/client.c:729
+#, c-format
+msgid "%s spent %s.\n"
+msgstr "%s bruger %s.\n"
+
+#: ../client/common/client.c:735
+#, c-format
+msgid "%s is refunded %s.\n"
+msgstr "%s bliver refunderet %s.\n"
+
+#. %s = Player name
+#: ../client/common/client.c:753
+#, c-format
+msgid "%s shuffled the dice deck.\n"
+msgstr ""
+
+#: ../client/common/client.c:772
+#, c-format
+msgid "%s discarded %s.\n"
+msgstr "%s bortkastede %s\n"
+
+#: ../client/common/client.c:846
+#, c-format
+msgid "%s has won the game with %d victory points!\n"
+msgstr "%s har vundet spillet med %d sejers point!\n"
+
+#: ../client/common/client.c:945
+msgid "Loading"
+msgstr "Indlæser"
+
+#: ../client/common/client.c:991
+msgid "Version mismatch."
+msgstr "Versioner passer ikke sammen."
+
+#: ../client/common/client.c:993
+msgid "Version mismatch. Please make sure client and server are up to date.\n"
+msgstr ""
+"Versioner passer ikke sammen. Vær sikker på at klient og server er "
+"opdaterede.\n"
+
+#: ../client/common/client.c:1413
+msgid "Build two settlements, each with a connecting"
+msgstr "Byg to bebyggelser, hver med en forbindelse"
+
+#: ../client/common/client.c:1416
+msgid "Build a settlement with a connecting"
+msgstr "Byg en bebyggelse med en forbindelse"
+
+#: ../client/common/client.c:1419
+msgid "road"
+msgstr "vej"
+
+#: ../client/common/client.c:1421
+msgid "bridge"
+msgstr "bro"
+
+#: ../client/common/client.c:1423
+msgid "ship"
+msgstr "skib"
+
+#: ../client/common/client.c:1430
+msgid " or"
+msgstr " eller"
+
+#: ../client/common/client.c:1494
+msgid "Waiting for your turn."
+msgstr "Vent på din tur."
+
+#: ../client/common/client.c:1546 ../client/gtk/interface.c:784
+msgid "Select the building to steal from."
+msgstr "Vælg en bygning at stjæle fra."
+
+#: ../client/common/client.c:1568 ../client/gtk/interface.c:774
+msgid "Select the ship to steal from."
+msgstr "Vælg et skib at stjæle fra."
+
+#: ../client/common/client.c:1652 ../client/gtk/interface.c:816
+msgid "Place the robber."
+msgstr "Placér en røver."
+
+#: ../client/common/client.c:1702
+msgid "Finish the road building action."
+msgstr "Afslut vejbygningen."
+
+#: ../client/common/client.c:1704
+msgid "Build one road segment."
+msgstr "Byg et vejstykke."
+
+#: ../client/common/client.c:1706
+msgid "Build two road segments."
+msgstr "Byg to vejstykker."
+
+#. Notification
+#: ../client/common/client.c:1979 ../client/common/client.c:2073
+#: ../client/gtk/interface.c:432
+msgid "It is your turn."
+msgstr "Det er din tur."
+
+#: ../client/common/client.c:2167
+#, c-format
+msgid "Sorry, %s available.\n"
+msgstr "Beklager, %s tilgængelig.\n"
+
+#: ../client/common/client.c:2481
+msgid "The game is over."
+msgstr "Spillet er slut."
+
+#. This development card is unique
+#: ../client/common/develop.c:67
+#, c-format
+msgid "You bought the %s development card.\n"
+msgstr "Du købte %s udviklingskortet.\n"
+
+#. This development card is not unique
+#: ../client/common/develop.c:73
+#, c-format
+msgid "You bought a %s development card.\n"
+msgstr "Du købte et %s udviklingskort.\n"
+
+#: ../client/common/develop.c:103
+#, c-format
+msgid "%s bought a development card.\n"
+msgstr "%s købte et udviklingskort.\n"
+
+#: ../client/common/develop.c:121
+#, c-format
+msgid "%s played the %s development card.\n"
+msgstr "%s spillede %s udviklingskortet.\n"
+
+#: ../client/common/develop.c:126
+#, c-format
+msgid "%s played a %s development card.\n"
+msgstr "%s spillede et %s udviklingskort.\n"
+
+#: ../client/common/develop.c:138
+msgid "You have run out of road segments.\n"
+msgstr "Du er løbet tør for vejstykker.\n"
+
+#. I get the cards
+#. $1=resources, $2=player that loses resources
+#: ../client/common/develop.c:179
+#, c-format
+msgid "You get %s from %s.\n"
+msgstr "Du modtager %s fra %s.\n"
+
+#. I lose the cards
+#. $1=player that steals, $2=resources
+#: ../client/common/develop.c:185
+#, c-format
+msgid "%s took %s from you.\n"
+msgstr "%s tog %s fra dig.\n"
+
+#: ../client/common/develop.c:192
+#, c-format
+msgid "%s took %s from %s.\n"
+msgstr "%s tog %s fra %s.\n"
+
+#: ../client/common/player.c:125 ../server/player.c:567
+#, c-format
+msgid "Spectator %d"
+msgstr ""
+
+#: ../client/common/player.c:128
+#, c-format
+msgid "spectator %d"
+msgstr ""
+
+#: ../client/common/player.c:137 ../server/player.c:570
+#, c-format
+msgid "Player %d"
+msgstr "Spiller %d"
+
+#: ../client/common/player.c:139
+#, c-format
+msgid "player %d"
+msgstr "spiller %d"
+
+#: ../client/common/player.c:216
+#, fuzzy, c-format
+msgid "New spectator: %s.\n"
+msgstr "Ny seer: %s.\n"
+
+#: ../client/common/player.c:219 ../client/common/player.c:235
+#, c-format
+msgid "%s is now %s.\n"
+msgstr "%s er nu %s.\n"
+
+#: ../client/common/player.c:232
+#, c-format
+msgid "Player %d is now %s.\n"
+msgstr "Spiller %d er nu %s.\n"
+
+#: ../client/common/player.c:269
+#, c-format
+msgid "%s has quit.\n"
+msgstr "%s har forladt os.\n"
+
+#: ../client/common/player.c:278
+msgid "There is no largest army.\n"
+msgstr "Der er ikke nogen største hær.\n"
+
+#: ../client/common/player.c:281
+#, c-format
+msgid "%s has the largest army.\n"
+msgstr "%s har den største hær.\n"
+
+#: ../client/common/player.c:302
+msgid "There is no longest road.\n"
+msgstr "Der erikke nogen længeste vej.\n"
+
+#: ../client/common/player.c:305
+#, c-format
+msgid "%s has the longest road.\n"
+msgstr "%s har den længste vej.\n"
+
+#: ../client/common/player.c:326
+#, c-format
+msgid "Waiting for %s."
+msgstr "Venter på %s."
+
+#. We are not in on the action
+#. someone stole a resource from someone else
+#: ../client/common/player.c:354
+#, c-format
+msgid "%s stole a resource from %s.\n"
+msgstr "%s stjal en ressource fra %s.\n"
+
+#. $1=resource, $2=player name
+#: ../client/common/player.c:365
+#, c-format
+msgid "You stole %s from %s.\n"
+msgstr "Du stjal %s fra %s.\n"
+
+#. $1=player name, $2=resource
+#: ../client/common/player.c:372
+#, c-format
+msgid "%s stole %s from you.\n"
+msgstr "%s stjal %s fra dig.\n"
+
+#: ../client/common/player.c:406
+#, c-format
+msgid "%s gave %s nothing!?\n"
+msgstr "%s gav %s ingenting!?\n"
+
+#. $1=giving player, $2=receiving player, $3=resources
+#: ../client/common/player.c:413 ../client/common/player.c:423
+#, c-format
+msgid "%s gave %s %s for free.\n"
+msgstr "%s gav %s %s gratis.\n"
+
+#: ../client/common/player.c:431
+#, c-format
+msgid "%s gave %s %s in exchange for %s.\n"
+msgstr "%s gav %s %s i bytte for %s.\n"
+
+#: ../client/common/player.c:462
+#, c-format
+msgid "%s exchanged %s for %s.\n"
+msgstr "%s byttede %s for %s.\n"
+
+#: ../client/common/player.c:482
+#, c-format
+msgid "%s built a road.\n"
+msgstr "%s byggede en vej.\n"
+
+#: ../client/common/player.c:494
+#, c-format
+msgid "%s built a ship.\n"
+msgstr "%s byggede et skib.\n"
+
+#: ../client/common/player.c:507
+#, c-format
+msgid "%s built a settlement.\n"
+msgstr "%s byggede en bebyggelse.\n"
+
+#: ../client/common/player.c:526
+#, c-format
+msgid "%s built a city.\n"
+msgstr "%s byggede en by.\n"
+
+#: ../client/common/player.c:540
+#, c-format
+msgid "%s built a city wall.\n"
+msgstr "%s byggede en bymur.\n"
+
+#. Error message
+#: ../client/common/player.c:551
+#, c-format
+msgid "player_build_add called with BUILD_NONE for user %s\n"
+msgstr "player_build_add kaldte med BUILD_NONE for bruger %s\n"
+
+#: ../client/common/player.c:561
+#, c-format
+msgid "%s built a bridge.\n"
+msgstr "%s byggede en bro.\n"
+
+#: ../client/common/player.c:587
+#, c-format
+msgid "%s removed a road.\n"
+msgstr "%s fjernede en vej.\n"
+
+#: ../client/common/player.c:597
+#, c-format
+msgid "%s removed a ship.\n"
+msgstr "%s fjernede et skib.\n"
+
+#: ../client/common/player.c:607
+#, c-format
+msgid "%s removed a settlement.\n"
+msgstr "%s fjernede en bebyggelse.\n"
+
+#: ../client/common/player.c:618
+#, c-format
+msgid "%s removed a city.\n"
+msgstr "%s fjernede en by.\n"
+
+#: ../client/common/player.c:632
+#, c-format
+msgid "%s removed a city wall.\n"
+msgstr "%s fjernede en bymur.\n"
+
+#. Error message
+#: ../client/common/player.c:642
+#, c-format
+msgid "player_build_remove called with BUILD_NONE for user %s\n"
+msgstr "player_build_remove kaldte med BUILD_NONE for bruger %s\n"
+
+#: ../client/common/player.c:651
+#, c-format
+msgid "%s removed a bridge.\n"
+msgstr "%s fjernede en bro.\n"
+
+#: ../client/common/player.c:682
+#, c-format
+msgid "%s has canceled a ship's movement.\n"
+msgstr "%s har fortrudt en flytning af et skib.\n"
+
+#: ../client/common/player.c:685
+#, c-format
+msgid "%s moved a ship.\n"
+msgstr "%s flyttede et skib.\n"
+
+#. tell the user that someone got something
+#: ../client/common/player.c:705
+#, c-format
+msgid "%s received %s.\n"
+msgstr "%s modtog %s.\n"
+
+#: ../client/common/player.c:724
+msgid "server asks to lose invalid point.\n"
+msgstr "server spørger om at tabe fejlbehæftede point.\n"
+
+#. tell the user the point is lost
+#: ../client/common/player.c:730
+#, c-format
+msgid "%s lost %s.\n"
+msgstr "%s tabte %s.\n"
+
+#: ../client/common/player.c:753
+msgid "server asks to move invalid point.\n"
+msgstr "serser spørger om at flytte fejlbehæftede point.\n"
+
+#. tell the user someone (1) lost something (2) to someone else (3)
+#: ../client/common/player.c:760
+#, c-format
+msgid "%s lost %s to %s.\n"
+msgstr "%s tabte %s til %s.\n"
+
+#: ../client/common/resource.c:35
+msgid "brick"
+msgstr "mursten"
+
+#: ../client/common/resource.c:35
+msgid "Brick"
+msgstr "Mursten"
+
+#: ../client/common/resource.c:36
+msgid "grain"
+msgstr "korn"
+
+#: ../client/common/resource.c:36
+msgid "Grain"
+msgstr "Korn"
+
+#: ../client/common/resource.c:37
+msgid "ore"
+msgstr "malm"
+
+#: ../client/common/resource.c:37
+msgid "Ore"
+msgstr "Malm"
+
+#: ../client/common/resource.c:38
+msgid "wool"
+msgstr "uld"
+
+#: ../client/common/resource.c:38
+msgid "Wool"
+msgstr "Uld"
+
+#: ../client/common/resource.c:39
+msgid "lumber"
+msgstr "tømmer"
+
+#: ../client/common/resource.c:39
+msgid "Lumber"
+msgstr "Tømmer"
+
+#: ../client/common/resource.c:40
+msgid "no resource (bug)"
+msgstr "ingen ressourcer (fejl)"
+
+#: ../client/common/resource.c:40
+msgid "No resource (bug)"
+msgstr "Ingen ressourcer (fejl)"
+
+#: ../client/common/resource.c:41
+msgid "any resource (bug)"
+msgstr "nogle ressourcer (fejl)"
+
+#: ../client/common/resource.c:41
+msgid "Any resource (bug)"
+msgstr "Enhver ressource (fej)"
+
+#: ../client/common/resource.c:42
+msgid "gold"
+msgstr "guld"
+
+#: ../client/common/resource.c:42 ../client/gtk/legend.c:41
+msgid "Gold"
+msgstr "Guld"
+
+#: ../client/common/resource.c:47
+msgid "a brick card"
+msgstr "et murstens kort"
+
+#: ../client/common/resource.c:47
+#, c-format
+msgid "%d brick cards"
+msgstr "%d murstens kort"
+
+#: ../client/common/resource.c:48
+msgid "a grain card"
+msgstr "et korn kort"
+
+#: ../client/common/resource.c:48
+#, c-format
+msgid "%d grain cards"
+msgstr "%d korn kort"
+
+#: ../client/common/resource.c:49
+msgid "an ore card"
+msgstr "et malm kort"
+
+#: ../client/common/resource.c:49
+#, c-format
+msgid "%d ore cards"
+msgstr "%d malm kort"
+
+#: ../client/common/resource.c:50
+msgid "a wool card"
+msgstr "et uld kort"
+
+#: ../client/common/resource.c:50
+#, c-format
+msgid "%d wool cards"
+msgstr "%d uld kort"
+
+#: ../client/common/resource.c:51
+msgid "a lumber card"
+msgstr "et tømmer kort"
+
+#: ../client/common/resource.c:51
+#, c-format
+msgid "%d lumber cards"
+msgstr "%d tømmer kort"
+
+#: ../client/common/resource.c:139 ../client/common/resource.c:225
+msgid "nothing"
+msgstr "intet"
+
+#. Construct "A, B and C" for resources
+#: ../client/common/resource.c:166
+#, c-format
+msgid "%s and %s"
+msgstr "%s og %s"
+
+#. Construct "A, B and C" for resources
+#: ../client/common/resource.c:170
+#, c-format
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: ../client/common/robber.c:62
+#, c-format
+msgid "%s has undone the robber movement.\n"
+msgstr "%s har fortrudt røverens bevægelse.\n"
+
+#: ../client/common/robber.c:65
+#, c-format
+msgid "%s moved the robber.\n"
+msgstr "%s flyttede røveren.\n"
+
+#: ../client/common/robber.c:75
+#, c-format
+msgid "%s has undone the pirate movement.\n"
+msgstr "%s har fortrudt piratens bevægelse.\n"
+
+#: ../client/common/robber.c:78
+#, c-format
+msgid "%s moved the pirate.\n"
+msgstr "%s flyttede piraten.\n"
+
+#: ../client/common/robber.c:85
+#, c-format
+msgid "%s must move the robber."
+msgstr "%s skal flytte røveren."
+
+#: ../client/common/setup.c:146
+#, c-format
+msgid "Setup for %s.\n"
+msgstr "Opsætning for %s.\n"
+
+#: ../client/common/setup.c:158
+#, c-format
+msgid "Double setup for %s.\n"
+msgstr "Dobbelt opsætning for %s.\n"
+
+#: ../client/common/turn.c:37
+#, c-format
+msgid "%s rolled %d.\n"
+msgstr "%s slog %d.\n"
+
+#: ../client/common/turn.c:50
+#, c-format
+msgid "Begin turn %d for %s.\n"
+msgstr "Begynd tur %d for %s.\n"
+
+#: ../client/gtk/avahi-browser.c:83
+msgid "Select an automatically discovered game"
+msgstr ""
+
+#. $1=Game title, $2=version, $3=host_name, $4=port
+#: ../client/gtk/avahi-browser.c:132
+#, c-format
+msgid "%s (%s) on %s:%s"
+msgstr ""
+
+#. Label text
+#: ../client/gtk/chat.c:73
+msgid "<b>Chat</b>"
+msgstr "<b>Chat</b>"
+
+#: ../client/gtk/chat.c:232
+msgid "Beeper test.\n"
+msgstr "Test af bipper.\n"
+
+#: ../client/gtk/chat.c:235
+#, c-format
+msgid "%s beeped you.\n"
+msgstr "%s bippede dig.\n"
+
+#: ../client/gtk/chat.c:239
+#, c-format
+msgid "You beeped %s.\n"
+msgstr "Du bippede %s.\n"
+
+#: ../client/gtk/chat.c:245
+#, c-format
+msgid "You could not beep %s.\n"
+msgstr "Du kunne ikke bippe %s.\n"
+
+#: ../client/gtk/chat.c:287
+msgid " said: "
+msgstr " sagde: "
+
+#: ../client/gtk/connect.c:286
+#, c-format
+msgid "Metaserver at %s, port %s"
+msgstr "Mataserver på %s, port %s"
+
+#: ../client/gtk/connect.c:296
+msgid "Finished.\n"
+msgstr "Afsluttet.\n"
+
+#: ../client/gtk/connect.c:311 ../client/gtk/connect.c:389
+#: ../client/gtk/connect.c:408 ../client/gtk/connect.c:979
+msgid "The metaserver is not available anymore.\n"
+msgstr ""
+
+#: ../client/gtk/connect.c:322 ../client/gtk/connect.c:443
+#: ../client/gtk/connect.c:770
+msgid "The metaserver closed the connection unexpectedly.\n"
+msgstr ""
+
+#: ../client/gtk/connect.c:380
+msgid "Receiving game names from the metaserver.\n"
+msgstr "Modtager spilnavne fra metaserveren.\n"
+
+#: ../client/gtk/connect.c:422
+#, fuzzy, c-format
+msgid "New game server requested on %s port %s.\n"
+msgstr "Ny spilserver anmodning på %s port %s\n"
+
+#: ../client/gtk/connect.c:432
+msgid "Incomplete information about the new game server received.\n"
+msgstr ""
+
+#: ../client/gtk/connect.c:486 ../client/gtk/connect.c:492 ../server/meta.c:239
+#, c-format
+msgid "Unknown message from the metaserver: %s\n"
+msgstr "Ukendt meddelelse fra metaserveren: %s\n"
+
+#: ../client/gtk/connect.c:565 ../server/meta.c:178
+#, c-format
+msgid "Receiving data from inactive session: %s\n"
+msgstr ""
+
+#: ../client/gtk/connect.c:577 ../server/meta.c:192
+#, fuzzy
+msgid "Too many metaserver redirects.\n"
+msgstr "For mange metaserver omdirigeringer\n"
+
+#: ../client/gtk/connect.c:606 ../server/meta.c:208
+#, c-format
+msgid "Bad redirect line: %s\n"
+msgstr "Dårlig omdirigeringslinje: %s\n"
+
+#: ../client/gtk/connect.c:631
+#, c-format
+msgid "The metaserver is too old to create servers (version %d.%d)\n"
+msgstr "Metaserver for gammel til at lave servere (version %d.%d)\n"
+
+#: ../client/gtk/connect.c:670 ../client/gtk/connect.c:749
+#: ../client/gtk/connect.c:755
+#, fuzzy, c-format
+msgid "Unexpected data from the metaserver: %s\n"
+msgstr "Ukendt meddelelse fra metaserveren: %s\n"
+
+#. Sevens rule: normal
+#: ../client/gtk/connect.c:701 ../client/gtk/settingscreen.c:181
+#: ../common/gtk/game-rules.c:89
+msgid "Normal"
+msgstr "Normal"
+
+#. Sevens rule: reroll on 1st 2 turns
+#: ../client/gtk/connect.c:706 ../client/gtk/settingscreen.c:183
+#: ../common/gtk/game-rules.c:95
+msgid "Reroll on 1st 2 turns"
+msgstr "Omslag på de to første ture"
+
+#. Sevens rule: reroll all 7s
+#: ../client/gtk/connect.c:710 ../client/gtk/settingscreen.c:185
+#: ../common/gtk/game-rules.c:102
+msgid "Reroll all 7s"
+msgstr "Slå alle 7'ere om"
+
+#: ../client/gtk/connect.c:724
+msgid "Default"
+msgstr "Forhåndsvalg"
+
+#: ../client/gtk/connect.c:727
+msgid "Random"
+msgstr "Tilfældig"
+
+#: ../client/gtk/connect.c:819 ../server/meta.c:299
+#, fuzzy, c-format
+msgid "Redirected to the metaserver at %s.\n"
+msgstr "Omdirigeret til metaserver %s, port %s\n"
+
+#: ../client/gtk/connect.c:824 ../server/meta.c:302
+#, fuzzy, c-format
+msgid "Redirected to the metaserver at %s, port %s.\n"
+msgstr "Omdirigeret til metaserver %s, port %s\n"
+
+#: ../client/gtk/connect.c:831
+msgid "Receiving a list of Pioneers servers from the metaserver.\n"
+msgstr "Modtager en liste over Pioneer servere fra metaserveren.\n"
+
+#. Label
+#: ../client/gtk/connect.c:914
+#, fuzzy
+msgid "Number of computer players"
+msgstr "Type af computerspiller"
+
+#. Tooltip
+#: ../client/gtk/connect.c:935
+#, fuzzy
+msgid "The number of computer players"
+msgstr "Antallet af spillere"
+
+#. Canceled retrieving information
+#. * from the metaserver
+#: ../client/gtk/connect.c:957 ../client/gtk/connect.c:992
+#: ../client/gtk/connect.c:1133
+msgid "Canceled.\n"
+msgstr ""
+
+#: ../client/gtk/connect.c:960
+#, fuzzy
+msgid "Requesting new game server.\n"
+msgstr "Anmoder om ny spilserver\n"
+
+#: ../client/gtk/connect.c:1015 ../server/gtk/main.c:370 ../server/server.c:123
+#, fuzzy, c-format
+msgid "Error starting %s: %s\n"
+msgstr "Fejl startende %s: %s"
+
+#. Dialog caption
+#: ../client/gtk/connect.c:1037
+msgid "Create a Public Game"
+msgstr "Skab et offentligt spil"
+
+#. Button text
+#: ../client/gtk/connect.c:1040 ../client/gtk/connect.c:1191
+#: ../client/gtk/connect.c:1440 ../client/gtk/connect.c:1744
+#: ../client/gtk/name.c:147 ../editor/gtk/editor.c:1521
+#: ../editor/gtk/editor.c:1562 ../editor/gtk/editor.c:1611
+msgid "_Cancel"
+msgstr ""
+
+#. Button text
+#: ../client/gtk/connect.c:1042
+#, fuzzy
+msgid "C_reate"
+msgstr "Skab spil"
+
+#. Dialog caption
+#: ../client/gtk/connect.c:1182
+#, fuzzy
+msgid "Join a Public Game"
+msgstr "Deltag i et offenligt spil"
+
+#. Button text
+#: ../client/gtk/connect.c:1185
+msgid "_Refresh"
+msgstr ""
+
+#. Button text
+#: ../client/gtk/connect.c:1188
+msgid "_New Remote Game"
+msgstr "_Nyt fjern spil"
+
+#. Button text
+#: ../client/gtk/connect.c:1194 ../client/gtk/connect.c:1748
+msgid "_Join"
+msgstr ""
+
+#. Tooltip
+#: ../client/gtk/connect.c:1237
+msgid "Select a game to join"
+msgstr "Vælg et spil at deltage i"
+
+#. Column name
+#: ../client/gtk/connect.c:1241
+msgid "Map Name"
+msgstr "Kort navn"
+
+#. Tooltip for column 'Map Name'
+#: ../client/gtk/connect.c:1249
+msgid "Name of the game"
+msgstr "Navn på spillet"
+
+#. Column name
+#: ../client/gtk/connect.c:1255
+msgid "Curr"
+msgstr ""
+
+#. Tooltip for column 'Curr'
+#: ../client/gtk/connect.c:1262
+msgid "Number of players in the game"
+msgstr "Antal spillere i spillet"
+
+#. Column name
+#: ../client/gtk/connect.c:1268
+msgid "Max"
+msgstr "Maks"
+
+#. Tooltip for column 'Max'
+#: ../client/gtk/connect.c:1275
+msgid "Maximum players for the game"
+msgstr "Maksimalt antal spillere for spillet"
+
+#. Column name
+#: ../client/gtk/connect.c:1279
+msgid "Terrain"
+msgstr "Terræn"
+
+#. Tooltip for column 'Terrain'
+#: ../client/gtk/connect.c:1287
+msgid "Random of default terrain"
+msgstr "Tilfældigt standard terræn"
+
+#. Column name
+#: ../client/gtk/connect.c:1293
+msgid "Vic. Points"
+msgstr "Sejers point"
+
+#. Tooltip for column 'Vic. Points'
+#: ../client/gtk/connect.c:1300
+msgid "Points needed to win"
+msgstr "Point nødvendige for at vinde"
+
+#. Column name
+#: ../client/gtk/connect.c:1304
+msgid "Sevens Rule"
+msgstr "7'er regel"
+
+#. Tooltip for column 'Sevens Rule'
+#. Label
+#: ../client/gtk/connect.c:1312 ../common/gtk/game-rules.c:81
+msgid "Sevens rule"
+msgstr "7'er regel"
+
+#. Column name
+#: ../client/gtk/connect.c:1316
+msgid "Host"
+msgstr "Vært"
+
+#. Tooltip for column 'Host'
+#: ../client/gtk/connect.c:1325
+msgid "Host of the game"
+msgstr "Vært for spillet"
+
+#. Column name
+#: ../client/gtk/connect.c:1331
+msgid "Port"
+msgstr "Port"
+
+#. Tooltip for column 'Port'
+#: ../client/gtk/connect.c:1339
+#, fuzzy
+msgid "Port of the game"
+msgstr "Spillets port"
+
+#. Column name
+#: ../client/gtk/connect.c:1343
+msgid "Version"
+msgstr "Version"
+
+#. Tooltip for column 'Version'
+#: ../client/gtk/connect.c:1351
+msgid "Version of the host"
+msgstr "Version for vært"
+
+#. Dialog caption
+#: ../client/gtk/connect.c:1436
+msgid "Start a New Game"
+msgstr "Start et nyt spil"
+
+#. Label
+#. Commandline option of client: name of the player
+#: ../client/gtk/connect.c:1464 ../client/gtk/offline.c:57
+msgid "Player name"
+msgstr "Spillernavn"
+
+#. Tooltip
+#: ../client/gtk/connect.c:1480
+msgid "Enter your name"
+msgstr "Indtast dit navn"
+
+#. Check button
+#. Role of the player: spectator
+#: ../client/gtk/connect.c:1483 ../server/gtk/main.c:682
+msgid "Spectator"
+msgstr ""
+
+#: ../client/gtk/connect.c:1493
+#, fuzzy
+msgid "Check if you want to be a spectator"
+msgstr "Vil du være tilskuer?"
+
+#. Label
+#: ../client/gtk/connect.c:1504
+msgid "Avahi"
+msgstr ""
+
+#. Button
+#: ../client/gtk/connect.c:1511
+msgid "Join"
+msgstr ""
+
+#. Tooltip for button Join
+#: ../client/gtk/connect.c:1515
+msgid "Join an automatically discovered game"
+msgstr ""
+
+#. Label
+#. metaserver label
+#: ../client/gtk/connect.c:1542 ../server/gtk/main.c:593
+msgid "Metaserver"
+msgstr "Metaserver"
+
+#. Button
+#: ../client/gtk/connect.c:1564
+msgid "Join Public Game"
+msgstr "Deltag i offentligt spil"
+
+#. Tooltip
+#: ../client/gtk/connect.c:1570
+msgid "Join a public game"
+msgstr "Deltag i et offenligt spil"
+
+#. Button
+#: ../client/gtk/connect.c:1575
+msgid "Create Game"
+msgstr "Skab spil"
+
+#. Tooltip
+#: ../client/gtk/connect.c:1579
+msgid "Create a game"
+msgstr "Skab et spil"
+
+#. Button
+#: ../client/gtk/connect.c:1588
+msgid "Join Private Game"
+msgstr "Deltag i privat spil"
+
+#. Tooltip
+#. Dialog caption
+#: ../client/gtk/connect.c:1592 ../client/gtk/connect.c:1737
+msgid "Join a private game"
+msgstr "Deltag i et privat spil"
+
+#. Label
+#. Commandline option of client: hostname of the server
+#: ../client/gtk/connect.c:1777 ../client/gtk/offline.c:51
+msgid "Server host"
+msgstr "Server vært"
+
+#. Tooltip
+#: ../client/gtk/connect.c:1791
+msgid "Name of the host of the game"
+msgstr "Navn på værten for spillet"
+
+#. Label
+#. Commandline option of client: port of the server
+#. server port label
+#: ../client/gtk/connect.c:1795 ../client/gtk/offline.c:54
+#: ../server/gtk/main.c:555
+msgid "Server port"
+msgstr "Server port"
+
+#. Tooltip
+#: ../client/gtk/connect.c:1812
+msgid "Port of the host of the game"
+msgstr "Port for værten af spillet"
+
+#. Tooltip
+#. Label
+#: ../client/gtk/connect.c:1854 ../client/gtk/connect.c:1857
+msgid "Recent games"
+msgstr "Seneste spil"
+
+#. Caption for list of bought development cards
+#: ../client/gtk/develop.c:130
+msgid "<b>Development cards</b>"
+msgstr "<b>Udviklingskort</b>"
+
+#. Button text: play development card
+#: ../client/gtk/develop.c:163
+msgid "Play Card"
+msgstr "Spil kort"
+
+#. Dialog caption
+#: ../client/gtk/discard.c:77
+msgid "Discard Resources"
+msgstr "Bortkast ressourcer"
+
+#. Button text
+#: ../client/gtk/discard.c:83 ../client/gtk/gameover.c:38
+#: ../client/gtk/gold.c:78 ../client/gtk/monopoly.c:88 ../client/gtk/name.c:150
+#: ../client/gtk/plenty.c:67 ../editor/gtk/editor.c:1614
+msgid "_OK"
+msgstr ""
+
+#: ../client/gtk/discard.c:101
+#, fuzzy, c-format
+msgid "You must discard %d resource"
+msgid_plural "You must discard %d resources"
+msgstr[0] "Du skal bortkaste %d ressourcer"
+msgstr[1] "Du skal bortkaste %d ressourcer"
+
+#. Label
+#: ../client/gtk/discard.c:110
+msgid "Total discards"
+msgstr "Totalt antal kast"
+
+#. Caption for list of player that must discard cards
+#: ../client/gtk/discard.c:235
+msgid "<b>Waiting for players to discard</b>"
+msgstr "<b>Venter på at spillere skal kaste</b>"
+
+#. Dialog caption
+#: ../client/gtk/gameover.c:34
+msgid "Game Over"
+msgstr "Spil slut"
+
+#: ../client/gtk/gameover.c:52
+#, c-format
+msgid "%s has won the game with %d victory points!"
+msgstr "%s har vundet spillet med %d sejers point!"
+
+#: ../client/gtk/gameover.c:58
+#, c-format
+msgid "All praise %s, Lord of the known world!"
+msgstr "Tilbed %s, Hersker af den kendte verden!"
+
+#. Dialog caption
+#: ../client/gtk/gold.c:72
+msgid "Choose Resources"
+msgstr "Vælg ressourser"
+
+#: ../client/gtk/gold.c:96
+#, fuzzy, c-format
+msgid "You may choose %d resource"
+msgid_plural "You may choose %d resources"
+msgstr[0] "Du kan vælge %d ressource"
+msgstr[1] "Du kan vælge %d ressource"
+
+#. Text for total in choose gold dialog
+#. Text for total in year of plenty dialog
+#: ../client/gtk/gold.c:105 ../client/gtk/plenty.c:103
+msgid "Total resources"
+msgstr "Totale ressourcer"
+
+#. Caption for list of player that must choose gold
+#: ../client/gtk/gold.c:217
+msgid "<b>Waiting for players to choose</b>"
+msgstr "<b>Venter på at spillerne vælger</b>"
+
+#. Menu entry
+#: ../client/gtk/gui.c:224 ../server/gtk/main.c:91
+msgid "_Game"
+msgstr "_Spil"
+
+#. Menu entry
+#: ../client/gtk/gui.c:227
+msgid "_New Game"
+msgstr "_Nyt spil"
+
+#. Tooltip for New Game menu entry
+#: ../client/gtk/gui.c:229
+msgid "Start a new game"
+msgstr "Start et nyt spil"
+
+#. Menu entry
+#: ../client/gtk/gui.c:232
+msgid "_Leave Game"
+msgstr "_Forlad spil"
+
+#. Tooltip for Leave Game menu entry
+#: ../client/gtk/gui.c:234
+msgid "Leave this game"
+msgstr "Forlad dette spil"
+
+#. Menu entry
+#: ../client/gtk/gui.c:238
+msgid "_Admin"
+msgstr "_Admin"
+
+#. Tooltip for Admin menu entry
+#: ../client/gtk/gui.c:240
+msgid "Administer Pioneers server"
+msgstr "Administrer Pioneers server"
+
+#. Menu entry
+#: ../client/gtk/gui.c:244
+msgid "_Player Name"
+msgstr "S_pillernavn"
+
+#. Tooltip for Player Name menu entry
+#: ../client/gtk/gui.c:246
+msgid "Change your player name"
+msgstr "Ændre dit spillernavn"
+
+#. Menu entry
+#: ../client/gtk/gui.c:249
+msgid "L_egend"
+msgstr "_Forklaring"
+
+#. Tooltip for Legend menu entry
+#: ../client/gtk/gui.c:251
+msgid "Terrain legend and building costs"
+msgstr "Terrænforklaring og bygningsomkostninger"
+
+#. Menu entry
+#: ../client/gtk/gui.c:254
+msgid "_Game Settings"
+msgstr "_Spil opsætninger"
+
+#. Tooltip for Game Settings menu entry
+#: ../client/gtk/gui.c:256
+msgid "Settings for the current game"
+msgstr "Opsætning for dette spil"
+
+#. Menu entry
+#: ../client/gtk/gui.c:259
+msgid "_Dice Histogram"
+msgstr "_Ternings histogram"
+
+#. Tooltip for Dice Histogram menu entry
+#: ../client/gtk/gui.c:261
+msgid "Histogram of dice rolls"
+msgstr "Histogram for terningskast"
+
+#. Menu entry
+#: ../client/gtk/gui.c:264 ../editor/gtk/editor.c:1759 ../server/gtk/main.c:103
+msgid "_Quit"
+msgstr "_Afslut"
+
+#. Tooltip for Quit menu entry
+#. Tooltop for Quit menu entry
+#: ../client/gtk/gui.c:266 ../server/gtk/main.c:105
+msgid "Quit the program"
+msgstr "Forlad dette program"
+
+#. Menu entry
+#: ../client/gtk/gui.c:269
+msgid "_Actions"
+msgstr "_Handlinger"
+
+#. Menu entry
+#: ../client/gtk/gui.c:272
+msgid "Roll Dice"
+msgstr "Kast terning"
+
+#. Tooltip for Roll Dice menu entry
+#: ../client/gtk/gui.c:274
+msgid "Roll the dice"
+msgstr "Kast terningen"
+
+#. Menu entry
+#. Tooltip for Trade menu entry
+#. Tab page name
+#: ../client/gtk/gui.c:277 ../client/gtk/gui.c:279 ../client/gtk/gui.c:710
+msgid "Trade"
+msgstr "Handel"
+
+#. Menu entry
+#. Tooltip for Undo menu entry
+#: ../client/gtk/gui.c:283 ../client/gtk/gui.c:285
+msgid "Undo"
+msgstr "Fortryd"
+
+#. Menu entry
+#. Tooltip for Finish menu entry
+#: ../client/gtk/gui.c:288 ../client/gtk/gui.c:290
+msgid "Finish"
+msgstr "Afslut"
+
+#. Menu entry
+#: ../client/gtk/gui.c:293 ../client/gtk/legend.c:189
+#: ../editor/gtk/game-buildings.c:10
+msgid "Road"
+msgstr "Vej"
+
+#. Tooltip for Road menu entry
+#: ../client/gtk/gui.c:295
+msgid "Build a road"
+msgstr "Byg en vej"
+
+#. Menu entry
+#: ../client/gtk/gui.c:298 ../client/gtk/legend.c:193
+#: ../editor/gtk/game-buildings.c:10
+msgid "Ship"
+msgstr "Skib"
+
+#. Tooltip for Ship menu entry
+#: ../client/gtk/gui.c:300
+msgid "Build a ship"
+msgstr "Byg et skib"
+
+#. Menu entry
+#: ../client/gtk/gui.c:303
+msgid "Move Ship"
+msgstr "Flyt skib"
+
+#. Tooltip for Move Ship menu entry
+#: ../client/gtk/gui.c:305
+msgid "Move a ship"
+msgstr "Flyt et skib"
+
+#. Menu entry
+#: ../client/gtk/gui.c:308 ../client/gtk/legend.c:196
+#: ../editor/gtk/game-buildings.c:10
+msgid "Bridge"
+msgstr "Bro"
+
+#. Tooltip for Bridge menu entry
+#: ../client/gtk/gui.c:310
+msgid "Build a bridge"
+msgstr "Byg en bro"
+
+#. Menu entry
+#: ../client/gtk/gui.c:313 ../client/gtk/legend.c:198 ../client/gtk/player.c:52
+#: ../editor/gtk/game-buildings.c:10
+msgid "Settlement"
+msgstr "Bebyggelse"
+
+#. Tooltip for Settlement menu entry
+#: ../client/gtk/gui.c:316
+msgid "Build a settlement"
+msgstr "Byg en bebyggelse"
+
+#. Menu entry
+#: ../client/gtk/gui.c:319 ../client/gtk/legend.c:199 ../client/gtk/player.c:53
+#: ../editor/gtk/game-buildings.c:11
+msgid "City"
+msgstr "By"
+
+#. Tooltip for City menu entry
+#: ../client/gtk/gui.c:321
+msgid "Build a city"
+msgstr "Byg en by"
+
+#. Menu entry
+#: ../client/gtk/gui.c:324
+msgid "Develop"
+msgstr "Udvikle"
+
+#. Tooltip for Develop menu entry
+#: ../client/gtk/gui.c:326
+msgid "Buy a development card"
+msgstr "Køb et udviklingskort"
+
+#. Menu entry
+#: ../client/gtk/gui.c:329
+msgid "City Wall"
+msgstr "Bymur"
+
+#. Tooltip for City Wall menu entry
+#: ../client/gtk/gui.c:331
+msgid "Build a city wall"
+msgstr "Byg en bymur"
+
+#. Menu entry
+#: ../client/gtk/gui.c:335
+msgid "_Settings"
+msgstr "_Indstillinger"
+
+#. Menu entry
+#: ../client/gtk/gui.c:338
+msgid "Prefere_nces"
+msgstr "Indstilli_nger"
+
+#. Tooltip for Preferences menu entry
+#: ../client/gtk/gui.c:340
+msgid "Configure the application"
+msgstr "Konfigurér applikationen"
+
+#. Menu entry
+#: ../client/gtk/gui.c:344 ../editor/gtk/editor.c:1721
+#, fuzzy
+msgid "_View"
+msgstr "Tilskuer"
+
+#. Menu entry
+#: ../client/gtk/gui.c:347 ../editor/gtk/editor.c:1765
+msgid "_Reset"
+msgstr ""
+
+#. Tooltip for Reset menu entry
+#: ../client/gtk/gui.c:350 ../editor/gtk/editor.c:1768
+msgid "View the full map"
+msgstr ""
+
+#. Menu entry
+#: ../client/gtk/gui.c:353 ../editor/gtk/editor.c:1771
+msgid "_Center"
+msgstr ""
+
+#. Tooltip for Center menu entry
+#: ../client/gtk/gui.c:355 ../editor/gtk/editor.c:1773
+msgid "Center the map"
+msgstr ""
+
+#. Menu entry
+#: ../client/gtk/gui.c:359 ../client/gtk/gui.c:368 ../editor/gtk/editor.c:1724
+#: ../server/gtk/main.c:94
+msgid "_Help"
+msgstr "_Hjælp"
+
+#. Menu entry
+#: ../client/gtk/gui.c:362
+msgid "_About Pioneers"
+msgstr "_Om Pioneers"
+
+#. Tooltip for About Pioneers menu entry
+#: ../client/gtk/gui.c:364
+msgid "Information about Pioneers"
+msgstr "Information om Pioneers"
+
+#. Tooltip for Help menu entry
+#: ../client/gtk/gui.c:370 ../client/gtk/gui.c:1258
+msgid "Show the manual"
+msgstr "Vis manual"
+
+#. Menu entry
+#: ../client/gtk/gui.c:378 ../editor/gtk/editor.c:1791
+msgid "_Fullscreen"
+msgstr ""
+
+#. Tooltip for Fullscreen menu entry
+#: ../client/gtk/gui.c:381 ../editor/gtk/editor.c:1794
+msgid "Set window to full screen mode"
+msgstr ""
+
+#. Menu entry
+#: ../client/gtk/gui.c:386
+msgid "_Toolbar"
+msgstr "_Værktøjslinje"
+
+#. Tooltip for Toolbar menu entry
+#: ../client/gtk/gui.c:388
+msgid "Show or hide the toolbar"
+msgstr "Vis eller skjul værktøjslinje"
+
+#. Victory points target in statusbar
+#: ../client/gtk/gui.c:491
+#, c-format
+msgid "Points needed to win: %i"
+msgstr "Point nødvendige for at vinde: %i"
+
+#: ../client/gtk/gui.c:577
+msgid "<b>Messages</b>"
+msgstr "<b>Meddelelser</b>"
+
+#. Tab page name
+#: ../client/gtk/gui.c:703 ../editor/gtk/editor.c:1946
+msgid "Map"
+msgstr "Kort"
+
+#. Tooltip
+#: ../client/gtk/gui.c:712
+msgid "Finish trading"
+msgstr "Afslut handel"
+
+#. Tab page name
+#. Button text
+#: ../client/gtk/gui.c:722 ../client/gtk/quote.c:339
+msgid "Quote"
+msgstr "Citat"
+
+#. Tooltip
+#: ../client/gtk/gui.c:724
+msgid "Reject domestic trade"
+msgstr "Afvis indenlandsk handel"
+
+#. Tab page name
+#. Dialog caption
+#: ../client/gtk/gui.c:734 ../client/gtk/legend.c:249
+msgid "Legend"
+msgstr "Forklaring"
+
+#. Tab page name, shown for the splash screen
+#: ../client/gtk/gui.c:744
+msgid "Welcome to Pioneers"
+msgstr "Velkommen til Pioneers"
+
+#. Caption of preferences dialog
+#: ../client/gtk/gui.c:1028
+msgid "Pioneers Preferences"
+msgstr "Pioneers opsætning"
+
+#. Button text
+#: ../client/gtk/gui.c:1034 ../client/gtk/histogram.c:252
+#: ../client/gtk/legend.c:253 ../client/gtk/settingscreen.c:413
+msgid "_Close"
+msgstr ""
+
+#. Label for changing the theme, in the preferences dialog
+#: ../client/gtk/gui.c:1059
+msgid "Theme:"
+msgstr "Tema:"
+
+#. Tooltip for changing the theme in the preferences dialog
+#: ../client/gtk/gui.c:1082
+msgid "Choose one of the themes"
+msgstr "Vælg et af temaerne"
+
+#. Label for the option to show the legend
+#: ../client/gtk/gui.c:1086
+msgid "Show legend"
+msgstr "Vis forklaring"
+
+#. Tooltip for the option to show the legend
+#: ../client/gtk/gui.c:1096
+msgid "Show the legend as a page beside the map"
+msgstr "Vis forklaring som en side ved siden af kortet"
+
+#. Label for the option to display log messages in color
+#: ../client/gtk/gui.c:1101
+msgid "Messages with color"
+msgstr "Meddelelser med farver"
+
+#. Tooltip for the option to display log messages in color
+#: ../client/gtk/gui.c:1111
+msgid "Show new messages with color"
+msgstr "Vis en ny meddelelse med farve"
+
+#. Label for the option to display chat in color of player
+#: ../client/gtk/gui.c:1116
+msgid "Chat in color of player"
+msgstr "Caht i spillerens farve"
+
+#. Tooltip for the option to display chat in color of player
+#: ../client/gtk/gui.c:1127
+msgid "Show new chat messages in the color of the player"
+msgstr "Vis nye chat meddelelser i spillerens farve"
+
+#. Label for the option to display the summary with colors
+#: ../client/gtk/gui.c:1132
+msgid "Summary with color"
+msgstr "Sammenfatning i farver"
+
+#. Tooltip for the option to display the summary with colors
+#: ../client/gtk/gui.c:1143
+msgid "Use colors in the player summary"
+msgstr "Anvend farver i spiller sammenfatning"
+
+#. Label for the option to display keyboard accelerators in the toolbar
+#: ../client/gtk/gui.c:1148
+msgid "Toolbar with shortcuts"
+msgstr "Værktøjslinje med genveje"
+
+#. Tooltip for the option to display keyboard accelerators in the toolbar
+#: ../client/gtk/gui.c:1158
+msgid "Show keyboard shortcuts in the toolbar"
+msgstr "Vis genveje i værktøjslinje"
+
+#. Label for the option to disable all sounds
+#: ../client/gtk/gui.c:1164
+msgid "Silent mode"
+msgstr "Tyst tilstand"
+
+#. Tooltip for the option to disable all sounds
+#: ../client/gtk/gui.c:1170
+msgid "In silent mode no sounds are made"
+msgstr "I tyst tilstand der laves ikke lyd"
+
+#. Label for the option to announce when players/spectators enter
+#: ../client/gtk/gui.c:1176
+msgid "Announce new players"
+msgstr "Annoncér nye spillere"
+
+#. Tooltip for the option to use sound when players/spectators enter
+#: ../client/gtk/gui.c:1186
+#, fuzzy
+msgid "Make a sound when a new player or spectator enters the game"
+msgstr "Lav en lyd når en ny spiller eller seer ankommer til spillet"
+
+#. Label for the option to use the notifications.
+#: ../client/gtk/gui.c:1198
+#, fuzzy
+msgid "Show notifications"
+msgstr "Vis versionsinformation"
+
+#. Tooltip for notifications option.
+#: ../client/gtk/gui.c:1208
+msgid "Show notifications when it's your turn or when new trade is available"
+msgstr ""
+
+#. Label for the option to use the 16:9 layout.
+#: ../client/gtk/gui.c:1214
+msgid "Use 16:9 layout"
+msgstr "Anvend 16:9 layout"
+
+#. Tooltip for 16:9 option.
+#: ../client/gtk/gui.c:1224
+msgid "Use a 16:9 friendly layout for the window"
+msgstr "Anvend et 16:9 venligt layout for skærmen"
+
+#. Caption of about box
+#: ../client/gtk/gui.c:1233
+msgid "About Pioneers"
+msgstr "Om Pioneers"
+
+#. Initial text in status bar
+#: ../client/gtk/gui.c:1544 ../client/gtk/offline.c:107
+msgid "Welcome to Pioneers!"
+msgstr "Velkommen til Pioneers!"
+
+#. The name of the application
+#. Name of the application
+#: ../client/gtk/gui.c:1606 ../client/gtk/offline.c:209
+#: ../client/gtk/pioneers.desktop.in.h:1
+msgid "Pioneers"
+msgstr "Pioneers"
+
+#. Dialog caption
+#: ../client/gtk/histogram.c:248
+msgid "Dice Histogram"
+msgstr "Ternings histogram"
+
+#: ../client/gtk/interface.c:111
+msgid "Ship movement canceled."
+msgstr "Bevægelse af skib annulleret"
+
+#: ../client/gtk/interface.c:119 ../client/gtk/interface.c:120
+msgid "Select a new location for the ship."
+msgstr "Vælg en ny lokation for skibet."
+
+#. Notification
+#: ../client/gtk/interface.c:919
+#, fuzzy
+msgid "It is your turn to setup."
+msgstr "Det er din tur."
+
+#: ../client/gtk/legend.c:34
+msgid "Hill"
+msgstr "Bakke"
+
+#: ../client/gtk/legend.c:35
+msgid "Field"
+msgstr "Mark"
+
+#: ../client/gtk/legend.c:36
+msgid "Mountain"
+msgstr "Bjerg"
+
+#: ../client/gtk/legend.c:37
+msgid "Pasture"
+msgstr "Græsmark"
+
+#: ../client/gtk/legend.c:38
+msgid "Forest"
+msgstr "Skov"
+
+#: ../client/gtk/legend.c:39
+msgid "Desert"
+msgstr "Ørken"
+
+#: ../client/gtk/legend.c:40
+msgid "Sea"
+msgstr "Hav"
+
+#. Label
+#: ../client/gtk/legend.c:132
+msgid "<b>Terrain yield</b>"
+msgstr "<b>Terænudbytte</b>"
+
+#. Label
+#: ../client/gtk/legend.c:165
+msgid "<b>Building costs</b>"
+msgstr "<b>Bygningsomkostninger</b>"
+
+#: ../client/gtk/legend.c:203 ../client/gtk/player.c:54
+#: ../editor/gtk/game-buildings.c:11
+msgid "City wall"
+msgstr "Bymur"
+
+#: ../client/gtk/legend.c:206 ../client/gtk/player.c:65
+msgid "Development card"
+msgstr "Udviklingskort"
+
+#. Dialog caption
+#. Name of the development card
+#: ../client/gtk/monopoly.c:84 ../common/cards.c:86
+msgid "Monopoly"
+msgstr "Monopol"
+
+#. Label
+#: ../client/gtk/monopoly.c:106
+msgid "Select the resource you wish to monopolize."
+msgstr "Vælg den ressource du vil have monopol på."
+
+#. Dialog caption
+#: ../client/gtk/name.c:141
+msgid "Change Player Name"
+msgstr "Ændre spiller navn"
+
+#. Label
+#: ../client/gtk/name.c:172
+msgid "Player name:"
+msgstr "Spillernavn:"
+
+#. Label: set player icon preferences
+#: ../client/gtk/name.c:234
+msgid "Face:"
+msgstr "Forside:"
+
+#. Label: set player icon preferences
+#: ../client/gtk/name.c:250
+msgid "Variant:"
+msgstr "Variant:"
+
+#: ../client/gtk/offline.c:61
+#, fuzzy
+msgid "Connect as a spectator"
+msgstr "Deltag som seer"
+
+#: ../client/gtk/offline.c:64
+msgid "Metaserver Host"
+msgstr "Metaserver vært"
+
+#: ../client/gtk/offline.c:78
+msgid "Select a game to join."
+msgstr "Vælg et spil at deltage i."
+
+#: ../client/gtk/offline.c:94
+msgid "Connecting"
+msgstr "Forbinder"
+
+#. Long description in the commandline for pioneers: help
+#: ../client/gtk/offline.c:183
+msgid "- Play a game of Pioneers"
+msgstr "- Spil et spil Pioneers"
+
+#: ../client/gtk/pioneers.desktop.in.h:2
+msgid "Play a game of Pioneers"
+msgstr "Spil et spil Pioneers"
+
+#: ../client/gtk/pioneers.desktop.in.h:3
+msgid "game;board;play;Pioneers;Settlers;"
+msgstr ""
+
+#: ../client/gtk/player.c:52
+msgid "Settlements"
+msgstr "Bebyggelser"
+
+#: ../client/gtk/player.c:53
+msgid "Cities"
+msgstr "Byer"
+
+#: ../client/gtk/player.c:54
+msgid "City walls"
+msgstr "Bymurer"
+
+#: ../client/gtk/player.c:55
+msgid "Largest army"
+msgstr "Største hær"
+
+#: ../client/gtk/player.c:56
+msgid "Longest road"
+msgstr "Længste vej"
+
+#. Name of the development card
+#: ../client/gtk/player.c:57 ../common/cards.c:92
+msgid "Chapel"
+msgstr "Kapel"
+
+#: ../client/gtk/player.c:57
+msgid "Chapels"
+msgstr "Kapeller"
+
+#. Name of the development card
+#: ../client/gtk/player.c:58 ../common/cards.c:95
+msgid "Pioneer university"
+msgstr "Pioneer Universitet"
+
+#: ../client/gtk/player.c:58
+msgid "Pioneer universities"
+msgstr "Pioneers Universiteter"
+
+#. Name of the development card
+#: ../client/gtk/player.c:60 ../common/cards.c:98
+msgid "Governor's house"
+msgstr "Borgmesterens hus"
+
+#: ../client/gtk/player.c:60
+msgid "Governor's houses"
+msgstr "Borgmester huse"
+
+#. Name of the development card
+#: ../client/gtk/player.c:61 ../common/cards.c:101
+msgid "Library"
+msgstr "Bibliotek"
+
+#: ../client/gtk/player.c:61
+msgid "Libraries"
+msgstr "Biblioteker"
+
+#. Name of the development card
+#: ../client/gtk/player.c:62 ../common/cards.c:104
+msgid "Market"
+msgstr "Marked"
+
+#: ../client/gtk/player.c:62
+msgid "Markets"
+msgstr "Markeder"
+
+#. Name of the development card
+#: ../client/gtk/player.c:63 ../common/cards.c:107
+msgid "Soldier"
+msgstr "Soldat"
+
+#: ../client/gtk/player.c:63
+msgid "Soldiers"
+msgstr "Soldater"
+
+#: ../client/gtk/player.c:64
+msgid "Resource card"
+msgstr "Ressourcekort"
+
+#: ../client/gtk/player.c:64
+msgid "Resource cards"
+msgstr "Ressourcekort"
+
+#. Caption
+#: ../client/gtk/player.c:65 ../editor/gtk/editor.c:1305
+msgid "Development cards"
+msgstr "Udviklingskort"
+
+#. Caption for the overview of the points and card of other players
+#: ../client/gtk/player.c:559
+msgid "<b>Player summary</b>"
+msgstr "<b>Sammendrag for spillere</b>"
+
+#. Dialog caption
+#: ../client/gtk/plenty.c:61
+msgid "Year of Plenty"
+msgstr "Gyldent år"
+
+#: ../client/gtk/plenty.c:92
+msgid "Please choose one resource from the bank"
+msgstr "Vælg venligst en ressource fra banken"
+
+#: ../client/gtk/plenty.c:95
+msgid "Please choose two resources from the bank"
+msgstr "Vælg venligst to ressourcer fra banken"
+
+#: ../client/gtk/plenty.c:97
+msgid "The bank is empty"
+msgstr "Banken er tom"
+
+#: ../client/gtk/quote.c:187
+#, c-format
+msgid "%s has %s, and is looking for %s"
+msgstr "%s har %s, og er på udkig efter %s"
+
+#. Notification
+#: ../client/gtk/quote.c:217
+#, fuzzy, c-format
+msgid "New offer from %s."
+msgstr "Du stjal %s fra %s.\n"
+
+#. Notification
+#: ../client/gtk/quote.c:242
+#, c-format
+msgid "Offer from %s."
+msgstr ""
+
+#. Label
+#. Frame title, trade: I want to trade these resources
+#: ../client/gtk/quote.c:316 ../client/gtk/trade.c:524
+msgid "I want"
+msgstr "Jeg ønsker"
+
+#. Label
+#. Frame title, trade: I want these resources in return
+#: ../client/gtk/quote.c:326 ../client/gtk/trade.c:530
+msgid "Give them"
+msgstr "Giv dem"
+
+#. Button text
+#: ../client/gtk/quote.c:345
+msgid "Delete"
+msgstr "Slet"
+
+#. Button text
+#: ../client/gtk/quote.c:370
+msgid "Reject Domestic Trade"
+msgstr "Afvis indenlandsk handel"
+
+#. Now create columns
+#. Table header: Player who trades
+#. Role of the player: player
+#: ../client/gtk/quote-view.c:170 ../server/gtk/main.c:684
+msgid "Player"
+msgstr "Spiller"
+
+#. Table header: Quote
+#: ../client/gtk/quote-view.c:185
+msgid "Quotes"
+msgstr "Citater"
+
+#. trade: maritime quote: %1 resources of type %2 for
+#. * one resource of type %3
+#: ../client/gtk/quote-view.c:303
+#, c-format
+msgid "%d:1 %s for %s"
+msgstr "%d:1 %s for %s"
+
+#. Trade: a player has rejected trade
+#: ../client/gtk/quote-view.c:442
+msgid "Rejected trade"
+msgstr "Afvis handel"
+
+#. Caption for overview of the resources of the player
+#: ../client/gtk/resource.c:71
+msgid "<b>Resources</b>"
+msgstr "<b>Ressourcer</b>"
+
+#. Label
+#: ../client/gtk/resource.c:86
+msgid "Total"
+msgstr "I alt"
+
+#. Tooltip for the amount of resources in the hand
+#: ../client/gtk/resource-table.c:180
+msgid "Amount in hand"
+msgstr "Mængde på hånden"
+
+#. Button for decreasing the selected amount
+#: ../client/gtk/resource-table.c:185
+msgid "<less"
+msgstr "<mindre"
+
+#. Tooltip for decreasing the selected amount
+#: ../client/gtk/resource-table.c:195
+msgid "Decrease the selected amount"
+msgstr "Reducer det valgte beløb"
+
+#. Tooltip for the amount of resources in the bank
+#: ../client/gtk/resource-table.c:209
+msgid "Amount in the bank"
+msgstr "Beløb i banken"
+
+#. Button for increasing the selected amount
+#: ../client/gtk/resource-table.c:214
+msgid "more>"
+msgstr "mere>"
+
+#. Tooltip for increasing the selected amount
+#: ../client/gtk/resource-table.c:226
+msgid "Increase the selected amount"
+msgstr "Øg det valgte beløb"
+
+#. Tooltip for the selected amount
+#: ../client/gtk/resource-table.c:243
+msgid "Selected amount"
+msgstr "Vælg beløb"
+
+#. Tooltip for the total selected amount
+#: ../client/gtk/resource-table.c:288
+msgid "Total selected amount"
+msgstr "Samlet valgt beløb"
+
+#. Tooltip when the bank cannot be emptied
+#: ../client/gtk/resource-table.c:307
+msgid "The bank cannot be emptied"
+msgstr "Banken kan ikke tømmes"
+
+#: ../client/gtk/settingscreen.c:74
+msgid "Yes"
+msgstr "Ja"
+
+#: ../client/gtk/settingscreen.c:76 ../client/gtk/settingscreen.c:240
+msgid "No"
+msgstr "Nej"
+
+#: ../client/gtk/settingscreen.c:87 ../client/gtk/settingscreen.c:187
+msgid "Unknown"
+msgstr "Ukendt"
+
+#: ../client/gtk/settingscreen.c:121
+msgid "No game in progress..."
+msgstr "Der pågår ingen spil..."
+
+#. Label
+#: ../client/gtk/settingscreen.c:132
+msgid "<b>General settings</b>"
+msgstr "<b>General opsætning</b>"
+
+#: ../client/gtk/settingscreen.c:149
+msgid "Number of players:"
+msgstr "Antal spillere:"
+
+#: ../client/gtk/settingscreen.c:153
+msgid "Victory point target:"
+msgstr "Pointmål for at vinde:"
+
+#: ../client/gtk/settingscreen.c:157
+msgid "Random terrain:"
+msgstr "Tilfældigt terræn:"
+
+#: ../client/gtk/settingscreen.c:161
+msgid "Allow trade between players:"
+msgstr "Tillad handel mellem spillere:"
+
+#: ../client/gtk/settingscreen.c:166
+msgid "Allow trade only before building or buying:"
+msgstr "Tillad kun handel før bygning eller indkøb:"
+
+#: ../client/gtk/settingscreen.c:171
+#, fuzzy
+msgid "Check victory only at end of turn:"
+msgstr "Tjek for sejer ved turens slutning"
+
+#: ../client/gtk/settingscreen.c:176
+msgid "Amount of each resource:"
+msgstr "Mængde af hver ressource:"
+
+#: ../client/gtk/settingscreen.c:190
+msgid "Sevens rule:"
+msgstr "7'er regel:"
+
+#: ../client/gtk/settingscreen.c:196
+msgid "Use dice deck instead of dice:"
+msgstr ""
+
+#: ../client/gtk/settingscreen.c:201
+#, fuzzy
+msgid "Number of dice decks:"
+msgstr "Antal spillere:"
+
+#: ../client/gtk/settingscreen.c:207
+msgid "Number of dice cards removed after shuffling:"
+msgstr ""
+
+#: ../client/gtk/settingscreen.c:214
+msgid "Use the pirate to block ships:"
+msgstr "Brug piraten til at blokkere skibe:"
+
+#: ../client/gtk/settingscreen.c:243
+msgid "Island discovery bonuses:"
+msgstr "Bonus for opdagelse af ø:"
+
+#. Label
+#: ../client/gtk/settingscreen.c:260
+msgid "<b>Building quotas</b>"
+msgstr "<b>Bygningsomkostninger</b>"
+
+#: ../client/gtk/settingscreen.c:277
+msgid "Roads:"
+msgstr "Veje:"
+
+#: ../client/gtk/settingscreen.c:283
+msgid "Settlements:"
+msgstr "Bebyggelser:"
+
+#: ../client/gtk/settingscreen.c:289
+msgid "Cities:"
+msgstr "Byer:"
+
+#: ../client/gtk/settingscreen.c:295
+msgid "City walls:"
+msgstr "Bymurer:"
+
+#: ../client/gtk/settingscreen.c:301
+msgid "Ships:"
+msgstr "Skibe:"
+
+#: ../client/gtk/settingscreen.c:307
+msgid "Bridges:"
+msgstr "Broer:"
+
+#. Label
+#: ../client/gtk/settingscreen.c:320
+msgid "<b>Development card deck</b>"
+msgstr "<b>Udviklingskort</b>"
+
+#: ../client/gtk/settingscreen.c:336
+msgid "Road building cards:"
+msgstr "Vejbygningskort:"
+
+#: ../client/gtk/settingscreen.c:340
+msgid "Monopoly cards:"
+msgstr "Monopol kort:"
+
+#: ../client/gtk/settingscreen.c:344
+msgid "Year of plenty cards:"
+msgstr "Gyldent år kort:"
+
+#: ../client/gtk/settingscreen.c:348
+msgid "Chapel cards:"
+msgstr "Kapel kort:"
+
+#: ../client/gtk/settingscreen.c:352
+msgid "Pioneer university cards:"
+msgstr "Pioneer Universitets kort:"
+
+#: ../client/gtk/settingscreen.c:356
+msgid "Governor's house cards:"
+msgstr "Borgmester hus kort:"
+
+#: ../client/gtk/settingscreen.c:360
+msgid "Library cards:"
+msgstr "Biblioteks kort:"
+
+#: ../client/gtk/settingscreen.c:364
+msgid "Market cards:"
+msgstr "Markeds kort:"
+
+#: ../client/gtk/settingscreen.c:368
+msgid "Soldier cards:"
+msgstr "Soldater kort:"
+
+#. Dialog caption
+#: ../client/gtk/settingscreen.c:407
+msgid "Current Game Settings"
+msgstr "Aktuel spil opsætning"
+
+#. trade: you ask for something for free
+#: ../client/gtk/trade.c:205
+#, c-format
+msgid "ask for %s for free"
+msgstr "spørg om gratis %s"
+
+#. trade: you give something away for free
+#: ../client/gtk/trade.c:210
+#, c-format
+msgid "give %s for free"
+msgstr "giv %s gratis"
+
+#. trade: you trade something for something else
+#: ../client/gtk/trade.c:215
+#, c-format
+msgid "give %s for %s"
+msgstr "giv %s for %s"
+
+#. I want some resources, and give them some resources
+#: ../client/gtk/trade.c:242
+#, c-format
+msgid "I want %s, and give them %s"
+msgstr "Jeg ønsker %s, og giver dem %s"
+
+#. Notification
+#: ../client/gtk/trade.c:348
+#, fuzzy, c-format
+msgid "Quote received from %s."
+msgstr "%s modtog %s.\n"
+
+#. Button text, trade: call for quotes from other players
+#: ../client/gtk/trade.c:539
+msgid "_Call for Quotes"
+msgstr "_Spørg efter pris"
+
+#. Button text: Trade page, accept selected quote
+#: ../client/gtk/trade.c:568
+msgid "_Accept Quote"
+msgstr "_Accepter pris"
+
+#. Button text: Trade page, finish trading
+#: ../client/gtk/trade.c:574
+msgid "_Finish Trading"
+msgstr "_Afslut handel"
+
+#. Name of the development card
+#: ../common/cards.c:83
+msgid "Road building"
+msgstr "Vejbygning"
+
+#. Name of the development card
+#: ../common/cards.c:89
+msgid "Year of plenty"
+msgstr "Gyldent år"
+
+#. Description of the 'Road Building' development card
+#: ../common/cards.c:118
+msgid "Build two new roads"
+msgstr ""
+
+#. Description of the 'Monopoly' development card
+#: ../common/cards.c:121
+msgid ""
+"Select a resource type and take every card of that type held by all other "
+"players"
+msgstr ""
+
+#. Description of the 'Year of Plenty' development card
+#: ../common/cards.c:125
+msgid ""
+"Take two resource cards of any type from the bank (cards may be of the same "
+"or different types)"
+msgstr ""
+
+#. Description of a development card of 1 victory point
+#: ../common/cards.c:134
+msgid "One victory point"
+msgstr ""
+
+#. Description of the 'Soldier' development card
+#: ../common/cards.c:137
+msgid ""
+"Move the robber to a different space and take one resource card from another "
+"player adjacent to that space"
+msgstr ""
+
+#: ../common/game.c:523
+#, c-format
+msgid "Obsolete rule: '%s'\n"
+msgstr ""
+
+#: ../common/game.c:530
+#, c-format
+msgid ""
+"The game uses the new rule '%s', which is not yet supported. Consider "
+"upgrading.\n"
+msgstr ""
+
+#: ../common/game.c:924 ../common/game.c:955
+msgid "This game cannot be won."
+msgstr "Dette spill kan ikke vindes"
+
+#: ../common/game.c:925
+msgid "There is no land."
+msgstr "Der er ikke noget land."
+
+#: ../common/game.c:959
+msgid "It is possible that this game cannot be won."
+msgstr "Det er muligt at dette spil ikke kan vindes."
+
+#: ../common/game.c:965
+msgid "This game can be won by only building all settlements and cities."
+msgstr "Dette spil kan kun vindes ved at bygge alle bebyggelser og byer."
+
+#: ../common/game.c:971
+#, fuzzy, c-format
+msgid ""
+"Required victory points: %d\n"
+"Points obtained by building all: %d\n"
+"Points in development cards: %u\n"
+"Longest road/largest army: %d+%d\n"
+"Maximum island discovery bonus: %d\n"
+"Total: %d"
+msgstr ""
+"Krævede sejers point: %d\n"
+"Point opnået ved bygning ialt: %d\n"
+"Point fra udviklingskort: %d\n"
+"Længeste vej/største hær: %d+%d\n"
+"Maksimal bonus for opdagelse af øer: %d\n"
+"Total: %d"
+
+#: ../common/game-list.c:111
+#, c-format
+msgid "Looking for games in '%s'\n"
+msgstr ""
+
+#: ../common/game-list.c:113
+#, c-format
+msgid "Game directory '%s' not found\n"
+msgstr ""
+
+#: ../common/game-list.c:131
+#, fuzzy, c-format
+msgid "Unable to load game: '%s'\n"
+msgstr "Kunne ikke indlæse '%s'"
+
+#: ../common/game-list.c:151
+#, fuzzy
+msgid "No games available\n"
+msgstr "Beklager, %s tilgængelig.\n"
+
+#: ../common/gtk/aboutbox.c:53
+msgid ""
+"Pioneers is based upon the excellent\n"
+"Settlers of Catan board game.\n"
+msgstr ""
+"Pioneers er baseret på det fantastiske\n"
+"Settlers og Catan brædtspil.\n"
+
+#
+#. Translators: add your name here. Keep the list
+#. * alphabetically, do not remove any names, and add
+#. * \n after your name (except the last name).
+#.
+#: ../common/gtk/aboutbox.c:63
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  carson https://launchpad.net/~nanker"
+
+#. Caption for result of checking victory points
+#: ../common/gtk/common_gtk.c:324
+msgid "Victory Point Analysis"
+msgstr ""
+
+#. Tooltip for sevens rule normal
+#: ../common/gtk/game-rules.c:110
+msgid "All sevens move the robber or pirate"
+msgstr "Alle 7'ere flytter røvere eller pirater"
+
+#. Tooltip for sevens rule reroll on 1st 2 turns
+#: ../common/gtk/game-rules.c:114
+msgid "In the first two turns all sevens are rerolled"
+msgstr "I de to første ture slås alle 7'ere om"
+
+#. Tooltip for sevens rule reroll all
+#: ../common/gtk/game-rules.c:118
+msgid "All sevens are rerolled"
+msgstr "Alle 7'ere slås om"
+
+#: ../common/gtk/game-rules.c:129
+msgid "Randomize terrain"
+msgstr "Tilfældigt terræn"
+
+#: ../common/gtk/game-rules.c:129
+msgid "Randomize the terrain"
+msgstr "Lav tilfældigt terræn"
+
+#: ../common/gtk/game-rules.c:132
+msgid "Use pirate"
+msgstr "Brug pirat"
+
+#: ../common/gtk/game-rules.c:133
+msgid "Use the pirate to block ships"
+msgstr "Brug piraten til at blokkere skibe"
+
+#: ../common/gtk/game-rules.c:135
+msgid "Strict trade"
+msgstr "Begrænset handel"
+
+#: ../common/gtk/game-rules.c:136
+msgid "Allow trade only before building or buying"
+msgstr "Tillad kun handel før bygning eller indkøb"
+
+#: ../common/gtk/game-rules.c:138
+msgid "Domestic trade"
+msgstr "Indenlandsk handel"
+
+#: ../common/gtk/game-rules.c:139
+msgid "Allow trade between players"
+msgstr "Tillad handel mellem spillere"
+
+#: ../common/gtk/game-rules.c:141
+msgid "Victory at end of turn"
+msgstr "Sejer ved turens slutning"
+
+#: ../common/gtk/game-rules.c:142
+msgid "Check for victory only at end of turn"
+msgstr "Tjek for sejer ved turens slutning"
+
+#: ../common/gtk/game-rules.c:145
+msgid "Use dice deck"
+msgstr ""
+
+#: ../common/gtk/game-rules.c:147
+msgid "Use a deck of 36 dice cards instead of real dice"
+msgstr ""
+
+#. Label
+#: ../common/gtk/game-rules.c:155
+#, fuzzy
+msgid "Number of dice decks"
+msgstr "Type af computerspiller"
+
+#: ../common/gtk/game-rules.c:172
+msgid "The number of dice decks (of 36 cards each)"
+msgstr ""
+
+#. Label
+#: ../common/gtk/game-rules.c:180
+msgid "Number of removed dice cards"
+msgstr ""
+
+#: ../common/gtk/game-rules.c:199
+msgid "The number of dice cards that are removed after shuffling the deck"
+msgstr ""
+
+#. Label
+#: ../common/gtk/game-rules.c:207
+#, fuzzy
+msgid "Island discovery bonuses"
+msgstr "Bonus for opdagelse af ø:"
+
+#. Tooltip for island bonus
+#: ../common/gtk/game-rules.c:219
+msgid "A comma separated list of bonus points for discovering islands"
+msgstr ""
+
+#. Tooltip for the check button
+#: ../common/gtk/game-rules.c:237
+#, fuzzy
+msgid "Check and correct island discovery bonuses"
+msgstr "Bonus for opdagelse af ø:"
+
+#. Label text for customising a game
+#: ../common/gtk/game-settings.c:105
+msgid "Number of players"
+msgstr "Antal spillere"
+
+#. Tooltip for 'Number of Players'
+#: ../common/gtk/game-settings.c:124
+msgid "The number of players"
+msgstr "Antallet af spillere"
+
+#. Label for customising a game
+#: ../common/gtk/game-settings.c:127
+msgid "Victory point target"
+msgstr "Point for sejer"
+
+#. Tooltip for Victory Point Target
+#: ../common/gtk/game-settings.c:147
+msgid "The points needed to win the game"
+msgstr "Nødvendigt antal point for at vinde spillet"
+
+#. Tooltip for the check button
+#: ../common/gtk/game-settings.c:161
+msgid "Is it possible to win this game?"
+msgstr "Er det muligt at vinde dette spil?"
+
+#. Port indicator for a resource: trade 2 for 1
+#: ../common/gtk/guimap.c:742
+msgid "2:1"
+msgstr "2 for 1"
+
+#. Port indicator: trade 3 for 1
+#. General port indicator
+#: ../common/gtk/guimap.c:745 ../common/gtk/guimap.c:770
+msgid "3:1"
+msgstr "3 for 1"
+
+#. Port indicator for brick
+#: ../common/gtk/guimap.c:750
+msgid "Brick port|B"
+msgstr "Murstens port|M"
+
+#. Port indicator for grain
+#: ../common/gtk/guimap.c:754
+msgid "Grain port|G"
+msgstr "Korn port|K"
+
+#. Port indicator for ore
+#: ../common/gtk/guimap.c:758
+msgid "Ore port|O"
+msgstr "Malm port|M"
+
+#. Port indicator for wool
+#: ../common/gtk/guimap.c:762
+msgid "Wool port|W"
+msgstr "Uld port|U"
+
+#. Port indicator for lumber
+#: ../common/gtk/guimap.c:766
+msgid "Lumber port|L"
+msgstr "Tømmer port|T"
+
+#. Tooltip for the list of metaservers
+#: ../common/gtk/metaserver.c:85
+msgid "Select a metaserver"
+msgstr "Start meta server"
+
+#. Tooltip for the list of games
+#: ../common/gtk/select-game.c:135
+msgid "Select a game"
+msgstr "Vælg et spil"
+
+#. Log prefix
+#: ../common/log.c:58
+msgid "*ERROR* "
+msgstr "*FEJL* "
+
+#. Log prefix
+#: ../common/log.c:66
+msgid "Chat: "
+msgstr "Caht: "
+
+#. Log prefix
+#: ../common/log.c:70
+msgid "Resource: "
+msgstr "Ressource: "
+
+#. Log prefix
+#: ../common/log.c:74
+msgid "Build: "
+msgstr "Byg: "
+
+#. Log prefix
+#: ../common/log.c:78
+msgid "Dice: "
+msgstr "Terning: "
+
+#. Log prefix
+#: ../common/log.c:82
+msgid "Steal: "
+msgstr "Stjæl: "
+
+#. Log prefix
+#: ../common/log.c:86
+msgid "Trade: "
+msgstr "Handel: "
+
+#. Log prefix
+#: ../common/log.c:90
+msgid "Development: "
+msgstr "Udvikling: "
+
+#. Log prefix
+#: ../common/log.c:94
+msgid "Army: "
+msgstr "Hær: "
+
+#. Log prefix
+#: ../common/log.c:98
+msgid "Road: "
+msgstr "Vej: "
+
+#. Log prefix
+#: ../common/log.c:102
+msgid "*BEEP* "
+msgstr "*Bip* "
+
+#. Log prefix
+#: ../common/log.c:108
+msgid "Player 1: "
+msgstr "Spiller 1: "
+
+#. Log prefix
+#: ../common/log.c:112
+msgid "Player 2: "
+msgstr "Spiller 2: "
+
+#. Log prefix
+#: ../common/log.c:116
+msgid "Player 3: "
+msgstr "Spiller 3: "
+
+#. Log prefix
+#: ../common/log.c:120
+msgid "Player 4: "
+msgstr "Spiller 4: "
+
+#. Log prefix
+#: ../common/log.c:124
+msgid "Player 5: "
+msgstr "Spiller 5: "
+
+#. Log prefix
+#: ../common/log.c:128
+msgid "Player 6: "
+msgstr "Spiller 6: "
+
+#. Log prefix
+#: ../common/log.c:132
+msgid "Player 7: "
+msgstr "Spiller 7: "
+
+#. Log prefix
+#: ../common/log.c:136
+msgid "Player 8: "
+msgstr "Spiller 8: "
+
+#. Log prefix
+#: ../common/log.c:140
+msgid "Spectator: "
+msgstr ""
+
+#. Log prefix
+#: ../common/log.c:144
+msgid "** UNKNOWN MESSAGE TYPE ** "
+msgstr "** UKENDT MEDDELELSESTYPE ** "
+
+#: ../common/network.c:143
+#, c-format
+msgid "Error writing to socket: %s\n"
+msgstr ""
+
+#: ../common/network.c:154
+msgid "Could not send all data\n"
+msgstr ""
+
+#: ../common/network.c:202
+msgid "Read buffer overflow - disconnecting\n"
+msgstr ""
+
+#: ../common/network.c:226
+#, c-format
+msgid "Error reading socket: %s\n"
+msgstr ""
+
+#: ../common/network.c:378
+#, fuzzy, c-format
+msgid "Error connecting to %s: %s\n"
+msgstr "Fejl ved tilslutning til %s: %s\n"
+
+#: ../common/network.c:566 ../common/network.c:567
+msgid "unknown"
+msgstr "ukendt"
+
+#: ../common/state.c:203
+#, c-format
+msgid "Connecting to %s, port %s\n"
+msgstr "Opretter forbindelse til %s, port %s\n"
+
+#. Error message
+#: ../common/state.c:333
+msgid "State stack overflow. Stack dump sent to standard error.\n"
+msgstr ""
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:113
+msgid "_Hill"
+msgstr "_Bakke"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:115
+msgid "_Field"
+msgstr "_Mark"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:117
+msgid "_Mountain"
+msgstr "_Bjerg"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:119
+msgid "_Pasture"
+msgstr "G_ræsmark"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:121
+msgid "F_orest"
+msgstr "_Skov"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:123
+msgid "_Desert"
+msgstr "_Ørken"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:125
+msgid "_Sea"
+msgstr "_Hav"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:127
+msgid "_Gold"
+msgstr "_Guld"
+
+#. Use an unique shortcut key for each resource
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:129 ../editor/gtk/editor.c:144
+msgid "_None"
+msgstr "_Ingen"
+
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:134
+msgid "_Brick (2:1)"
+msgstr "_Mursten (2:1)"
+
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:136
+msgid "_Grain (2:1)"
+msgstr "_Korn (2:1)"
+
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:138
+msgid "_Ore (2:1)"
+msgstr "_Malm (2:1)"
+
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:140
+msgid "_Wool (2:1)"
+msgstr "_Uld (2:1)"
+
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:142
+msgid "_Lumber (2:1)"
+msgstr "_Tømmer (2:1)"
+
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:146
+msgid "_Any (3:1)"
+msgstr "_Noget (3:1)"
+
+#. East
+#: ../editor/gtk/editor.c:151
+msgid "East|E"
+msgstr "Øst|Ø"
+
+#. North east
+#: ../editor/gtk/editor.c:153
+msgid "North East|NE"
+msgstr "Nord Øst|NØ"
+
+#. North west
+#: ../editor/gtk/editor.c:155
+msgid "North West|NW"
+msgstr "Nord Vest|NV"
+
+#. West
+#: ../editor/gtk/editor.c:157
+msgid "West|W"
+msgstr "Vest|V"
+
+#. South west
+#: ../editor/gtk/editor.c:159
+msgid "South West|SW"
+msgstr "Syd Vest|SV"
+
+#. South east
+#: ../editor/gtk/editor.c:161
+msgid "South East|SE"
+msgstr "Syd Øst|SØ"
+
+#: ../editor/gtk/editor.c:368
+msgid "Place a hill hex"
+msgstr ""
+
+#: ../editor/gtk/editor.c:369
+msgid "Place a field hex"
+msgstr ""
+
+#: ../editor/gtk/editor.c:370
+msgid "Place a mountain hex"
+msgstr ""
+
+#: ../editor/gtk/editor.c:371
+msgid "Place a pasture hex"
+msgstr ""
+
+#: ../editor/gtk/editor.c:372
+msgid "Place a forest hex"
+msgstr ""
+
+#: ../editor/gtk/editor.c:373
+msgid "Place a desert hex"
+msgstr ""
+
+#: ../editor/gtk/editor.c:374
+msgid "Place a sea hex"
+msgstr ""
+
+#: ../editor/gtk/editor.c:375
+msgid "Place a gold hex"
+msgstr ""
+
+#: ../editor/gtk/editor.c:376
+msgid "Clear the hex"
+msgstr ""
+
+#: ../editor/gtk/editor.c:384
+msgid "Place a 2 chit"
+msgstr ""
+
+#: ../editor/gtk/editor.c:385
+msgid "Place a 3 chit"
+msgstr ""
+
+#: ../editor/gtk/editor.c:386
+msgid "Place a 4 chit"
+msgstr ""
+
+#: ../editor/gtk/editor.c:387
+msgid "Place a 5 chit"
+msgstr ""
+
+#: ../editor/gtk/editor.c:388
+msgid "Place a 6 chit"
+msgstr ""
+
+#: ../editor/gtk/editor.c:390
+msgid "Place an 8 chit"
+msgstr ""
+
+#: ../editor/gtk/editor.c:391
+msgid "Place a 9 chit"
+msgstr ""
+
+#: ../editor/gtk/editor.c:392
+msgid "Place a 10 chit"
+msgstr ""
+
+#: ../editor/gtk/editor.c:393
+msgid "Place an 11 chit"
+msgstr ""
+
+#: ../editor/gtk/editor.c:394
+msgid "Place a 12 chit"
+msgstr ""
+
+#: ../editor/gtk/editor.c:400
+msgid "Place a brick 2:1 port"
+msgstr ""
+
+#: ../editor/gtk/editor.c:401
+msgid "Place a grain 2:1 port"
+msgstr ""
+
+#: ../editor/gtk/editor.c:402
+msgid "Place an ore 2:1 port"
+msgstr ""
+
+#: ../editor/gtk/editor.c:403
+msgid "Place a wool 2:1 port"
+msgstr ""
+
+#: ../editor/gtk/editor.c:404
+msgid "Place a lumber 2:1 port"
+msgstr ""
+
+#. Tooltip to remove a port tile in the editor
+#: ../editor/gtk/editor.c:406
+#, fuzzy
+msgid "Remove a port"
+msgstr "Server port"
+
+#: ../editor/gtk/editor.c:407
+msgid "Place a 3:1 port"
+msgstr ""
+
+#: ../editor/gtk/editor.c:437
+msgid ""
+"Select the terrain type with the context menu on the left click or toggle a "
+"node to exclude it from being used during the setup phase"
+msgstr ""
+
+#: ../editor/gtk/editor.c:572
+msgid "Insert a row"
+msgstr ""
+
+#: ../editor/gtk/editor.c:573
+#, fuzzy
+msgid "Delete a row"
+msgstr "Slet"
+
+#: ../editor/gtk/editor.c:574
+msgid "Insert a column"
+msgstr ""
+
+#: ../editor/gtk/editor.c:575
+msgid "Delete a column"
+msgstr ""
+
+#. Label
+#: ../editor/gtk/editor.c:978
+#, fuzzy
+msgid "_Title"
+msgstr "Ændre _titel"
+
+#. Label
+#: ../editor/gtk/editor.c:991
+#, fuzzy
+msgid "_Description"
+msgstr "_Ørken"
+
+#. Label
+#: ../editor/gtk/editor.c:1009
+msgid "_Comments"
+msgstr ""
+
+#. Menu item
+#: ../editor/gtk/editor.c:1139
+msgid "Shuffle"
+msgstr "Bland"
+
+#. Caption
+#. Game settings frame
+#: ../editor/gtk/editor.c:1294 ../server/gtk/main.c:968
+msgid "Game parameters"
+msgstr "Spil parametre"
+
+#. Caption
+#. Rules frame
+#: ../editor/gtk/editor.c:1297 ../server/gtk/main.c:983
+msgid "Rules"
+msgstr "Regler"
+
+#. Caption
+#: ../editor/gtk/editor.c:1299
+msgid "Resources"
+msgstr "Ressourcer"
+
+#. Caption
+#: ../editor/gtk/editor.c:1302
+msgid "Buildings"
+msgstr "Bygninger"
+
+#. The game in the editor does not have a name yet
+#: ../editor/gtk/editor.c:1319
+msgid "Untitled"
+msgstr ""
+
+#. Application caption
+#: ../editor/gtk/editor.c:1324 ../editor/gtk/pioneers-editor.desktop.in.h:1
+msgid "Pioneers Editor"
+msgstr "Editor for Pioneers"
+
+#: ../editor/gtk/editor.c:1434
+#, c-format
+msgid "Failed to load '%s'"
+msgstr "Kunne ikke indlæse '%s'"
+
+#: ../editor/gtk/editor.c:1482
+#, c-format
+msgid "Failed to save to '%s'"
+msgstr "Kunne ikke gemme '%s'"
+
+#. Name of the file filter: show only games
+#: ../editor/gtk/editor.c:1499
+#, fuzzy
+msgid "Games"
+msgstr "_Spil"
+
+#. Name of the file filter: show all files
+#: ../editor/gtk/editor.c:1505
+msgid "Unfiltered"
+msgstr ""
+
+#. Dialog caption
+#: ../editor/gtk/editor.c:1517
+msgid "Open Game"
+msgstr "Åbn spil"
+
+#. Button text
+#: ../editor/gtk/editor.c:1524
+#, fuzzy
+msgid "_Open"
+msgstr "_Åben..."
+
+#. Dialog caption
+#: ../editor/gtk/editor.c:1558
+msgid "Save As..."
+msgstr "Gem som..."
+
+#. Button text
+#: ../editor/gtk/editor.c:1565
+#, fuzzy
+msgid "Save _As"
+msgstr "Gem _som..."
+
+#. Dialog caption
+#: ../editor/gtk/editor.c:1606
+msgid "Change Title"
+msgstr "Ændre titel"
+
+#. Label
+#: ../editor/gtk/editor.c:1631
+msgid "New title:"
+msgstr "Ny titel:"
+
+#. Caption of about box
+#: ../editor/gtk/editor.c:1688
+msgid "About Pioneers Game Editor"
+msgstr "Om Pioneers editor"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1718
+msgid "_File"
+msgstr "_Arkivér"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1728
+msgid "_New"
+msgstr "_Ny"
+
+#: ../editor/gtk/editor.c:1729
+msgid "Create a new game"
+msgstr "Skab et nyt spil"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1732
+msgid "_Open..."
+msgstr "_Åben..."
+
+#. Tooltip for Open menu entry
+#: ../editor/gtk/editor.c:1734
+msgid "Open an existing game"
+msgstr "Åben et bestående spil"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1737
+msgid "_Save"
+msgstr "_Gem"
+
+#. Tooltip for Save menu entry
+#: ../editor/gtk/editor.c:1739
+msgid "Save game"
+msgstr "Gem spil"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1742
+msgid "Save _As..."
+msgstr "Gem _som..."
+
+#. Tooltip for Save As menu entry
+#: ../editor/gtk/editor.c:1745
+msgid "Save as"
+msgstr "Gem som"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1748
+#, fuzzy
+msgid "Change _Title"
+msgstr "Ændre titel"
+
+#. Tooltip for Change Title menu entry
+#: ../editor/gtk/editor.c:1750
+msgid "Change game title"
+msgstr "Ændre spil titel"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1753 ../server/gtk/main.c:97
+msgid "_Check Victory Point Target"
+msgstr "Tjek _pointmål for at vinde"
+
+#. Tooltip for Check Victory Point Target menu entry
+#. Tooltop for Check Victory Point Target menu entry
+#: ../editor/gtk/editor.c:1756 ../server/gtk/main.c:100
+msgid "Check whether the game can be won"
+msgstr "Tjek om spillet kan vindes"
+
+#. Tooltip for Quit menu entry
+#: ../editor/gtk/editor.c:1761
+msgid "Quit"
+msgstr "Afslut"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1783
+msgid "_About Pioneers Editor"
+msgstr "_Om Pioneers editor"
+
+#. Tooltip for About Pioneers Editor menu entry
+#: ../editor/gtk/editor.c:1785
+msgid "Information about Pioneers Editor"
+msgstr "Information om Pioneers editor"
+
+#. Long help for commandline option (editor): filename
+#: ../editor/gtk/editor.c:1838
+msgid "Open this file"
+msgstr "Åben denne fil"
+
+#. Commandline option for editor: filename
+#. Commandline metaserver: pidfile argument
+#: ../editor/gtk/editor.c:1840 ../metaserver/main.c:615
+msgid "filename"
+msgstr "filnavn"
+
+#. Long description in the command line: --help
+#: ../editor/gtk/editor.c:1877
+msgid "- Editor for games of Pioneers"
+msgstr "- Editor for Pioneers spil"
+
+#. Error message
+#: ../editor/gtk/editor.c:1921 ../server/gtk/main.c:1256
+#, c-format
+msgid "Building menus failed: %s"
+msgstr ""
+
+#. Tab page name
+#: ../editor/gtk/editor.c:1951
+msgid "Settings"
+msgstr "Opsætninger"
+
+#. Tab page name
+#: ../editor/gtk/editor.c:1954
+msgid "Comments"
+msgstr ""
+
+#: ../editor/gtk/game-resources.c:48
+msgid "Resource count"
+msgstr "Ressource optælling"
+
+#: ../editor/gtk/pioneers-editor.desktop.in.h:2
+msgid "Create your own game for Pioneers"
+msgstr "Skab dit eget spil til Pioneers"
+
+#: ../editor/gtk/pioneers-editor.desktop.in.h:3
+msgid "game;board;create;edit;layout;Pioneers;Settlers;"
+msgstr ""
+
+#. Commandline metaserver: daemon
+#: ../metaserver/main.c:610
+#, fuzzy
+msgid "Daemonize the metaserver on start"
+msgstr "Kør metaserver i baggrund ved start"
+
+#. Commandline metaserver: pidfile
+#: ../metaserver/main.c:613
+msgid "Pidfile to create when daemonizing (implies -d)"
+msgstr ""
+
+#. Commandline metaserver: redirect
+#: ../metaserver/main.c:618
+#, fuzzy
+msgid "Redirect clients to another metaserver"
+msgstr "Omdiriger klienter til en anden metaserver"
+
+#. Commandline metaserver: server
+#: ../metaserver/main.c:621
+msgid "Use this hostname when creating new games"
+msgstr "Brug dette værtsnavn når der skabes et nyt spil"
+
+#. Commandline metaserver: server argument
+#: ../metaserver/main.c:623
+msgid "hostname"
+msgstr "værtsnavn"
+
+#. Commandline metaserver: port-range
+#: ../metaserver/main.c:626
+msgid "Use this port range when creating new games"
+msgstr "Anvend det her portinterval når nye spil skabes"
+
+#. Commandline metaserver: port-range argument
+#: ../metaserver/main.c:628
+msgid "from-to"
+msgstr "fra-til"
+
+#. Commandline option of metaserver: syslog-debug
+#: ../metaserver/main.c:634
+msgid "Debug syslog messages"
+msgstr "Fejlmeddelelse til systemlog"
+
+#. Long description in the commandline for metaserver: help
+#: ../metaserver/main.c:675
+msgid "- Metaserver for Pioneers"
+msgstr "- Metaserver for Pioneers"
+
+#: ../metaserver/main.c:691
+#, fuzzy, c-format
+msgid "metaserver protocol:"
+msgstr "metaserver protekol:"
+
+#: ../server/avahi.c:68
+msgid "Avahi registration successful.\n"
+msgstr ""
+
+#: ../server/avahi.c:78
+#, c-format
+msgid "Avahi service name collision, renaming service to '%s'.\n"
+msgstr ""
+
+#. Some kind of failure happened while we were registering
+#: ../server/avahi.c:89
+#, c-format
+msgid "Avahi error: %s\n"
+msgstr ""
+
+#: ../server/avahi.c:113 ../server/avahi.c:145 ../server/avahi.c:155
+#: ../server/avahi.c:191 ../server/avahi.c:212 ../server/avahi.c:226
+#, fuzzy, c-format
+msgid "Avahi error: %s, %s\n"
+msgstr "Fejl (%s): %s\n"
+
+#: ../server/avahi.c:213 ../server/avahi.c:227
+msgid "Unable to register Avahi server"
+msgstr ""
+
+#: ../server/avahi.c:260
+msgid "Unregistering Avahi.\n"
+msgstr ""
+
+#. Menu entry
+#: ../server/gtk/main.c:108
+msgid "_About Pioneers Server"
+msgstr "_Om Pioneers server"
+
+#. Tooltop for About Pioneers Server menu entry
+#: ../server/gtk/main.c:110
+msgid "Information about Pioneers Server"
+msgstr "Information om Pioneers server"
+
+#: ../server/gtk/main.c:234
+msgid "Stop Server"
+msgstr "Stop server"
+
+#: ../server/gtk/main.c:235
+msgid "Start Server"
+msgstr "Start server"
+
+#: ../server/gtk/main.c:237 ../server/gtk/main.c:996
+msgid "Stop the server"
+msgstr "Stop serveren"
+
+#: ../server/gtk/main.c:238
+msgid "Start the server"
+msgstr "Start serveren"
+
+#: ../server/gtk/main.c:395
+#, c-format
+msgid "Player %s from %s entered\n"
+msgstr "Spiller %s fra %s ankommet\n"
+
+#: ../server/gtk/main.c:402
+#, c-format
+msgid "Player %s from %s left\n"
+msgstr "Spiller %s fra %s forlod spil\n"
+
+#: ../server/gtk/main.c:409
+#, c-format
+msgid "Player %d is now %s\n"
+msgstr "Spiller %d er nu %s\n"
+
+#: ../server/gtk/main.c:570
+msgid "The port for the game server"
+msgstr "Porten for spil serveren"
+
+#. register_toggle
+#: ../server/gtk/main.c:579
+msgid "Register server"
+msgstr "Registrer server"
+
+#: ../server/gtk/main.c:587
+msgid "Register this game at the metaserver"
+msgstr "Registrer dette spil på metaserveren"
+
+#. hostname label
+#: ../server/gtk/main.c:618
+msgid "Reported hostname"
+msgstr "Rapporteret værtsnavn"
+
+#: ../server/gtk/main.c:633
+msgid ""
+"The public name of this computer (needed when playing behind a firewall)"
+msgstr ""
+"Det offentlige navn for denne computer (nødvendigt når der spilles bag en "
+"firewall)"
+
+#. random toggle
+#: ../server/gtk/main.c:652
+#, fuzzy
+msgid "Random turn order"
+msgstr "Skab en tilfældig tur rækkefølge"
+
+#: ../server/gtk/main.c:659
+msgid "Randomize turn order"
+msgstr "Skab en tilfældig tur rækkefølge"
+
+#. Tooltip for server connection overview
+#: ../server/gtk/main.c:730
+#, fuzzy
+msgid "Shows all players and spectators connected to the server"
+msgstr "Vis alle spillere og tilskuere, der er tilsluttet serveren"
+
+#. Label for column Connected
+#: ../server/gtk/main.c:735
+msgid "Connected"
+msgstr "Tilsluttet"
+
+#. Tooltip for column Connected
+#: ../server/gtk/main.c:742
+msgid "Is the player currently connected?"
+msgstr "er spilleren tilsluttet?"
+
+#. Label for column Name
+#: ../server/gtk/main.c:747
+msgid "Name"
+msgstr "Navn"
+
+#. Tooltip for column Name
+#: ../server/gtk/main.c:754
+msgid "Name of the player"
+msgstr "Navn på spiller"
+
+#. Label for column Location
+#: ../server/gtk/main.c:758
+msgid "Location"
+msgstr "Placering"
+
+#. Tooltip for column Location
+#: ../server/gtk/main.c:765
+msgid "Host name of the player"
+msgstr "Værts navn for spilleren"
+
+#. Label for column Number
+#: ../server/gtk/main.c:771
+msgid "Number"
+msgstr "Nummer"
+
+#. Tooltip for column Number
+#: ../server/gtk/main.c:778
+msgid "Player number"
+msgstr "Spiller nummer"
+
+#. Label for column Role
+#: ../server/gtk/main.c:784
+msgid "Role"
+msgstr "Rolle"
+
+#. Tooltip for column Role
+#: ../server/gtk/main.c:788
+#, fuzzy
+msgid "Player or spectator"
+msgstr "Tilskuere"
+
+#. Button text
+#: ../server/gtk/main.c:825
+msgid "Launch Pioneers Client"
+msgstr "Start Pioneers klient"
+
+#. Tooltip
+#: ../server/gtk/main.c:839
+msgid "Launch the Pioneers client"
+msgstr "Start Pioneers klienten"
+
+#. ai chat toggle
+#: ../server/gtk/main.c:868
+msgid "Enable chat"
+msgstr "Tilslut chat"
+
+#. Tooltip
+#: ../server/gtk/main.c:875
+msgid "Enable chat messages"
+msgstr "Tillad chat meddelelser"
+
+#. Button text
+#: ../server/gtk/main.c:884
+msgid "Add Computer Player"
+msgstr "Tilføj computer spiller"
+
+#. Tooltip
+#: ../server/gtk/main.c:892
+msgid "Add a computer player to the game"
+msgstr "Tilføj en computerspiller til spillet"
+
+#. Tooltip
+#: ../server/gtk/main.c:925
+msgid "Messages from the server"
+msgstr "Meddelelse fra serveren"
+
+#: ../server/gtk/main.c:961
+msgid "Game settings"
+msgstr "Spilopsætning"
+
+#. server frame
+#: ../server/gtk/main.c:972
+msgid "Server parameters"
+msgstr "Server parametre"
+
+#: ../server/gtk/main.c:992
+msgid "Running game"
+msgstr "Kører spillet"
+
+#. player connected frame
+#: ../server/gtk/main.c:1008
+msgid "Players connected"
+msgstr "Spillere tilsluttet"
+
+#. ai frame
+#: ../server/gtk/main.c:1012
+msgid "Computer players"
+msgstr "Computer spillere"
+
+#. message frame
+#: ../server/gtk/main.c:1024
+msgid "Messages"
+msgstr "Beskeder"
+
+#. Caption of about box
+#: ../server/gtk/main.c:1150
+#, fuzzy
+msgid "About the Pioneers Game Server"
+msgstr "Pioneers spil server"
+
+#
+#. Wait for all players to disconnect,
+#. * then enable the UI
+#.
+#: ../server/gtk/main.c:1158
+msgid "The game is over.\n"
+msgstr "Spiller er slut.\n"
+
+#. Long description in the commandline for server-gtk: help
+#. Long description in the commandline for server-console: help
+#: ../server/gtk/main.c:1212 ../server/main.c:194
+msgid "- Host a game of Pioneers"
+msgstr "- Vær vært for et spil Pioneers"
+
+#. Name in the titlebar of the server
+#: ../server/gtk/main.c:1236 ../server/gtk/pioneers-server-gtk.desktop.in.h:1
+msgid "Pioneers Server"
+msgstr "Pioneer Server"
+
+#: ../server/gtk/pioneers-server-gtk.desktop.in.h:2
+msgid "Host a game of Pioneers"
+msgstr "Vær vært for et spil Pioneers"
+
+#: ../server/gtk/pioneers-server-gtk.desktop.in.h:3
+msgid "game;board;server;host;Pioneers;Settlers;"
+msgstr ""
+
+#. Commandline server-console: game-title
+#: ../server/main.c:80
+msgid "Game title to use"
+msgstr "Spil titel der kan bruges"
+
+#. Commandline server-console: file
+#: ../server/main.c:83
+msgid "Game file to use"
+msgstr "Spil fil der kan bruges"
+
+#. Commandline server-console: port
+#: ../server/main.c:86
+msgid "Port to listen on"
+msgstr "Port at lytte til"
+
+#. Commandline server-console: players
+#: ../server/main.c:89
+msgid "Override number of players"
+msgstr "Tilsidesæt antal spillere"
+
+#. Commandline server-console: points
+#: ../server/main.c:92
+msgid "Override number of points needed to win"
+msgstr "tilsidesæt antal point, der er nødvendige for at vinde"
+
+#. Commandline server-console: seven-rule
+#: ../server/main.c:95
+msgid "Override seven-rule handling"
+msgstr "Tilsidesæt 7'er regel"
+
+#. Commandline server-console: dice-deck
+#: ../server/main.c:98
+#, fuzzy
+msgid "Override dice-deck handling"
+msgstr "Tilsidesæt 7'er regel"
+
+#. Commandline server-console: num-dice-decks
+#: ../server/main.c:101
+#, fuzzy
+msgid "Override num-dice-decks handling"
+msgstr "Tilsidesæt 7'er regel"
+
+#. Commandline server-console: num-removed-dice-cards
+#: ../server/main.c:105
+#, fuzzy
+msgid "Override num-removed-dice-cards handling"
+msgstr "Tilsidesæt 7'er regel"
+
+#. Commandline server-console: terrain
+#: ../server/main.c:108
+msgid "Override terrain type, 0=default 1=random"
+msgstr "Tilsidesæt terræntype, 0=standard 1=tilfældig"
+
+#. Commandline server-console: computer-players
+#: ../server/main.c:111
+msgid "Add N computer players"
+msgstr "Tilføj N computerspillere"
+
+#. Commandline server-console: register
+#: ../server/main.c:121
+msgid "Register server with metaserver"
+msgstr "Registrer server hos metaserver"
+
+#. Commandline server-console: metaserver
+#: ../server/main.c:124
+msgid "Register at metaserver name (implies -r)"
+msgstr ""
+
+#. Commandline server-console: hostname
+#: ../server/main.c:128
+msgid "Use this hostname when registering"
+msgstr "Brug dette værtsnavn ved registrering"
+
+#. Commandline server-console: auto-quit
+#: ../server/main.c:135
+msgid "Quit after a player has won"
+msgstr "Afbryd når en spiller har vundet"
+
+#. Commandline server-console: empty-timeout
+#: ../server/main.c:138
+msgid "Quit after N seconds with no players"
+msgstr "Afbryd efter N sekunder uden spillere"
+
+#. Commandline server-console: tournament
+#: ../server/main.c:141
+msgid "Tournament mode, computer players added after N minutes"
+msgstr ""
+
+#. Commandline server-console: admin-port
+#: ../server/main.c:145
+msgid "Admin port to listen on"
+msgstr "Administrationsport at lytte på"
+
+#. Commandline server-console: admin-wait
+#: ../server/main.c:148
+msgid "Don't start game immediately, wait for a command on admin port"
+msgstr "Start ikke spilllet lige nu, vent for besked på admin port"
+
+#. Commandline server-console: fixed-seating-order
+#: ../server/main.c:154
+msgid "Give players numbers according to the order they enter the game"
+msgstr ""
+"Giv spillerne et nummer svarende til den rækkefølge de meldte sig til spillet"
+
+#. Commandline server-console: Short description of meta group
+#: ../server/main.c:200
+msgid "Metaserver Options"
+msgstr "Metaserver muligheder"
+
+#. Commandline server-console: Long description of meta group
+#: ../server/main.c:202
+msgid "Options for the metaserver"
+msgstr "Opsætning af metaserver"
+
+#. Commandline server-console: Short description of misc group
+#: ../server/main.c:211
+msgid "Miscellaneous Options"
+msgstr "Diverse indstillinger"
+
+#. Commandline server-console: Long description of misc group
+#: ../server/main.c:213
+msgid "Miscellaneous options"
+msgstr "Diverse indstillinger"
+
+#. server-console commandline error
+#: ../server/main.c:239
+#, c-format
+msgid "Cannot set game title and filename at the same time\n"
+msgstr ""
+
+#. server-console commandline error
+#: ../server/main.c:256
+#, c-format
+msgid "Cannot load the parameters for the game\n"
+msgstr "Kan ikke indlæse parametre for spillet\n"
+
+#. Error message
+#: ../server/main.c:305 ../server/main.c:324
+#, c-format
+msgid "The network port (%s) for the admin interface is not available.\n"
+msgstr ""
+
+#: ../server/meta.c:58
+#, fuzzy
+msgid "The connection to the metaserver is lost.\n"
+msgstr "Opsætning af metaserver"
+
+#: ../server/meta.c:64
+#, c-format
+msgid "An attempt to reconnect is scheduled in %u second.\n"
+msgid_plural "An attempt to reconnect is scheduled in %u seconds.\n"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../server/meta.c:83
+#, fuzzy
+msgid "Attempting to reconnect to the metaserver.\n"
+msgstr "Opsætning af metaserver"
+
+#: ../server/meta.c:311
+#, fuzzy, c-format
+msgid "Register with the metaserver at %s.\n"
+msgstr "Registrer med metaserver %s, port %s\n"
+
+#: ../server/meta.c:322
+#, fuzzy
+msgid "Unregister from the metaserver.\n"
+msgstr "Afregistrerer fra metaserver\n"
+
+#: ../server/player.c:142
+msgid "chat too long"
+msgstr "char for lang"
+
+#: ../server/player.c:159
+msgid "name too long"
+msgstr "navn for langt"
+
+#: ../server/player.c:191
+msgid "ignoring unknown extension"
+msgstr "ser bort fra ukendt extension"
+
+#: ../server/player.c:228 ../server/player.c:298
+msgid "The last player left, the tournament timer is reset."
+msgstr ""
+
+#: ../server/player.c:262 ../server/player.c:643
+msgid "No human players present. Bye."
+msgstr ""
+
+#: ../server/player.c:269
+msgid "Game starts, adding computer players."
+msgstr "Spil starter, tilføjer computer spillere"
+
+#: ../server/player.c:311
+#, c-format
+msgid "The game starts in %s minutes."
+msgstr "Spillet starter om %s minutter."
+
+#: ../server/player.c:312
+#, c-format
+msgid "The game starts in %s minute."
+msgstr "Spillet starter om %s minutter."
+
+#
+#. Default name for the AI when the computer_names file
+#. * is not found or empty.
+#.
+#: ../server/player.c:370 ../server/player.c:376
+msgid "Computer Player"
+msgstr "Computerspiller"
+
+#: ../server/player.c:450
+#, c-format
+msgid "Unable to determine the hostname of the player: %s"
+msgstr ""
+
+#. The game is over, don't accept new players
+#. Message to send to the client when the game is already over
+#. * when a connection is made.
+#: ../server/player.c:476
+msgid "Sorry, game is over."
+msgstr "Beklager, spillet er afsluttet."
+
+#: ../server/player.c:478
+#, c-format
+msgid "Player from %s is refused: game is over\n"
+msgstr "Spiller fra %s er afvist: Spil er overstået\n"
+
+#: ../server/player.c:520
+msgid "Name not changed: new name is already in use"
+msgstr "Navn ikke ændret: Nyt navn allerede i brug"
+
+#: ../server/player.c:638 ../server/server.c:38
+msgid "Was hanging around for too long without players... bye.\n"
+msgstr "Ventede for længe uden spillere... farvel\n"
+
+#: ../server/player.c:723
+msgid "The last human player left. Waiting for the return of a player."
+msgstr ""
+
+#: ../server/player.c:744
+msgid "Resuming the game."
+msgstr ""
+
+#. %s is the name of the reconnecting player
+#: ../server/player.c:870
+#, c-format
+msgid "%s has reconnected."
+msgstr "%s har tilsluttet sig igen."
+
+#: ../server/player.c:970
+#, c-format
+msgid "Version mismatch: %s"
+msgstr "Versions uoverensstemmelse: %s"
+
+#: ../server/player.c:1007
+msgid "This game will start soon."
+msgstr "Dette spil vil starte om lidt."
+
+#. Server: preparing game #.....
+#: ../server/server.c:221
+msgid "Preparing game"
+msgstr "Forbereder spil"
+
+#: ../server/turn.c:254
+msgid "Island Discovery Bonus"
+msgstr "Bonus for opdagelse af ø"
+
+#: ../server/turn.c:255
+msgid "Additional Island Bonus"
+msgstr "Bonus for yderligere ø"
+
+#: ../server/turn.c:386
+msgid "Tried to assign resources to NULL player.\n"
+msgstr "Forsøgte at tildele ressourcer til NUL spiller.\n"
+
+#. Cheat mode has been activated
+#: ../server/turn.c:516
+msgid "The dice roll has been determined by the administrator."
+msgstr ""
+
+#~ msgid "Join the selected game"
+#~ msgstr "Deltag i det valgte spil"
+
+#~ msgid "Don't join a public game"
+#~ msgstr "Deltag ikke i et offentligt spil"
+
+#~ msgid "Create a new public game at the metaserver"
+#~ msgstr "Skab et nyt offentligt spil på metaserveren"
+
+#~ msgid "Refresh the list of games"
+#~ msgstr "Genopfrisk listen over spil"
+
+#~ msgid "Version:"
+#~ msgstr "Version:"
+
+#~ msgid "Homepage:"
+#~ msgstr "Hjemmeside:"
+
+#~ msgid "Authors:"
+#~ msgstr "Forfattere:"
+
+#~ msgid "Pioneers is translated to <your language here> by:\n"
+#~ msgstr "Pioneers er oversat til dansk af:\n"
+
+#~ msgid "Metaserver kicked us off\n"
+#~ msgstr "Mataserver smed os af\n"
+
+#~ msgid ""
+#~ "<b>Note</b>:\n"
+#~ "\tThe metaserver does not send information about the games.\n"
+#~ "\tPlease set appropriate values yourself."
+#~ msgstr ""
+#~ "<b>Bemærk</b>:\n"
+#~ "\tMetaserveren sender ikke information om spillene.\n"
+#~ "\tSæt selv passende værdier."
+
+#~ msgid "Error checking connect status: %s\n"
+#~ msgstr "Fejl ved kontrol af tilslutningsstatus: %s\n"
+
+#~ msgid "Error connecting to host '%s': %s\n"
+#~ msgstr "Fejl under tilslutning til vært '%s': %s\n"
+
+#~ msgid "Listening not yet supported on this platform."
+#~ msgstr "Lytning endnu ikke understøttet på denne platform."
+
+#~ msgid "Error getting peer name: %s"
+#~ msgstr "Fejl ved læsning af modpartens navn: %s"
+
+#~ msgid "Error resolving address: %s"
+#~ msgstr "Fejl ved opslag af adresse: %s"
+
+#~ msgid "Net_get_peer_name not yet supported on this platform."
+#~ msgstr "Net_get_peer_name er endnu ikke understøttet på denne platform."
+
+#~ msgid "Error accepting connection: %s"
+#~ msgstr "Fejl ved accept af tilslutning: %s"
+
+#, fuzzy
+#~ msgid "Admin port not available.\n"
+#~ msgstr "Beklager, %s tilgængelig.\n"
+
+#~ msgid "Viewer %d"
+#~ msgstr "Seer %d"
+
+#~ msgid "viewer %d"
+#~ msgstr "seer %d"
+
+#~ msgid "<b>I want</b>"
+#~ msgstr "<b>Jeg ønsker</b>"
+
+#~ msgid "<b>Give them</b>"
+#~ msgstr "<b>Giv dem</b>"
+
+#~ msgid "Viewer: "
+#~ msgstr "Tilskuer: "
+
+#~ msgid "Number of AI Players"
+#~ msgstr "Antal spillere"
+
+#~ msgid "The number of AI players"
+#~ msgstr "Antallet af spillere"
+
+#~ msgid "Recent Games"
+#~ msgstr "Seneste spil"
+
+#~ msgid "You may choose 1 resource"
+#~ msgstr "Du kan vælge en ressource"
+
+#~ msgid "_Player name"
+#~ msgstr "_Spillernavn"
+
+#~ msgid "The Pioneers Game"
+#~ msgstr "Pioneer spillet"
+
+#~ msgid "Select the ship to steal from"
+#~ msgstr "Vælg hvilket skib, der skal stjæles fra"
+
+#~ msgid "Select the building to steal from"
+#~ msgstr "Vælg en bygning at stjæle fra"
+
+#~ msgid "Development Card"
+#~ msgstr "Udviklingskort"
+
+#~ msgid "Player Name:"
+#~ msgstr "Spiller navn:"
+
+#~ msgid "I Want"
+#~ msgstr "Jeg ønsker"
+
+#~ msgid "Interplayer Trading Allowed?"
+#~ msgstr "Handel mellem spillere tilladt?"
+
+#~ msgid "Trading allowed only before build/buy?"
+#~ msgstr "Handel kun tilladt før bygning/indkøb?"
+
+#~ msgid "Sevens Rule:"
+#~ msgstr "7'er regel:"
+
+#~ msgid "Use Pirate:"
+#~ msgstr "Brug pirat:"
+
+#~ msgid "Number of Players"
+#~ msgstr "Antal spillere"
+
+#~ msgid "Development Cards"
+#~ msgstr "Udviklingskort"
+
+#~ msgid "Save as..."
+#~ msgstr "Gem som ..."
+
+#~ msgid "Pioneers Game Editor"
+#~ msgstr "Pioneers spil editor"
+
+#~ msgid "_Change title"
+#~ msgstr "_Ændre titel"
+
+#~ msgid "Random Turn Order"
+#~ msgstr "Tilfældig rækkefølge"
+
+#~ msgid "_Legend"
+#~ msgstr "_Forklaring"
+
+#~ msgid "Missing game directory\n"
+#~ msgstr "Mangler spil katalog\n"

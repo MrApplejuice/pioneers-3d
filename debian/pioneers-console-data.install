@@ -1,0 +1,3 @@
+debian/tmp/usr/share/games/pioneers/*.game
+debian/tmp/usr/share/games/pioneers/computer_names
+debian/tmp/usr/share/locale

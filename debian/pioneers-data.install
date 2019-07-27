@@ -1,0 +1,8 @@
+debian/tmp/usr/share/games/pioneers/themes
+debian/tmp/usr/share/help
+debian/tmp/usr/share/icons/hicolor
+debian/tmp/usr/share/pixmaps/pioneers/*.png
+debian/tmp/usr/share/pixmaps/pioneers/*.svg
+debian/tmp/usr/share/pixmaps/pioneers-editor.png
+debian/tmp/usr/share/pixmaps/pioneers-server.png
+debian/tmp/usr/share/pixmaps/pioneers.png

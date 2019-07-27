@@ -1,0 +1,120 @@
+# translation of pioneers-eu.po to Euskara
+# Copyright 2008 Piarres Beobide <pi@beobide.net>
+# This file is distributed under the same license as the pioneers package.
+#
+# Piarres Beobide <pi@beobide.net>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: pioneers-eu\n"
+"Report-Msgid-Bugs-To: pioneers@packages.debian.org\n"
+"POT-Creation-Date: 2013-03-22 12:32+0100\n"
+"PO-Revision-Date: 2008-05-13 10:09+0200\n"
+"Last-Translator: Piarres Beobide <pi@beobide.net>\n"
+"Language-Team: Euskara <debian-l10n-basque@lists.debian.org>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+#, fuzzy
+#| msgid "Port range for creating new games on the meta-server:"
+msgid "Port range for creating new games on the metaserver:"
+msgstr "Meta-zerbitzarian joko berriak sortzeko ataka bitartea:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+#, fuzzy
+#| msgid ""
+#| "The meta-server can create new games, so players don't need to install "
+#| "and run the pioneers server. The ports which are used for these games can "
+#| "be specified. If this field is left empty, the meta-server will disable "
+#| "its game creation functionality."
+msgid ""
+"The metaserver can create new games, so players don't need to install and "
+"run the pioneers server. The ports which are used for these games can be "
+"specified. If this field is left empty, the metaserver will disable its game "
+"creation functionality."
+msgstr ""
+"Meta-zerbitzaria joko berriak sortzeko gai da erabiltzaileek pioneers "
+"zerbitzaria instalatu eta abiarazi behar ez dezaten. Joko hauetarako "
+"erabiliko diren atakak zehaztu daitezke. Eremu hau zurian uzten baduzu meta-"
+"zerbitzariak jokoak sortzeko ezaugarria ezgaitu egingo du."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+msgid ""
+"If the value is not empty, it must be two port numbers, separated by a minus "
+"sign."
+msgstr ""
+"Balioa hutsik ez badago ken ikur batez bereiziriko bi ataka zenbaki eduki "
+"behar ditu."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:2001
+msgid "Server name for created games:"
+msgstr "Sorturiko jokoen zerbitzari izena:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:2001
+#, fuzzy
+#| msgid ""
+#| "In some cases, the name the meta-server uses for itself when creating new "
+#| "games is incorrect. If this field is not left empty, it is used to "
+#| "override the detected hostname."
+msgid ""
+"In some cases, the name the metaserver uses for itself when creating new "
+"games is incorrect. If this field is not left empty, it is used to override "
+"the detected hostname."
+msgstr ""
+"Kasu batzuetan okerra izan daiteke meta-zerbitzariaren izena erabiltzea joko "
+"berriak sortzean. Eremu hau hutsik uzten ez bada atzemandako ostalari izena "
+"gainidazteko erabiliko da."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:3001
+#, fuzzy
+#| msgid "Extra arguments to pass to the meta-server:"
+msgid "Extra arguments to pass to the metaserver:"
+msgstr "Meta-zerbitzarira bidaltzeko argumentu gehigarriak:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:3001
+#, fuzzy
+#| msgid ""
+#| "These arguments are passed to the meta-server. There are only two "
+#| "sensible arguments:\n"
+#| " * --syslog-debug: Send debugging output to syslog\n"
+#| " * --redirect: Redirect clients to another meta-server"
+msgid ""
+"These arguments are passed to the metaserver.\n"
+" * --redirect: Redirect clients to another metaserver"
+msgstr ""
+"Argumentu hauek meta-zerbitzarira bidaliko dira. Bi argumentu erabilgarri "
+"bakarrik daude:\n"
+" * --syslog-debug: Bidali arazpen irteera syslog-era\n"
+" * --redirect: Birbidali bezeroak beste meta-zerbitzari batetara"
+
+#~ msgid "Run the pioneers meta-server?"
+#~ msgstr "Exekutatu pioneers meta-zerbitzaria?"
+
+#~ msgid ""
+#~ "Pioneers contains a meta-server, which can be used to find networked "
+#~ "games. The meta-server needs to run in a central location, so that all "
+#~ "players can find it. There is a public meta-server at pioneers.debian."
+#~ "net. Most people do not need to run a meta-server on their computer."
+#~ msgstr ""
+#~ "Sare bidezko jokoak aurkitzeko erabili daitekeen meta-zerbitzari bat du "
+#~ "pioneers-ek. Meta-zerbitzari hau kokaleku zentralizatu batetan exekutatu "
+#~ "behar da, honela jokalariak aurkitzeko gai izan daitezen. Meta-zerbitzari "
+#~ "publiko bat dago pioneers.debian.net-en. Jende gehienak ez du meta-"
+#~ "zerbitzaria bere ordenagailuan exekutatzeko beharrik."

@@ -1,0 +1,93 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Pioneers
+Upstream-Contact: Roland Clobus <rclobus@rclobus.nl>
+Source: https://sourceforge.net/projects/pio/files/
+
+Files: *
+Copyright: 2000-2014 by the following authors
+ Dave Cole <dave@dccs.com.au>
+ Andy Heroff <aheroff@mediaone.net>
+ Roman Hodek <roman@hodek.net>
+ Dan Egnor <egnor@ofb.net>
+ Steve Langasek <vorlon@dodds.net>
+ Bibek Sahu <scorpio@dodds.net>
+ Roderick Schertler <roderick@argon.org>
+ Jeff Breidenbach <jab@debian.org>
+ David Fallon <davef@tetsubo.com>
+ Matt Waggoner <matt@waggoner.com>
+ Geoff Hanson <gwhizz@usa.net>
+ Bas Wijnen <shevek@fmf.nl>
+ Roland Clobus <rclobus@rclobus.nl>
+ Brian Wellington <bwelling@xbill.org>
+License: GPL-2+
+
+License: GPL-2+
+ This program is free software; you can redistribute it
+ and/or modify it under the terms of the GNU General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later
+ version.
+ .
+ This program is distributed in the hope that it will be
+ useful, but WITHOUT ANY WARRANTY; without even the implied
+ warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+ PURPOSE.  See the GNU General Public License for more
+ details.
+ .
+ You should have received a copy of the GNU General Public
+ License along with this package; if not, write to the Free
+ Software Foundation, Inc., 51 Franklin St, Fifth Floor,
+ Boston, MA  02110-1301 USA
+ .
+ On Debian systems, the full text of the GNU General Public
+ License version 2 can be found in the file
+ `/usr/share/common-licenses/GPL-2'.
+
+Files: debian/*
+Comment:
+ This package was first debianized by Dave Cole dave@dccs.com.au on
+ 1999-05-08T20:35:36+1000.
+ .
+ Although the debian packaging is not in the release tarball, it is part of the
+ upstream source, and is covered by the same license.
+Copyright: The copyright holders of the packaging are:
+ Dave Cole <dave@dccs.com.au>
+ Andy Heroff <aheroff@mediaone.net>
+ Jeff Breidenbach <jab@debian.org>
+ Bas Wijnen <shevek@fmf.nl>
+ Roland Clobus <rclobus@rclobus.nl>
+License: GPL-2+
+
+Files:
+ client/gtk/data/style-ai.svg
+ editor/gtk/pioneers-editor.svg
+ server/gtk/pioneers-server.svg
+Copyright: Roland Clobus <rclobus@rclobus.nl>
+Comment:
+ It contains artwork (computer and pencil) from the Gorilla theme
+ from the "GNOME Project", http://www.gnome.org, which has been
+ relicensed to CC-BY-SA-4.0.
+License: CC-BY-SA-4.0
+
+License: CC-BY-SA-4.0
+ This work is licensed under the terms of Creative Commons Attribution-Share
+ Alike 4.0 License.
+ .
+ To view a copy of the CC-BY-SA licence, visit
+ http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative
+ Commons, 171 Second Street, Suite 300, San Francisco, California 94105, USA.
+
+Files:
+ client/gtk/data/pioneers.svg
+ common/gtk/pioneers-checkmark.svg
+ common/gtk/pioneers-cross.svg
+Copyright: Roland Clobus <rclobus@rclobus.nl>
+License: CC-BY-SA-4.0
+
+Files: client/gtk/data/themes/ccFlickr/*
+Copyright: Aaron Williamson <aaron@copiesofcopies.org>
+License: CC-BY-SA
+ The images in this theme are licensed under the terms of Creative Commons
+ Attribution-Share Alike License.
+ .
+ See client/gtk/data/themes/ccFlickr/ATTRIB for the details.

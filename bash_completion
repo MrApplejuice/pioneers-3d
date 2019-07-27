@@ -1,0 +1,19 @@
+# This function parses the output of --help-all
+# All GLib based programs support this commandline option
+#
+# Only show the long options if both long and short are provided
+#
+_help_all()
+{
+	local cur opts cmd
+	cur=`_get_cword`
+	cmd=$1
+	opts="`${cmd} --help-all | grep -- "[[:space:]]*-"| tr "," " " | awk '$2 ~ /^--/ && $1 ~ /^-[^-]/ {print $2; next} $1 ~ /^-/ {print $1}' | sed -e "s:=.*::g"`"
+	COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+	return 0
+}
+complete -F _help_all $default pioneers
+complete -F _help_all $default pioneers-server-console
+complete -F _help_all $default pioneers-meta-server
+complete -F _help_all $default pioneersai
+complete -F _help_all $default pioneers-server-gtk

@@ -1,0 +1,31 @@
+title Small
+random-terrain
+strict-trade
+num-players 2
+sevens-rule 0
+victory-points 16
+num-roads 15
+num-bridges 0
+num-ships 0
+num-settlements 5
+num-cities 4
+num-city-walls 0
+resource-count 19
+develop-road 2
+develop-monopoly 2
+develop-plenty 2
+develop-chapel 1
+develop-university 1
+develop-governor 1
+develop-library 1
+develop-market 1
+develop-soldier 13
+desc A small map for two players
+chits 9,10,8,12,11,4,3,5,2,6
+map
+-,s,s?5,s,so4,-
+s?0,t0,p1,m2,s,-
+s,h3,t4,m5,f6,sb3
+sl0,h7,p8,f9,s,-
+-,s,sw1,s,sg2,-
+.

@@ -1,0 +1,49 @@
+title Mini another swimming pool in the wall
+domestic-trade
+num-players 3
+sevens-rule 0
+victory-points 16
+num-roads 20
+num-bridges 4
+num-ships 4
+num-settlements 6
+num-cities 5
+num-city-walls 0
+resource-count 20
+develop-road 4
+develop-monopoly 2
+develop-plenty 4
+develop-chapel 1
+develop-university 1
+develop-governor 1
+develop-library 1
+develop-market 1
+develop-soldier 13
+# v1.1, 4/08/2003
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+desc Copyright 2003 LT-P <LT-P@LT-P.net>
+desc 
+desc Please provide some feedback ;)
+chits 11,12,11,9,10,5,3,4,12,10,4,9,2,10,12,4,3,8,5,11,10,6,3,9,2,4,5,11,12,11,9,10,5,3,4,12,10,4,9,2,10,12,4,3,8,5,11,10,6,3,9,2,4,5,11,12,11,9,10,5,3,4,12,10,4,9,2,10,12,4,3
+map
+p0,p1,t2,p3,t4,p5,p6,f7,p8,f9,-
+t10,d11,d12,h13,f14,s,p15,p16,-,-,m17
+h18,d19,m20,d21,p22,t23,m24,s,s,p25,h26
+p27,d28,d29,f30,h31,s,-,p32,f33,d34,p35
+h36,p37,h38,p39,m40,s,p41,h42,p43,t44,m45
+t46,p47,f48,-,s,p49,t50,p51,s,s,p52
+p53,h54,s,-,p55,f56,m57,p58,s,s,t59
+-,s,p60,t61,p62,s,p63,f64,p65,p66,f67
+-,p68,f69,h70,p71,m72,m73,h74,p75,t76,p77
+.

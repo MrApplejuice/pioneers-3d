@@ -1,0 +1,49 @@
+title Another swimming pool in the wall
+domestic-trade
+num-players 6
+sevens-rule 0
+victory-points 16
+num-roads 24
+num-bridges 4
+num-ships 8
+num-settlements 6
+num-cities 5
+num-city-walls 0
+resource-count 20
+develop-road 4
+develop-monopoly 2
+develop-plenty 4
+develop-chapel 1
+develop-university 1
+develop-governor 1
+develop-library 1
+develop-market 1
+develop-soldier 13
+# v1.1, 4/08/2003
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+desc Copyright 2003 LT-P <LT-P@LT-P.net>
+desc 
+desc Please provide some feedback ;)
+chits 5,12,11,9,5,8,3,4,12,6,10,9,2,10,12,4,3,8,5,11,3,10,2,9,6,4,11,5,12,11,9,5,8,3,4,12,6,10,9,2,10,12,4,3,8,5,11,3,10,2,9,6,4,11,5,12,11,9,5,8,3,4,12,6,10,9,2,10,12,4,3,8,5,11,3,10,2,9,6,4,11,5,12,11,9,5,8,3,4,12,6,10,9,2,10,12
+map
+t0,p1,p2,t3,p4,t5,p6,p7,p8,f9,p10,f11,-,f12
+m13,t14,d15,d16,h17,f18,s,h19,p20,p21,-,-,m22,t23
+p24,h25,d26,m27,d28,p29,t30,p31,m32,s,s,p33,h34,p35
+p36,p37,d38,d39,f40,h41,t42,-,-,p43,f44,p45,d46,f47
+f48,h49,p50,h51,p52,m53,s,s,p54,h55,p56,t57,m58,p59
+p60,t61,p62,f63,-,s,p64,h65,t66,p67,s,s,p68,m69
+m70,p71,h72,s,-,p73,f74,p75,m76,p77,s,s,t78,p79
+f80,-,s,p81,t82,p83,s,s,p84,f85,p86,p87,f88,p89
+p90,-,p91,f92,h93,p94,m95,p96,m97,h98,p99,t100,p101,h102
+.

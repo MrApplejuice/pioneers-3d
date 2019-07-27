@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export DH_OPTIONS
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	./autogen.sh --prefix=/usr --bindir=/usr/games --mandir=/usr/share/man \
+		--enable-warnings \
+		--disable-dependency-tracking \
+		--disable-deprecation-checks
+
+override_dh_clean:
+	-rm ltmain.sh config.sub config.guess aclocal.m4
+	debconf-updatepo	
+	dh_clean
+

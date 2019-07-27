@@ -1,0 +1,109 @@
+Description of the format of files with the extension game
+
+The keywords in the *.game file
+-------------------------------
+Each line in the file can be:
+
+Type Contents of the line
+C    a comment (e.g. # this is a comment)
+S I  keyword value (string or integer) (e.g. num-players 4)
+B    keyword (if present, the option of the keyword is enabled)
+L    keyword, list of integers
+M    map specification
+
+Keyword              Type Description
+#                      C  A comment (see *1)
+title                  S  Title of the game
+random-terrain         B  Shuffle the terrain hexes
+strict-trade           B  Trade is allowed only before building
+domestic-trade         B  Trade between players is allowed
+num-players            I  Number of players
+sevens-rule            I  Sevens rule (see *2)
+victory-points         I  Number of points required to win
+num-roads              I  Number of roads for each player
+num-bridges            I  Number of bridges for each player
+num-ships              I  Number of ships for each player
+num-settlements        I  Number of settlements for each player
+num-cities             I  Number of cities for each player
+resource-count         I  Number of cards for each resource in the bank
+develop-road           I  Number of road building development cards
+develop-monopoly       I  Number of monopoly development cards
+develop-plenty         I  Number of year of plenty development cards
+develop-chapel         I  Number of chapel victory point cards
+develop-university     I  Number of university victory point cards
+develop-governor       I  Number of governors' house victory point cards
+develop-library        I  Number of library victory point cards
+develop-market         I  Number of market victory point cards
+develop-soldier        I  Number of soldier development cards
+use-pirate             B  Use the pirate too
+island-discovery-bonus L  Give bonus victory points for building on new islands
+                          The last number in the list is used for the
+                          additional islands.
+chits                  L  Chits (see *3)
+map                    M  Map (see *4)
+
+*1) Comment
+    A comment can be on every line.
+    It is customary to have a block of comments before the title line, and/or a
+    block after the map
+*2) Sevens rule
+    0 = Normal
+    1 = Reroll all sevens on the first two turns
+    2 = Reroll all sevens
+*3) Chits
+    A list of integers with dice rolls. Range: [2...12] except 7.
+    All values are comma separated.
+*4) Map
+    No arguments follow the keyword.
+    The map is defined by several lines until a line with only a point is
+    encountered.
+    Each line is a row in the map.
+    The tiles are comma separated.
+    Per tile:
+    - = void (nothing)
+    s = sea
+	If the next letter is a R, the pirate is here
+	The following letter (if present) specifies the port type
+	b = brick port
+	g = grain port
+	o = ore port
+	w = wool port
+	l = lumber port
+	m = gold port (???)
+	? = 3:1 port
+	If a port is specified, the following number indicates the direction of
+	the port:
+	  0 = East
+	  1 = North east
+	  2 = North west
+	  3 = West
+	  4 = South west
+	  5 = South east
+    t = tree (forest, brick)
+    p = pasture
+    f = field
+    h = hill
+    m = mountain
+    d = desert
+    g = gold
+    Each land tile has a sequence number (deserts too)
+      Sequence numbers should start at zero, and not have gaps.
+    If the sequence number is followed by a +, the tile will not be shuffled
+    in random boards.
+
+Constructing the map
+--------------------
+The tiles are placed in the hex grid as indicated by the lines in the map.
+Additional void tiles are added to balance the column lengths.
+The map can be shrunk (because of empty columns to the left or right).
+If the board is shuffled:
+  All resources for the land tiles are shuffled
+  All ports are shuffled (only the resource type, not the direction)
+  I.e. only the tiles that have not been excluded from shuffle.
+  Shuffling only affects the resource type, the sequence number is not
+  influenced.
+The number chits are distributed in the order of the sequence numbers. The
+desert tile(s) will be skipped.
+  If more number chits are defined than needed, it is an error.
+  If less number chits are defined than needed, the sequence of number chits is
+  started again.

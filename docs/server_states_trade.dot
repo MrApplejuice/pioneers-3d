@@ -1,0 +1,52 @@
+digraph G {
+  main_program [shape=Mdiamond];
+  mode_turn [shaped=Mdiamond, label="server/turn.c:mode_turn"]
+  player_archive [shape=box, label="server/player.c:player_archive"]
+
+  main_program -> mode_turn;
+  main_program -> player_archive;
+
+  mode_turn -> trade_perform_maritime
+  player_archive -> trade_finish_domestic
+  mode_turn -> trade_begin_domestic
+
+  subgraph cluster_legend {
+   function [shape=box];
+   state;
+   label = "Legend";
+
+   state -> state [color=green, label="other players"]
+   state -> state [label="current player"]
+
+   function -> function [label="function call"]
+  }
+
+  subgraph cluster_trade_c {
+    label = "server/trade.c"
+
+    trade_finish_domestic [shape=box];
+    process_call_domestic [shape=box];
+    trade_begin_domestic [shape=box];
+    call_domestic [shape=box];
+    trade_accept_domestic [shape=box];
+    trade_finish_domestic [shape=box];
+    trade_perform_maritime [shape=box];
+
+    mode_domestic_initiate;
+    mode_domestic_quote;
+    mode_wait_quote_exit;
+
+    mode_domestic_quote -> mode_wait_quote_exit [label="goto"]
+    trade_finish_domestic -> trade_finish_domestic [label="pop"]
+    trade_finish_domestic -> trade_finish_domestic [label="pop", color=green]
+    process_call_domestic -> mode_domestic_quote [color=green, label="goto"]
+    call_domestic -> process_call_domestic [shape=box]
+    mode_domestic_initiate -> trade_perform_maritime
+    mode_domestic_initiate -> trade_finish_domestic
+    mode_domestic_initiate -> trade_accept_domestic
+    mode_domestic_initiate -> call_domestic
+    trade_begin_domestic -> mode_domestic_initiate [label="push"]
+    trade_begin_domestic -> mode_domestic_quote [color=green, label="push"]
+    trade_begin_domestic -> process_call_domestic
+  }
+}

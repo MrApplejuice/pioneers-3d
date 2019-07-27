@@ -1,0 +1,48 @@
+title Evil square
+domestic-trade
+num-players 4
+sevens-rule 0
+victory-points 12
+num-roads 16
+num-bridges 0
+num-ships 0
+num-settlements 4
+num-cities 4
+num-city-walls 0
+resource-count 40
+develop-road 3
+develop-monopoly 3
+develop-plenty 3
+develop-chapel 0
+develop-university 0
+develop-governor 0
+develop-library 0
+develop-market 0
+develop-soldier 9
+# v1.3, 14/09/2003
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+desc Copyright 2003 LT-P <LT-P@LT-P.net>
+desc 
+desc Please provide some feedback ;)
+chits 3,9,2,5,11,4,6,10,4,8,10,5,11,12,3,9,2,12,3,9,2,5,11,4,6,10,4,8,10,5,11,12,3,9
+map
+s,s,s,s,s,s,s,s
+s,p0,p1,p2,p3,p4,s,s
+s,p5,f6,p7,p8,t9,p10,s
+s,p11,p12,p13,p14,p15,p16,s
+s,p17,p18,p19,p20,p21,p22,s
+s,p23,h24,p25,p26,m27,p28,s
+s,s,p29,p30,p31,p32,p33,s
+s,s,s,s,s,s,s,s
+.

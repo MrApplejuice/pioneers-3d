@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+_Name=Pioneers
+_Comment=Play a game of Pioneers
+_Keywords=game;board;play;Pioneers;Settlers;
+Exec=pioneers
+Icon=pioneers
+Terminal=false
+Type=Application
+Categories=Game;BoardGame;GNOME;GTK;

@@ -1,0 +1,98 @@
+# translation of ru.po to Russian
+# Copyright 2008 Yuri Kozlov <kozlov.y@gmail.com>.
+# This file is distributed under the same license as the pioneers package.
+#
+# Yuri Kozlov <yuray@komyakino.ru>, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: Pioneers 15.4-1\n"
+"Report-Msgid-Bugs-To: pioneers@packages.debian.org\n"
+"POT-Creation-Date: 2013-03-22 12:32+0100\n"
+"PO-Revision-Date: 2015-01-24 09:12+0300\n"
+"Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
+"Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+msgid "Port range for creating new games on the metaserver:"
+msgstr "Диапазон портов для создания новых игр на мета-сервере:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+msgid ""
+"The metaserver can create new games, so players don't need to install and "
+"run the pioneers server. The ports which are used for these games can be "
+"specified. If this field is left empty, the metaserver will disable its game "
+"creation functionality."
+msgstr ""
+"Мета-сервер может создавать новые игры, поэтому игрокам ненужно "
+"устанавливать и запускать сервер pioneers. Можно указать диапазон портов, "
+"которые будут использоваться под эти игры. Если оставить поле пустым, то "
+"возможность создания игр на мета-сервере будет выключена."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:1001
+msgid ""
+"If the value is not empty, it must be two port numbers, separated by a minus "
+"sign."
+msgstr ""
+"Если значение не пустое, то оно должно содержать два числа (порты), "
+"разделённые знаком минус."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:2001
+msgid "Server name for created games:"
+msgstr "Имя сервера для создаваемых игр:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:2001
+msgid ""
+"In some cases, the name the metaserver uses for itself when creating new "
+"games is incorrect. If this field is not left empty, it is used to override "
+"the detected hostname."
+msgstr ""
+"В некоторых случаях, при создании новых игр мета-сервер выбирает "
+"неправильное имя. Если это поле не пустое, то его значение заменит "
+"используемое имя узла."
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:3001
+msgid "Extra arguments to pass to the metaserver:"
+msgstr "Дополнительные параметры для передачи мета-серверу:"
+
+#. Type: string
+#. Description
+#: ../pioneers-metaserver.templates:3001
+msgid ""
+"These arguments are passed to the metaserver.\n"
+" * --redirect: Redirect clients to another metaserver"
+msgstr ""
+"Эти параметры передаются мета-серверу:\n"
+" * --redirect: перенаправлять клиентов на другой мета-сервер"
+
+#~ msgid "Run the pioneers meta-server?"
+#~ msgstr "Запустить мета-сервер pioneers?"
+
+#~ msgid ""
+#~ "Pioneers contains a meta-server, which can be used to find networked "
+#~ "games. The meta-server needs to run in a central location, so that all "
+#~ "players can find it. There is a public meta-server at pioneers.debian."
+#~ "net. Most people do not need to run a meta-server on their computer."
+#~ msgstr ""
+#~ "Pioneers содержит мета-сервер, который может быть использован для поиска "
+#~ "сетевых игр. Мета-сервер нужно запускать на известном сайте, чтобы игроки "
+#~ "могли его найти. Открыт публичный мета-сервер на pioneers.debian.net. "
+#~ "Большинству людей ненужно запускать мета-сервер на своём компьютере."

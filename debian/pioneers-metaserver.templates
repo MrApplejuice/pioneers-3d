@@ -1,0 +1,26 @@
+Template: pioneers-metaserver/ports
+Type: string
+Default: 5560-5569
+_Description: Port range for creating new games on the metaserver:
+ The metaserver can create new games, so players don't need to install and
+ run the pioneers server. The ports which are used for these games can be
+ specified. If this field is left empty, the metaserver will disable its
+ game creation functionality.
+ .
+ If the value is not empty, it must be two port numbers, separated by a minus
+ sign.
+
+Template: pioneers-metaserver/name
+Type: string
+Default:
+_Description: Server name for created games:
+ In some cases, the name the metaserver uses for itself when creating new
+ games is incorrect. If this field is not left empty, it is used to override
+ the detected hostname.
+
+Template: pioneers-metaserver/arguments
+Type: string
+Default:
+_Description: Extra arguments to pass to the metaserver:
+ These arguments are passed to the metaserver.
+  * --redirect: Redirect clients to another metaserver

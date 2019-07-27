@@ -1,0 +1,75 @@
+.TH pioneersai 6 "May 20, 2014" "pioneers"
+.SH NAME
+pioneersai \- Computer player for Pioneers
+
+.SH SYNOPSIS
+.B pioneersai
+[
+.BI \-s " server"
+] [
+.BI \-p " port"
+] 
+.BI \-n " name"
+.if n .ti +5n
+[
+.BI \-a " algorithm"
+] [
+.BI \-t " milliseconds"
+] [
+.BI \-c 
+]
+
+.SH DESCRIPTION
+This manual page documents briefly the
+.B pioneersai
+command.
+.PP
+.B Pioneers
+is an emulation of the Settlers of Catan board game which can
+be played over the internet. This is a computer player
+implementation that can take part in Pioneers games.
+
+.SH OPTIONS
+.TP 12
+.BI "\-s,\-\-server" " server"
+Connect to a pioneers game running on \fIserver\fP.
+.TP
+.BI "\-p,\-\-port" " port"
+Connect to a pioneers game running on \fIport\fP.
+.TP
+.BI "\-n,\-\-name" " name"
+Specify \fIname\fP of the computer player.
+.TP
+.BI "\-a,\-\-algorithm" " algorithm"
+Specify \fIalgorithm\fP of the computer player.
+The algorithms for active partipants in a game are "greedy" and "genetic".
+The default algorithm is "greedy".
+Other allowed values are: lobbybot, logbot.
+.TP
+.BI "\-\-chromosome\-file" " filename"
+The filename for the file that contains the chromosome for the "genetic"
+algorithm. When not specified, the default chromosome is used.
+.TP
+.BI "\-t,\-\-time" " milliseconds"
+Time to wait between turns, in \fImilliseconds\fP. Default is 1000.
+.TP
+.BI "\-c,\-\-chat\-free"
+Do not chat with other players.
+.TP
+.BI \-\-debug
+Enable debug messages.
+.TP
+.BI \-\-version
+Show version information.
+
+.SH AUTHOR
+This manual page was written by Jeff Breidenbach <jab@debian.org>,
+and updated by Roland Clobus <rclobus@rclobus.nl>.
+Pioneers was written by Dave Cole <dave@dccs.com.au>, Andy Heroff
+<aheroff@mediaone.net>, and Roman Hodek <roman@hodek.net>, with
+contributions from many other developers on the Internet; see the
+AUTHORS file in the pioneers distribution for a complete list of
+contributing authors.
+
+.SH SEE ALSO
+.BR pioneers(6) ", " pioneers-server-gtk(6) ", " pioneers-server-console(6)

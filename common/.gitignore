@@ -1,0 +1,8 @@
+.deps
+.dirstamp
+version.h
+authors.h
+notifying-string.gob.stamp
+notifying-string.c
+notifying-string.h
+notifying-string-private.h

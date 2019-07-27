@@ -1,0 +1,100 @@
+.TH pioneers 6 "Februari 24, 2013" "pioneers"
+.SH NAME
+pioneers \- network implementation of Settlers of Catan
+
+.SH SYNOPSIS
+.B pioneers
+[
+.BI \-\-server " server"
+] [
+.BI \-\-port " port"
+] [
+.BI \-\-name " name"
+]
+
+.SH DESCRIPTION
+This manual page documents briefly the
+.B pioneers
+command.
+.PP
+.B Pioneers
+is an implementation of the popular, award-winning "Settlers of Catan"
+board game for the GNOME desktop environment.  It uses a client/server
+model for networked play of between two and eight players.  You will
+need to connect to a machine running either \fBpioneers-server-gtk\fP
+or \fBpioneers-server-console\fP to play.  An AI client, \fBpioneersai\fP,
+is also available.
+
+.SH OPTIONS
+Pioneers accepts the standard GTK+/GNOME commandline options, 
+and the following options:
+.TP
+.BI "\-s, \-\-server" " server"
+Hostname of the server
+.TP
+.BI "\-p, \-\-port" " port"
+Portname of the server
+.TP
+.BI "\-n, \-\-name" " name"
+Use this name for the player instead of the name in the settings file
+.TP
+.BI "\-v, \-\-spectator"
+Connect as spectator instead of as a player
+.TP
+.BI "\-m, \-\-metaserver" " metaserver"
+Connect to this metaserver instead of the metaserver in the settings file
+.TP
+.BI "\-\-debug"
+Turn on debugging mode
+.TP
+.BI "\-\-version"
+Show the version and quit
+
+.PP
+When the server and port are both provided, the client automatically quits when 
+the connection is broken.
+
+.SH ENVIRONMENT
+The default settings can be influenced with the
+following environment variable:
+.TP 
+.B PIONEERS_METASERVER
+The hostname of the metaserver.
+If it is not set, the default metaserver will be used.
+
+.SH FILES
+.B /usr/share/games/pioneers/themes/*
+.RS
+Themes for display of the map. Each theme goes in a separate subdirectory.
+.RE
+.B /usr/share/pixmaps/pioneers/*
+.RS
+Icons
+.RE
+.B /usr/share/pixmaps/pioneers.png
+.RS
+Main icon
+.RE
+.B $XDG_CONFIG_HOME/pioneers
+.RS
+Saved settings
+.RE
+.B $XDG_DATA_HOME/pioneers/themes
+.RS
+Personal themes
+.RE
+
+.SH AUTHOR
+This manual page was written by Steve Langasek <vorlon@debian.org>,
+and updated by Roland Clobus <rclobus@rclobus.nl>.
+Pioneers was written by Dave Cole <dave@dccs.com.au>, Andy Heroff
+<aheroff@mediaone.net>, and Roman Hodek <roman@hodek.net>, with
+contributions from many other developers on the Internet; see the
+AUTHORS file in the pioneers distribution for a complete list of
+contributing authors.
+
+.SH SEE ALSO
+More detailed user documentation is available in the online help.
+.PP
+.BR pioneers-server-gtk(6) ", " pioneers-server-console(6) ", "
+.B pioneersai(6)

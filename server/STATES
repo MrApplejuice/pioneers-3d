@@ -1,0 +1,102 @@
+This is my understanding of the states used in the server state machine.
+Since I'm not the original author, this could well be inaccurate, but it's
+helpful for me.  
+
+It's worth noting that each player gets their own state machine.  Also make
+sure to read ../common/state.h, which has excellent documentation.
+
+-- egnor@ofb.net
+
+mode_global -- always invoked if primary mode doesn't handle message
+    NET_CLOSE => X
+    also: chat, name, anonymous
+
+<< pre-game >>
+
+(player_new) -- incoming connection
+       => mode_check_version
+
+mode_check_version
+       => mode_pre_game
+    or => mode_game_full
+    or => mode_bad_version
+
+mode_game_full
+    X (they can only disconnect)
+
+mode_pre_game
+    start => mode_idle 
+       or => mode_setup
+    also: players, game
+
+mode_setup
+    done => mode_idle (and pass the buck)
+    also: build, remove (subject to setup restrictions)
+
+<< main game >>
+
+mode_idle
+    => mode_setup (when it's your setup turn)
+    => mode_turn (when it's your turn)
+    => mode_domestic_quote (when someone does a call)
+    => mode_discard_resources (when someone rolls a 7 and you're over)
+
+mode_turn
+    => (discard_resources)
+    roll-dice => mode_place_robber (if 7)
+           or => mode_discard_resources_place_robber (if 7)
+           or => mode_wait_others_place_robber (if 7)
+    done => mode_idle (and set another to mode_turn)
+    play-develop => mode_road_building
+              or => mode_ship_building
+              or => mode_monopoly
+              or => mode_plenty_resources
+              or => mode_place_robber
+    domestic-trade call => mode_domestic_initiate 
+                           (set others to mode_domestic_quote)
+    domestic-trade accept => (trade_accept_domestic)
+
+<< robber >>
+
+mode_place_robber
+    move-robber => mode_turn
+
+mode_wait_others_place_robber -- wait for others to discard so you can rob
+    => mode_place_robber (when another player finishes mode_discard_resources)
+
+mode_discard_resources_place_robber -- discard resources, then place robber
+    discard => mode_wait_others_place_robber (if applicable)
+         or => mode_place_robber
+
+mode_discard_resources -- discard resources, then go back to waiting
+    discard => mode_idle (may set another player to mode_place_robber)
+
+<< stateful development cards >>
+
+mode_road_building -- "Road Building" development card
+    done => mode_turn
+    also: build, remove (roads only)
+
+mode_ship_building -- "Ship Building" development card
+    done => mode_turn
+    also: build, remove (ships only)
+
+mode_plenty_resources -- "Year of Plenty" development card
+    plenty => mode_turn
+
+mode_monopoly -- "Monopoly" development card
+    monopoly => mode_turn
+
+<< trading >>
+
+mode_domestic_quote
+    domestic-quote finish => mode_wait_quote_exit
+    also: domestic-quote delete, domestic-quote quote
+
+mode_wait_quote_exit
+    domestic-quote exit => mode_idle
+    domestic-quote finish => ??? (bug?)
+
+mode_domestic_initiate
+    domestic-trade finish => mode_turn (and set others to mode_wait_quote_exit)
+    also: maritime-trade, domestic-trade accept, domestic-trade call

@@ -1,0 +1,34 @@
+title Default
+random-terrain
+strict-trade
+domestic-trade
+num-players 4
+sevens-rule 0
+victory-points 10
+num-roads 15
+num-bridges 0
+num-ships 0
+num-settlements 5
+num-cities 4
+num-city-walls 0
+resource-count 19
+develop-road 2
+develop-monopoly 2
+develop-plenty 2
+develop-chapel 1
+develop-university 1
+develop-governor 1
+develop-library 1
+develop-market 1
+develop-soldier 13
+desc Default board layout for 3 or 4 players
+chits 11,12,9,4,6,5,10,3,11,4,8,8,10,9,3,5,2,6
+map
+-,-,sw5,s,s?4,s,-
+-,s,t0,p1,f2,sg4,-
+-,s?0,h3,m4,h5,p6,s
+s,d7,t8,f9,t10,f11,sl3
+-,s?0,h12,p13,p14,m15,s
+-,s,m16,f17,t18,s?2,-
+-,-,so1,s,sb2,s,-
+.

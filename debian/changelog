@@ -1,0 +1,767 @@
+pioneers (15.6-1~local1) UNRELEASED; urgency=medium
+
+  * Waiting for a new release.
+
+ -- Roland Clobus <roland@silent.lan>  Wed, 14 Mar 2018 18:54:08 +0100
+
+pioneers (15.5-1) unstable; urgency=medium
+
+  * New upstream release.
+  * pioneers-builddep updated.
+  * Removed dependency on libgnome (closes: #890465)
+  * Removed dependency on scrollkeeper (closes: #885613)
+  * Added dependency on autoconf-archive.
+  * Added dependency on yelp-tools.
+  * Applied 'wrap-and-sort' to all debian/* files.
+  * Removed dependency on netpbm.
+  * Removed menu file, FreeDesktop desktop entries are provided.
+  * Changed compat level to 11.
+  * Use secure URL for the source code and copyright file.
+  * Upgrade standards version to 4.1.3.
+  * Removed package transitions since 15.1-1.
+
+ -- Roland Clobus <rclobus@rclobus.nl>  Wed, 14 Mar 2018 17:44:00 +0100
+
+pioneers (15.4-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bugfix for playing the last development card. (closes: #798521)
+  * Watch file checks for OpenPGP signature.
+  * pioneers-builddep updated.
+  * Updated copyright to add the new icon files.
+  * Updated debconf translations:
+    cs: (closes: #829455)
+    fr: (closes: #767637)
+    pt_BR: (closes: #831012)
+    ru: (closes: #776128)
+    sv: (closes: #781676)
+  * Updated copyright to fix the lintian warning
+    dep5-copyright-license-name-not-unique.
+  * Upgrade standards version to 3.9.8.  (No changes needed.)
+  * Removed embedded copy of gnome-autogen.sh. (closes: #829826)
+
+ -- Roland Clobus <rclobus@rclobus.nl>  Sun, 11 Sep 2016 14:52:23 +0200
+
+pioneers (15.3-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+
+  [ Martin Pitt ]
+  * Drop obsolete initscripts dependency. This was only added for the /run
+    transition, but this only affected pre-wheezy upgrades. (Closes: #804987)
+
+ -- Christian Hofstaedtler <zeha@debian.org>  Sat, 02 Jul 2016 10:17:12 +0200
+
+pioneers (15.3-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Updated copyright which clarifies the license for the images.
+    (closes: #765319)
+  * Applied 'wrap-and-sort' to all debian/* files.
+
+ -- Roland Clobus <rclobus@rclobus.nl>  Sun, 26 Oct 2014 15:30:00 +0100
+
+pioneers (15.2-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Upgrade dependencies to Gtk 3.
+  * Upgrade standards version to 3.9.6.  (No changes needed.)
+
+ -- Bas Wijnen <wijnen@debian.org>  Mon, 13 Oct 2014 11:15:59 -0400
+
+pioneers (15.1-1) unstable; urgency=low
+
+  * New upstream release. (closes: #551341)
+  * Removed translation patches for 14.1-2.
+  * Spelling correction: Renamed meta[- ]server to metaserver.
+  * Migration of the settings for the metaserver.
+  * Added debconf-updatepo in the clean target.
+  * Updated the explanation for the extra arguments for the metaserver.
+  * Cleanup of Provides:-section for packaging before Debian 6.
+  * Cleanup of /etc/default/pioneers-console and /etc/init.d/pioneers-console
+    (when the installation has been upgraded from 0.11.3 or older)
+  * Added dependency on librsvg2-common for the rendering of the icons.
+  * Added recommends on beep.
+  * Added pioneers-builddep, for use with equivs-build.
+  * Explicitly set the path to the server in the metaserver init script.
+  * Cleanup of /etc/init.d/pioneers-meta-server.
+  * Updated Vcs-* fields to point to the repository that moved on SourceForge.
+  * Added Depends on initscripts (>= 2.88dsf-13.3) to ensure /run is usable.
+  * Updated standards version to 3.9.4, no changes required.
+  * Changed compat level to 9, so hardening is enabled without additional code.
+
+ -- Roland Clobus <rclobus@rclobus.nl>  Sun, 08 Dec 2013 17:08:02 +0100
+
+pioneers (14.1-2) unstable; urgency=low
+
+  * Debian-only i18n-release during freeze.
+  * Applied translation patches from the upstream repository.
+  * pioneers-console.preinst: Removed. The migration rules are no longer
+    required in the current stable version.
+  * Use 'set -e' in pioneers-meta-server scripts to remove the lintian warnings.
+  * copyright: Updated information and removed extra link to the GPL licenses.
+
+ -- Roland Clobus <rclobus@rclobus.nl>  Fri, 25 Jan 2013 15:00:00 +0200
+
+pioneers (14.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Switched to simple debhelper script.
+  * Enabled hardening. (closes: #657829)
+  * Added large icons for the GNOME3 desktop.
+  * Fixed duplicate-short-description lintian warning for the data packages.
+  * Removed Conflicts: en Replaces: for pre-oldstable versions to remove the
+    last lintian warnings.
+  * Used rsvg-convert instead of rsvg, together with netpbm to render the xpm
+    icons. ImageMagick is not needed anymore as build dependency.
+    (closes: #666480)
+  * Added xfonts-scalable in Build-Depends: for Bitstream Charter in the svg
+    files.
+  * Added Brazilian Portuguese debconf translations. (closes: #661263)
+  * Updated standards version to 3.9.3. (No changes needed.)
+  * Use lsb-base for coloured messages during startup of the daemon.
+
+ -- Roland Clobus <rclobus@rclobus.nl>  Tue, 29 May 2012 06:59:30 +0200
+
+pioneers (0.12.5-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added libnotify support.
+  * Fix for placing pirate when the rules do not support pirates.
+    (closes: #643994)
+  * Fix for assert after winning with road building card (LP:#767435)
+  * Added -Wl,--as-needed for the Debian build.
+
+ -- Roland Clobus <rclobus@rclobus.nl>  Sun, 30 Oct 2011 15:31:18 +0100
+
+pioneers (0.12.4-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added Avahi support.
+  * Numbers on the board are visible again. (closes: #574549) (LP:#530988)
+  * Add Danish debconf translation. (closes: #633905)
+  * Fix for lintian warning: debian-rules-missing-recommended-target
+
+ -- Roland Clobus <rclobus@rclobus.nl>  Thu, 18 Aug 2011 17:00:00 +0200
+
+pioneers (0.12.3-2) unstable; urgency=low
+
+  [ Roland Clobus ]
+  * Update release-checklist for svn repository.
+  * Refer to pioneers-meta-server instead of pioneers-console in the init
+    scripts.
+  * Fix meta-server pidfile issue again. (closes: #567994)
+  * Fix bug number in changelog 'Link to all gtk libraries'. (closes: #556063)
+    Bug already closed by an e-mail to 556063-done@bugs.debian.org
+  * Fix lintian error init.d-script-missing-dependency-on_remote_fs.
+  * Fixed typo in Dutch translation.
+  * Added British translation.
+  * Recoded German translation to UTF-8.
+
+  [ Bas Wijnen ]
+  * Reinserted previously lost changelog entry for NMU 0.11.2-2+lenny1.
+  * Add conflicts to old pioneers-console to make upgrade work.
+    (closes: #567314)
+  * Remove old init.d symlinks. (closes: #567180)
+  * Updated standards version to 0.8.4. (No changes needed.)
+  * Switch to dpkg-source 3.0 (quilt) format.
+
+ -- Bas Wijnen <wijnen@debian.org>  Sat, 03 Apr 2010 00:02:59 +0200
+
+pioneers (0.12.3-1) unstable; urgency=low
+
+  [ Roland Clobus ]
+
+  * Use the configured hostname. (closes: #546643)
+  * Updated build dependencies.
+  * Add Italian translation. (closes: #544160)
+  * Add Finnish translation. (closes: #535213)
+  * Add Spanish translation. (closes: #520210)
+  * Add Swedish translation. (closes: #506597)
+  * Fixed a typo in the About dialog for the Frech translation.
+    (closes: #510611)
+
+  [ Bas Wijnen ]
+
+  * New upstream release.
+  * Remove Roman Hodek from Uploaders. (closes: #507403)
+  * Split meta-server back into its own package. (closes: #540695)
+  * Fix meta-server pidfile issue. (closes: #534634)
+  * Add japanese translation. (closes: #547205)
+  * Make clients try all socket types when connecting. (closes: #530032)
+  * Link to all gtk libraries. (closes: #556063)
+  * Update standards version (no changes needed).
+
+ -- Bas Wijnen <wijnen@debian.org>  Wed, 25 Nov 2009 13:41:40 +0100
+
+pioneers (0.12.2-5) unstable; urgency=low
+
+  * Don't ship non-conffile configuration file /etc/default/pioneers-console.
+    Generate it if it doesn't exist (closes: #533597).
+  * Stop generating transitional packages.
+  * Make meta-server init script more verbose; don't restart meta-server when
+    it's already running.
+  * Update standards version to 3.8.2.
+  * Remove long-obsolete source and diff targets from debian/rules.
+
+ -- Bas Wijnen <wijnen@debian.org>  Thu, 25 Jun 2009 15:59:08 +0200
+
+pioneers (0.12.2-4) unstable; urgency=low
+
+  * Add French translation. (closes: #486075)
+  * Add manual page for pioneers-editor.
+  * Updated standards version to 3.8.0 (no changes needed).
+
+ -- Bas Wijnen <wijnen@debian.org>  Fri, 27 Jun 2008 18:46:13 +0200
+
+pioneers (0.12.2-3) unstable; urgency=low
+
+  * Put templates.pot in source package, because translators don't want it any
+    other way.
+  * Fix bashisms in maintainer scripts. (closes: 485511)
+
+ -- Bas Wijnen <wijnen@debian.org>  Tue, 10 Jun 2008 20:05:41 +0200
+
+pioneers (0.12.2-2) unstable; urgency=low
+
+  * Add Russion debconf translation. (closes: #484332)
+
+ -- Bas Wijnen <wijnen@debian.org>  Wed, 04 Jun 2008 13:13:33 +0200
+
+pioneers (0.12.2-1) unstable; urgency=low
+
+  * New upstream release. (closes: #480527)
+  * Let init script depend on $syslog. (closes: #472336)
+  * Add dummy packages for easy upgrading. (closes: #466387)
+  * Add debconf questions to edit /etc/default/pioneers-console for
+    Galician (closes: #480963),
+    Basque (closes: #481023),
+    Vietnamese (closes: #481475),
+    German (closes: #482451),
+    Portuguese (closes: #482603),
+    Czech (closes: #482802),
+  * Improved debconf template, thanks to Helge Kreutzmann (closes: #482452).
+  * The debconf questions caused a new lintian warning, for which a bug is
+    filed (#482795).
+
+ -- Bas Wijnen <wijnen@debian.org>  Sun, 25 May 2008 10:34:21 +0200
+
+pioneers (0.11.4-1) unstable; urgency=low
+
+  * New upstream release.
+  * Use automake 1.10, upgrade autoconf dependency to >= 2.60 for that.
+  * Upgraded to standards version 3.7.3 (no changes needed).
+  * Add transitional packages for upgrades from Etch. (closes: #466387)
+  * Remove XS- prefix from Vcs fields in debian/control.
+  * Add $network as requirement for meta-server init script. (closes: #472336)
+
+ -- Bas Wijnen <wijnen@debian.org>  Wed, 02 Apr 2008 20:31:03 +0200
+
+pioneers (0.11.3-1) unstable; urgency=low
+
+  * New upstream security release (Closes: #449541).
+  * Fix bashism in init script (Closes: #447379).
+
+ -- Bas Wijnen <wijnen@debian.org>  Mon, 12 Nov 2007 08:23:14 +0100
+
+pioneers (0.11.2-2+lenny1) testing-security; urgency=high
+
+  * Non-maintainer upload by testing-security team.
+  * The following security issues are addressed with this upload:
+    - CVE-2007-5933: remote denial of service triggered by an
+      early disconnect (Closes: #449541).
+    - CVE-2007-6010: remote denial of service triggered by
+      a broken pipe.
+
+ -- Nico Golde <nion@debian.org>  Tue, 27 Nov 2007 22:39:28 +0000
+
+
+pioneers (0.11.2-2) unstable; urgency=low
+
+  * Let pioneers-console depend on pioneers-console-data, not on
+    pioneers-data.  (Closes: #441759)
+
+ -- Bas Wijnen <wijnen@debian.org>  Tue, 11 Sep 2007 12:30:34 +0200
+
+pioneers (0.11.2-1) unstable; urgency=low
+
+  * New upstream release.  (Closes: #436296, #392129, #398157)
+  * Restructure packaging into fewer packages.
+  * Add pioneers-editor to package.
+  * Update debian/copyright to be more clear about license choice.
+
+ -- Bas Wijnen <wijnen@debian.org>  Fri, 07 Sep 2007 00:35:00 +0200
+
+pioneers (0.10.2-3) unstable; urgency=low
+
+  * Updated Swedish translation.
+  * Added Afrikaans and Japanese translations.
+
+ -- Bas Wijnen <wijnen@debian.org>  Mon, 15 Jan 2007 15:56:41 +0100
+
+pioneers (0.10.2-2) unstable; urgency=low
+
+  * Use CFLAGS, so DEB_BUILD_OPTIONS=noopt actually works.  (Thanks to A
+    Mennucc, Closes: #389165)
+
+ -- Bas Wijnen <wijnen@debian.org>  Sat, 11 Nov 2006 01:05:28 +0100
+
+pioneers (0.10.2-1) unstable; urgency=low
+
+  * New upstream release.  (Closes: #386425)
+  * Change debian/rules to avoid the need for patching the code for linking
+    only directly used libraries.
+  * Change maintainer e-mail to my new debian.org address.
+  * Make meta-server init script LSB compliant (add comment block and status
+    command).
+
+ -- Bas Wijnen <wijnen@debian.org>  Tue, 19 Sep 2006 11:44:45 +0200
+
+pioneers (0.10.1-1) unstable; urgency=low
+
+  * New upstream release.  (Closes: #373673, #367568, #380262)
+  * Include workaround for bashism in gnome-autogen.sh.  (Closes: #378196)
+
+ -- Bas Wijnen <shevek@fmf.nl>  Tue, 29 Aug 2006 11:03:33 +0200
+
+pioneers (0.9.64-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #371086)
+
+ -- Bas Wijnen <shevek@fmf.nl>  Wed,  7 Jun 2006 20:31:48 +0200
+
+pioneers (0.9.63-1) unstable; urgency=low
+
+  * New upstream release.  (Closes: #367042)
+  * Optimize for one-time build.
+
+ -- Bas Wijnen <shevek@fmf.nl>  Wed, 31 May 2006 16:33:16 +0200
+
+pioneers (0.9.61-1) unstable; urgency=low
+
+  * Upstream svn snapshot release. (Closes: #359924, #331291)
+  * Reset maintainer to myself.
+  * Exclude all editor-related things instead of specific files.
+  * Improved debian/copyright.
+  * Allow cross-compiling.
+  * Add autoconf as a direct dependency.
+  * Force the use of automake-1.9.
+  * Added full list of authors to debian/copyright, and a check for
+    completeness to debian/rules.
+  * Clean up build process.
+  * Updated to policy version 3.7.2.  (No changes needed.)
+  * Improved meta-server init script, added /etc/default script with settings.
+
+ -- Bas Wijnen <shevek@fmf.nl>  Wed, 10 May 2006 09:04:32 +0200
+
+pioneers (0.9.55-1) unstable; urgency=high
+
+  * Upstream CVS snapshot release. (Closes: #351034)
+  * Fix for meta-server remote crash possibility (Closes: #351986)
+
+ -- Bas Wijnen <shevek@fmf.nl>  Wed,  9 Feb 2006 11:19:00 +0100
+
+pioneers (0.9.49-1) unstable; urgency=high
+
+  * Moved maintenance address to Debian games team.
+  * New upstream url in copyright file. (Closes: #346472)
+  * New location for desktop files.
+  * Extra icons and descriptions for menus.
+  * Close denial of service hole. (Closes: #350237)
+  * Upstream CVS snapshot release. (Closes: #347214)
+
+ -- Bas Wijnen <shevek@fmf.nl>  Sat, 28 Jan 2006  7:08:45 +0100
+
+pioneers (0.9.33-1) unstable; urgency=low
+
+  * Upstream CVS snapshot release. (Closes: #328880, #289048, #327165)
+
+ -- Bas Wijnen <shevek@fmf.nl>  Thu,  2 Oct 2005 22:12:10 +0200
+
+pioneers (0.9.23-1) unstable; urgency=low
+
+  * Snapshot from upstream CVS. (Closes: #322704, #322737)
+
+ -- Bas Wijnen <shevek@fmf.nl>  Thu, 18 Aug 2005 00:02:32 +0200
+
+pioneers (0.9.19-2) unstable; urgency=low
+
+  * Made short descriptions more descriptive (Closes: #320870)
+  * Updated some Depends: and Recommends:.
+
+ -- Bas Wijnen <shevek@fmf.nl>  Fri,  5 Aug 2005 00:32:12 +0200
+
+pioneers (0.9.19-1) unstable; urgency=low
+
+  * Snapshot from upstream CVS.
+
+ -- Bas Wijnen <shevek@fmf.nl>  Fri, 15 Jul 2005 11:30:02 +0200
+
+pioneers (0.9.17-2) unstable; urgency=low
+
+  * Upstream rename due to trademark concerns.
+
+ -- Steve Langasek <vorlon@debian.org>  Sat, 25 Jun 2005 05:28:02 -0700
+
+gnocatan (0.9.17-1) unstable; urgency=low
+
+  * New maintainer, adjust the package a bit to my liking.
+
+ -- Bas Wijnen <shevek@fmf.nl>  Thu, 16 Jun 2005 17:54:12 +0200
+
+gnocatan (0.8.1.59-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Jeff Breidenbach <jab@debian.org>  Mon, 21 Mar 2005 22:11:10 -0800
+
+gnocatan (0.8.1.54-1) unstable; urgency=medium
+
+  * New upstream release
+  * Medium urgency because users are anxious about
+    a trading bug, which this release (hopefully) fixes.
+
+ -- Jeff Breidenbach <jab@debian.org>  Thu,  3 Mar 2005 21:11:42 -0800
+
+gnocatan (0.8.1.53-1) unstable; urgency=low
+
+  * new upstream
+
+ -- Jeff Breidenbach <jab@debian.org>  Sun,  6 Feb 2005 21:26:18 -0800
+
+gnocatan (0.8.1.45-1) unstable; urgency=low
+
+  * new upstream
+
+ -- Jeff Breidenbach <jab@debian.org>  Mon,  6 Dec 2004 19:07:19 -0800
+
+gnocatan (0.8.1.42-1) unstable; urgency=low
+
+  * try to fix the packaging catastrophe from 0.8.1.41-1
+
+ -- Jeff Breidenbach <jab@debian.org>  Fri, 12 Nov 2004 13:39:57 -0800
+
+gnocatan (0.8.1.41-1) unstable; urgency=low
+
+  * snapshot from upstream CVS (basically 0.8.1.42, but
+    upstream is a little behind on updating version numbers)
+
+ -- Jeff Breidenbach <jab@debian.org>  Wed, 10 Nov 2004 00:51:41 -0800
+
+gnocatan (0.8.1.38-1) unstable; urgency=low
+
+  * snapshot from upstream CVS
+  * stop doing the native package thing
+
+ -- Jeff Breidenbach <jab@debian.org>  Mon, 11 Oct 2004 21:50:31 -0700
+
+gnocatan (0.8.1.35) unstable; urgency=low
+
+  * snapshot from upstream CVS
+
+ -- Jeff Breidenbach <jab@debian.org>  Fri, 10 Sep 2004 17:22:43 -0700
+
+gnocatan (0.8.1.34) unstable; urgency=low
+
+  * Change version numbering to make Lintian happier.
+
+ -- Jeff Breidenbach <jab@debian.org>  Fri,  3 Sep 2004 21:04:02 -0700
+
+gnocatan (0.8.1-7) unstable; urgency=low
+
+  * snapshot from upstream CVS.
+
+ -- Jeff Breidenbach <jab@debian.org>  Mon, 30 Aug 2004 11:43:58 -0700
+
+gnocatan (0.8.1-6) unstable; urgency=low
+
+  * added yelp dependency
+  * snapshot from upstream CVS. Minor bugfixes.
+  * fix some lintian warnings
+
+ -- Jeff Breidenbach <jab@debian.org>  Sat, 21 Aug 2004 13:11:02 -0700
+
+gnocatan (0.8.1-5) unstable; urgency=low
+
+  * snapshot from upstream CVS.
+
+ -- Jeff Breidenbach <jab@debian.org>  Thu,  8 Jul 2004 17:49:57 -0700
+
+gnocatan (0.8.1-4) unstable; urgency=low
+
+  * snapshot from upstream CVS.
+    - New trade window design (Closes: #201100)
+    - AI trade/crash bug fixed (Closes: #243827)
+
+ -- Jeff Breidenbach <jab@debian.org>  Fri,  2 Jul 2004 17:54:04 -0700
+
+gnocatan (0.8.1-3) unstable; urgency=low
+
+  * snapshot from upstream CVS. Can now build on gtk2.4.
+
+ -- Jeff Breidenbach <jab@debian.org>  Wed, 26 May 2004 09:58:15 -0700
+
+gnocatan (0.8.1-2) unstable; urgency=low
+
+  * snapshot from upstream CVS.
+
+ -- Jeff Breidenbach <jab@debian.org>  Sun, 25 Apr 2004 22:35:18 -0700
+
+gnocatan (0.8.1-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Jeff Breidenbach <jab@debian.org>  Fri, 16 Jan 2004 14:05:25 -0800
+
+gnocatan (0.8.0-4) unstable; urgency=low
+
+  * Snapshot from upstream CVS.
+
+ -- Jeff Breidenbach <jab@debian.org>  Sat, 15 Nov 2003 15:40:27 -0800
+
+gnocatan (0.8.0-3) unstable; urgency=low
+
+  * Better documentation packaging.
+
+ -- Jeff Breidenbach <jab@debian.org>  Sun, 26 Oct 2003 21:54:46 -0800
+
+gnocatan (0.8.0-2) unstable; urgency=low
+
+  * Added scrollkeeper as a build dependency
+
+ -- Jeff Breidenbach <jab@debian.org>  Mon, 13 Oct 2003 22:01:31 -0700
+
+gnocatan (0.8.0-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Jeff Breidenbach <jab@debian.org>  Sun, 12 Oct 2003 01:35:29 -0700
+
+gnocatan (0.7.1.90-3) unstable; urgency=low
+
+  * Test snapshot.
+  * shuffle files around, to comply with the FHS (closes: #143972).
+  * add a GNOME menu entry for the GTK server (closes: #169667).
+  * add manpages as needed (closes: #67271, #67272).
+  * fix gnocatanai to not use GNOME libs, since it has no GUI (closes:
+    #176205).
+  * Adjust build script so we only run './configure' instead of
+    './autogen.sh' for the package build.
+
+ -- Jeff Breidenbach <jab@debian.org>  Fri, 21 Feb 2003 00:20:58 -0800
+
+gnocatan (0.7.1.90-2) unstable; urgency=low
+
+  * closes: #168854, #174691
+
+ -- Jeff Breidenbach <jab@debian.org>  Wed,  1 Jan 2003 21:27:54 -0800
+
+gnocatan (0.7.1.90-1) unstable; urgency=low
+
+  * Test snapshot.
+
+ -- Roman Hodek <roman@hodek.net>  Wed, 25 Dec 2002 17:52:51 +0100
+
+gnocatan (0.7.1-2) unstable; urgency=low
+
+  * Build tweak
+
+ -- Jeff Breidenbach <jab@debian.org>  Thu, 25 Jul 2002 00:19:47 -0700
+
+gnocatan (0.7.1-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Roman Hodek <roman@hodek.net>  Sun, 21 Jul 2002 14:28:43 +0200
+
+gnocatan (0.7.0-5) unstable; urgency=low
+
+  * Snapshot against today's CVS, closes: #151707, #149307
+
+ -- Jeff Breidenbach <jab@debian.org>  Sun, 23 Jun 2002 14:22:16 -0700
+
+gnocatan (0.7.0-4) unstable; urgency=low
+
+  * Never mind, this one didn't pass the autobuilders.
+
+ -- Jeff Breidenbach <jab@debian.org>  Sun, 23 Jun 2002 14:21:44 -0700
+
+gnocatan (0.7.0-3) unstable; urgency=low
+
+  * restore original server/metaserver name resolution
+
+  * adjust package recommendations, closes: #149144
+
+ -- Jeff Breidenbach <jab@debian.org>  Wed,  5 Jun 2002 15:48:49 -0700
+
+gnocatan (0.7.0-2) unstable; urgency=low
+
+  * a little post-release touchup paint
+
+ -- Jeff Breidenbach <jab@debian.org>  Tue, 28 May 2002 23:27:29 -0700
+
+gnocatan (0.7.0-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Roman Hodek <roman@hodek.net>  Mon, 27 May 2002 21:15:03 +0200
+
+gnocatan (0.6.99.1-1) unstable; urgency=low
+
+  * Another upstream beta candidate.
+     - during first connect, show a splash screen
+     - fix bug that gtk server couldn't start AI players
+     - made histogram dialog nicer
+     - let clients exit if net connection lost
+     - updated docs
+     - fix a few Debian bugs,
+
+ -- Roman Hodek <roman@hodek.net>  Tue, 21 May 2002 21:59:45 +0200
+
+gnocatan (0.6.99-2) unstable; urgency=low
+
+  * CVS snapshot from 05/20, 19:15 UTC
+
+ -- Roman Hodek <roman@hodek.net>  Mon, 20 May 2002 21:15:32 +0200
+
+gnocatan (0.6.99-1) unstable; urgency=low
+
+  * Beta of upstream 0.7.0.
+
+ -- Roman Hodek <roman@hodek.net>  Thu, 16 May 2002 00:01:48 +0200
+
+gnocatan (0.6.1-6) unstable; urgency=low
+
+  * Merge metaserver softcoding patch, closes: #140722
+
+ -- Jeff Breidenbach <jab@debian.org>  Sun, 21 Apr 2002 13:29:10 -0700
+
+gnocatan (0.6.1-5) unstable; urgency=low
+
+  * Fix IPv6 problem with server (nobody reported the bug, leading
+    me to believe nobody is playing gnocatan)
+
+ -- Jeff Breidenbach <jab@debian.org>  Mon,  1 Apr 2002 21:43:15 -0800
+
+gnocatan (0.6.1-4) unstable; urgency=low
+
+  * Added IPv6 patch from Guus Sliepen
+
+  * Consolidated maintainer email address (for spam prevention)
+
+  * Referenced modern policy to make lintian shut up
+
+  * Adjusted Build-depends:
+
+ -- Jeff Breidenbach <jab@debian.org>  Sun, 17 Mar 2002 12:37:07 -0800
+
+gnocatan (0.6.1-3) unstable; urgency=low
+
+  * Fix build bug (#115072)
+
+ -- Jeff Breidenbach <jab@debian.org>  Sun, 21 Oct 2001 19:09:43 -0700
+
+gnocatan (0.6.1-2) unstable; urgency=low
+
+  * Fixed bug #70831  (gnocatan-server.menu outdated)
+
+ -- Jeff Breidenbach <jab@debian.org>  Thu,  2 Nov 2000 19:29:52 -0800
+
+gnocatan (0.6.1-1) unstable; urgency=low
+
+  * New upstream release, incorporates all debian diffs
+
+ -- Jeff Breidenbach <jab@debian.org>  Fri, 25 Aug 2000 19:31:28 -0700
+
+gnocatan (0.6.0-2) unstable; urgency=low
+
+  * Removed README.debian
+
+  * Added Build-Requires line to control file; addresses bug #67287
+
+ -- Jeff Breidenbach <jab@debian.org>  Sat, 15 Jul 2000 21:06:25 -0700
+
+gnocatan (0.6.0-1) unstable; urgency=low
+
+  * Correcting version numbers
+
+ -- Jeff Breidenbach <jab@debian.org>  Thu, 29 Jun 2000 19:42:42 -0700
+
+gnocatan (0.5.6-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Jeff Breidenbach <jab@debian.org>  Sun, 18 Jun 2000 17:17:15 -0700
+
+gnocatan (0.5.0-1) unstable; urgency=low
+
+  * SourceForge realease
+
+ -- Andy Heroff <aheroff@mediaone.net>  Mon,  1 May 2000 23:00:00 -0500
+
+gnocatan (0.4.0-1) unstable; urgency=low
+
+  * Experimental package
+
+ -- Dave Cole <dave@dccs.com.au>  Fri,  3 Sep 1999 23:41:45 +1000
+
+gnocatan (0.3.3-1) unstable; urgency=low
+
+  * Fixed trade problems for real
+
+ -- Dave Cole <dave@dccs.com.au>  Tue,  8 Jun 1999 20:03:40 +1000
+
+gnocatan (0.32-1) unstable; urgency=low
+
+  * Fixed trade problems
+
+ -- Dave Cole <dave@dccs.com.au>  Fri, 28 May 1999 23:48:32 +1000
+
+gnocatan (0.31-1) unstable; urgency=low
+
+  * Updated documentation
+  * Fixed segfault in domestic trade
+
+ -- Dave Cole <dave@dccs.com.au>  Sat, 22 May 1999 23:57:56 +1000
+
+gnocatan (0.30-1) unstable; urgency=low
+
+  * Feature complete game at last
+  * Improved meta-server behaviour with masquerading firewalls
+
+ -- Dave Cole <dave@dccs.com.au>  Sat, 22 May 1999 00:49:54 +1000
+
+gnocatan (0.25-1) unstable; urgency=low
+
+  * Added better setup handling.
+
+ -- Dave Cole <dave@dccs.com.au>  Tue, 11 May 1999 16:57:42 +1000
+
+gnocatan (0.24-1) unstable; urgency=low
+
+  * Fixed long standing "dropped message bug"
+
+ -- Dave Cole <dave@dccs.com.au>  Sun,  9 May 1999 23:14:43 +1000
+
+gnocatan (0.23-1) unstable; urgency=low
+
+  * Added Gnome icon and desktop
+
+ -- Dave Cole <dave@dccs.com.au>  Sun,  9 May 1999 16:56:09 +1000
+
+gnocatan (0.22-2) unstable; urgency=low
+
+  * Fixed up some of the Debian control fields
+  * Fixed order of debhelper commands to allow single pass build.
+
+ -- Dave Cole <dave@dccs.com.au>  Sun,  9 May 1999 11:32:04 +1000
+
+gnocatan (0.22-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Dave Cole <dave@dccs.com.au>  Sat,  8 May 1999 20:35:36 +1000
+
+Local variables:
+mode: debian-changelog
+End:

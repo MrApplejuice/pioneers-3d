@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+CONFIG_FILE=/etc/default/pioneers-metaserver
+
+if test "$1" = "purge" ; then
+	rm -f "$CONFIG_FILE"
+fi
+
+#DEBHELPER#
+
+exit 0

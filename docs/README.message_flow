@@ -1,0 +1,145 @@
+This documents describes the message flow between the various programs in the package Pioneers.
+
+Program description
+===================
+
+The package Pioneers contains the following programs:
+AI) pioneersai
+CL) pioneers
+SC) pioneers-server-console
+SG) pioneers-server-gtk
+MS) pioneers-metaserver
+ED) pioneers-editor
+Each program can be configured using the command line and environment variables. See the corresponding man page for details.
+
+All communication between the programs uses TCP/IP. The AVAHI communication uses multicast.
+
+The following sections briefly describe the modules of each program. The modules that are optional at run time are marked with a star (*).
+
+The following functionality can be disabled at build time (see configure.ac):
+- AVAHI
+- Notification on the desktop
+- The use of IPv4 and/or IPv6 
+- Help menu item
+
+AI) pioneersai
+--------------
+The computer player. Uses a socket to communicate with a server SC) or SG).
+
+CL) pioneers
+------------
+The GUI for the human players. Consists of the following modules:
+CL1) Manual connection by entering a hostname and port
+CL2) AHAVI discovered connection (created by SC4) or SG3))
+CL3) Join an existing public game on a metaserver MS)
+CL4) Start the graphical server SG)
+CL5) Create a game on the metaserver MS), automatically followed by CL3)
+CL6) Join a game based on the parameters on the command line
+
+SC) pioneers-server-console
+---------------------------
+The non-interactive interface for the server. Consists of the following modules:
+SC1) The server. Listens on a socket
+SC2) The admin interface. Listens on a socket
+SC3*) Registration on the metaserver MS)
+SC4) Publication on AVAHI
+SC5) Board loader, loads board from files
+
+The server-console can start the computer player AI)
+
+SG) pioneers-server-gtk
+-----------------------
+The GUI for the server. Consists of the following modules:
+SG1) The server. Listens on a socket
+SG2*) Registration on the metaserver MS)
+SG3) Publication on AVAHI
+SG4) Board loader, loads board from files
+
+The server-gtk can start the clients AI) and CL6)
+
+MS) pioneers-metaserver
+-----------------------
+The metaserver for easier discovery of running games. Consists of the following modules:
+MS1) Game list, shows the registered games SC3) and SG2)
+MS2) Game parameter publication
+MS3) Game creation
+MS4) Metaserver capability
+MS5) Board loader, loads board from files
+
+The metaserver listens on port 5557. Module MS4) lists the capabilities of the metaserver. Module MS3) can be disabled, either by not installing SC) or by removing all files from MS5).
+Module MS2) shows the names of the boards that can be started.
+
+ED) pioneers-editor
+-------------------
+The editor creates *.game files which can be used by SC5), SG4) and MS5)
+
+Game parameter message flow
+===========================
+Information about games can be sent in the following ways:
+GP1) Only the title of the board
+GP2) GP1) + max number of players, victory points, initial number of computer players, sevens rule, random terrain
+GP3) GP1) + max number of players, victory points, total number of players, sevens rule, random terrain, hostname, port, protocol version of the server
+GP4) Some parameters, using the admin protocol
+GP5) Full GameParams structure
+
+Client requests a new game on the metaserver
+--------------------------------------------
+In CL) use Game|New Game|Join Public Game|New Remote Game.
+The client CL) opens a connection to the metaserver MS) and requests the game information.
+The metaserver MS) sends a list of GP1) and closes the connection
+The client CL) opens a new connection to the metaserver MS) to request a new server with GP2).
+The metaserver MS) determines a free port and starts a server SC) using the command line containing GP2), hostname and port.
+The free port and the hostname is sent to the client CL), the connection is then closed.
+The server SC) registers on the metaserver MS) with GP3).
+When players join or leave, the total number of players is updated on MS) by SC).
+The client CL) connects to the server SC).
+
+Client joins an existing game
+-----------------------------
+In CL) use either Game|New Game|<select from dropdown box>|Join, Game|New Game|<select metaserver>|Join Public Game|<double click on listed game>, Game|New Game|<select metaserver>|Join Public Game|<select game>|OK or Game|New|Game|Join Private Game|<enter details>|OK.
+In SG) use Launch Pioneers Client (the client CL) is configured on the command line).
+
+The client CL) connects to the server SC) or SG) which then updates the total number of players on the metaserver MS).
+
+Server is started
+-----------------
+A server is started. This can be SC) without --admin-wait, SG) or SG) using CL) with Game|New Game|Create Game.
+The server registers on the metaserver MS) with GP3).
+When players join or leave, the total number of players is updated on MS) by SC).
+
+Server is started from the admin interface
+------------------------------------------
+The server SC) is started with --admin-wait and --admin-port (default=5555).
+Using a simple tool (e.g. netcat) the admin protocol is sent to the admin port. Some game parameters can be set.
+After 'admin start-server' the server is started.
+
+Proposed modifications
+======================
+The situation as described above is present in Pioneers 14.1 with metaserver protocol 1.3.
+
+New variants can be:
+GP6) GP5) + total number of players, hostname, port, protocol version of the server (replaces GP3))
+GP7) GP3) + total number of computer players
+GP8) GP6) + total number of computer players
+
+The implementation of GP6) can be done independently of other changes. It significantly increases the amount of network traffic, so care must be taken with slower connections, possibly by first sending GP3) and then GP6).
+The implementation of GP7) can be done independently of other changes. GP8) can replace GP7) eventually.
+
+The following modifications can be done, in chronological order:
+1) Replace GP1) by GP5) in the metaserver. This will allow the client to start a board with the number of players and victory points as determined by the designer of a board layout. -> NOT NEEDED ANYMORE
+2) The client sends GP5) instead of GP2). The metaserver can save a file with the GP5) information from the client to start C).
+
+Then the development can be split in independent changes a and b:
+3a) Instead of saving a file, the server SC) can be started with --admin-wait and receive GP5) using a modification to the admin protocol.
+4a) The server-gtk SG) can use SC) in --admin-wait mode, thereby removing the duplicated functionality of serving a game.
+5a) The server-gtk SG) can use the editor widgets to construct GP5), thereby removing the duplicated GUI in server-gtk and editor.
+
+3b) The client CL) can use the editor widgets to construct GP5).
+4b) The client CL) can use the read-only variant of the editor widget to replace the Game|Game Settings dialog.
+
+After 2) the command line of pioneers-server-console can be simplified.
+After 3a) the admin protocol can be simplified.
+After 3a) the admin protocol can be modified such that the admin interface port can be recycled for use in the regular game.
+
+After 5a) and 3b) the functionality of the program pioneers-editor has fully been migrated.
+

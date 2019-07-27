@@ -1,0 +1,25 @@
+Scripts to run on the public meta-server (in a screen session)
+
+Build pioneers with:
+$ autogen.sh --prefix=/home/pioneers/local
+$ make all install
+
+Start screen
+$ screen -c screenrc
+
+In screen 0 "meta": The local meta-server (./meta.sh)
+In screen 1 "local lobby": The local lobby (./locallobby.sh)
+In screen 2 "local lobbybot": The local lobbybot (./locallobbybot.sh)
+In screen 3 "remote lobby": The remote lobby (./remotelobby.sh)
+In screen 4 "remote lobbybot": The remote lobbybot (./remotelobbybot.sh)
+
+Other scripts:
+list.sh
+	Show all running games
+
+kill-game.sh [port]
+	Kill a game running on the given port
+
+getVersions.sh
+	Show the version in various distributions (whohas is better...)
+

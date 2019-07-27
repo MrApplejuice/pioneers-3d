@@ -1,0 +1,11 @@
+*.substvars
+*.debhelper
+pioneers*.log
+pioneers
+pioneers-console
+pioneers-data
+pioneers-console-data
+pioneers-metaserver
+pioneers-meta-server
+files
+tmp

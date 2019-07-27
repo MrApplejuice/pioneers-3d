@@ -1,0 +1,57 @@
+title North America
+random-terrain
+domestic-trade
+num-players 6
+sevens-rule 0
+victory-points 16
+num-roads 40
+num-bridges 0
+num-ships 40
+num-settlements 10
+num-cities 5
+num-city-walls 0
+resource-count 20
+develop-road 4
+develop-monopoly 4
+develop-plenty 4
+develop-chapel 2
+develop-university 2
+develop-governor 2
+develop-library 2
+develop-market 2
+develop-soldier 30
+# 1/31/2004
+# 
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+desc by Ron Yorgason <yorgasor@cs.pdx.edu>
+desc 
+desc Please provide some feedback ;)
+chits 3,11,6,2,3,11,9,8,9,4,11,10,9,12,11,9,4,9,4,11,4,4,5,5,11,6,9,8,12,2,10,9,6,5,11,5,9,2,11,6,12,12,4,11,8,8,2,6,3,3,9,12,2,8,10,10,4,8,12,4,2,4,8,5,11,9,3,12,2,6,6,12,8,11,5,8,6,6,12,10,10,11,11,8,2,5,9,8,12,2,8,10,9,5,12,6,12,12,9,4,12,2,12,8,10,11,6,9,12,6,11,10,12,5,3,8,6,8,3,4,4,8,3,12,5
+map
+s,s,s,s,s,s,s,s,s,s,s,s,h0,s,s,f1,d2,d3,h4
+s,s,f5,m6,d7,s,s,s,s,s,s,t8,s,f9,s,f10,t11,h12,t13
+s,s,f14,m15,h16,t17,f18,s,s,s,s,s,s,s,s,s,s,sg0,p19
+s,s,m20,f21,p22,f23,t24,t25,f26,t27,f28,s,p29,f30,f31,s,h32,s,s
+s,s,s,s,s?1,t33,p34,f35,h36,h37,t38,s,s?0,f39,t40,p41,s?2,s,s
+s,s,s,s,s,t42,f43,h44,m45,f46,p47,f48,h49,t50,p51,f52,s,s,s
+s,s,s,s,s,h53,f54,m55,p56,f57,t58,t59,t60,h61,t62,so2,s,s,s
+s,s,s,s,sl0,h63,t64,m65,f66,f67,s,s,s,t68,h69,s,s,s,s
+s?5,s,s,s,s,t70,t71,m72,h73,f74,p75,p76,s,h77,t78,sw3,s,s,s
+p79,s,s,s,sg0,f80,m81,h82,p83,f84,f85,t86,h87,t88,s,s,s,s,s
+t89,m90,s,s,s,p91,t92,m93,h94,f95,f96,t97,h98,f99,s?2,s,s,s,s
+s,s,s,s,sw0,f100,h101,t102,f103,f104,p105,f106,p107,s,s,s,s,s,s
+s,s,s,s,s,s,f108,h109,p110,t111,sg2,s,sb1,p112,sl4,s,s,s,s
+s,s,s,s,s,s113,p114,h115,h116,f117,s,s,s,f118,s,s,s,s,s
+s,s,s,s,s,s,s,s,f119,p120,t121,h122,s,s,s,s?4,s,s,s
+s,s,s,s,s,s,s,sb1,s,s,f123,p124,s,s,t125,f126,p127,s,s
+.

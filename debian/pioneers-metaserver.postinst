@@ -1,0 +1,52 @@
+#!/bin/sh
+
+set -e
+
+CONFIG_FILE=/etc/default/pioneers-metaserver
+
+. /usr/share/debconf/confmodule
+
+# Get current values of the settings.
+if test -e "$CONFIG_FILE" ; then
+	. "$CONFIG_FILE"
+else
+	cat > "$CONFIG_FILE" << EOF
+# This file contains the settings for the pioneers metaserver.
+# It is used by /etc/init.d/pioneers-metaserver, for starting and stopping
+#  the metaserver.
+# See /etc/init.d/pioneers-metaserver for possible variables to assign.
+# If no value is given here, the default from that file is used.
+#
+# This file is sourced as a shell script, so no spaces are allowed
+# around the = sign.
+EOF
+fi
+
+# This function will change variable $1 to the result of debconf question $2.
+# If it already had the right setting, the file is not touched.
+conffile_edit ()
+{
+	variable="$1"
+	question="$2"
+	# Get the answer to the debconf question.
+	db_get "$question" || return 0
+	# Do nothing if the value hasn't changed.
+	test "$RET" != "`eval 'echo $'"$variable"`" || return 0
+
+	if grep -q "^$variable=" "$CONFIG_FILE" ; then
+		# Edit the conffile to contain the new setting.
+		sed -i "s/^\($variable=\).*\$/\\1'$RET'/" "$CONFIG_FILE"
+	else
+		# Or if the setting isn't in the conffile yet, add it.
+		echo "$variable='$RET'" >> "$CONFIG_FILE"
+	fi
+	return 0
+}
+
+conffile_edit PORT_RANGE pioneers-metaserver/ports
+conffile_edit METASERVER_NAME pioneers-metaserver/name
+conffile_edit METASERVER_ARGS pioneers-metaserver/arguments
+
+#DEBHELPER#
+
+exit 0

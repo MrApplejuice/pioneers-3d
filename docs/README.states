@@ -1,0 +1,90 @@
+docs/README.states - information about docs/{client,server}_states.fig
+
+client_states.fig and server_states.fig are an attempt to visualize the
+state machines of Pioneers.  Read this file before trying to interpret them.
+
+They can be viewed (and edited) with xfig.
+
+State machines
+==============
+The center of Pioneers is the state machine.  The client program has one,
+the server has one for every client.  The idea is to simplify programming
+because only things that are sensible in the context have to be implemented.
+Functions also become more readable once you understand how they work.
+
+A state machine is a stack of state function pointers.  The current state
+is the top of stack.  If something happens, the current state is asked
+(e.g. the function is called) to do something with it.  If it didn't do
+anything with it, the program may do some state-independant things, like
+telling the user that it received unexpected input.  This happens in the
+function called global_unhandled.
+
+There are three basic interface functions on a state machine:
+- goto: Change the current state to some other state.
+- push: Put a new state on the stack.  The previous state is preserved, but the
+	new one is called when an event occurs.
+- pop: Remove the top op stack, and reenter the new top of stack.  This is the
+	state from which the push was executed.
+Additionally, there are some functions to do more complicated things:
+- goto_noenter and push_noenter: equivalent to goto and push, except that the
+  new state's ENTER event is not triggered.  This can be used to prepare the
+  stack and only "entering" the state which is on top in the end.
+- multipop: pop several states from the stack at once, and only enter the one
+  which ends up on top.  This is mostly used when the stack is of the form
+  base->special->finish_response, and on correct input from the server,
+  indicating that the special state stuff is finished, it should exit from it.
+  So then not only the response-state, but also the special-state must be
+  popped off.  An example of a special state like this is the domestic trading
+  state.
+- pop_all and pop_all_and_goto: Clear the stack and put a single state on it.
+
+The names of the functions are sm_goto, sm_push, sm_pop, etc.  They are defined
+in common/state.c.  They all take a state machine as an argument.  goto,
+goto_noenter, push, push_noenter and pop_all_and_goto also take a state
+function pointer, containing the new state.  multipop takes the number of
+states to pop as a second argument.
+
+
+The diagrams
+============
+- Yellow blocks are conceptually connected states.  There is no technical
+  binding between them.
+The client diagram has a legend explaining what the symbols are.  In the server diagram:
+- black arrows are goto calls.
+- red arrows are push calls.
+- boxes with text are state functions.
+- blue state functions can pop.
+- black state functions cannot pop.
+
+Mode_idle can for both diagrams be seen as the base state.  Setup ends when the
+state machine enters mode_idle.  From there, everything is pushed on the stack
+and it is popped again when it is finished.  After setup, the lowest state on a
+state machine is always mode_idle.
+
+
+The server states
+=================
+The server diagram seems much simpler than that of the client, but in fact it
+isn't.  As stated above, the server has a state machine for every player.  Some
+states can change the state machine of other players.  If the state change
+results from an action of the state itself, or an other player's state machine,
+is not shown in the diagram.
+
+For example, the mode_idle state doesn't do anything, it waits for other
+players to push a state on the state machine.
+
+There are two things which are shown incorrectly on the diagram, but they
+work the same as drawn.  These are discard and choose_gold.  In fact, when
+any of these states should be called, all players' state machines get a
+mode_idle pushed to them, so they cannot do anything anymore.  Then, the
+players who should, get a mode_choose_gold or mode_discard pushed on top of
+that.  When the last player has popped that off, all players' idle states are
+popped off their state machine and the game can continue.
+
+
+More information
+================
+Before hacking anything in the code, I advise to read common/state.h.  It
+documents the interface of the state machine.  It talks about "top of stack"
+as the state that will be current after a pop is executed, this is different
+from how I use it above (I say the current state _is_ the top of stack).

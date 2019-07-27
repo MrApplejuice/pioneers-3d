@@ -1,0 +1,91 @@
+requires 2.0.0
+
+%alltop{
+/* Pioneers - Implementation of the excellent Settlers of Catan board game.
+ *   Go buy a copy.
+ *
+ * Copyright (C) 2011 Micah Bunting <Amnykon@gmail.com>
+ * Copyright (C) 2011 Roland Clobus <rclobus@rclobus.nl>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+%}
+
+%headertop{
+#include <gtk/gtk.h>
+#include "config.h"
+%}
+
+%privateheader{
+%}
+
+class Scrollable:Text:View from Gtk:Scrolled:Window {
+
+	public GtkWidget *new(void) {
+		return (GtkWidget *) GET_NEW;
+	}
+	init(self) {
+		GtkScrolledWindow *sw = GTK_SCROLLED_WINDOW(self);
+		GtkWidget *text_view;
+
+		gtk_scrolled_window_set_hadjustment(sw, NULL);
+		gtk_scrolled_window_set_vadjustment(sw, NULL);
+		gtk_scrolled_window_set_policy(sw, GTK_POLICY_AUTOMATIC,
+					       GTK_POLICY_AUTOMATIC);
+
+		text_view = gtk_text_view_new();
+		gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(text_view),
+					    FALSE);
+		gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(text_view),
+						 TRUE);
+		gtk_text_view_set_accepts_tab(GTK_TEXT_VIEW(text_view),
+					      FALSE);
+
+		gtk_container_add(GTK_CONTAINER(self), text_view);
+	}
+
+	public void set_text(self, const gchar * text) {
+		GtkTextBuffer *buffer;
+		GtkTextIter start;
+		GtkTextIter end;
+
+		buffer =
+		    gtk_text_view_get_buffer(GTK_TEXT_VIEW
+					     (gtk_bin_get_child
+					      (GTK_BIN(self))));
+		gtk_text_buffer_get_bounds(buffer, &start, &end);
+		gtk_text_buffer_set_text(buffer, text ? text : "", -1);
+		gtk_text_buffer_get_bounds(buffer, &start, &end);
+		gtk_text_buffer_place_cursor(buffer, &start);
+	}
+
+	public gchar *get_text(self) {
+		GtkTextBuffer *buffer;
+		GtkTextIter start;
+		GtkTextIter end;
+
+		buffer =
+		    gtk_text_view_get_buffer(GTK_TEXT_VIEW
+					     (gtk_bin_get_child
+					      (GTK_BIN(self))));
+		gtk_text_buffer_get_bounds(buffer, &start, &end);
+		return gtk_text_buffer_get_text(buffer, &start, &end,
+						FALSE);
+	}
+
+	public GtkWidget *get_for_mnemonic(self) {
+		return gtk_bin_get_child(GTK_BIN(self));
+	}
+}

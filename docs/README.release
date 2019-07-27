@@ -1,0 +1,55 @@
+Before a release:
+* Check whether 'make distcheck' still is ok
+  ./autogen.sh --enable-warnings --enable-deprecation-checks;make clean distcheck 2> err
+* Update the translation templates
+  cd po;intltool-update -r
+* Alert the Debian debconf translators
+  podebconf-report-po
+* Fix fuzzy translations only due to layout changes
+* Announce that a release is pending, and announce a string freeze
+  The mailing list is pio-develop@lists.sourceforge.net
+* Write an email to the (last) translators
+  The mailing list is pio-i18n@lists.sourceforge.net
+* Check the pioneers.spec.in file
+* Check the pioneers.nsi.in file
+* Check the Debian files
+* Update the manual where needed (including the screenshots)
+
+If the protocol has changed:
+* Check configure.ac, AC_INIT and PROTOCOL_VERSION
+* If the protocol is backwards compatible, adjust the version checks
+* Update ClientVersionType functions in common/game.h and common/game.c
+* Update client/gtk/data/splash.svg
+
+At release time:
+* Update (if needed): NEWS, README, README.Cygwin, README.MinGW, TODO
+* Update the line numbers in the translation templates
+  cd po;intltool-update -r
+* Update: client/ai/lobbybot.c
+* Add an entry of the release to the ChangeLog
+  * Released X_Y_Z.
+* Create a tag in the Subversion repository
+  svn copy --username rclobus svn+ssh://rclobus@svn.code.sf.net/p/pio/code/trunk svn+ssh://rclobus@svn.code.sf.net/p/pio/code/tags/Build_X_Y_Z
+* Update the version number in configure.ac
+* Extract a clean copy
+  cd my_build_directory;svn export svn://svn.code.sf.net/p/pio/code/tags/Build_X_Y_Z
+* Create the tarball
+  ./autogen.sh;make dist
+* Sign the tarball
+  gpg -u rclobus@users.sourceforge.net --armor --output tarball.sig --detach-sig tarball.tar.gz
+  (Verify with gpg --verify tarball.sig tarball.tar.gz)
+* Upload the tarball in the Files/Sources section of https://sourceforge.net/projects/pio/upload/Source/
+* Mark the tarball: 'Default Download for' -> all, except Windows and Android
+* Write a news item on SourceForge (using the content of NEWS)
+* Write an e-mail
+  The lists to use: pio-announce@lists.sourceforge.net, and
+  pio-general@lists.sourceforge.net
+* Update the homepage (https://sourceforge.net/p/forge/documentation/Project%20Web%20Services/)
+  sftp rclobus@web.sourceforge.net
+  cd /home/project-web/pio/htdocs
+* Update the screenshots page
+* Reboot to Windows
+* Download the tarball
+* Create the installer under MinGW
+* Upload the installer to SourceForge
+* Update the released information at tucows (https://author.tucows.com/index.php) -> note: they need a long time to process the changes

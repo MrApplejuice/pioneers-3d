@@ -1,0 +1,24 @@
+requires 2.0.0
+
+class Notifying:String from G:Object {
+	private gchar *value = { NULL }
+	destroywith g_free;
+
+	signal last NONE(NONE)
+	    void
+	 changed(self) {
+	}
+
+	public GObject *new(void) {
+		return (GObject *) GET_NEW;
+	}
+
+	public void set(self, const gchar * value) {
+		self->_priv->value = g_strdup(value);
+		self_changed(self);
+	}
+
+	public gchar *get(self) {
+		return g_strdup(self->_priv->value);
+	}
+}

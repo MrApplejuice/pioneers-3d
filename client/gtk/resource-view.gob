@@ -1,0 +1,257 @@
+requires 2.0.0
+
+%alltop{
+/* Pioneers - Implementation of the excellent Settlers of Catan board game.
+ *   Go buy a copy.
+ *
+ * Copyright (C) 2006 Giancarlo Capella <giancarlo@comm.cc>
+ * Copyright (C) 2011 Roland Clobus <rclobus@rclobus.nl>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+%}
+
+%headertop{
+#include <gtk/gtk.h>
+#include "config.h"
+#include "callback.h"
+#include "client.h"
+%}
+
+%privateheader{
+#include "map.h"
+#include "frontend.h"
+%}
+
+class Resource:View from Gtk:Image {
+	private gint resource[NO_RESOURCE];
+	private gdouble distance;
+	private gint max_width;
+	classwide cairo_surface_t *surface[NO_RESOURCE];
+
+	 class_init(klass) {
+		gint i;
+		static const gchar *resources_pixmaps[] = {
+			"brick.png",
+			"grain.png",
+			"ore.png",
+			"wool.png",
+			"lumber.png"
+		};
+		for (i = 0; i < NO_RESOURCE; i++) {
+			gchar *filename;
+			/* determine full path to pixmap file */
+			filename =
+			    g_build_filename(DATADIR, "pixmaps",
+					     "pioneers",
+					     resources_pixmaps[i], NULL);
+			if (g_file_test(filename, G_FILE_TEST_EXISTS)) {
+				klass->surface[i] =
+				    cairo_image_surface_create_from_png
+				    (filename);
+
+			}
+			g_free(filename);
+		}
+	}
+
+	public GtkWidget *new(void) {
+		return (GtkWidget *) GET_NEW;
+	}
+
+	public GtkWidget *new_single_resource(Resource resource) {
+		ResourceView *rv;
+		gint width;
+		gint height;
+
+		rv = GET_NEW;
+		rv->_priv->resource[resource] = 1;
+		resource_view_calculate_size(rv, &width, &height);
+		gtk_widget_set_size_request(GTK_WIDGET(rv), width, height);
+		gtk_widget_set_tooltip_text(GTK_WIDGET(rv),
+					    resource_name(resource, TRUE));
+		return GTK_WIDGET(rv);
+	}
+
+	init(self) {
+		gint width;
+		gint height;
+
+		self->_priv->distance = 16;
+		self->_priv->max_width = -1;
+		resource_view_calculate_size(self, &width, &height);
+		gtk_widget_set_size_request(GTK_WIDGET(self), width,
+					    height);
+
+		g_signal_connect(G_OBJECT(self), "draw",
+				 G_CALLBACK(resource_view_draw), NULL);
+		g_signal_connect(G_OBJECT(self), "size_allocate",
+				 G_CALLBACK(resource_view_allocate), NULL);
+	}
+
+	private void calculate_size(self, gint * width, gint * height) {
+		gint i;
+		gint num_res;
+		gint tot_res;
+		gint size;
+
+		num_res = tot_res = 0;
+		for (i = 0; i < NO_RESOURCE; i++) {
+			if (self->_priv->resource[i]) {
+				num_res++;
+				tot_res += self->_priv->resource[i];
+			}
+		}
+
+		if (tot_res == 0) {
+			tot_res = 1;	/* Avoid division by zero */
+		}
+
+		size = 16;	/* gui_get_resource_pixmap_res(); */
+
+		if (self->_priv->max_width <= 0 || tot_res == num_res
+		    || self->_priv->max_width >= size * tot_res) {
+			self->_priv->distance = size;
+		} else {
+			self->_priv->distance =
+			    (gdouble) (self->_priv->max_width -
+				       num_res * size) / (tot_res -
+							  num_res);
+		}
+
+		/* Set the optimal size as a request */
+		if (width != NULL) {
+			*width = size * tot_res;
+		}
+		if (height != NULL) {
+			*height = size;
+		}
+	}
+
+	public void set(self, const gint * resource) {
+		gint i;
+		gchar *tooltip;
+		gint width;
+		gint height;
+
+		for (i = 0; i < NO_RESOURCE; i++) {
+			self->_priv->resource[i] = resource[i];
+		}
+
+		resource_view_calculate_size(self, &width, &height);
+		gtk_widget_set_size_request(GTK_WIDGET(self), width,
+					    height);
+		tooltip = resource_format_num(resource);
+		gtk_widget_set_tooltip_text(GTK_WIDGET(self), tooltip);
+		g_free(tooltip);
+	}
+
+	public void set_amount_of_single_resource(self, Resource type,
+						  gint amount) {
+		gchar *tooltip;
+
+		memset(self->_priv->resource, 0,
+		       sizeof(self->_priv->resource));
+
+		self->_priv->resource[type] = MAX(0, amount);
+
+		resource_view_calculate_size(self, NULL, NULL);
+		gtk_widget_queue_draw(GTK_WIDGET(self));
+
+		tooltip =
+		    g_strdup_printf("%s: %d", resource_name(type, TRUE),
+				    amount);
+		gtk_widget_set_tooltip_text(GTK_WIDGET(self), tooltip);
+		g_free(tooltip);
+	}
+
+	private gboolean allocate(GtkWidget * self,
+				  GtkAllocation * allocation,
+				  gpointer user_data) {
+		/* Remove compiler warning */
+		(void)user_data;
+
+		RESOURCE_VIEW(self)->_priv->max_width = allocation->width;
+		resource_view_calculate_size(RESOURCE_VIEW(self), NULL,
+					     NULL);
+		return FALSE;
+	}
+
+	private gboolean draw(GtkWidget * self, cairo_t * cr,
+			      gpointer user_data) {
+		gint i;
+		GtkRequisition r;
+		GtkRequisition r2;
+		GtkAllocation allocation;
+		gdouble xoffset;
+		gdouble yoffset;
+
+		/* Remove compiler warnings */
+		(void)user_data;
+
+		gtk_widget_get_preferred_size(GTK_WIDGET(self), &r, &r2);
+		gtk_widget_get_allocation(GTK_WIDGET(self), &allocation);
+
+		/* Center alignment */
+		yoffset = (gfloat) (allocation.height - r.height) * 0.5;
+
+		if (allocation.width != -1) {
+			r.width = allocation.width;
+		}
+		if (allocation.height != -1) {
+			r.height = allocation.height;
+		}
+
+		/* Left alignment */
+		xoffset = 0;
+		for (i = 0; i < NO_RESOURCE; i++) {
+			gint n;
+			for (n = 0;
+			     n < RESOURCE_VIEW(self)->_priv->resource[i];
+			     n++) {
+				cairo_set_source_surface(cr,
+							 SELF_GET_CLASS
+							 (self)->surface
+							 [i], xoffset,
+							 yoffset);
+				cairo_rectangle(cr, 0, 0, r.width,
+						r.height);
+				cairo_fill(cr);
+				xoffset +=
+				    RESOURCE_VIEW(self)->_priv->distance;
+			}
+		};
+
+		return TRUE;
+	}
+
+	private gboolean expose(GtkWidget * self, GdkEvent * event,
+				gpointer user_data) {
+		cairo_t *cr;
+
+		if (!gtk_widget_get_mapped(self)) {
+			return FALSE;
+		}
+
+		/* Remove compiler warnings */
+		(void)event;
+
+		cr = gdk_cairo_create(gtk_widget_get_window
+				      (GTK_WIDGET(self)));
+		self_draw(self, cr, user_data);
+		cairo_destroy(cr);
+		return TRUE;
+	}
+}
