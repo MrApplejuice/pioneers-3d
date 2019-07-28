@@ -35,7 +35,7 @@ static char *port = NULL;
 static char *name = NULL;
 char *chromosomeFile = NULL;
 static char *ai;
-static int waittime = 1000;
+static int waittime = 10;
 static gboolean silent = FALSE;
 static gboolean enable_debug = FALSE;
 static gboolean show_version = FALSE;

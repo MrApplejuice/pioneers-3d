@@ -58,3 +58,6 @@ m4
 /.project
 *.o
 /build
+/ogre.cfg
+/plugins.cfg
+/*.log

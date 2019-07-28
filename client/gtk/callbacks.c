@@ -22,6 +22,9 @@
 #include "frontend.h"
 #include "histogram.h"
 
+#include "ogre/main.h"
+
+
 static void frontend_network_status(const gchar * description)
 {
 	gui_set_net_status(description);
@@ -162,4 +165,6 @@ void frontend_set_callbacks(void)
 	callbacks.new_bank = &frontend_new_bank;
 	callbacks.get_map = &frontend_get_map;
 	callbacks.set_map = &frontend_set_map;
+
+	callbacks.mainloop = pogre_setup_gtk_mainloop(callbacks.mainloop);
 }

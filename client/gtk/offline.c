@@ -32,6 +32,8 @@
 #include "client.h"
 #include "game-list.h"
 
+#include "ogre/main.h"
+
 static gboolean have_dlg = FALSE;
 static gboolean connectable = FALSE;
 
@@ -158,6 +160,7 @@ static void frontend_main(void)
 
 void frontend_quit(void)
 {
+	ogreb_cleanup();
 	if (mainloop_started) {
 		gtk_main_quit();
 	} else {
@@ -253,6 +256,8 @@ void frontend_init(void)
 	histogram_init();
 	notification_init();
 	gui_build_interface();
+
+	ogreb_init();
 
 	/* in theory, all windows are created now...
 	 *   set logging to message window */

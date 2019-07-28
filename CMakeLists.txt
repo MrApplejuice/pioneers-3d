@@ -8,6 +8,8 @@ if(NOT GTK3_FOUND)
 	message(FATAL_ERROR "GTK3 not found")
 endif()
 
+find_package(OGRE REQUIRED)
+
 
 find_library(
 	LIBGIO_2_0_LIBRARY
@@ -15,21 +17,21 @@ find_library(
 	PATHS 
 		/usr/lib/
 		/usr/lib/x86_64-linux-gnu/)
-	
+
 find_library(
 	LIBPANGO_LIBRARY
 	NAMES pango-1.0
 	PATHS 
 		/usr/lib/
 		/usr/lib/x86_64-linux-gnu/)
-	
+
 find_library(
 	LIBPANGOCAIRO_LIBRARY
 	NAMES pangocairo-1.0
 	PATHS 
 		/usr/lib/
 		/usr/lib/x86_64-linux-gnu/)
-	
+
 find_library(
 	LIBAVAHI_COMMON_LIBRARY
 	NAMES avahi-common
@@ -48,14 +50,14 @@ find_library(
 	PATHS 
 		/usr/lib/
 		/usr/lib/x86_64-linux-gnu/)
-	
+
 find_library(
 	NOTIFY_LIBRARY
 	NAMES notify
 	PATHS 
 		/usr/lib/
 		/usr/lib/x86_64-linux-gnu/)
-	
+
 configure_file(
 	common/gtk/config-gnome.h
 	include/gnome.h)
@@ -63,6 +65,11 @@ configure_file(
 	common/gtk/config-gnome.c
 	include/gnome.c)
 
+
+set(P3D_OGRE_SRC
+	client/gtk/ogre/main.h
+	client/gtk/ogre/main.cpp
+)
 
 set(P3D_COMMON_SRC
 	common/cost.c
@@ -197,7 +204,10 @@ set(P3D_GTK_SRC
 
 add_executable(pioneers-3d
 	${P3D_COMMON_SRC}
-	${P3D_GTK_SRC})
+	${P3D_GTK_SRC}
+	${P3D_OGRE_SRC})
+
+set_property(TARGET pioneers-3d PROPERTY CXX_STANDARD 17)
 
 target_include_directories(pioneers-3d
 	PUBLIC 
@@ -230,6 +240,7 @@ target_link_libraries(pioneers-3d
 	${LIBAVAHI_COMMON_LIBRARY}
 	${LIBAVAHI_GLIB_LIBRARY}
 	${NOTIFY_LIBRARY}
-	m)
+	m
+	OgreMain
+	OgreBites)
 
-#message(STATUS "GTK2_INCLUDE_DIRS=${GTK2_INCLUDE_DIRS}")

@@ -37,6 +37,8 @@
 #include "audio.h"
 #include "notification.h"
 
+#include "ogre/main.h"
+
 static GtkWidget *preferences_dlg;
 GtkWidget *app_window;		/* main application window */
 
