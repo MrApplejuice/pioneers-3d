@@ -1,0 +1,17 @@
+material base_hex {
+	technique {
+		pass {
+			cull_hardware none
+			cull_software none
+		
+			diffuse 1 1 1
+			ambient 1 1 1
+			
+			scene_blend alpha_blend
+			
+			texture_unit {
+				texture tile-frame.svg.png
+			}
+		}
+	}
+}

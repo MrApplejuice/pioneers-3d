@@ -8,6 +8,7 @@
 
 #include <Ogre.h>
 #include <Bites/OgreBitesConfigDialog.h>
+#include <RTShaderSystem/OgreRTShaderSystem.h>
 
 namespace pogre {
 	typedef std::shared_ptr<Ogre::Root> OgreRootPtr;
@@ -23,6 +24,8 @@ namespace pogre {
 
 		Ogre::Camera* camera;
 		Ogre::Viewport* viewport;
+
+		Ogre::SceneNode* location;
 	public:
 		typedef std::shared_ptr<CameraControls> Ptr;
 
@@ -34,10 +37,19 @@ namespace pogre {
 			viewport->setDimensions(0, 0, 1, 1);
 			viewport->setBackgroundColour(Ogre::ColourValue::Red);
 
-			camera->setAspectRatio((float) window->getWidth() / (float) window->getHeight());
+			camera->setAutoAspectRatio(true);
+			camera->setNearClipDistance(.5);
+			camera->setFarClipDistance(10);
+
+			location = mainScene->getRootSceneNode()->createChildSceneNode("camera location");
+			location->attachObject(camera);
+			location->setPosition(0, -.5, .5);
+
+			location->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TransformSpace::TS_WORLD);
 		}
 
 		virtual ~CameraControls() {
+			mainScene->getRootSceneNode()->removeAndDestroyChild(location);
 			mainScene->destroyCamera(camera);
 		}
 	};
@@ -49,11 +61,40 @@ namespace pogre {
 		typedef std::shared_ptr<MapRenderer> Ptr;
 
 		MapRenderer(::Map* _map) : theMap(_map) {
+			std::cout << "init shader man " << Ogre::RTShader::ShaderGenerator::initialize() << std::endl;
+			auto rtshare = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
+			rtshare->addSceneManager(mainScene);
+
+			auto resgrpman = Ogre::ResourceGroupManager::getSingletonPtr();
+
+			resgrpman->createResourceGroup("map", false);
+			resgrpman->addResourceLocation("ogre_resources/", "FileSystem", "map");
+			resgrpman->addResourceLocation("ogre_resources/textures/", "FileSystem", "map");
+			resgrpman->initialiseAllResourceGroups();
+
+			auto m = root->getMeshManager()->createPlane("hex", "map", Ogre::Plane(0, 0, 1, 0), .1, .1);
+			auto e = mainScene->createEntity(m);
+			auto l = mainScene->getRootSceneNode()->createChildSceneNode();
+			l->attachObject(e);
+
+			auto matman = Ogre::MaterialManager::getSingletonPtr();
+			auto mat = matman->getByName("base_hex", "map");
+
+			resgrpman->loadResourceGroup("map");
+
+			e->setMaterial(mat);
+
+//			auto mat = Ogre::MaterialManager::getSingleton().create("hex", "map");
+//			mat->setCullingMode(Ogre::CullingMode::CULL_NONE);
+		}
+
+		virtual ~MapRenderer() {
 
 		}
 	};
 
 	CameraControls::Ptr cameraControls;
+	MapRenderer::Ptr mapRenderer;
 }
 
 extern "C" {
@@ -67,11 +108,14 @@ extern "C" {
 		pogre::mainScene = pogre::root->createSceneManager(
 				Ogre::DefaultSceneManagerFactory::FACTORY_TYPE_NAME,
 				"Main Scene");
-		//pogre::root-
-		//pogre::mainScene->
+
+		pogre::mainScene->setAmbientLight(Ogre::ColourValue(.5, .5, .5));
 
 		pogre::cameraControls = pogre::CameraControls::Ptr(new pogre::CameraControls());
-	}
+
+
+		pogre::mapRenderer = pogre::MapRenderer::Ptr(new pogre::MapRenderer(nullptr));
+}
 
 	static gint64 animationTimerValue;
 	static gboolean	animate(gpointer user_data) {
@@ -89,6 +133,8 @@ extern "C" {
 	}
 
 	void ogreb_show_map(Map* map) {
+		using namespace pogre;
+		mapRenderer = MapRenderer::Ptr(new MapRenderer(map));
 	}
 
 	void ogreb_cleanup() {

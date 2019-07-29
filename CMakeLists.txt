@@ -242,5 +242,6 @@ target_link_libraries(pioneers-3d
 	${NOTIFY_LIBRARY}
 	m
 	OgreMain
-	OgreBites)
+	OgreBites
+	OgreRTShaderSystem)
 
