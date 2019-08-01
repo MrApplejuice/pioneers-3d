@@ -3,10 +3,12 @@
 #include <iostream>
 #include <memory>
 #include <vector>
+#include <typeinfo>
 
 #include <gtk/gtk.h>
 
 #include <Ogre.h>
+#include <OgreWindowEventUtilities.h>
 #include <Bites/OgreBitesConfigDialog.h>
 #include <RTShaderSystem/OgreRTShaderSystem.h>
 
@@ -17,6 +19,17 @@ namespace pogre {
 	Ogre::RenderWindow* window;
 
 	Ogre::SceneManager* mainScene;
+
+	class WindowListener : public OgreBites::WindowEventListener {
+	public:
+		virtual void windowClosed(Ogre::RenderWindow* rw) override {
+			gtk_main_quit();
+		}
+
+		virtual void windowMoved(Ogre::RenderWindow* rw) {
+			std::cout << "Window moved" << std::endl;
+		}
+	};
 
 	class CameraControls {
 	private:
@@ -99,26 +112,36 @@ namespace pogre {
 
 extern "C" {
 	void ogreb_init() {
-		pogre::root = pogre::OgreRootPtr(new Ogre::Root());
+		using namespace pogre;
+
+		pogre::root = OgreRootPtr(new Ogre::Root());
 
 		if (!pogre::root->restoreConfig()) {
 			pogre::root->showConfigDialog(OgreBites::getNativeConfigDialog());
 		}
-		pogre::window = pogre::root->initialise(true, "Pioneers 3D Game Window");
-		pogre::mainScene = pogre::root->createSceneManager(
+		window = pogre::root->initialise(true, "Pioneers 3D Game Window");
+
+		OgreBites::WindowEventUtilities::addWindowEventListener(window, new WindowListener());
+
+		mainScene = root->createSceneManager(
 				Ogre::DefaultSceneManagerFactory::FACTORY_TYPE_NAME,
 				"Main Scene");
 
-		pogre::mainScene->setAmbientLight(Ogre::ColourValue(.5, .5, .5));
+		mainScene->setAmbientLight(Ogre::ColourValue(.5, .5, .5));
 
-		pogre::cameraControls = pogre::CameraControls::Ptr(new pogre::CameraControls());
+		cameraControls = CameraControls::Ptr(new pogre::CameraControls());
 
 
-		pogre::mapRenderer = pogre::MapRenderer::Ptr(new pogre::MapRenderer(nullptr));
-}
+		mapRenderer = MapRenderer::Ptr(new pogre::MapRenderer(nullptr));
+	}
 
 	static gint64 animationTimerValue;
 	static gboolean	animate(gpointer user_data) {
+		OgreBites::WindowEventUtilities::messagePump();
+		//if (pogre::window && pogre::window->isClosed()) {
+		//	gtk_main_quit();
+		//}
+
 		gint64 now = g_get_real_time();
 		const Ogre::Real seconds = (now - animationTimerValue) / 1000000.0;
 		animationTimerValue = now;

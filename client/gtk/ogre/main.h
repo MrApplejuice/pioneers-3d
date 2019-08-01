@@ -1,10 +1,9 @@
 #pragma once
 
-#include <map.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif
+#include <map.h>
 
 typedef void(*VoidFunction)(void);
 
