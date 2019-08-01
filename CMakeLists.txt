@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.12)
 
 project(pioneers-3d)
 
+find_package(SDL2 REQUIRED)
+
 find_package(GTK3 REQUIRED
     COMPONENTS gtk)
 if(NOT GTK3_FOUND)
@@ -212,6 +214,7 @@ set_property(TARGET pioneers-3d PROPERTY CXX_STANDARD 17)
 target_include_directories(pioneers-3d
 	PUBLIC 
 		${GTK3_INCLUDE_DIRS}
+		${SDL2_INCLUDE_DIRS}
 		${CMAKE_CURRENT_SOURCE_DIR}
 		${CMAKE_CURRENT_SOURCE_DIR}/client
 		${CMAKE_CURRENT_SOURCE_DIR}/common
@@ -240,6 +243,7 @@ target_link_libraries(pioneers-3d
 	${LIBAVAHI_COMMON_LIBRARY}
 	${LIBAVAHI_GLIB_LIBRARY}
 	${NOTIFY_LIBRARY}
+	${SDL2_LIBRARIES}
 	m
 	OgreMain
 	OgreBites
