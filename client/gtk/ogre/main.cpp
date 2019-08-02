@@ -115,7 +115,6 @@ namespace pogre {
 
 extern "C" {
 	static GtkWindow* gtk_window;
-	GtkGLArea* opengl_area;
 
 	static void _ogreb_init_ogre() {
 		using namespace pogre;
@@ -160,10 +159,8 @@ extern "C" {
 	}
 
 	static gint64 animationTimerValue;
-	static gboolean _ogreb_render_handler(GtkGLArea *area, GdkGLContext *context) {
+	static gboolean _ogreb_render_handler() {
 		using namespace pogre;
-
-		gtk_gl_area_make_current(opengl_area);
 
 		gint64 now = g_get_real_time();
 		if (!root) {
@@ -185,23 +182,11 @@ extern "C" {
 		gtk_window_set_title(gtk_window, "Pioneers 3D Game Window");
 		gtk_window_set_default_size(gtk_window, 600, 400);
 
-		GtkWidget* glwid = gtk_gl_area_new();
-		opengl_area = reinterpret_cast<GtkGLArea*>(glwid);
-
-		gtk_container_add(reinterpret_cast<GtkContainer*>(gtk_window), glwid);
-
-		if (gtk_gl_area_get_error(opengl_area) != nullptr) {
-			std::cout << "Error during context intialization" << std::endl;
-			exit(1);
-		}
-
-		g_signal_connect(opengl_area, "render", G_CALLBACK(_ogreb_render_handler), nullptr);
-
 		gtk_widget_show_all(winwid);
 	}
 
 	static gboolean	animate(gpointer user_data) {
-		gtk_gl_area_queue_render(opengl_area);
+		_ogreb_render_handler();
 		return G_SOURCE_CONTINUE;
 	}
 
