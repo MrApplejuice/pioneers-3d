@@ -153,9 +153,11 @@ extern "C" {
 
 		bool emitMotion = false;
 		bool emitButtonPressEvent = false;
+		bool emitScrollEvent = false;
 		int mouseX, mouseY;
 		bool pressed;
 		int xbutton;
+		int scrollTicks;
 
 		if (xe->type == EnterNotify) {
 			emitMotion = true;
@@ -171,11 +173,16 @@ extern "C" {
 			_mm_relX_origin = -1;
 			_mm_relY_origin = -1;
 		} else if ((xe->type == ButtonPress) || (xe->type == ButtonRelease)) {
-			emitButtonPressEvent = true;
-			pressed = xe->type == ButtonPress;
-			xbutton = xe->xbutton.button;
-			mouseX = xe->xbutton.x;
-			mouseY = xe->xbutton.y;
+			if ((xe->xbutton.button == Button4) || (xe->xbutton.button == Button5)) {
+				emitScrollEvent = true;
+				scrollTicks = xe->xbutton.button == Button4 ? 1 : -1;
+			} else {
+				emitButtonPressEvent = true;
+				pressed = xe->type == ButtonPress;
+				xbutton = xe->xbutton.button;
+				mouseX = xe->xbutton.x;
+				mouseY = xe->xbutton.y;
+			}
 		}
 
 		if (emitMotion) {
@@ -213,6 +220,15 @@ extern "C" {
 				} else {
 					pogre::cameraControls->mouseReleased(mbe);
 				}
+			}
+		}
+		if (emitScrollEvent) {
+			OgreBites::MouseWheelEvent mwe;
+			mwe.type = OgreBites::MOUSEWHEEL;
+			mwe.y = scrollTicks;
+
+			if (pogre::cameraControls) {
+				pogre::cameraControls->mouseWheelRolled(mwe);
 			}
 		}
 
