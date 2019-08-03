@@ -11,6 +11,7 @@
 #include <Ogre.h>
 #include <OgreWindowEventUtilities.h>
 #include <Bites/OgreBitesConfigDialog.h>
+#include <Bites/OgreInput.h>
 #include <RTShaderSystem/OgreRTShaderSystem.h>
 
 #include <SDL.h>
@@ -34,7 +35,7 @@ namespace pogre {
 		}
 	};
 
-	class CameraControls {
+	class CameraControls : public OgreBites::InputListener {
 	private:
 		OgreRootPtr _r;
 
@@ -42,11 +43,36 @@ namespace pogre {
 		Ogre::Viewport* viewport;
 
 		Ogre::SceneNode* location;
+
+		bool rightGrabbed;
 	public:
 		typedef std::shared_ptr<CameraControls> Ptr;
 
+		virtual bool mousePressed(const OgreBites::MouseButtonEvent& evt) override {
+			if (evt.button == OgreBites::BUTTON_RIGHT) {
+				rightGrabbed = true;
+			}
+			return true;
+		}
+
+		virtual bool mouseReleased(const OgreBites::MouseButtonEvent& evt) override {
+			if (evt.button == OgreBites::BUTTON_RIGHT) {
+				rightGrabbed = false;
+			}
+			return true;
+		}
+
+		virtual bool mouseMoved(const OgreBites::MouseMotionEvent& evt) override {
+			if (rightGrabbed) {
+				location->setPosition(
+						Ogre::Vector3(-evt.xrel, evt.yrel, 0) * 0.0005 + location->getPosition());
+			}
+			return true;
+		}
+
 		CameraControls() {
 			_r = root;
+			rightGrabbed = false;
 
 			camera = mainScene->createCamera("camera");
 			viewport = window->addViewport(camera);
@@ -116,6 +142,83 @@ namespace pogre {
 extern "C" {
 	static GtkWindow* gtk_window;
 
+	static gdouble _mm_relX_origin = -1;
+	static gdouble _mm_relY_origin = -1;
+	static gint64 animationTimerValue;
+
+	static GdkFilterReturn _ogreb_xevent_filter(GdkXEvent *_xevent,
+            GdkEvent *event,
+            gpointer data) {
+		XEvent* xe = (XEvent*) _xevent;
+
+		bool emitMotion = false;
+		bool emitButtonPressEvent = false;
+		int mouseX, mouseY;
+		bool pressed;
+		int xbutton;
+
+		if (xe->type == EnterNotify) {
+			emitMotion = true;
+			mouseX = xe->xcrossing.x;
+			mouseY = xe->xcrossing.y;
+			_mm_relX_origin = mouseX;
+			_mm_relY_origin = mouseY;
+		} else if (xe->type == MotionNotify) {
+			emitMotion = true;
+			mouseX = xe->xmotion.x;
+			mouseY = xe->xmotion.y;
+		} else if (xe->type == LeaveNotify) {
+			_mm_relX_origin = -1;
+			_mm_relY_origin = -1;
+		} else if ((xe->type == ButtonPress) || (xe->type == ButtonRelease)) {
+			emitButtonPressEvent = true;
+			pressed = xe->type == ButtonPress;
+			xbutton = xe->xbutton.button;
+			mouseX = xe->xbutton.x;
+			mouseY = xe->xbutton.y;
+		}
+
+		if (emitMotion) {
+			OgreBites::MouseMotionEvent mme;
+			mme.windowID = 0;
+			mme.type = OgreBites::MOUSEMOTION;
+			mme.x = mouseX;
+			mme.y = mouseY;
+			mme.xrel = _mm_relX_origin >= 0 ? mme.x - _mm_relX_origin : 0;
+			mme.yrel = _mm_relY_origin >= 0 ? mme.y - _mm_relY_origin : 0;
+
+			_mm_relX_origin = mouseX;
+			_mm_relY_origin = mouseY;
+
+			if (pogre::cameraControls) {
+				pogre::cameraControls->mouseMoved(mme);
+			}
+		}
+		if (emitButtonPressEvent) {
+			OgreBites::MouseButtonEvent mbe;
+			mbe.type = pressed ? OgreBites::MOUSEBUTTONDOWN : OgreBites::MOUSEBUTTONUP;
+			mbe.clicks = 1;
+			mbe.x = mouseX;
+			mbe.y = mouseY;
+			switch (xbutton) {
+			case Button1: mbe.button = OgreBites::BUTTON_LEFT; break;
+			case Button2: mbe.button = OgreBites::BUTTON_MIDDLE; break;
+			case Button3: mbe.button = OgreBites::BUTTON_RIGHT; break;
+			default: ;
+			}
+
+			if (pogre::cameraControls) {
+				if (pressed) {
+					pogre::cameraControls->mousePressed(mbe);
+				} else {
+					pogre::cameraControls->mouseReleased(mbe);
+				}
+			}
+		}
+
+		return GDK_FILTER_CONTINUE;
+	}
+
 	static void _ogreb_init_ogre() {
 		using namespace pogre;
 
@@ -158,7 +261,6 @@ extern "C" {
 		mapRenderer = MapRenderer::Ptr(new pogre::MapRenderer(nullptr));
 	}
 
-	static gint64 animationTimerValue;
 	static gboolean _ogreb_render_handler() {
 		using namespace pogre;
 
@@ -183,6 +285,11 @@ extern "C" {
 		gtk_window_set_default_size(gtk_window, 600, 400);
 
 		gtk_widget_show_all(winwid);
+
+		gdk_window_add_filter(
+				gtk_widget_get_window((GtkWidget*) gtk_window),
+				_ogreb_xevent_filter,
+				NULL);
 	}
 
 	static gboolean	animate(gpointer user_data) {
