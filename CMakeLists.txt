@@ -69,6 +69,8 @@ configure_file(
 
 
 set(P3D_OGRE_SRC
+	client/gtk/ogre/engine.h
+	client/gtk/ogre/engine.cpp
 	client/gtk/ogre/main.h
 	client/gtk/ogre/main.cpp
 )
