@@ -12,6 +12,8 @@
 #include <Ogre.h>
 #include <Bites/OgreInput.h>
 
+#include <map.h>
+
 namespace pogre {
 	typedef std::shared_ptr<Ogre::Root> OgreRootPtr;
 
@@ -22,6 +24,8 @@ namespace pogre {
 		Ogre::RenderWindow* window;
 
 		virtual void render(float stepSeconds) = 0;
+
+		virtual void loadNewMap(Map* map) = 0;
 	};
 
 	extern EngineBase* mainEngine;

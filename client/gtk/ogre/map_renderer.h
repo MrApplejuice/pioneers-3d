@@ -5,12 +5,31 @@
 
 #include <memory>
 
+#include <Ogre.h>
+
 #include <map.h>
 
 namespace pogre {
+	const static Ogre::Matrix3 HEX_PLACEMENT_MATRIX(
+			0.866,  0.433, 0.0,
+			0.0,    0.75,  0.0,
+			0.0,    0.0,   1.0);
+
+	class MapTile {
+	private:
+		Hex* hex;
+	public:
+		typedef std::shared_ptr<MapTile> Ptr;
+
+		MapTile(Ogre::SceneNode* parent, Hex* hex);
+	};
+
 	class MapRenderer {
 	private:
+		Ogre::SceneNode* origin;
+
 		::Map* theMap;
+		MapTile::Ptr tiles[MAP_SIZE][MAP_SIZE];
 	public:
 		typedef std::shared_ptr<MapRenderer> Ptr;
 

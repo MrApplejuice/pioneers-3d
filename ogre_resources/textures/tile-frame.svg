@@ -10,8 +10,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="256"
-   height="256"
-   viewBox="0 0 67.733332 67.733335"
+   height="512"
+   viewBox="0 0 67.733332 135.46667"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.959798"
-     inkscape:cx="94.56799"
-     inkscape:cy="65.573037"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="-124.31901"
+     inkscape:cy="285.18671"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -52,7 +52,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -60,21 +60,21 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-229.26665)">
+     transform="translate(0,-161.53332)">
     <path
        sodipodi:type="star"
        id="path3715"
        sodipodi:sides="6"
-       sodipodi:cx="33.525242"
-       sodipodi:cy="263.26178"
-       sodipodi:r1="33.74144"
-       sodipodi:r2="29.220943"
+       sodipodi:cx="34.026566"
+       sodipodi:cy="229.26665"
+       sodipodi:r1="38.949562"
+       sodipodi:r2="33.731312"
        sodipodi:arg1="0.52359878"
        sodipodi:arg2="1.0471976"
        inkscape:flatsided="true"
        inkscape:rounded="0"
        inkscape:randomized="0"
-       d="M 62.746186,280.1325 33.525242,297.00322 4.3042977,280.1325 l 2e-7,-33.74144 29.2209441,-16.87072 29.220944,16.87072 z"
-       style="fill:none;stroke:#000000;stroke-width:0.44237605;stroke-opacity:1" />
+       d="m 67.757876,248.74143 -33.731311,19.47478 -33.73130976,-19.47478 1.8e-7,-38.94956 33.73131058,-19.47478 33.73131,19.47478 z"
+       style="fill:none;stroke:#000000;stroke-width:0.5106585;stroke-opacity:1" />
   </g>
 </svg>

@@ -9,8 +9,30 @@ material base_hex {
 			
 			scene_blend alpha_blend
 			
+			depth_check off
+			
 			texture_unit {
 				texture tile-frame.svg.png
+			}
+		}
+	}
+}
+
+material hex_water {
+	technique {
+		pass {
+			cull_hardware none
+			cull_software none
+		
+			diffuse 1 1 1
+			ambient 1 1 1
+			
+			scene_blend alpha_blend
+
+			depth_check off
+			
+			texture_unit {
+				texture tile-water.svg.png
 			}
 		}
 	}

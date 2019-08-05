@@ -163,8 +163,7 @@ extern "C" {
 	}
 
 	void ogreb_show_map(Map* map) {
-		using namespace pogre;
-		//mapRenderer = MapRenderer::Ptr(new MapRenderer(map));
+		if (pogre::mainEngine) pogre::mainEngine->loadNewMap(map);
 	}
 
 	void ogreb_cleanup() {

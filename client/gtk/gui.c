@@ -1741,4 +1741,5 @@ void frontend_set_map(Map * map)
 {
 	g_assert(gmap != NULL);
 	gmap->map = map;
+	ogreb_show_map(map);
 }

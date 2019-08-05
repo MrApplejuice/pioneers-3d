@@ -54,6 +54,12 @@ namespace pogre {
 		root->renderOneFrame(stepSeconds);
 	}
 
+	void Engine :: loadNewMap(Map* map) {
+		std::cout << "Ogre backend - created map" << std::endl;
+		mapRenderer.reset();
+		mapRenderer = MapRenderer::Ptr(new pogre::MapRenderer(map));
+	}
+
     bool Engine :: mouseMoved(const OgreBites::MouseMotionEvent& evt) {
     	if (cameraControls) {
     		cameraControls->mouseMoved(evt);
@@ -117,7 +123,6 @@ namespace pogre {
 		mainScene->setAmbientLight(Ogre::ColourValue(.5, .5, .5));
 		cameraControls = CameraControls::Ptr(new pogre::CameraControls());
 
-		mapRenderer = MapRenderer::Ptr(new pogre::MapRenderer(nullptr));
 
 
 		// Extra features
