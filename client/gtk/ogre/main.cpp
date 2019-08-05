@@ -110,19 +110,6 @@ extern "C" {
 	static void _ogreb_init_ogre() {
 		using namespace pogre;
 
-		// Ogre
-		root = OgreRootPtr(new Ogre::Root());
-
-		if (!pogre::root->restoreConfig()) {
-			pogre::root->showConfigDialog(OgreBites::getNativeConfigDialog());
-		}
-		root->initialise(false);
-		Ogre::RenderWindowDescription rwDesc;
-		rwDesc.width = 600;
-		rwDesc.height = 400;
-		rwDesc.useFullScreen = false;
-		rwDesc.name = "default";
-
 		GdkWindow* gdkwin = gtk_widget_get_window((GtkWidget*) gtk_window);
 		Display* disp = gdk_x11_display_get_xdisplay(gdk_window_get_display(gdkwin));
 		guint32 screen = gdk_x11_screen_get_current_desktop(gdk_window_get_screen(gdkwin));
@@ -133,20 +120,7 @@ extern "C" {
 		snprintf(windowDesc, 128 - 1, "%llu:%u:%lu", (unsigned long long) disp, screen, xid);
 		std::cout << "Window id: " << windowDesc << std::endl;
 
-		rwDesc.miscParams["externalWindowHandle"] = windowDesc;
-
-		window = root->createRenderWindow(rwDesc);
-
-
-		mainScene = root->createSceneManager(
-				Ogre::DefaultSceneManagerFactory::FACTORY_TYPE_NAME,
-				"Main Scene");
-
-		mainScene->setAmbientLight(Ogre::ColourValue(.5, .5, .5));
-
-		cameraControls = CameraControls::Ptr(new pogre::CameraControls());
-
-		mapRenderer = MapRenderer::Ptr(new pogre::MapRenderer(nullptr));
+		pogre::mainEngine = new Engine(windowDesc);
 	}
 
 	static gboolean _ogreb_render_handler() {
@@ -196,7 +170,6 @@ extern "C" {
 	}
 
 	void ogreb_cleanup() {
-		pogre::cameraControls.reset();
-		pogre::root.reset();
+		pogre::mainEngine.reset();
 	}
 }
