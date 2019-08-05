@@ -16,13 +16,12 @@ extern "C" {
 	#include <map.h>
 }
 
+#include "engine_base.h"
+
+#include "map_renderer.h"
 
 namespace pogre {
 	class Engine;
-
-	typedef std::shared_ptr<Ogre::Root> OgreRootPtr;
-
-	extern Engine* mainEngine;
 
 	class CameraControls : public OgreBites::InputListener {
 	private:
@@ -43,22 +42,9 @@ namespace pogre {
 		virtual ~CameraControls();
 	};
 
-	class MapRenderer {
+	class Engine : public EngineBase {
 	private:
-		::Map* theMap;
 	public:
-		typedef std::shared_ptr<MapRenderer> Ptr;
-
-		MapRenderer(::Map* _map);
-		virtual ~MapRenderer();
-	};
-
-	class Engine : public OgreBites::InputListener {
-	private:
-		Ogre::RenderWindow* window;
-	public:
-		OgreRootPtr root;
-		Ogre::SceneManager* mainScene;
 		CameraControls::Ptr cameraControls;
 		MapRenderer::Ptr mapRenderer;
 
@@ -68,8 +54,6 @@ namespace pogre {
 	    virtual bool mouseWheelRolled(const OgreBites::MouseWheelEvent& evt);
 	    virtual bool mousePressed(const OgreBites::MouseButtonEvent& evt);
 	    virtual bool mouseReleased(const OgreBites::MouseButtonEvent& evt);
-
-		virtual Ogre::RenderWindow* getWindow() const { return window; }
 
 		Engine(std::string windowName);
 		virtual ~Engine();
