@@ -9,8 +9,6 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 
-#include <Bites/OgreInput.h>
-
 extern "C" {
 	static GtkWindow* gtk_window;
 
@@ -69,8 +67,8 @@ extern "C" {
 			_mm_relX_origin = mouseX;
 			_mm_relY_origin = mouseY;
 
-			if (pogre::cameraControls) {
-				pogre::cameraControls->mouseMoved(mme);
+			if (pogre::mainEngine) {
+				pogre::mainEngine->mouseMoved(mme);
 			}
 		}
 		if (emitButtonPressEvent) {
@@ -86,11 +84,11 @@ extern "C" {
 			default: ;
 			}
 
-			if (pogre::cameraControls) {
+			if (pogre::mainEngine) {
 				if (pressed) {
-					pogre::cameraControls->mousePressed(mbe);
+					pogre::mainEngine->mousePressed(mbe);
 				} else {
-					pogre::cameraControls->mouseReleased(mbe);
+					pogre::mainEngine->mouseReleased(mbe);
 				}
 			}
 		}
@@ -99,8 +97,8 @@ extern "C" {
 			mwe.type = OgreBites::MOUSEWHEEL;
 			mwe.y = scrollTicks;
 
-			if (pogre::cameraControls) {
-				pogre::cameraControls->mouseWheelRolled(mwe);
+			if (pogre::mainEngine) {
+				pogre::mainEngine->mouseWheelRolled(mwe);
 			}
 		}
 
@@ -120,7 +118,7 @@ extern "C" {
 		snprintf(windowDesc, 128 - 1, "%llu:%u:%lu", (unsigned long long) disp, screen, xid);
 		std::cout << "Window id: " << windowDesc << std::endl;
 
-		pogre::mainEngine = new Engine(windowDesc);
+		new Engine(windowDesc);
 	}
 
 	static gboolean _ogreb_render_handler() {
@@ -170,6 +168,7 @@ extern "C" {
 	}
 
 	void ogreb_cleanup() {
-		pogre::mainEngine.reset();
+		using namespace pogre;
+		if (mainEngine) delete mainEngine;
 	}
 }

@@ -2,7 +2,7 @@
 
 namespace pogre {
 	OgreRootPtr root;
-	std::shared_ptr<Engine> mainEngine;
+	Engine* mainEngine;
 
 	bool CameraControls :: mousePressed(const OgreBites::MouseButtonEvent& evt) {
 		if (evt.button == OgreBites::BUTTON_RIGHT) {
@@ -85,7 +85,37 @@ namespace pogre {
 	MapRenderer :: ~MapRenderer() {
 	}
 
+
+    bool Engine :: mouseMoved(const OgreBites::MouseMotionEvent& evt) {
+    	if (cameraControls) {
+    		cameraControls->mouseMoved(evt);
+    	}
+    	return true;
+    }
+
+    bool Engine :: mouseWheelRolled(const OgreBites::MouseWheelEvent& evt) {
+    	if (cameraControls) {
+    		cameraControls->mouseWheelRolled(evt);
+    	}
+    	return true;
+    }
+
+    bool Engine :: mousePressed(const OgreBites::MouseButtonEvent& evt) {
+    	if (cameraControls) {
+    		cameraControls->mousePressed(evt);
+    	}
+    	return true;
+    }
+
+    bool Engine :: mouseReleased(const OgreBites::MouseButtonEvent& evt) {
+    	if (cameraControls) {
+    		cameraControls->mouseReleased(evt);
+    	}
+    	return true;
+    }
+
 	Engine :: Engine(std::string windowName) {
+		mainEngine = this;
 		root = OgreRootPtr(new Ogre::Root());
 
 		if (!root->restoreConfig()) {
@@ -105,16 +135,14 @@ namespace pogre {
 		mainScene = root->createSceneManager(
 				Ogre::DefaultSceneManagerFactory::FACTORY_TYPE_NAME,
 				"Main Scene");
-
 		mainScene->setAmbientLight(Ogre::ColourValue(.5, .5, .5));
-
 		cameraControls = CameraControls::Ptr(new pogre::CameraControls());
-
 		mapRenderer = MapRenderer::Ptr(new pogre::MapRenderer(nullptr));
 	}
 
 	Engine :: ~Engine() {
 		cameraControls.reset();
 		root.reset();
+		if (mainEngine == this) mainEngine = nullptr;
 	}
 }

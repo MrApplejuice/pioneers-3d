@@ -23,7 +23,7 @@ namespace pogre {
 	typedef std::shared_ptr<Ogre::Root> OgreRootPtr;
 
 	extern OgreRootPtr root;
-	extern std::shared_ptr<Engine> mainEngine;
+	extern Engine* mainEngine;
 
 	class CameraControls : public OgreBites::InputListener {
 	private:
@@ -54,13 +54,18 @@ namespace pogre {
 		virtual ~MapRenderer();
 	};
 
-	class Engine {
+	class Engine : public OgreBites::InputListener {
 	private:
 		Ogre::RenderWindow* window;
 	public:
 		Ogre::SceneManager* mainScene;
 		CameraControls::Ptr cameraControls;
 		MapRenderer::Ptr mapRenderer;
+
+	    virtual bool mouseMoved(const OgreBites::MouseMotionEvent& evt);
+	    virtual bool mouseWheelRolled(const OgreBites::MouseWheelEvent& evt);
+	    virtual bool mousePressed(const OgreBites::MouseButtonEvent& evt);
+	    virtual bool mouseReleased(const OgreBites::MouseButtonEvent& evt);
 
 		virtual Ogre::RenderWindow* getWindow() const { return window; }
 
