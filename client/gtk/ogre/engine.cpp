@@ -1,7 +1,6 @@
 #include "engine.h"
 
 namespace pogre {
-	OgreRootPtr root;
 	Engine* mainEngine;
 
 	bool CameraControls :: mousePressed(const OgreBites::MouseButtonEvent& evt) {
@@ -66,7 +65,7 @@ namespace pogre {
 		resgrpman->addResourceLocation("ogre_resources/textures/", "FileSystem", "map");
 		resgrpman->initialiseAllResourceGroups();
 
-		auto m = root->getMeshManager()->createPlane("hex", "map", Ogre::Plane(0, 0, 1, 0), .1, .1);
+		auto m = mainEngine->root->getMeshManager()->createPlane("hex", "map", Ogre::Plane(0, 0, 1, 0), .1, .1);
 		auto e = s->createEntity(m);
 		auto l = s->getRootSceneNode()->createChildSceneNode();
 		l->attachObject(e);
@@ -85,6 +84,10 @@ namespace pogre {
 	MapRenderer :: ~MapRenderer() {
 	}
 
+
+	void Engine :: render(float stepSeconds) {
+		root->renderOneFrame(stepSeconds);
+	}
 
     bool Engine :: mouseMoved(const OgreBites::MouseMotionEvent& evt) {
     	if (cameraControls) {
@@ -137,6 +140,8 @@ namespace pogre {
 				"Main Scene");
 		mainScene->setAmbientLight(Ogre::ColourValue(.5, .5, .5));
 		cameraControls = CameraControls::Ptr(new pogre::CameraControls());
+
+
 		mapRenderer = MapRenderer::Ptr(new pogre::MapRenderer(nullptr));
 	}
 

@@ -13,7 +13,7 @@
 #include <RTShaderSystem/OgreRTShaderSystem.h>
 
 extern "C" {
-#include <map.h>
+	#include <map.h>
 }
 
 
@@ -22,7 +22,6 @@ namespace pogre {
 
 	typedef std::shared_ptr<Ogre::Root> OgreRootPtr;
 
-	extern OgreRootPtr root;
 	extern Engine* mainEngine;
 
 	class CameraControls : public OgreBites::InputListener {
@@ -58,9 +57,12 @@ namespace pogre {
 	private:
 		Ogre::RenderWindow* window;
 	public:
+		OgreRootPtr root;
 		Ogre::SceneManager* mainScene;
 		CameraControls::Ptr cameraControls;
 		MapRenderer::Ptr mapRenderer;
+
+		virtual void render(float stepSeconds);
 
 	    virtual bool mouseMoved(const OgreBites::MouseMotionEvent& evt);
 	    virtual bool mouseWheelRolled(const OgreBites::MouseWheelEvent& evt);

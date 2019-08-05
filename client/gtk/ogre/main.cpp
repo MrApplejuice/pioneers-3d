@@ -125,14 +125,14 @@ extern "C" {
 		using namespace pogre;
 
 		gint64 now = g_get_real_time();
-		if (!root) {
+		if (!pogre::mainEngine) {
 			_ogreb_init_ogre();
 			animationTimerValue = now;
 		}
 
 		const Ogre::Real seconds = (now - animationTimerValue) / 1000000.0;
 		animationTimerValue = now;
-		if (pogre::root) pogre::root->renderOneFrame(seconds);
+		if (pogre::mainEngine) pogre::mainEngine->render(seconds);
 
 		return TRUE;
 	}
