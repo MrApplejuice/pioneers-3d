@@ -104,6 +104,10 @@ namespace pogre {
     	return true;
     }
 
+	void Engine :: updateWindowSize(int width, int height) {
+		mainEngine->window->resize(width, height);
+	}
+
 	Engine :: Engine(std::string windowName) {
 		mainEngine = this;
 		root = OgreRootPtr(new Ogre::Root());

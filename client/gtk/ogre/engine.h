@@ -59,6 +59,8 @@ namespace pogre {
 	    virtual bool mousePressed(const OgreBites::MouseButtonEvent& evt);
 	    virtual bool mouseReleased(const OgreBites::MouseButtonEvent& evt);
 
+		virtual void updateWindowSize(int width, int height);
+
 		Engine(std::string windowName);
 		virtual ~Engine();
 	};

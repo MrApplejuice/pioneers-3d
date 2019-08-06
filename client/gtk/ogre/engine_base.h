@@ -26,6 +26,7 @@ namespace pogre {
 		virtual void render(float stepSeconds) = 0;
 
 		virtual void loadNewMap(Map* map) = 0;
+		virtual void updateWindowSize(int width, int height) = 0;
 	};
 
 	extern EngineBase* mainEngine;

@@ -137,6 +137,14 @@ extern "C" {
 		return TRUE;
 	}
 
+	static void	_ogreb_resize(GtkWidget* widget,
+			GdkRectangle* allocation,
+			gpointer user_data) {
+		if (pogre::mainEngine) {
+			pogre::mainEngine->updateWindowSize(allocation->width, allocation->height);
+		}
+	}
+
 	void ogreb_init() {
 		// Gtk bits
 		GtkWidget* winwid = gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -150,6 +158,8 @@ extern "C" {
 				gtk_widget_get_window((GtkWidget*) gtk_window),
 				_ogreb_xevent_filter,
 				NULL);
+
+		g_signal_connect(winwid, "size-allocate", G_CALLBACK(_ogreb_resize), NULL);
 	}
 
 	static gboolean	animate(gpointer user_data) {
