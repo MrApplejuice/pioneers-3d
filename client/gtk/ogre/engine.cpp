@@ -1,6 +1,10 @@
 #include "engine.h"
 
 namespace pogre {
+	bool CameraControls :: isValidCoordinate(const Ogre::Vector3& v) const {
+		return (v.z > 0.1) && (Ogre::Vector3::ZERO.distance(v) < MAP_SIZE * 0.1);
+	}
+
 	bool CameraControls :: mousePressed(const OgreBites::MouseButtonEvent& evt) {
 		if (evt.button == OgreBites::BUTTON_RIGHT) {
 			rightGrabbed = true;
@@ -17,15 +21,21 @@ namespace pogre {
 
 	bool CameraControls :: mouseMoved(const OgreBites::MouseMotionEvent& evt) {
 		if (rightGrabbed) {
-			location->setPosition(
-					Ogre::Vector3(-evt.xrel, evt.yrel, 0) * 0.0005 + location->getPosition());
+	    	auto newLocation = Ogre::Vector3(-evt.xrel, evt.yrel, 0) * 0.0005 + location->getPosition();
+	    	if (isValidCoordinate(newLocation)) {
+	    		location->setPosition(newLocation);
+	    	}
 		}
 		return true;
 	}
 
     bool CameraControls :: mouseWheelRolled(const OgreBites::MouseWheelEvent& evt) {
     	const Ogre::Matrix3 viewMat = location->getLocalAxes();
-    	location->setPosition(location->getPosition() + viewMat.GetColumn(2) * evt.y * 0.01);
+    	auto newLocation = location->getPosition() + viewMat.GetColumn(2) * evt.y * 0.01;
+
+    	if (isValidCoordinate(newLocation)) {
+    		location->setPosition(newLocation);
+    	}
     	return true;
     }
 

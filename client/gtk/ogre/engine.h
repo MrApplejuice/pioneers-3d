@@ -31,6 +31,8 @@ namespace pogre {
 		Ogre::SceneNode* location;
 
 		bool rightGrabbed;
+
+		bool isValidCoordinate(const Ogre::Vector3& v) const;
 	public:
 		typedef std::shared_ptr<CameraControls> Ptr;
 
