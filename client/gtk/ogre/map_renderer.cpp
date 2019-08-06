@@ -5,7 +5,7 @@
 #include "engine_base.h"
 
 namespace pogre {
-	MapTile :: MapTile(Ogre::SceneNode* parent, Hex* hex) : hex(hex) {
+	MapTile :: MapTile(const Ogre::Vector2& hexPos, Ogre::SceneNode* parent, Hex* hex) : hex(hex) {
 		auto resgrpman = Ogre::ResourceGroupManager::getSingletonPtr();
 		auto s = mainEngine->mainScene;
 		auto meshman = mainEngine->root->getMeshManager();
@@ -17,7 +17,7 @@ namespace pogre {
 
 		entity = s->createEntity(m);
 		sceneNode = parent->createChildSceneNode();
-		sceneNode->setPosition(HEX_PLACEMENT_MATRIX * Ogre::Vector3(hex->x + (hex->y + 1) / 2, hex->y, 0));
+		sceneNode->setPosition(HEX_PLACEMENT_MATRIX * Ogre::Vector3(hexPos.x, hexPos.y, 0));
 		sceneNode->attachObject(entity);
 
 		auto matman = Ogre::MaterialManager::getSingletonPtr();
@@ -47,16 +47,21 @@ namespace pogre {
 		origin->setScale(.1, .1, .1);
 
 		if (theMap) {
+			Ogre::Vector3 minPos, maxPos;
 			for (int x = 0; x < MAP_SIZE; x++) {
 				for (int y = 0; y < MAP_SIZE; y++) {
-					if (theMap->grid[x][y]) {
+					if (auto hex = theMap->grid[x][y]) {
+						auto hexPos = Ogre::Vector2(hex->x + (hex->y + 1) / 2, hex->y);
 						tiles[x][y] = MapTile::Ptr(new MapTile(
-								origin, theMap->grid[x][y]));
+								hexPos, origin, hex));
+						minPos.makeFloor(HEX_PLACEMENT_MATRIX * Ogre::Vector3(hexPos.x, hexPos.y, 0));
+						maxPos.makeCeil(HEX_PLACEMENT_MATRIX * Ogre::Vector3(hexPos.x, hexPos.y, 0));
 					}
 				}
 			}
 
-			origin->setPosition(HEX_PLACEMENT_MATRIX * -Ogre::Vector3(theMap->x_size + (theMap->y_size + 1) / 2 - 1, theMap->y_size - 1, 0) / 2 * origin->getScale());
+			Ogre::Vector3 center = minPos.midPoint(maxPos);
+			origin->setPosition(-center * origin->getScale());
 		}
 
 		origin->setVisible(true, true);

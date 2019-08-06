@@ -24,7 +24,7 @@ namespace pogre {
 	public:
 		typedef std::shared_ptr<MapTile> Ptr;
 
-		MapTile(Ogre::SceneNode* parent, Hex* hex);
+		MapTile(const Ogre::Vector2& hexPos, Ogre::SceneNode* parent, Hex* hex);
 		virtual ~MapTile();
 	};
 
