@@ -18,10 +18,14 @@ namespace pogre {
 	class MapTile {
 	private:
 		Hex* hex;
+
+		Ogre::SceneNode* sceneNode;
+		Ogre::Entity* entity;
 	public:
 		typedef std::shared_ptr<MapTile> Ptr;
 
 		MapTile(Ogre::SceneNode* parent, Hex* hex);
+		virtual ~MapTile();
 	};
 
 	class MapRenderer {

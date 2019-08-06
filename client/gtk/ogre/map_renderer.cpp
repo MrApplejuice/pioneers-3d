@@ -15,10 +15,10 @@ namespace pogre {
 			m = mainEngine->root->getMeshManager()->createPlane("hex", "map", Ogre::Plane(0, 0, 1, 0), 0.866, 2 * 0.866);
 		}
 
-		auto e = s->createEntity(m);
-		auto l = parent->createChildSceneNode();
-		l->setPosition(HEX_PLACEMENT_MATRIX * Ogre::Vector3(hex->x - hex->y / 2, hex->y, 0));
-		l->attachObject(e);
+		entity = s->createEntity(m);
+		sceneNode = parent->createChildSceneNode();
+		sceneNode->setPosition(HEX_PLACEMENT_MATRIX * Ogre::Vector3(hex->x - hex->y / 2, hex->y, 0));
+		sceneNode->attachObject(entity);
 
 		auto matman = Ogre::MaterialManager::getSingletonPtr();
 
@@ -29,31 +29,40 @@ namespace pogre {
 		}
 		auto mat = matman->getByName(matName, "map");
 
-		e->setMaterial(mat);
+		entity->setMaterial(mat);
 
 	//			auto mat = Ogre::MaterialManager::getSingleton().create("hex", "map");
 	//			mat->setCullingMode(Ogre::CullingMode::CULL_NONE);
 	}
 
+	MapTile :: ~MapTile() {
+		auto scene = mainEngine->mainScene;
+		sceneNode->detachAllObjects();
+		scene->destroySceneNode(sceneNode);
+		scene->destroyEntity(entity);
+	}
+
+
 	MapRenderer :: MapRenderer(::Map* _map) : theMap(_map) {
 		origin = mainEngine->mainScene->getRootSceneNode()->createChildSceneNode("map_root");
 		origin->setScale(.1, .1, .1);
 
-		for (int x = 0; x < MAP_SIZE; x++) {
-			for (int y = 0; y < MAP_SIZE; y++) {
-				if (theMap->grid[x][y]) {
-					tiles[x][y] = MapTile::Ptr(new MapTile(
-							origin, theMap->grid[x][y]));
+		if (theMap) {
+			for (int x = 0; x < MAP_SIZE; x++) {
+				for (int y = 0; y < MAP_SIZE; y++) {
+					if (theMap->grid[x][y]) {
+						tiles[x][y] = MapTile::Ptr(new MapTile(
+								origin, theMap->grid[x][y]));
+					}
 				}
 			}
 		}
 
 		origin->setVisible(true, true);
-		mainEngine->mainScene->setAmbientLight(Ogre::ColourValue::Blue);
 	}
 
 	MapRenderer :: ~MapRenderer() {
-		origin->detachAllObjects();
+		origin->removeAllChildren();
 		mainEngine->mainScene->destroySceneNode(origin);
 	}
 }

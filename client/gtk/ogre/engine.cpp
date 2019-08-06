@@ -132,6 +132,7 @@ namespace pogre {
 	}
 
 	Engine :: ~Engine() {
+		mapRenderer.reset();
 		cameraControls.reset();
 		root.reset();
 		if (mainEngine == this) mainEngine = nullptr;
