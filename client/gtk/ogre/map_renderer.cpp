@@ -25,14 +25,12 @@ namespace pogre {
 		std::string matName = "base_hex";
 		switch (hex->terrain) {
 		case SEA_TERRAIN: matName = "hex_water"; break;
+		case FIELD_TERRAIN: matName = "hex_grain"; break;
 		default: ;
 		}
 		auto mat = matman->getByName(matName, "map");
 
 		entity->setMaterial(mat);
-
-	//			auto mat = Ogre::MaterialManager::getSingleton().create("hex", "map");
-	//			mat->setCullingMode(Ogre::CullingMode::CULL_NONE);
 	}
 
 	MapTile :: ~MapTile() {
@@ -56,6 +54,8 @@ namespace pogre {
 					}
 				}
 			}
+
+			origin->setPosition(HEX_PLACEMENT_MATRIX * -Ogre::Vector3(theMap->x_size - theMap->y_size / 2 - 1, theMap->y_size - 1, 0) / 2 * origin->getScale());
 		}
 
 		origin->setVisible(true, true);

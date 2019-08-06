@@ -1,39 +1,45 @@
+sampler hq_hex {
+	filtering anisotropic
+	max_anisotropy 8
+}
+
 material base_hex {
 	technique {
 		pass {
-			cull_hardware none
-			cull_software none
-		
 			diffuse 1 1 1
 			ambient 1 1 1
 			
-			scene_blend alpha_blend
+			scene_blend src_alpha one_minus_src_alpha
 			
 			depth_check off
 			
 			texture_unit {
 				texture tile-frame.svg.png
+				sampler_ref hq_hex
 			}
 		}
 	}
 }
 
-material hex_water {
+material hex_water : base_hex {
 	technique {
 		pass {
-			cull_hardware none
-			cull_software none
-		
-			diffuse 1 1 1
-			ambient 1 1 1
-			
-			scene_blend alpha_blend
-
-			depth_check off
-			
 			texture_unit {
 				texture tile-water.svg.png
+				sampler_ref hq_hex
 			}
 		}
 	}
 }
+
+material hex_grain : base_hex {
+	technique {
+		pass {
+			texture_unit {
+				texture tile-grain.svg.png
+				sampler_ref hq_hex
+			}
+		}
+	}
+}
+
