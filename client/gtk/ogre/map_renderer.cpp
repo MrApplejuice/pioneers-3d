@@ -6,8 +6,6 @@
 
 namespace pogre {
 	MapTile :: MapTile(const Ogre::Vector2& hexPos, Ogre::SceneNode* parent, Hex* hex) : hex(hex) {
-		auto resgrpman = Ogre::ResourceGroupManager::getSingletonPtr();
-		auto s = mainEngine->mainScene;
 		auto meshman = mainEngine->root->getMeshManager();
 
 		auto m = meshman->getByName("hex", "map");
@@ -15,7 +13,7 @@ namespace pogre {
 			m = mainEngine->root->getMeshManager()->createPlane("hex", "map", Ogre::Plane(0, 0, 1, 0), 0.866, 2 * 0.866);
 		}
 
-		entity = s->createEntity(m);
+		entity = mainEngine->mainScene->createEntity(m);
 		sceneNode = parent->createChildSceneNode();
 		sceneNode->setPosition(HEX_PLACEMENT_MATRIX * Ogre::Vector3(hexPos.x, hexPos.y, 0));
 		sceneNode->attachObject(entity);
@@ -47,8 +45,12 @@ namespace pogre {
 
 
 	MapRenderer :: MapRenderer(::Map* _map) : theMap(_map) {
-		origin = mainEngine->mainScene->getRootSceneNode()->createChildSceneNode("map_root");
-		origin->setScale(.1, .1, .1);
+		tableEntity = nullptr;
+
+		tableNode = mainEngine->mainScene->getRootSceneNode()->createChildSceneNode("table_bg");
+		tableNode->setScale(.1, .1, .1);
+
+		origin = tableNode->createChildSceneNode("map_root");
 
 		if (theMap) {
 			Ogre::Vector3 minPos, maxPos;
@@ -65,14 +67,29 @@ namespace pogre {
 			}
 
 			Ogre::Vector3 center = minPos.midPoint(maxPos);
-			origin->setPosition(-center * origin->getScale());
+			origin->setPosition(-center);
+
+			Ogre::MeshManager* meshman = mainEngine->root->getMeshManager();
+			auto tableMesh = meshman->createPlane(
+					"table-background", "map", Ogre::Plane(0, 0, 1, -.01),
+					fabs(center.x) * 2 + 2, fabs(center.y) * 2 + 2,
+					40, 40, true, 1, 6, 4);
+			tableEntity = mainEngine->mainScene->createEntity(tableMesh);
+			tableEntity->setMaterialName("wooden_base", "map");
+			tableNode->attachObject(tableEntity);
 		}
 
-		origin->setVisible(true, true);
+		tableNode->setVisible(true, true);
 	}
 
 	MapRenderer :: ~MapRenderer() {
 		origin->removeAllChildren();
+		if (tableEntity) {
+			tableNode->detachObject(tableEntity);
+			mainEngine->mainScene->destroyEntity(tableEntity);
+			mainEngine->root->getMeshManager()->remove("table-background", "map");
+		}
 		mainEngine->mainScene->destroySceneNode(origin);
+		mainEngine->mainScene->destroySceneNode(tableNode);
 	}
 }

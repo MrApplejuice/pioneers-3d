@@ -1,3 +1,18 @@
+material wooden_base {
+	technique {
+		pass {
+			diffuse 1 1 1
+			ambient 1 1 1
+			
+			texture_unit {
+				texture wood.jpg
+			}
+		}
+	}
+}
+
+// Hex materials
+
 sampler hq_hex {
 	filtering anisotropic
 	max_anisotropy 8

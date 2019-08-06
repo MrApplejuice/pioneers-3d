@@ -32,6 +32,9 @@ namespace pogre {
 	private:
 		Ogre::SceneNode* origin;
 
+		Ogre::SceneNode* tableNode;
+		Ogre::Entity* tableEntity;
+
 		::Map* theMap;
 		MapTile::Ptr tiles[MAP_SIZE][MAP_SIZE];
 	public:
