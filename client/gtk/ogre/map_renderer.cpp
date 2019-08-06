@@ -27,6 +27,10 @@ namespace pogre {
 		case SEA_TERRAIN: matName = "hex_water"; break;
 		case FIELD_TERRAIN: matName = "hex_grain"; break;
 		case PASTURE_TERRAIN: matName = "hex_sheep"; break;
+		case MOUNTAIN_TERRAIN: matName = "hex_mountain"; break;
+		case FOREST_TERRAIN: matName = "hex_wood"; break;
+		case DESERT_TERRAIN: matName = "hex_desert"; break;
+		case HILL_TERRAIN:  matName = "hex_bricks"; break;
 		default: ;
 		}
 		auto mat = matman->getByName(matName, "map");

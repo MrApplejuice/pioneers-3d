@@ -45,7 +45,7 @@ extern "C" {
 		} else if ((xe->type == ButtonPress) || (xe->type == ButtonRelease)) {
 			if ((xe->xbutton.button == Button4) || (xe->xbutton.button == Button5)) {
 				emitScrollEvent = true;
-				scrollTicks = xe->xbutton.button == Button4 ? 1 : -1;
+				scrollTicks = xe->xbutton.button == Button4 ? -1 : 1;
 			} else {
 				emitButtonPressEvent = true;
 				pressed = xe->type == ButtonPress;

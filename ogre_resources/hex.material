@@ -54,3 +54,47 @@ material hex_sheep : base_hex {
 	}
 }
 
+material hex_wood : base_hex {
+	technique {
+		pass {
+			texture_unit {
+				texture tile-wood.svg.png
+				sampler_ref hq_hex
+			}
+		}
+	}
+}
+
+material hex_mountain : base_hex {
+	technique {
+		pass {
+			texture_unit {
+				texture tile-mountain.svg.png
+				sampler_ref hq_hex
+			}
+		}
+	}
+}
+
+material hex_desert : base_hex {
+	technique {
+		pass {
+			texture_unit {
+				texture tile-desert.svg.png
+				sampler_ref hq_hex
+			}
+		}
+	}
+}
+
+material hex_bricks : base_hex {
+	technique {
+		pass {
+			texture_unit {
+				texture tile-bricks.svg.png
+				sampler_ref hq_hex
+			}
+		}
+	}
+}
+
