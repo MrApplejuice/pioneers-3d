@@ -158,7 +158,7 @@ extern "C" {
 	}
 
 	VoidFunction pogre_setup_gtk_mainloop(VoidFunction old) {
-		g_timeout_add(10, &animate, NULL);
+		g_timeout_add(20, &animate, NULL);
 		return old;
 	}
 

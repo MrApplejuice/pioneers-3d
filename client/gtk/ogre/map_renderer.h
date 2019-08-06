@@ -11,9 +11,9 @@
 
 namespace pogre {
 	const static Ogre::Matrix3 HEX_PLACEMENT_MATRIX(
-			0.866,  0.433, 0.0,
-			0.0,    0.75,  0.0,
-			0.0,    0.0,   1.0);
+			0.866,  -0.433, 0.0,
+			0.0,    -0.75,  0.0,
+			0.0,     0.0,   1.0);
 
 	class MapTile {
 	private:

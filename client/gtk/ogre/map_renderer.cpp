@@ -17,7 +17,7 @@ namespace pogre {
 
 		entity = s->createEntity(m);
 		sceneNode = parent->createChildSceneNode();
-		sceneNode->setPosition(HEX_PLACEMENT_MATRIX * Ogre::Vector3(hex->x - hex->y / 2, hex->y, 0));
+		sceneNode->setPosition(HEX_PLACEMENT_MATRIX * Ogre::Vector3(hex->x + (hex->y + 1) / 2, hex->y, 0));
 		sceneNode->attachObject(entity);
 
 		auto matman = Ogre::MaterialManager::getSingletonPtr();
@@ -26,6 +26,7 @@ namespace pogre {
 		switch (hex->terrain) {
 		case SEA_TERRAIN: matName = "hex_water"; break;
 		case FIELD_TERRAIN: matName = "hex_grain"; break;
+		case PASTURE_TERRAIN: matName = "hex_sheep"; break;
 		default: ;
 		}
 		auto mat = matman->getByName(matName, "map");
@@ -55,7 +56,7 @@ namespace pogre {
 				}
 			}
 
-			origin->setPosition(HEX_PLACEMENT_MATRIX * -Ogre::Vector3(theMap->x_size - theMap->y_size / 2 - 1, theMap->y_size - 1, 0) / 2 * origin->getScale());
+			origin->setPosition(HEX_PLACEMENT_MATRIX * -Ogre::Vector3(theMap->x_size + (theMap->y_size + 1) / 2 - 1, theMap->y_size - 1, 0) / 2 * origin->getScale());
 		}
 
 		origin->setVisible(true, true);

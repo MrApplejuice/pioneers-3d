@@ -43,3 +43,14 @@ material hex_grain : base_hex {
 	}
 }
 
+material hex_sheep : base_hex {
+	technique {
+		pass {
+			texture_unit {
+				texture tile-sheep.svg.png
+				sampler_ref hq_hex
+			}
+		}
+	}
+}
+
