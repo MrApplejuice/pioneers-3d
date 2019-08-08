@@ -26,7 +26,7 @@ material base_hex {
 			
 			scene_blend src_alpha one_minus_src_alpha
 			
-			depth_check off
+			depth_write off
 			
 			texture_unit {
 				texture tile-frame.svg.png

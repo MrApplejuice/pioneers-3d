@@ -133,6 +133,7 @@ namespace pogre {
 		resgrpman->createResourceGroup("map", false);
 		resgrpman->addResourceLocation("ogre_resources/", "FileSystem", "map");
 		resgrpman->addResourceLocation("ogre_resources/textures/", "FileSystem", "map");
+		resgrpman->addResourceLocation("ogre_resources/meshes/", "FileSystem", "map");
 		resgrpman->initialiseAllResourceGroups();
 
 

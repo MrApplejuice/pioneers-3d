@@ -51,6 +51,7 @@ namespace pogre {
 		tableNode->setScale(.1, .1, .1);
 
 		origin = tableNode->createChildSceneNode("map_root");
+		origin->setPosition(0, 0, .01);
 
 		if (theMap) {
 			Ogre::Vector3 minPos, maxPos;
@@ -67,16 +68,27 @@ namespace pogre {
 			}
 
 			Ogre::Vector3 center = minPos.midPoint(maxPos);
-			origin->setPosition(-center);
+			origin->setPosition(origin->getPosition() - center);
 
 			Ogre::MeshManager* meshman = mainEngine->root->getMeshManager();
 			auto tableMesh = meshman->createPlane(
-					"table-background", "map", Ogre::Plane(0, 0, 1, -.01),
+					"table-background", "map", Ogre::Plane(0, 0, 1, 0),
 					fabs(center.x) * 2 + 2, fabs(center.y) * 2 + 2,
 					40, 40, true, 1, 6, 4);
 			tableEntity = mainEngine->mainScene->createEntity(tableMesh);
 			tableEntity->setMaterialName("wooden_base", "map");
 			tableNode->attachObject(tableEntity);
+
+
+			/////////////////////////////
+			auto housenode = mainEngine->mainScene->getRootSceneNode()->createChildSceneNode("tableNode");
+			auto hmesh = meshman->create("Cube.mesh", "map");
+			auto entity = mainEngine->mainScene->createEntity(hmesh);
+			entity->setMaterialName("village_material", "map");
+			housenode->setScale(Ogre::Vector3::UNIT_SCALE * 0.01);
+			housenode->setPosition(-.2, .1, 0);
+			housenode->setOrientation(0.4, 0, 0, 1);
+			housenode->attachObject(entity);
 		}
 
 		tableNode->setVisible(true, true);
