@@ -20,6 +20,15 @@ namespace pogre {
 	}
 
 	bool CameraControls :: mouseMoved(const OgreBites::MouseMotionEvent& evt) {
+		float ratioX = 1.0 * evt.x / mainEngine->window->getWidth();
+		float ratioY = 1.0 * evt.y / mainEngine->window->getHeight();
+		ratioX = 2 * ratioX - 1;
+		ratioY = 1 - 2 * ratioY;
+
+		//tiltMatrix
+		targetTiltPYR.x = ratioY * 25;
+		targetTiltPYR.y = -ratioX * 25;
+
 		if (rightGrabbed) {
 	    	auto newLocation = Ogre::Vector3(-evt.xrel, evt.yrel, 0) * 0.0005 + location->getPosition();
 	    	if (isValidCoordinate(newLocation)) {
@@ -39,10 +48,27 @@ namespace pogre {
     	return true;
     }
 
+    bool CameraControls :: frameRenderingQueued(const Ogre::FrameEvent& evt)  {
+    	auto mixFactor = pow(0.3, evt.timeSinceLastFrame);
+    	tiltPYR = mixFactor * tiltPYR + (1 - mixFactor) * (targetTiltPYR - tiltPYR);
+    	std::cout << mixFactor << "   " << tiltPYR << "   " << targetTiltPYR << std::endl;
+
+    	Ogre::Quaternion pitch, yaw;
+    	pitch.FromAngleAxis(Ogre::Degree(tiltPYR.x), Ogre::Vector3::UNIT_X);
+    	yaw.FromAngleAxis(Ogre::Degree(tiltPYR.y), Ogre::Vector3::UNIT_Y);
+    	tiltNode->setOrientation(pitch * yaw);
+
+    	return true;
+    }
+
 	CameraControls :: CameraControls() {
 		rightGrabbed = false;
 
+		tiltPYR = Ogre::Vector3::ZERO;
+		targetTiltPYR = Ogre::Vector3::ZERO;
+
 		auto s = mainEngine->mainScene;
+		mainEngine->root->addFrameListener(this);
 
 		camera = s->createCamera("camera");
 		viewport = mainEngine->window->addViewport(camera);
@@ -54,13 +80,15 @@ namespace pogre {
 		camera->setFarClipDistance(10);
 
 		location = s->getRootSceneNode()->createChildSceneNode("camera location");
-		location->attachObject(camera);
 		location->setPosition(0, -.5, .5);
-
 		location->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TransformSpace::TS_WORLD);
+
+		tiltNode = location->createChildSceneNode("camera tilt");
+		tiltNode->attachObject(camera);
 	}
 
 	CameraControls :: ~CameraControls() {
+		mainEngine->root->removeFrameListener(this);
 		mainEngine->mainScene->getRootSceneNode()->removeAndDestroyChild(location);
 		mainEngine->mainScene->destroyCamera(camera);
 	}

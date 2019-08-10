@@ -23,12 +23,15 @@ extern "C" {
 namespace pogre {
 	class Engine;
 
-	class CameraControls : public OgreBites::InputListener {
+	class CameraControls : public OgreBites::InputListener, public Ogre::FrameListener {
 	private:
 		Ogre::Camera* camera;
 		Ogre::Viewport* viewport;
 
 		Ogre::SceneNode* location;
+		Ogre::SceneNode* tiltNode;
+
+		Ogre::Vector3 tiltPYR, targetTiltPYR;
 
 		bool rightGrabbed;
 
@@ -40,6 +43,8 @@ namespace pogre {
 		virtual bool mouseReleased(const OgreBites::MouseButtonEvent& evt) override;
 		virtual bool mouseMoved(const OgreBites::MouseMotionEvent& evt) override;
 	    virtual bool mouseWheelRolled(const OgreBites::MouseWheelEvent& evt) override;
+
+	    virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt) override;
 
 		CameraControls();
 		virtual ~CameraControls();
