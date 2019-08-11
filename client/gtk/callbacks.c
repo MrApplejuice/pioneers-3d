@@ -50,6 +50,8 @@ static void frontend_start_game(void)
 	identity_reset();
 	gui_set_show_no_setup_nodes(TRUE);
 	frontend_gui_update();
+
+	ogreb_start_game();
 }
 
 static void frontend_draw_edge(Edge * edge)

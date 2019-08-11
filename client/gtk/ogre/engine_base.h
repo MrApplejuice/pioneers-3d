@@ -12,7 +12,9 @@
 #include <Ogre.h>
 #include <Bites/OgreInput.h>
 
-#include <map.h>
+extern "C" {
+	#include <client.h>
+}
 
 namespace pogre {
 	typedef std::shared_ptr<Ogre::Root> OgreRootPtr;
@@ -25,7 +27,9 @@ namespace pogre {
 
 		virtual void render(float stepSeconds) = 0;
 
+		virtual void startNewGame() = 0;
 		virtual void loadNewMap(Map* map) = 0;
+
 		virtual void updateWindowSize(int width, int height) = 0;
 	};
 

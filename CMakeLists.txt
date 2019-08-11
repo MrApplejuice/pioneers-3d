@@ -69,6 +69,8 @@ configure_file(
 
 
 set(P3D_OGRE_SRC
+	client/gtk/ogre/player.h
+	client/gtk/ogre/player.cpp
 	client/gtk/ogre/map_renderer.h
 	client/gtk/ogre/map_renderer.cpp
 	client/gtk/ogre/engine_base.h

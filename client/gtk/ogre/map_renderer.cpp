@@ -5,6 +5,17 @@
 #include "engine_base.h"
 
 namespace pogre {
+	Ogre::Vector3 MapTile :: getLocation(Location l, int pos) const {
+		if (l == Location::City) {
+			Ogre::Matrix3 rot;
+			rot.FromAngleAxis(Ogre::Vector3::UNIT_Z, Ogre::Radian(Ogre::Degree(60 * pos)));
+			Ogre::Vector3 basePos(HEX_X_WIDTH, 0.5, 0);
+			return sceneNode->convertLocalToWorldPosition(rot * basePos);
+		}
+
+		return sceneNode->convertLocalToWorldPosition(Ogre::Vector3::ZERO);
+	}
+
 	MapTile :: MapTile(const Ogre::Vector2& hexPos, Ogre::SceneNode* parent, Hex* hex) : hex(hex) {
 		auto meshman = mainEngine->root->getMeshManager();
 
@@ -44,6 +55,20 @@ namespace pogre {
 	}
 
 
+	MapTile* MapRenderer :: getTile(Hex* hex) const {
+		for (int i = 0; i < MAP_SIZE; i++) {
+			for (int j = 0; j < MAP_SIZE; j++) {
+				MapTile* p = tiles[i][j].get();
+				if (p) {
+					if (p->getHex() == hex) {
+						return p;
+					}
+				}
+			}
+		}
+		return nullptr;
+	}
+
 	MapRenderer :: MapRenderer(::Map* _map) : theMap(_map) {
 		tableEntity = nullptr;
 
@@ -78,17 +103,6 @@ namespace pogre {
 			tableEntity = mainEngine->mainScene->createEntity(tableMesh);
 			tableEntity->setMaterialName("wooden_base", "map");
 			tableNode->attachObject(tableEntity);
-
-
-			/////////////////////////////
-			auto housenode = mainEngine->mainScene->getRootSceneNode()->createChildSceneNode("tableNode");
-			auto hmesh = meshman->create("Cube.mesh", "map");
-			auto entity = mainEngine->mainScene->createEntity(hmesh);
-			entity->setMaterialName("village_material", "map");
-			housenode->setScale(Ogre::Vector3::UNIT_SCALE * 0.01);
-			housenode->setPosition(-.2, .1, 0);
-			housenode->setOrientation(0.4, 0, 0, 1);
-			housenode->attachObject(entity);
 		}
 
 		tableNode->setVisible(true, true);

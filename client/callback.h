@@ -215,7 +215,7 @@ struct callbacks {
 	/* You should move the robber or pirate */
 	void (*robber) (void);
 	/* Someone moved the robber */
-	void (*robber_moved) (Hex * old, Hex * new);
+	void (*robber_moved) (Hex * old, Hex * _new);
 	/* You should steal something from a building */
 	void (*steal_building) (void);
 	/* The robber placement has finished, continue normally */

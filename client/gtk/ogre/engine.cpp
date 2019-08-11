@@ -1,5 +1,7 @@
 #include "engine.h"
 
+#include <iostream>
+
 namespace pogre {
 	bool CameraControls :: isValidCoordinate(const Ogre::Vector3& v) const {
 		return (v.z > 0.1) && (Ogre::Vector3::ZERO.distance(v) < MAP_SIZE * 0.1);
@@ -26,8 +28,8 @@ namespace pogre {
 		ratioY = 1 - 2 * ratioY;
 
 		//tiltMatrix
-		targetTiltPYR.x = ratioY * 25;
-		targetTiltPYR.y = -ratioX * 25;
+		targetTiltPYR.x = ratioY * 1;
+		targetTiltPYR.y = -ratioX * 1;
 
 		if (rightGrabbed) {
 	    	auto newLocation = Ogre::Vector3(-evt.xrel, evt.yrel, 0) * 0.0005 + location->getPosition();
@@ -51,7 +53,6 @@ namespace pogre {
     bool CameraControls :: frameRenderingQueued(const Ogre::FrameEvent& evt)  {
     	auto mixFactor = pow(0.3, evt.timeSinceLastFrame);
     	tiltPYR = mixFactor * tiltPYR + (1 - mixFactor) * (targetTiltPYR - tiltPYR);
-    	std::cout << mixFactor << "   " << tiltPYR << "   " << targetTiltPYR << std::endl;
 
     	Ogre::Quaternion pitch, yaw;
     	pitch.FromAngleAxis(Ogre::Degree(tiltPYR.x), Ogre::Vector3::UNIT_X);
@@ -98,10 +99,24 @@ namespace pogre {
 		root->renderOneFrame(stepSeconds);
 	}
 
+	void Engine :: startNewGame() {
+		std::cout << "Ogre backend - starting new game" << std::endl;
+
+		players.clear();
+		for (gint player_id = 0; player_id < num_players(); player_id++) {
+			if (!player_is_spectator(player_id)) {
+				auto player = Player::Ptr(new Player(player_id));
+				players.push_back(player);
+
+				Ogre::Vector3 a = player->villages[2]->sceneNode->convertLocalToWorldPosition(Ogre::Vector3::ZERO);
+				std::cout << "xxxx x=" << a.x << " y=" << a.y << " z=" << a.z << std::endl;
+			}
+		}
+	}
+
 	void Engine :: loadNewMap(Map* map) {
-		std::cout << "Ogre backend - created map" << std::endl;
 		mapRenderer.reset();
-		mapRenderer = MapRenderer::Ptr(new pogre::MapRenderer(map));
+		if (map) mapRenderer = MapRenderer::Ptr(new pogre::MapRenderer(map));
 	}
 
     bool Engine :: mouseMoved(const OgreBites::MouseMotionEvent& evt) {
@@ -187,6 +202,7 @@ namespace pogre {
 	}
 
 	Engine :: ~Engine() {
+		players.clear();
 		mapRenderer.reset();
 		cameraControls.reset();
 		root.reset();

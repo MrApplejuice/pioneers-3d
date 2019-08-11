@@ -172,6 +172,10 @@ extern "C" {
 		return old;
 	}
 
+	void ogreb_start_game() {
+		if (pogre::mainEngine) pogre::mainEngine->startNewGame();
+	}
+
 	void ogreb_show_map(Map* map) {
 		if (pogre::mainEngine) pogre::mainEngine->loadNewMap(map);
 	}

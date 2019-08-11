@@ -13,11 +13,12 @@
 #include <RTShaderSystem/OgreRTShaderSystem.h>
 
 extern "C" {
-	#include <map.h>
+	#include <client.h>
 }
 
 #include "engine_base.h"
 
+#include "player.h"
 #include "map_renderer.h"
 
 namespace pogre {
@@ -52,11 +53,14 @@ namespace pogre {
 
 	class Engine : public EngineBase {
 	private:
+		std::vector<Player::Ptr> players;
 	public:
 		CameraControls::Ptr cameraControls;
 		MapRenderer::Ptr mapRenderer;
 
 		virtual void render(float stepSeconds) override;
+
+		virtual void startNewGame() override;
 		virtual void loadNewMap(Map* map) override;
 
 	    virtual bool mouseMoved(const OgreBites::MouseMotionEvent& evt);
