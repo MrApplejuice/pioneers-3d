@@ -20,6 +20,8 @@ namespace pogre {
 		Ogre::Entity* entity;
 		Ogre::Animation* moveAnimation;
 
+		Ogre::MaterialPtr material;
+
 		void loadEntity();
 	public:
 		typedef std::shared_ptr<Village> Ptr;
@@ -28,6 +30,8 @@ namespace pogre {
 
 		const int id;
 		const Player* owner;
+
+		virtual void setRotation(float degrees);
 
 		virtual void setGlobalPosition(Ogre::Vector3 position);
 		virtual void setSubPosition(Ogre::SceneNode* node, Ogre::Vector3 position);
@@ -51,7 +55,9 @@ namespace pogre {
 
 		std::vector<Village::Ptr> villages;
 
-		Player(gint _playerId);
+		Ogre::ColourValue colour;
+
+		Player(gint _playerId, int playerNumber);
 		virtual ~Player();
 	};
 }

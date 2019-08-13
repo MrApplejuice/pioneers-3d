@@ -52,6 +52,8 @@ namespace pogre {
 	public:
 		typedef std::shared_ptr<MapRenderer> Ptr;
 
+		float width, height;
+
 		MapTile* getTile(Hex* hex) const;
 
 		MapRenderer(::Map* _map);

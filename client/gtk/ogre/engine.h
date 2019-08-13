@@ -54,6 +54,11 @@ namespace pogre {
 	class Engine : public EngineBase {
 	private:
 		std::vector<Player::Ptr> players;
+
+		float getBoardWidth();
+		float getBoardHeight();
+
+		void placePlayers();
 	public:
 		CameraControls::Ptr cameraControls;
 		MapRenderer::Ptr mapRenderer;

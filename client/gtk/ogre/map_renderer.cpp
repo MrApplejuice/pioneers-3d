@@ -72,6 +72,9 @@ namespace pogre {
 	MapRenderer :: MapRenderer(::Map* _map) : theMap(_map) {
 		tableEntity = nullptr;
 
+		width = 1;
+		height = 1;
+
 		tableNode = mainEngine->mainScene->getRootSceneNode()->createChildSceneNode("table_bg");
 		tableNode->setScale(.1, .1, .1);
 
@@ -95,10 +98,13 @@ namespace pogre {
 			Ogre::Vector3 center = minPos.midPoint(maxPos);
 			origin->setPosition(origin->getPosition() - center);
 
+			width = (maxPos.x - minPos.x) * tableNode->getScale().x;
+			height = (maxPos.y - minPos.y) * tableNode->getScale().y;
+
 			Ogre::MeshManager* meshman = mainEngine->root->getMeshManager();
 			auto tableMesh = meshman->createPlane(
 					"table-background", "map", Ogre::Plane(0, 0, 1, 0),
-					fabs(center.x) * 2 + 2, fabs(center.y) * 2 + 2,
+					fabs(center.x) * 2 + 5, fabs(center.y) * 2 + 5,
 					40, 40, true, 1, 6, 4);
 			tableEntity = mainEngine->mainScene->createEntity(tableMesh);
 			tableEntity->setMaterialName("wooden_base", "map");

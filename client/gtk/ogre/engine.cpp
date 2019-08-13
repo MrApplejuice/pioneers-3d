@@ -95,6 +95,41 @@ namespace pogre {
 	}
 
 
+	float Engine :: getBoardWidth() {
+		if (mapRenderer) return mapRenderer->width;
+		return 1.0f;
+	}
+
+	float Engine :: getBoardHeight() {
+		if (mapRenderer) return mapRenderer->height;
+		return 1.0f;
+	}
+
+	void Engine :: placePlayers() {
+		int oponents = players.size() - (my_player_spectator() ? 0 : 1);
+		float leftRightInc = oponents > 1 ? (getBoardWidth() - 0.01 * 2) / (oponents - 1) : 0;
+		float leftRight = -(getBoardWidth() / 2 - 0.01);
+
+		for (auto player : players) {
+			Ogre::Quaternion rot;
+			Ogre::Vector3 pos;
+
+			std::cout << "Placing player " << player->playerId << std::endl;
+
+			if (!my_player_spectator() && (player->playerId == my_player_num())) {
+				pos = Ogre::Vector3(0, -getBoardHeight() / 2 - 0.1, 0);
+			} else {
+				pos = Ogre::Vector3(leftRight, getBoardHeight() / 2 + 0.1, 0);
+				rot.FromAngleAxis(Ogre::Degree(180), Ogre::Vector3::UNIT_Z);
+
+				leftRight += leftRightInc;
+			}
+
+			player->sceneNode->setPosition(pos);
+			player->sceneNode->setOrientation(rot);
+		}
+	}
+
 	void Engine :: render(float stepSeconds) {
 		root->renderOneFrame(stepSeconds);
 	}
@@ -102,21 +137,24 @@ namespace pogre {
 	void Engine :: startNewGame() {
 		std::cout << "Ogre backend - starting new game" << std::endl;
 
+		int playerNumber = 0;
 		players.clear();
-		for (gint player_id = 0; player_id < num_players(); player_id++) {
-			if (!player_is_spectator(player_id)) {
-				auto player = Player::Ptr(new Player(player_id));
+		for (gint playerId = 0; playerId < num_players(); playerId++) {
+			if (!player_is_spectator(playerId)) {
+				auto player = Player::Ptr(new Player(playerId, playerNumber++));
 				players.push_back(player);
 
 				Ogre::Vector3 a = player->villages[2]->sceneNode->convertLocalToWorldPosition(Ogre::Vector3::ZERO);
-				std::cout << "xxxx x=" << a.x << " y=" << a.y << " z=" << a.z << std::endl;
 			}
 		}
+
+		placePlayers();
 	}
 
 	void Engine :: loadNewMap(Map* map) {
 		mapRenderer.reset();
 		if (map) mapRenderer = MapRenderer::Ptr(new pogre::MapRenderer(map));
+		placePlayers();
 	}
 
     bool Engine :: mouseMoved(const OgreBites::MouseMotionEvent& evt) {

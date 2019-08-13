@@ -7,10 +7,22 @@ namespace pogre {
 	void Village :: loadEntity() {
 		auto hmesh = mainEngine->root->getMeshManager()->prepare("village.mesh", "map");
 		entity = mainEngine->mainScene->createEntity(hmesh);
-		entity->setMaterialName("village_material", "map");
+
+		auto matman = Ogre::MaterialManager::getSingletonPtr();
+		auto baseMaterial = matman->getByName("village_material", "map");
+
+		material = baseMaterial->clone("player_village_material_" + std::to_string((long long) this));
+		material->setDiffuse(owner->colour);
+		entity->setMaterial(material);
 
 		sceneNode->attachObject(entity);
 		sceneNode->setScale(Ogre::Vector3::UNIT_SCALE * 0.01);
+	}
+
+	void Village :: setRotation(float degrees) {
+		Ogre::Quaternion q;
+		q.FromAngleAxis(Ogre::Degree(degrees), Ogre::Vector3::UNIT_Z);
+		sceneNode->setOrientation(q);
 	}
 
 	void Village :: setGlobalPosition(Ogre::Vector3 position) {
@@ -62,21 +74,38 @@ namespace pogre {
 		if (entity) {
 			mainEngine->mainScene->destroyEntity(entity);
 		}
+		if (material) {
+			auto matman = Ogre::MaterialManager::getSingletonPtr();
+			matman->remove(material);
+		}
 	}
 
 
-	Player :: Player(gint _playerId) : playerId(_playerId), sceneNode(nullptr) {
+	Player :: Player(gint _playerId, int playerNumber) : playerId(_playerId), sceneNode(nullptr) {
 		::Player* player = player_get(_playerId);
+
+		const static Ogre::ColourValue COLOR_ROTATION[8] = {
+			Ogre::ColourValue(0.5, 0.5, 0.5, 1),
+			Ogre::ColourValue(1.0, 0.0, 0.0, 1),
+			Ogre::ColourValue(0.0, 0.0, 1.0, 1),
+			Ogre::ColourValue(0.0, 1.0, 0.0, 1),
+			Ogre::ColourValue(1.0, 1.0, 0.0, 1),
+			Ogre::ColourValue(1.0, 0.0, 1.0, 1),
+			Ogre::ColourValue(0.0, 1.0, 1.0, 1),
+			Ogre::ColourValue(1.0, 1.0, 1.0, 1),
+		};
+		colour = COLOR_ROTATION[playerNumber % 8];
 
 		sceneNode = mainEngine->mainScene->getRootSceneNode()->createChildSceneNode(
 				"player_" + std::to_string(playerId));
 
-		std::cout << "Player id = " << playerId << "    desc = " << player->style << std::endl;
+		std::cout << "Player id = " << playerId << std::endl;
 
 		auto gameParams = get_game_params();
 		for (int vi = 0; vi < gameParams->num_build_type[BUILD_SETTLEMENT]; vi++) {
 			auto newVillage = Village::Ptr(&(new Village(this, vi))->postInit());
 			newVillage->setSubPosition(sceneNode, Ogre::Vector3(0.02, 0.01, 0) * vi);
+			newVillage->setRotation(-45 + ((vi % 2) - 1) * 5 + ((vi % 4) - 1) * 2);
 			villages.push_back(newVillage);
 		}
 
