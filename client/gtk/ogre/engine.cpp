@@ -42,7 +42,7 @@ namespace pogre {
 
     bool CameraControls :: mouseWheelRolled(const OgreBites::MouseWheelEvent& evt) {
     	const Ogre::Matrix3 viewMat = location->getLocalAxes();
-    	auto newLocation = location->getPosition() + viewMat.GetColumn(2) * evt.y * 0.01;
+    	auto newLocation = location->getPosition() + viewMat.GetColumn(2) * evt.y * -0.05;
 
     	if (isValidCoordinate(newLocation)) {
     		location->setPosition(newLocation);
