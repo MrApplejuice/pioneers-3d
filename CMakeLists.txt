@@ -217,7 +217,7 @@ add_executable(pioneers-3d
 	${P3D_GTK_SRC}
 	${P3D_OGRE_SRC})
 
-set_property(TARGET pioneers-3d PROPERTY CXX_STANDARD 17)
+set_property(TARGET pioneers-3d PROPERTY CXX_STANDARD 14)
 
 target_include_directories(pioneers-3d
 	PUBLIC 
