@@ -23,6 +23,19 @@ namespace pogre {
 		City
 	};
 
+	class SettlementLocation {
+	private:
+	public:
+		Node* node;
+		Ogre::Vector3 location;
+
+		SettlementLocation(const Ogre::Vector2& hexPos, Node* node) : node(node) {
+			Ogre::Quaternion rot(Ogre::Degree(360 / 6 * (node->pos + 0.5)), Ogre::Vector3::UNIT_Z);
+
+			location = HEX_PLACEMENT_MATRIX * Ogre::Vector3(hexPos.x, hexPos.y, 0) + rot * Ogre::Vector3::UNIT_X;
+		}
+	};
+
 	class MapTile {
 	private:
 		Hex* hex;
@@ -31,6 +44,8 @@ namespace pogre {
 		Ogre::Entity* entity;
 	public:
 		typedef std::shared_ptr<MapTile> Ptr;
+
+		std::vector<SettlementLocation> settlementLocations;
 
 		Hex* getHex() const { return hex; }
 
@@ -55,6 +70,7 @@ namespace pogre {
 		float width, height;
 
 		MapTile* getTile(Hex* hex) const;
+		SettlementLocation* getSettlementLocation(Node* node);
 
 		MapRenderer(::Map* _map);
 		virtual ~MapRenderer();

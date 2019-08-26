@@ -17,6 +17,16 @@ namespace pogre {
 	}
 
 	MapTile :: MapTile(const Ogre::Vector2& hexPos, Ogre::SceneNode* parent, Hex* hex) : hex(hex) {
+		// LOGIC
+		for (Node** nodePtr = hex->nodes; nodePtr != hex->nodes + 6; nodePtr++) {
+			Node* node = *nodePtr;
+			if (!node) continue;
+			if (!is_node_on_land(node)) continue;
+			if ((node->x != hex->x) || (node->y != hex->y)) continue;
+			settlementLocations.push_back(SettlementLocation(hexPos, node));
+		}
+
+		// GRAPHICS
 		auto meshman = mainEngine->root->getMeshManager();
 
 		auto m = meshman->getByName("hex", "map");
@@ -65,6 +75,21 @@ namespace pogre {
 					}
 				}
 			}
+		}
+		return nullptr;
+	}
+
+	SettlementLocation* MapRenderer :: getSettlementLocation(Node* node) {
+		Hex* hex = node->map->grid[node->y][node->x];
+		MapTile* mtile = getTile(hex);
+		if (!mtile) return nullptr;
+
+		int i = 0;
+		for (auto sl : mtile->settlementLocations) {
+			if (sl.node == node) {
+				return &mtile->settlementLocations[i];
+			}
+			i++;
 		}
 		return nullptr;
 	}
