@@ -31,6 +31,8 @@ namespace pogre {
 
 		mainEngine->mainScene->getRootSceneNode()->addChild(sceneNode);
 		sceneNode->setPosition(position);
+
+		std::cout << "New global postiion; " << position << std::endl;
 	}
 
 	void Village :: setSubPosition(Ogre::SceneNode* node, Ogre::Vector3 position) {
@@ -80,6 +82,29 @@ namespace pogre {
 		}
 	}
 
+
+	void Player :: applyNewMap(MapRenderer::Ptr mapRenderer) {
+		auto map = mapRenderer->getMap();
+		for (int x = 0; x < MAP_SIZE; x++) {
+			for (int y = 0; y < MAP_SIZE; y++) {
+				Hex* hex = map->grid[y][x];
+				if (!hex) continue;
+				for (int ni = 0; ni < 6; ni++) {
+					Node* node = hex->nodes[ni];
+					if (!node) continue;
+
+					if (node->owner == playerId) {
+						if (node->type == BUILD_SETTLEMENT) {
+							// HACK
+							auto setLoc = mapRenderer->getSettlementLocation(node);
+							villages[0]->setSubPosition(setLoc->location, Ogre::Vector3::ZERO);
+							std::cout << "aaaaaaaaaaaaaa " << villages[0]->sceneNode->convertLocalToWorldPosition(Ogre::Vector3::ZERO) << std::endl;
+						}
+					}
+				}
+			}
+		}
+	}
 
 	Player :: Player(gint _playerId, int playerNumber) : playerId(_playerId), sceneNode(nullptr) {
 		::Player* player = player_get(_playerId);

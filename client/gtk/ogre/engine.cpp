@@ -127,6 +127,8 @@ namespace pogre {
 
 			player->sceneNode->setPosition(pos);
 			player->sceneNode->setOrientation(rot);
+
+			player->applyNewMap(mapRenderer);
 		}
 	}
 

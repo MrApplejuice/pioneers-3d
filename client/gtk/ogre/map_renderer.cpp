@@ -5,33 +5,13 @@
 #include "engine_base.h"
 
 namespace pogre {
-	Ogre::Vector3 MapTile :: getLocation(Location l, int pos) const {
-		if (l == Location::City) {
-			Ogre::Matrix3 rot;
-			rot.FromAngleAxis(Ogre::Vector3::UNIT_Z, Ogre::Radian(Ogre::Degree(60 * pos)));
-			Ogre::Vector3 basePos(HEX_X_WIDTH, 0.5, 0);
-			return sceneNode->convertLocalToWorldPosition(rot * basePos);
-		}
-
-		return sceneNode->convertLocalToWorldPosition(Ogre::Vector3::ZERO);
-	}
-
 	MapTile :: MapTile(const Ogre::Vector2& hexPos, Ogre::SceneNode* parent, Hex* hex) : hex(hex) {
-		// LOGIC
-		for (Node** nodePtr = hex->nodes; nodePtr != hex->nodes + 6; nodePtr++) {
-			Node* node = *nodePtr;
-			if (!node) continue;
-			if (!is_node_on_land(node)) continue;
-			if ((node->x != hex->x) || (node->y != hex->y)) continue;
-			settlementLocations.push_back(SettlementLocation(hexPos, node));
-		}
-
 		// GRAPHICS
 		auto meshman = mainEngine->root->getMeshManager();
 
 		auto m = meshman->getByName("hex", "map");
 		if (!m) {
-			m = mainEngine->root->getMeshManager()->createPlane("hex", "map", Ogre::Plane(0, 0, 1, 0), 0.866, 2 * 0.866);
+			m = mainEngine->root->getMeshManager()->createPlane("hex", "map", Ogre::Plane(0, 0, 1, 0), HEX_X_WIDTH, 2 * HEX_X_WIDTH);
 		}
 
 		entity = mainEngine->mainScene->createEntity(m);
@@ -55,11 +35,24 @@ namespace pogre {
 		auto mat = matman->getByName(matName, "map");
 
 		entity->setMaterial(mat);
+
+		// LOGIC
+		for (Node** nodePtr = hex->nodes; nodePtr != hex->nodes + 6; nodePtr++) {
+			Node* node = *nodePtr;
+			if (!node) continue;
+			if (!is_node_on_land(node)) continue;
+			if ((node->x != hex->x) || (node->y != hex->y)) continue;
+
+			settlementLocations.push_back(SettlementLocation::Ptr(new SettlementLocation(sceneNode, node)));
+		}
 	}
 
 	MapTile :: ~MapTile() {
 		auto scene = mainEngine->mainScene;
 		sceneNode->detachAllObjects();
+
+		settlementLocations.clear();
+
 		scene->destroySceneNode(sceneNode);
 		scene->destroyEntity(entity);
 	}
@@ -86,8 +79,8 @@ namespace pogre {
 
 		int i = 0;
 		for (auto sl : mtile->settlementLocations) {
-			if (sl.node == node) {
-				return &mtile->settlementLocations[i];
+			if (sl->node == node) {
+				return mtile->settlementLocations[i].get();
 			}
 			i++;
 		}
@@ -101,7 +94,6 @@ namespace pogre {
 		height = 1;
 
 		tableNode = mainEngine->mainScene->getRootSceneNode()->createChildSceneNode("table_bg");
-		tableNode->setScale(.1, .1, .1);
 
 		origin = tableNode->createChildSceneNode("map_root");
 		origin->setPosition(0, 0, .01);
@@ -129,7 +121,7 @@ namespace pogre {
 			Ogre::MeshManager* meshman = mainEngine->root->getMeshManager();
 			auto tableMesh = meshman->createPlane(
 					"table-background", "map", Ogre::Plane(0, 0, 1, 0),
-					fabs(center.x) * 2 + 5, fabs(center.y) * 2 + 5,
+					fabs(center.x) * 2 + .5, fabs(center.y) * 2 + .5,
 					40, 40, true, 1, 6, 4);
 			tableEntity = mainEngine->mainScene->createEntity(tableMesh);
 			tableEntity->setMaterialName("wooden_base", "map");

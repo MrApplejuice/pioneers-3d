@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "engine_base.h"
+#include "map_renderer.h"
 
 extern "C" {
 	#include <client.h>
@@ -56,6 +57,8 @@ namespace pogre {
 		std::vector<Village::Ptr> villages;
 
 		Ogre::ColourValue colour;
+
+		void applyNewMap(MapRenderer::Ptr mapRenderer);
 
 		Player(gint _playerId, int playerNumber);
 		virtual ~Player();

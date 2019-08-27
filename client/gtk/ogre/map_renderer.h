@@ -12,27 +12,39 @@ extern "C" {
 	#include <client.h>
 }
 
-namespace pogre {
-	const static float HEX_X_WIDTH = 0.866;
-	const static Ogre::Matrix3 HEX_PLACEMENT_MATRIX(
-			0.866,  -0.433, 0.0,
-			0.0,    -0.75,  0.0,
-			0.0,     0.0,   1.0);
+#include "engine_base.h"
 
-	enum class Location {
-		City
-	};
+namespace pogre {
+	const static float HEX_DIAMETER = 0.1;
+	const static float HEX_X_WIDTH = 0.0866;
+	const static Ogre::Matrix3 HEX_PLACEMENT_MATRIX(
+			0.0866,  -0.0433, 0.0,
+			0.0,     -0.075,  0.0,
+			0.0,      0.0,    0.1);
 
 	class SettlementLocation {
 	private:
 	public:
+		typedef std::shared_ptr<SettlementLocation> Ptr;
+
 		Node* node;
-		Ogre::Vector3 location;
+		Ogre::SceneNode* location;
 
-		SettlementLocation(const Ogre::Vector2& hexPos, Node* node) : node(node) {
-			Ogre::Quaternion rot(Ogre::Degree(360 / 6 * (node->pos + 0.5)), Ogre::Vector3::UNIT_Z);
+		SettlementLocation(SettlementLocation& other) = delete;
+		SettlementLocation& operator=(SettlementLocation& other) = delete;
 
-			location = HEX_PLACEMENT_MATRIX * Ogre::Vector3(hexPos.x, hexPos.y, 0) + rot * Ogre::Vector3::UNIT_X;
+		SettlementLocation(Ogre::SceneNode* parent, Node* node) : node(node) {
+			Ogre::Quaternion rot(Ogre::Degree(360.f / 6.f * (0.5 + node->pos)), Ogre::Vector3::UNIT_Z);
+
+			location = parent->createChildSceneNode("settlement_pos_" + std::to_string(node->y) + "_" + std::to_string(node->x) + "_" + std::to_string(node->pos));
+			location->setPosition(rot * Ogre::Vector3::UNIT_X * HEX_DIAMETER / 2);
+			location->setInitialState();
+			location->setVisible(true);
+		}
+
+		~SettlementLocation() {
+			location->detachAllObjects();
+			mainEngine->mainScene->destroySceneNode(location);
 		}
 	};
 
@@ -45,11 +57,9 @@ namespace pogre {
 	public:
 		typedef std::shared_ptr<MapTile> Ptr;
 
-		std::vector<SettlementLocation> settlementLocations;
+		std::vector<SettlementLocation::Ptr> settlementLocations;
 
 		Hex* getHex() const { return hex; }
-
-		virtual Ogre::Vector3 getLocation(Location l, int pos) const;
 
 		MapTile(const Ogre::Vector2& hexPos, Ogre::SceneNode* parent, Hex* hex);
 		virtual ~MapTile();
@@ -68,6 +78,10 @@ namespace pogre {
 		typedef std::shared_ptr<MapRenderer> Ptr;
 
 		float width, height;
+
+		::Map* getMap() const {
+			return theMap;
+		}
 
 		MapTile* getTile(Hex* hex) const;
 		SettlementLocation* getSettlementLocation(Node* node);
