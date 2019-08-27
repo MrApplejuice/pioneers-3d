@@ -19,6 +19,17 @@ namespace pogre {
 		sceneNode->setScale(Ogre::Vector3::UNIT_SCALE * 0.01);
 	}
 
+	bool Village :: inStock() {
+		Ogre::Node* node = sceneNode;
+		while (node) {
+			if (node == owner->sceneNode) {
+				return true;
+			}
+			node = node->getParent();
+		}
+		return false;
+	}
+
 	void Village :: setRotation(float degrees) {
 		Ogre::Quaternion q;
 		q.FromAngleAxis(Ogre::Degree(degrees), Ogre::Vector3::UNIT_Z);
@@ -31,8 +42,6 @@ namespace pogre {
 
 		mainEngine->mainScene->getRootSceneNode()->addChild(sceneNode);
 		sceneNode->setPosition(position);
-
-		std::cout << "New global postiion; " << position << std::endl;
 	}
 
 	void Village :: setSubPosition(Ogre::SceneNode* node, Ogre::Vector3 position) {
@@ -82,8 +91,24 @@ namespace pogre {
 		}
 	}
 
+	Village* Player :: getStockVillage() {
+		for (auto village : villages) {
+			if (village->inStock()) {
+				return village.get();
+			}
+		}
+		return nullptr;
+	}
 
 	void Player :: applyNewMap(MapRenderer::Ptr mapRenderer) {
+		// RESET OBJECTS
+		int i = 0;
+		for (auto village : villages) {
+			village->setSubPosition(sceneNode, getObjectPosition(BUILD_SETTLEMENT, i));
+			village->setRotation(getObjectRotation(BUILD_SETTLEMENT, i));
+			i++;
+		}
+
 		auto map = mapRenderer->getMap();
 		for (int x = 0; x < MAP_SIZE; x++) {
 			for (int y = 0; y < MAP_SIZE; y++) {
@@ -92,17 +117,39 @@ namespace pogre {
 				for (int ni = 0; ni < 6; ni++) {
 					Node* node = hex->nodes[ni];
 					if (!node) continue;
+					if (node->x != x) continue;
+					if (node->y != y) continue;
 
 					if (node->owner == playerId) {
 						if (node->type == BUILD_SETTLEMENT) {
 							// HACK
 							auto setLoc = mapRenderer->getSettlementLocation(node);
-							villages[0]->setSubPosition(setLoc->location, Ogre::Vector3::ZERO);
-							std::cout << "aaaaaaaaaaaaaa " << villages[0]->sceneNode->convertLocalToWorldPosition(Ogre::Vector3::ZERO) << std::endl;
+							auto village = getStockVillage();
+							if (village) {
+								village->setSubPosition(setLoc->location, Ogre::Vector3::ZERO);
+							}
 						}
 					}
 				}
 			}
+		}
+	}
+
+	Ogre::Vector3 Player :: getObjectPosition(int type, int no) const {
+		switch (type) {
+		case BUILD_SETTLEMENT:
+			return Ogre::Vector3(0.02, 0.01, 0) * no;
+		default:
+			return Ogre::Vector3::ZERO;
+		}
+	}
+
+	float Player :: getObjectRotation(int type, int no) const {
+		switch (type) {
+		case BUILD_SETTLEMENT:
+			return -45 + ((no % 2) - 1) * 5 + ((no % 4) - 1) * 2;
+		default:
+			return 0;
 		}
 	}
 
@@ -129,8 +176,8 @@ namespace pogre {
 		auto gameParams = get_game_params();
 		for (int vi = 0; vi < gameParams->num_build_type[BUILD_SETTLEMENT]; vi++) {
 			auto newVillage = Village::Ptr(&(new Village(this, vi))->postInit());
-			newVillage->setSubPosition(sceneNode, Ogre::Vector3(0.02, 0.01, 0) * vi);
-			newVillage->setRotation(-45 + ((vi % 2) - 1) * 5 + ((vi % 4) - 1) * 2);
+			newVillage->setSubPosition(sceneNode, getObjectPosition(BUILD_SETTLEMENT, vi));
+			newVillage->setRotation(getObjectRotation(BUILD_SETTLEMENT, vi));
 			villages.push_back(newVillage);
 		}
 

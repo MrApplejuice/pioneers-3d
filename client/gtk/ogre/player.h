@@ -32,6 +32,8 @@ namespace pogre {
 		const int id;
 		const Player* owner;
 
+		virtual bool inStock();
+
 		virtual void setRotation(float degrees);
 
 		virtual void setGlobalPosition(Ogre::Vector3 position);
@@ -57,6 +59,11 @@ namespace pogre {
 		std::vector<Village::Ptr> villages;
 
 		Ogre::ColourValue colour;
+
+		Ogre::Vector3 getObjectPosition(int type, int no) const;
+		float getObjectRotation(int type, int no) const;
+
+		Village* getStockVillage();
 
 		void applyNewMap(MapRenderer::Ptr mapRenderer);
 
