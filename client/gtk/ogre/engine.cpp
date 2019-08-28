@@ -4,7 +4,7 @@
 
 namespace pogre {
 	bool CameraControls :: isValidCoordinate(const Ogre::Vector3& v) const {
-		return (v.z > 0.1) && (Ogre::Vector3::ZERO.distance(v) < MAP_SIZE * 0.1);
+		return (v.z > 0.01) && (Ogre::Vector3::ZERO.distance(v) < MAP_SIZE * 0.1);
 	}
 
 	bool CameraControls :: mousePressed(const OgreBites::MouseButtonEvent& evt) {

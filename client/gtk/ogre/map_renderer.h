@@ -53,6 +53,7 @@ namespace pogre {
 		Hex* hex;
 
 		Ogre::SceneNode* sceneNode;
+		Ogre::SceneNode* entityNode;
 		Ogre::Entity* entity;
 	public:
 		typedef std::shared_ptr<MapTile> Ptr;

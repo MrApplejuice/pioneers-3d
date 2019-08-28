@@ -5,19 +5,15 @@
 #include "engine_base.h"
 
 namespace pogre {
-	MapTile :: MapTile(const Ogre::Vector2& hexPos, Ogre::SceneNode* parent, Hex* hex) : hex(hex) {
+	MapTile :: MapTile(const Ogre::Vector2& hexPos, Ogre::SceneNode* parent, Hex* hex) : hex(hex), entityNode(nullptr), entity(nullptr) {
 		// GRAPHICS
 		auto meshman = mainEngine->root->getMeshManager();
 
+		auto scale = Ogre::Vector3::UNIT_SCALE;
 		auto m = meshman->getByName("hex", "map");
 		if (!m) {
 			m = mainEngine->root->getMeshManager()->createPlane("hex", "map", Ogre::Plane(0, 0, 1, 0), HEX_X_WIDTH, 2 * HEX_X_WIDTH);
 		}
-
-		entity = mainEngine->mainScene->createEntity(m);
-		sceneNode = parent->createChildSceneNode();
-		sceneNode->setPosition(HEX_PLACEMENT_MATRIX * Ogre::Vector3(hexPos.x, hexPos.y, 0));
-		sceneNode->attachObject(entity);
 
 		auto matman = Ogre::MaterialManager::getSingletonPtr();
 
@@ -28,13 +24,29 @@ namespace pogre {
 		case PASTURE_TERRAIN: matName = "hex_sheep"; break;
 		case MOUNTAIN_TERRAIN: matName = "hex_mountain"; break;
 		case FOREST_TERRAIN: matName = "hex_wood"; break;
-		case DESERT_TERRAIN: matName = "hex_desert"; break;
+		case DESERT_TERRAIN:
+			matName = "";
+			m = meshman->prepare("desert.mesh", "map");
+			scale *= HEX_DIAMETER / 2 * 0.975;
+			break;
 		case HILL_TERRAIN:  matName = "hex_bricks"; break;
 		default: ;
 		}
-		auto mat = matman->getByName(matName, "map");
 
-		entity->setMaterial(mat);
+		sceneNode = parent->createChildSceneNode();
+		sceneNode->setPosition(HEX_PLACEMENT_MATRIX * Ogre::Vector3(hexPos.x, hexPos.y, 0));
+
+		entityNode = sceneNode->createChildSceneNode();
+		entityNode->setScale(scale);
+		if (m) {
+			entity = mainEngine->mainScene->createEntity(m);
+			entityNode->attachObject(entity);
+		}
+
+		if (entity && !matName.empty()) {
+			auto mat = matman->getByName(matName, "map");
+			entity->setMaterial(mat);
+		}
 
 		// LOGIC
 		for (Node** nodePtr = hex->nodes; nodePtr != hex->nodes + 6; nodePtr++) {
@@ -49,12 +61,15 @@ namespace pogre {
 
 	MapTile :: ~MapTile() {
 		auto scene = mainEngine->mainScene;
+
 		sceneNode->detachAllObjects();
+		entityNode->detachAllObjects();
 
 		settlementLocations.clear();
 
 		scene->destroySceneNode(sceneNode);
-		scene->destroyEntity(entity);
+		scene->destroySceneNode(entityNode);
+		if (entity) scene->destroyEntity(entity);
 	}
 
 

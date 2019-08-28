@@ -166,7 +166,8 @@ namespace pogre {
 
 	int Player :: countObjects(int type) const {
 		switch (type) {
-		case BUILD_SETTLEMENT: return villages.size();
+		case BUILD_SETTLEMENT:
+			return villages.size();
 		default:
 			return 0;
 		};
