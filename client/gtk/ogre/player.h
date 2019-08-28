@@ -13,24 +13,19 @@ extern "C" {
 namespace pogre {
 	class Player;
 
-	class Village {
+	class PlayerPiece {
 	private:
-		Village(Village const &) = delete;
-		void operator=(Village const &x) = delete;
+		PlayerPiece(PlayerPiece const &) = delete;
+		void operator=(PlayerPiece const &x) = delete;
 	protected:
 		Ogre::Entity* entity;
 		Ogre::Animation* moveAnimation;
 
 		Ogre::MaterialPtr material;
 
-		void loadEntity();
+		virtual void loadEntity() = 0;
 	public:
-		typedef std::shared_ptr<Village> Ptr;
-
-		Ogre::SceneNode* sceneNode;
-
-		const int id;
-		const Player* owner;
+		typedef std::shared_ptr<PlayerPiece> Ptr;
 
 		virtual bool inStock();
 
@@ -42,9 +37,25 @@ namespace pogre {
 		virtual void moveGlobalPosition(Ogre::Vector3 position);
 		virtual void moveSubPosition(Ogre::SceneNode* node, Ogre::Vector3 position);
 
-		Village& postInit();
+		PlayerPiece& postInit();
 
-		Village(const Player* owner, int id);
+		Ogre::SceneNode* sceneNode;
+
+		const int id;
+		const int pieceType;
+		const Player* owner;
+
+		PlayerPiece(const Player* owner, int pieceType);
+		virtual ~PlayerPiece();
+	};
+
+	class Village : public PlayerPiece {
+	protected:
+		virtual void loadEntity() override;
+	public:
+		typedef std::shared_ptr<Village> Ptr;
+
+		Village(const Player* owner);
 		virtual ~Village();
 	};
 
@@ -62,6 +73,7 @@ namespace pogre {
 
 		Ogre::Vector3 getObjectPosition(int type, int no) const;
 		float getObjectRotation(int type, int no) const;
+		int countObjects(int type) const;
 
 		Village* getStockVillage();
 

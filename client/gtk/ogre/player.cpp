@@ -4,22 +4,7 @@
 #include <string>
 
 namespace pogre {
-	void Village :: loadEntity() {
-		auto hmesh = mainEngine->root->getMeshManager()->prepare("village.mesh", "map");
-		entity = mainEngine->mainScene->createEntity(hmesh);
-
-		auto matman = Ogre::MaterialManager::getSingletonPtr();
-		auto baseMaterial = matman->getByName("village_material", "map");
-
-		material = baseMaterial->clone("player_village_material_" + std::to_string((long long) this));
-		material->setDiffuse(owner->colour);
-		entity->setMaterial(material);
-
-		sceneNode->attachObject(entity);
-		sceneNode->setScale(Ogre::Vector3::UNIT_SCALE * 0.01);
-	}
-
-	bool Village :: inStock() {
+	bool PlayerPiece :: inStock() {
 		Ogre::Node* node = sceneNode;
 		while (node) {
 			if (node == owner->sceneNode) {
@@ -30,13 +15,13 @@ namespace pogre {
 		return false;
 	}
 
-	void Village :: setRotation(float degrees) {
+	void PlayerPiece :: setRotation(float degrees) {
 		Ogre::Quaternion q;
 		q.FromAngleAxis(Ogre::Degree(degrees), Ogre::Vector3::UNIT_Z);
 		sceneNode->setOrientation(q);
 	}
 
-	void Village :: setGlobalPosition(Ogre::Vector3 position) {
+	void PlayerPiece :: setGlobalPosition(Ogre::Vector3 position) {
 		auto parent = sceneNode->getParentSceneNode();
 		if (parent) parent->removeChild(sceneNode);
 
@@ -44,7 +29,7 @@ namespace pogre {
 		sceneNode->setPosition(position);
 	}
 
-	void Village :: setSubPosition(Ogre::SceneNode* node, Ogre::Vector3 position) {
+	void PlayerPiece :: setSubPosition(Ogre::SceneNode* node, Ogre::Vector3 position) {
 		auto parent = sceneNode->getParentSceneNode();
 		if (parent) parent->removeChild(sceneNode);
 
@@ -54,26 +39,29 @@ namespace pogre {
 		}
 	}
 
-	void Village :: moveGlobalPosition(Ogre::Vector3 position) {
+	void PlayerPiece :: moveGlobalPosition(Ogre::Vector3 position) {
 		setGlobalPosition(position);
 	}
 
-	void Village :: moveSubPosition(Ogre::SceneNode* node, Ogre::Vector3 position) {
+	void PlayerPiece :: moveSubPosition(Ogre::SceneNode* node, Ogre::Vector3 position) {
 		setSubPosition(node, position);
 	}
 
-	Village& Village :: postInit() {
+	PlayerPiece& PlayerPiece :: postInit() {
 		loadEntity();
 		return *this;
 	}
 
-	Village :: Village(const Player* owner, int id) : entity(nullptr), moveAnimation(nullptr), sceneNode(nullptr), id(id), owner(owner) {
+	PlayerPiece :: PlayerPiece(const Player* owner, const int pieceType) :
+			entity(nullptr), moveAnimation(nullptr), material(nullptr), sceneNode(nullptr),
+			owner(owner), id(owner->countObjects(pieceType)), pieceType(pieceType) {
 		sceneNode = mainEngine->mainScene->createSceneNode();
 		moveAnimation = mainEngine->mainScene->createAnimation(
-				"animate_village_p" + std::to_string(owner->playerId) + "_" + std::to_string(id), 1.0);
+				"animate_piece_" + std::to_string(pieceType) + "_p"
+				+ std::to_string(owner->playerId) + "_" + std::to_string(id), 1.0);
 	}
 
-	Village :: ~Village() {
+	PlayerPiece :: ~PlayerPiece() {
 		if (moveAnimation) {
 			moveAnimation->destroyAllTracks();
 			mainEngine->mainScene->destroyAnimation(moveAnimation->getName());
@@ -90,6 +78,29 @@ namespace pogre {
 			matman->remove(material);
 		}
 	}
+
+
+	void Village :: loadEntity() {
+		auto hmesh = mainEngine->root->getMeshManager()->prepare("village.mesh", "map");
+		entity = mainEngine->mainScene->createEntity(hmesh);
+
+		auto matman = Ogre::MaterialManager::getSingletonPtr();
+		auto baseMaterial = matman->getByName("village_material", "map");
+
+		material = baseMaterial->clone("player_village_material_" + std::to_string((long long) this));
+		material->setDiffuse(owner->colour);
+		entity->setMaterial(material);
+
+		sceneNode->attachObject(entity);
+		sceneNode->setScale(Ogre::Vector3::UNIT_SCALE * 0.01);
+	}
+
+	Village :: Village(const Player* owner) : PlayerPiece(owner, BUILD_SETTLEMENT) {
+	}
+
+	Village :: ~Village() {
+	}
+
 
 	Village* Player :: getStockVillage() {
 		for (auto village : villages) {
@@ -153,6 +164,14 @@ namespace pogre {
 		}
 	}
 
+	int Player :: countObjects(int type) const {
+		switch (type) {
+		case BUILD_SETTLEMENT: return villages.size();
+		default:
+			return 0;
+		};
+	}
+
 	Player :: Player(gint _playerId, int playerNumber) : playerId(_playerId), sceneNode(nullptr) {
 		::Player* player = player_get(_playerId);
 
@@ -175,7 +194,8 @@ namespace pogre {
 
 		auto gameParams = get_game_params();
 		for (int vi = 0; vi < gameParams->num_build_type[BUILD_SETTLEMENT]; vi++) {
-			auto newVillage = Village::Ptr(&(new Village(this, vi))->postInit());
+			auto newVillage = Village::Ptr(new Village(this));
+			newVillage->postInit();
 			newVillage->setSubPosition(sceneNode, getObjectPosition(BUILD_SETTLEMENT, vi));
 			newVillage->setRotation(getObjectRotation(BUILD_SETTLEMENT, vi));
 			villages.push_back(newVillage);
