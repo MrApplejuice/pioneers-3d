@@ -1,0 +1,10 @@
+material base_default {
+    technique {
+        pass {
+            vertex_program_ref vertex/default {
+            }
+            fragment_program_ref fragment/default {
+            }
+        }
+    }
+}

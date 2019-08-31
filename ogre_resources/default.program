@@ -1,0 +1,11 @@
+vertex_program vertex/default glsl {
+    source default.vert
+
+    default_params {
+        param_named_auto worldViewProj worldviewproj_matrix
+    }
+}
+
+fragment_program fragment/default glsl {
+    source default.frag
+}

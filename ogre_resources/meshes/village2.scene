@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- exporter: blender2ogre 0.7.0 -->
+<!-- export_time: Wed, 28 Aug 2019 23:05:23 +0000 -->
+<!-- previous_export_time: Wed, 28 Aug 2019 22:30:03 +0000 -->
+<scene author="paul" formatVersion="1.1" >
+  <nodes >
+    <node name="desert" >
+      <position x="2.654486" y="1.903209" z="0.009154" />
+      <rotation qw="1.000000" qx="0.000000" qy="0.000000" qz="0.000000" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <entity meshFile="desert.mesh" name="desert" >
+        <userData />
+      </entity>
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="DesertMaterial" />
+    </item>
+  </externals>
+  <environment >
+    <colourBackground b="0.0011345063103362918" g="0.050872258841991425" r="0.0" />
+  </environment>
+</scene>

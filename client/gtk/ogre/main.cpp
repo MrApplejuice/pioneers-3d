@@ -101,7 +101,6 @@ extern "C" {
 	}
 
 	static gboolean _ogreb_on_mouse_entered(GtkWidget *widget, GdkEventCrossing *event, gpointer user_data) {
-		std::cout << "Entered!" << std::endl;
 		_mm_relX_origin = event->x;
 		_mm_relY_origin = event->y;
 		_ogreb_emit_motion_event(event->x, event->y);
@@ -114,7 +113,6 @@ extern "C" {
 	}
 
 	static gboolean _ogreb_on_mouse_leave(GtkWidget *widget, GdkEventCrossing *event, gpointer user_data) {
-		std::cout << "Left!" << std::endl;
 		_mm_relX_origin = -1;
 		_mm_relY_origin = -1;
 		return false;

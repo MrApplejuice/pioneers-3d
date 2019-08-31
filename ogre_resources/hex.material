@@ -1,4 +1,6 @@
-material wooden_base {
+import * from "default.material"
+
+material wooden_base : base_default {
 	technique {
 		pass {
 			diffuse 1 1 1
@@ -18,7 +20,7 @@ sampler hq_hex {
 	max_anisotropy 8
 }
 
-material base_hex {
+material base_hex : base_default {
 	technique {
 		pass {
 			diffuse 1 1 1
