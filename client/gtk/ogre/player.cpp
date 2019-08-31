@@ -89,6 +89,7 @@ namespace pogre {
 
 		material = baseMaterial->clone("player_village_material_" + std::to_string((long long) this));
 		material->setDiffuse(owner->colour);
+		material->setAmbient(owner->colour * 0.25);
 		entity->setMaterial(material);
 
 		sceneNode->attachObject(entity);

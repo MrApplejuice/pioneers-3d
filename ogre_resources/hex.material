@@ -3,9 +3,6 @@ import * from "default.material"
 material wooden_base : base_default {
 	technique {
 		pass {
-			diffuse 1 1 1
-			ambient 1 1 1
-			
 			texture_unit {
 				texture wood.jpg
 			}
@@ -23,9 +20,6 @@ sampler hq_hex {
 material base_hex : base_default {
 	technique {
 		pass {
-			diffuse 1 1 1
-			ambient 1 1 1
-			
 			scene_blend src_alpha one_minus_src_alpha
 			
 			depth_write off

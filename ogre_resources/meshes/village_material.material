@@ -2,7 +2,6 @@
 import * from "default.material"
 
 material village_material : base_default {
-    receive_shadows on
     technique {
         pass {
             diffuse 0.800000011920929 0.800000011920929 0.800000011920929 1.0
@@ -23,6 +22,7 @@ material village_material : base_default {
             shading gouraud 
             transparent_sorting on 
 
+			fragment_program_ref fragment/default_no_texture {}
         }
     }
 }
