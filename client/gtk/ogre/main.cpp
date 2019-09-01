@@ -53,31 +53,47 @@ extern "C" {
 		}
 	}
 
-	static gboolean _ogreb_on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer user_data) {
-		OgreBites::KeyboardEvent kbe;
-		kbe.type = OgreBites::KEYDOWN;
-		kbe.repeat = 0;
-		kbe.keysym.mod = 0;
+	static bool mapGDKtoOgreKeycode(guint modifier, guint keyval, OgreBites::Keysym& keysym) {
+		keysym.mod = 0;
+		if (modifier & GDK_SHIFT_MASK) keysym.mod |= pogre::Modifiers::SHIFT;
+		if (modifier & GDK_SUPER_MASK) keysym.mod |= pogre::Modifiers::SUPER;
+		if (modifier & GDK_CONTROL_MASK) keysym.mod |= pogre::Modifiers::CTRL;
+		if (modifier & GDK_MOD1_MASK) keysym.mod |= pogre::Modifiers::ALT;
 
-		switch (event->keyval) {
-		case GDK_KEY_F1: kbe.keysym.sym = OgreBites::SDLK_F1; break;
-		case GDK_KEY_F2: kbe.keysym.sym = OgreBites::SDLK_F2; break;
-		case GDK_KEY_F3: kbe.keysym.sym = OgreBites::SDLK_F3; break;
-		case GDK_KEY_F4: kbe.keysym.sym = OgreBites::SDLK_F4; break;
-		case GDK_KEY_F5: kbe.keysym.sym = OgreBites::SDLK_F5; break;
-		case GDK_KEY_F6: kbe.keysym.sym = OgreBites::SDLK_F6; break;
-		case GDK_KEY_F7: kbe.keysym.sym = OgreBites::SDLK_F7; break;
-		case GDK_KEY_F8: kbe.keysym.sym = OgreBites::SDLK_F8; break;
-		case GDK_KEY_F9: kbe.keysym.sym = OgreBites::SDLK_F9; break;
-		case GDK_KEY_F10: kbe.keysym.sym = OgreBites::SDLK_F10; break;
-		case GDK_KEY_F11: kbe.keysym.sym = OgreBites::SDLK_F11; break;
-		case GDK_KEY_F12: kbe.keysym.sym = OgreBites::SDLK_F12; break;
+		switch (keyval) {
+		case GDK_KEY_F1: keysym.sym = OgreBites::SDLK_F1; break;
+		case GDK_KEY_F2: keysym.sym = OgreBites::SDLK_F2; break;
+		case GDK_KEY_F3: keysym.sym = OgreBites::SDLK_F3; break;
+		case GDK_KEY_F4: keysym.sym = OgreBites::SDLK_F4; break;
+		case GDK_KEY_F5: keysym.sym = OgreBites::SDLK_F5; break;
+		case GDK_KEY_F6: keysym.sym = OgreBites::SDLK_F6; break;
+		case GDK_KEY_F7: keysym.sym = OgreBites::SDLK_F7; break;
+		case GDK_KEY_F8: keysym.sym = OgreBites::SDLK_F8; break;
+		case GDK_KEY_F9: keysym.sym = OgreBites::SDLK_F9; break;
+		case GDK_KEY_F10: keysym.sym = OgreBites::SDLK_F10; break;
+		case GDK_KEY_F11: keysym.sym = OgreBites::SDLK_F11; break;
+		case GDK_KEY_F12: keysym.sym = OgreBites::SDLK_F12; break;
 		default:
+			return false;
+		}
+		return true;
+	}
+
+	static gboolean _ogreb_on_key_handler(GtkWidget *widget, GdkEventKey *event, gpointer user_data) {
+		OgreBites::KeyboardEvent kbe;
+		kbe.type = event->type == GDK_KEY_PRESS ? OgreBites::KEYDOWN : OgreBites::KEYUP;
+		kbe.repeat = 0;
+
+		if (!mapGDKtoOgreKeycode(event->state, event->keyval, kbe.keysym)) {
 			return true;
 		}
 
 		if (pogre::mainEngine) {
-			pogre::mainEngine->keyPressed(kbe);
+			if (kbe.type == OgreBites::KEYDOWN) {
+				pogre::mainEngine->keyPressed(kbe);
+			} else {
+				pogre::mainEngine->keyReleased(kbe);
+			}
 		}
 		return false;
 	}
@@ -185,7 +201,8 @@ extern "C" {
 		gtk_widget_add_events(winwid, GDK_SCROLL_MASK);
 
 		g_signal_connect(winwid, "size-allocate", G_CALLBACK(_ogreb_resize), NULL);
-		g_signal_connect(G_OBJECT(winwid), "key-press-event", G_CALLBACK(_ogreb_on_key_press), NULL);
+		g_signal_connect(G_OBJECT(winwid), "key-press-event", G_CALLBACK(_ogreb_on_key_handler), NULL);
+		g_signal_connect(G_OBJECT(winwid), "key-release-event", G_CALLBACK(_ogreb_on_key_handler), NULL);
 		g_signal_connect(G_OBJECT(winwid), "enter-notify-event", G_CALLBACK(_ogreb_on_mouse_entered), NULL);
 		g_signal_connect(G_OBJECT(winwid), "motion-notify-event", G_CALLBACK(_ogreb_on_mouse_motion), NULL);
 		g_signal_connect(G_OBJECT(winwid), "leave-notify-event", G_CALLBACK(_ogreb_on_mouse_leave), NULL);

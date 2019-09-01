@@ -17,6 +17,14 @@ extern "C" {
 }
 
 namespace pogre {
+	class Modifiers {
+	public:
+		static const int CTRL = ::OgreBites::KMOD_CTRL;
+		static const int SHIFT = 0x01;
+		static const int ALT = 0x02;
+		static const int SUPER = 0x04;
+	};
+
 	typedef std::shared_ptr<Ogre::Root> OgreRootPtr;
 
 	class EngineBase : public OgreBites::InputListener {
