@@ -1,5 +1,7 @@
 #version 330
 
+uniform vec3 sceneColor;
+
 in vec3 color;
 in vec2 tex_uv;
 in vec2 bump_uv;
@@ -18,5 +20,5 @@ void main() {
 	float vertNormalProjection = dot(bumpNormal, normLightSource);
 	float bumpProjection = pow(max(0, dot(vec3(texture2D(bumpmap, bump_uv)), normLightSource)), 1.25);
 	float i = max(0.1, vertNormalProjection * bumpProjection);
-	gl_FragColor = pow(i, 4) * vec4(color, 1) * texture2D(texture, tex_uv) * 2;
+	gl_FragColor = max(vec4(sceneColor, 1), pow(i, 4) * vec4(color, 1)) * texture2D(texture, tex_uv);
 }

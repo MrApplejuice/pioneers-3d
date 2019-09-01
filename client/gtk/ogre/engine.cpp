@@ -225,7 +225,7 @@ namespace pogre {
 		mainScene = root->createSceneManager(
 				Ogre::DefaultSceneManagerFactory::FACTORY_TYPE_NAME,
 				"Main Scene");
-		mainScene->setAmbientLight(Ogre::ColourValue(.1, .1, .1));
+		mainScene->setAmbientLight(Ogre::ColourValue(0.1, 0.1, 0.1));
 		cameraControls = CameraControls::Ptr(new pogre::CameraControls());
 
 

@@ -7,7 +7,7 @@ attribute vec4 uv0;
 uniform mat4 worldMatrix;
 uniform mat4 viewProjMatrix;
 
-uniform vec3 ambient;
+uniform vec3 sceneColor;
 uniform vec3 diffuse;
 
 uniform vec3 lightPos;
@@ -25,5 +25,5 @@ void main() {
 	gl_Position = viewProjMatrix * gl_Position;
 
 	tex_uv = vec2(uv0);
-	color = max(ambient, diffuse * intensity);
+	color = max(sceneColor, diffuse * intensity);
 }

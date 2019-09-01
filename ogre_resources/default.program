@@ -5,7 +5,7 @@ vertex_program vertex/default glsl {
 		param_named_auto worldMatrix world_matrix
 		param_named_auto viewProjMatrix viewproj_matrix
 		param_named_auto diffuse surface_diffuse_colour
-		param_named_auto ambient surface_ambient_colour
+		param_named_auto sceneColor derived_scene_colour
 		param_named_auto lightPos light_position 0 
 	}
 }
