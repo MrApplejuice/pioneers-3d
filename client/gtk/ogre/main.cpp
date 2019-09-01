@@ -54,7 +54,31 @@ extern "C" {
 	}
 
 	static gboolean _ogreb_on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer user_data) {
-		std::cout << "KEY PRESSSS" << std::endl;
+		OgreBites::KeyboardEvent kbe;
+		kbe.type = OgreBites::KEYDOWN;
+		kbe.repeat = 0;
+		kbe.keysym.mod = 0;
+
+		switch (event->keyval) {
+		case GDK_KEY_F1: kbe.keysym.sym = OgreBites::SDLK_F1; break;
+		case GDK_KEY_F2: kbe.keysym.sym = OgreBites::SDLK_F2; break;
+		case GDK_KEY_F3: kbe.keysym.sym = OgreBites::SDLK_F3; break;
+		case GDK_KEY_F4: kbe.keysym.sym = OgreBites::SDLK_F4; break;
+		case GDK_KEY_F5: kbe.keysym.sym = OgreBites::SDLK_F5; break;
+		case GDK_KEY_F6: kbe.keysym.sym = OgreBites::SDLK_F6; break;
+		case GDK_KEY_F7: kbe.keysym.sym = OgreBites::SDLK_F7; break;
+		case GDK_KEY_F8: kbe.keysym.sym = OgreBites::SDLK_F8; break;
+		case GDK_KEY_F9: kbe.keysym.sym = OgreBites::SDLK_F9; break;
+		case GDK_KEY_F10: kbe.keysym.sym = OgreBites::SDLK_F10; break;
+		case GDK_KEY_F11: kbe.keysym.sym = OgreBites::SDLK_F11; break;
+		case GDK_KEY_F12: kbe.keysym.sym = OgreBites::SDLK_F12; break;
+		default:
+			return true;
+		}
+
+		if (pogre::mainEngine) {
+			pogre::mainEngine->keyPressed(kbe);
+		}
 		return false;
 	}
 

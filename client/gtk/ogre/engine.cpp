@@ -134,6 +134,11 @@ namespace pogre {
 
 	void Engine :: render(float stepSeconds) {
 		root->renderOneFrame(stepSeconds);
+
+		if (enableLightMovement) {
+			Ogre::Quaternion lightRotation(Ogre::Degree(30 * stepSeconds), Ogre::Vector3::UNIT_Z);
+			spotLightNode->setPosition(lightRotation * spotLightNode->getPosition());
+		}
 	}
 
 	void Engine :: startNewGame() {
@@ -187,11 +192,18 @@ namespace pogre {
     	return true;
     }
 
+    bool Engine :: keyPressed(const OgreBites::KeyboardEvent& evt) {
+    	if (evt.keysym.sym == OgreBites::SDLK_F1) {
+    		enableLightMovement = !enableLightMovement;
+    	}
+    	return true;
+    }
+
 	void Engine :: updateWindowSize(int width, int height) {
 		mainEngine->window->resize(width, height);
 	}
 
-	Engine :: Engine(std::string windowName) {
+	Engine :: Engine(std::string windowName) : enableLightMovement(false) {
 		mainEngine = this;
 		root = OgreRootPtr(new Ogre::Root());
 
@@ -229,13 +241,14 @@ namespace pogre {
 		cameraControls = CameraControls::Ptr(new pogre::CameraControls());
 
 
-		auto light = mainScene->createLight("test-light");
-		light->setDiffuseColour(1, 0.9, 0.9);
-		light->setSpecularColour(1, 1, 0.9);
-		light->setAttenuation(1, .1, 2, 1);
-		auto lightSceneNode = mainScene->getRootSceneNode()->createChildSceneNode(
-				"test-light-location", Ogre::Vector3(0.4, 0, 0.4));
-		lightSceneNode->attachObject(light);
+		spotLight = mainScene->createLight("spot-light");
+		spotLight->setDiffuseColour(1, 0.9, 0.9);
+		spotLight->setSpecularColour(1, 1, 0.9);
+		spotLight->setAttenuation(2, .1, 1, 1);
+
+		spotLightNode = mainScene->getRootSceneNode()->createChildSceneNode(
+				"spot-light-location", Ogre::Vector3(0.4, 0, 0.4));
+		spotLightNode->attachObject(spotLight);
 
 		// Extra features
 		std::cout << "init shader man " << Ogre::RTShader::ShaderGenerator::initialize() << std::endl;

@@ -55,6 +55,11 @@ namespace pogre {
 	private:
 		std::vector<Player::Ptr> players;
 
+		bool enableLightMovement;
+
+		Ogre::SceneNode* spotLightNode;
+		Ogre::Light* spotLight;
+
 		float getBoardWidth();
 		float getBoardHeight();
 
@@ -68,10 +73,12 @@ namespace pogre {
 		virtual void startNewGame() override;
 		virtual void loadNewMap(Map* map) override;
 
-	    virtual bool mouseMoved(const OgreBites::MouseMotionEvent& evt);
-	    virtual bool mouseWheelRolled(const OgreBites::MouseWheelEvent& evt);
-	    virtual bool mousePressed(const OgreBites::MouseButtonEvent& evt);
-	    virtual bool mouseReleased(const OgreBites::MouseButtonEvent& evt);
+	    virtual bool mouseMoved(const OgreBites::MouseMotionEvent& evt) override;
+	    virtual bool mouseWheelRolled(const OgreBites::MouseWheelEvent& evt) override;
+	    virtual bool mousePressed(const OgreBites::MouseButtonEvent& evt) override;
+	    virtual bool mouseReleased(const OgreBites::MouseButtonEvent& evt) override;
+
+	    virtual bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
 
 		virtual void updateWindowSize(int width, int height);
 
