@@ -234,7 +234,7 @@ namespace pogre {
 		light->setSpecularColour(1, 1, 0.9);
 		light->setAttenuation(1, 1, 0, 1);
 		auto lightSceneNode = mainScene->getRootSceneNode()->createChildSceneNode(
-				"test-light-location", Ogre::Vector3(0, 0, 0.4));
+				"test-light-location", Ogre::Vector3(0.4, 0, 0.4));
 		lightSceneNode->attachObject(light);
 
 		// Extra features
