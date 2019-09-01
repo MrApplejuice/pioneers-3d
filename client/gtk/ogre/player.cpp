@@ -88,10 +88,6 @@ namespace pogre {
 		auto baseMaterial = matman->getByName("village_material", "map");
 
 		material = baseMaterial->clone("player_village_material_" + std::to_string((long long) this));
-		//material->setDiffuse(owner->colour);
-		//material->setAmbient(owner->colour);
-		//material->setEm(owner->colour * 0.25);
-
 		for (auto techique : material->getTechniques()) {
 			for (auto pass : techique->getPasses()) {
 				pass->setDiffuse(owner->colour);

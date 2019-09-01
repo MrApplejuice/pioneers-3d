@@ -232,7 +232,7 @@ namespace pogre {
 		auto light = mainScene->createLight("test-light");
 		light->setDiffuseColour(1, 0.9, 0.9);
 		light->setSpecularColour(1, 1, 0.9);
-		light->setAttenuation(1, 1, 0, 1);
+		light->setAttenuation(1, .1, 2, 1);
 		auto lightSceneNode = mainScene->getRootSceneNode()->createChildSceneNode(
 				"test-light-location", Ogre::Vector3(0.4, 0, 0.4));
 		lightSceneNode->attachObject(light);
