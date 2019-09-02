@@ -164,6 +164,40 @@ namespace pogre {
 		placePlayers();
 	}
 
+	void Engine :: updateNode(Node* node) {
+		if (mapRenderer && players.size()) {
+			auto sloc = mapRenderer->getSettlementLocation(node);
+			if (!sloc) {
+				LOGIC_ERROR("updateNode could not find node to update");
+				return;
+			}
+
+			PlayerPiece* pp = nullptr;
+			if (sloc->location->getChildren().size()) {
+				Ogre::Node* n = sloc->location->getChild(0);
+				pp = Ogre::any_cast<PlayerPiece*>(n->getUserObjectBindings().getUserAny("playerpiece"));
+			}
+			if (node->owner == -1) {
+				if (pp) pp->returnToStock();
+			} else {
+				if (pp) {
+					if (pp->owner->playerId == node->owner) {
+						// Replace same player
+						pp->returnToStock();
+					} else {
+						// Replace other player
+						pp->returnToStock();
+					}
+				}
+				auto newOwner = players[node->owner];
+				switch (node->type) {
+				case BUILD_SETTLEMENT: newOwner->getStockVillage()->moveSubPosition(sloc->location, Ogre::Vector3::ZERO); break;
+				default: ;
+				}
+			}
+		}
+	}
+
     bool Engine :: mouseMoved(const OgreBites::MouseMotionEvent& evt) {
     	if (cameraControls) {
     		cameraControls->mouseMoved(evt);

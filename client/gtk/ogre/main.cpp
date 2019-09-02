@@ -236,6 +236,12 @@ extern "C" {
 		return old;
 	}
 
+	void ogreb_cleanup() {
+		using namespace pogre;
+		if (mainEngine) delete mainEngine;
+	}
+
+
 	void ogreb_start_game() {
 		if (pogre::mainEngine) pogre::mainEngine->startNewGame();
 	}
@@ -244,8 +250,7 @@ extern "C" {
 		if (pogre::mainEngine) pogre::mainEngine->loadNewMap(map);
 	}
 
-	void ogreb_cleanup() {
-		using namespace pogre;
-		if (mainEngine) delete mainEngine;
+	void ogreb_map_node_updates(Node* node) {
+		if (pogre::mainEngine) pogre::mainEngine->updateNode(node);
 	}
 }

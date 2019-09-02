@@ -28,6 +28,7 @@ namespace pogre {
 		typedef std::shared_ptr<PlayerPiece> Ptr;
 
 		virtual bool inStock();
+		virtual void returnToStock();
 
 		virtual void setRotation(float degrees);
 
@@ -71,6 +72,7 @@ namespace pogre {
 
 		Ogre::ColourValue colour;
 
+		int getNextObjectSlotIndex(int type, bool filled) const;
 		Ogre::Vector3 getObjectPosition(int type, int no) const;
 		float getObjectRotation(int type, int no) const;
 		int countObjects(int type) const;

@@ -15,6 +15,16 @@ namespace pogre {
 		return false;
 	}
 
+	void PlayerPiece :: returnToStock() {
+		if (!inStock()) {
+			this->moveSubPosition(
+					owner->sceneNode,
+					owner->getObjectPosition(
+							pieceType,
+							owner->getNextObjectSlotIndex(pieceType, false)));
+		}
+	}
+
 	void PlayerPiece :: setRotation(float degrees) {
 		Ogre::Quaternion q;
 		q.FromAngleAxis(Ogre::Degree(degrees), Ogre::Vector3::UNIT_Z);
@@ -56,6 +66,7 @@ namespace pogre {
 			entity(nullptr), moveAnimation(nullptr), material(nullptr), sceneNode(nullptr),
 			owner(owner), id(owner->countObjects(pieceType)), pieceType(pieceType) {
 		sceneNode = mainEngine->mainScene->createSceneNode();
+		sceneNode->getUserObjectBindings().setUserAny("playerpiece", Ogre::Any((PlayerPiece*) this));
 		moveAnimation = mainEngine->mainScene->createAnimation(
 				"animate_piece_" + std::to_string(pieceType) + "_p"
 				+ std::to_string(owner->playerId) + "_" + std::to_string(id), 1.0);
@@ -108,6 +119,25 @@ namespace pogre {
 	Village :: ~Village() {
 	}
 
+	template <typename T>
+	static int searchSlot(T& v, bool filled) {
+		for (int i = 0; i < v.size(); i++) {
+			if (filled == (bool) v[i]->inStock()) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	int Player :: getNextObjectSlotIndex(int type, bool filled) const {
+		switch (type) {
+		case BUILD_SETTLEMENT: return searchSlot(villages, filled);
+		default: break;
+		}
+
+		LOGIC_ERROR("getNextObjectSlotIndex could not find a valid location");
+		return -1;
+	}
 
 	Village* Player :: getStockVillage() {
 		for (auto village : villages) {

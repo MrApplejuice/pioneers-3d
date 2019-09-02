@@ -64,6 +64,8 @@ static void frontend_draw_node(Node * node)
 {
 	gui_draw_node(node);
 	frontend_gui_update();
+
+	ogreb_map_node_updates(node);
 }
 
 static void frontend_draw_hex(Hex * hex)

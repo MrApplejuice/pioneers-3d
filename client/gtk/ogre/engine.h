@@ -72,6 +72,7 @@ namespace pogre {
 
 		virtual void startNewGame() override;
 		virtual void loadNewMap(Map* map) override;
+		virtual void updateNode(Node* map) override;
 
 	    virtual bool mouseMoved(const OgreBites::MouseMotionEvent& evt) override;
 	    virtual bool mouseWheelRolled(const OgreBites::MouseWheelEvent& evt) override;

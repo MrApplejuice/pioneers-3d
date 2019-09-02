@@ -9,6 +9,8 @@
 #ifndef CLIENT_GTK_OGRE_ENGINE_BASE_H_
 #define CLIENT_GTK_OGRE_ENGINE_BASE_H_
 
+#include <iostream>
+
 #include <Ogre.h>
 #include <Bites/OgreInput.h>
 
@@ -17,6 +19,10 @@ extern "C" {
 }
 
 namespace pogre {
+	static void LOGIC_ERROR(std::string s) {
+		std::cerr << "LOGIC ERROR: " << s << std::endl;
+	}
+
 	class Modifiers {
 	public:
 		static const int CTRL = ::OgreBites::KMOD_CTRL;
@@ -37,6 +43,8 @@ namespace pogre {
 
 		virtual void startNewGame() = 0;
 		virtual void loadNewMap(Map* map) = 0;
+
+		virtual void updateNode(Node* map) = 0;
 
 		virtual void updateWindowSize(int width, int height) = 0;
 	};
