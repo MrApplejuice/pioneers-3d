@@ -13,6 +13,9 @@ extern "C" {
 	static GtkWindow* gtk_window;
 	static Window gtk_window_xid;
 
+	static float deferredResize;
+	static int newWidth, newHeight;
+
 	static void _ogreb_init_ogre() {
 		using namespace pogre;
 
@@ -40,7 +43,15 @@ extern "C" {
 
 		const Ogre::Real seconds = (now - animationTimerValue) / 1000000.0;
 		animationTimerValue = now;
-		if (pogre::mainEngine) pogre::mainEngine->render(seconds);
+		if (pogre::mainEngine) {
+			if (deferredResize >= 0) {
+				deferredResize -= seconds;
+				if (deferredResize < 0) {
+					pogre::mainEngine->updateWindowSize(newWidth, newHeight);
+				}
+			}
+			pogre::mainEngine->render(seconds);
+		}
 
 		return TRUE;
 	}
@@ -48,9 +59,9 @@ extern "C" {
 	static void	_ogreb_resize(GtkWidget* widget,
 			GdkRectangle* allocation,
 			gpointer user_data) {
-		if (pogre::mainEngine) {
-			pogre::mainEngine->updateWindowSize(allocation->width, allocation->height);
-		}
+		deferredResize = .1;
+		newWidth = allocation->width;
+		newHeight = allocation->height;
 	}
 
 	static bool mapGDKtoOgreKeycode(guint modifier, guint keyval, OgreBites::Keysym& keysym) {
@@ -182,6 +193,8 @@ extern "C" {
 	}
 
 	void ogreb_init() {
+		deferredResize = -1;
+
 		// Gtk bits
 		GtkWidget* winwid = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 		gtk_window = reinterpret_cast<GtkWindow*>(winwid);
