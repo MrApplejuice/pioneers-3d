@@ -1,7 +1,11 @@
 backdrop-background-brown-129733.jpg
-modifications: scaled down
+modifications: scaled-down tileable
 source: https://www.pexels.com/photo/abstract-backdrop-background-board-129733/
 
 sand_01_diff_1k.jpg
 modifications: recompressed
 source: https://texturehaven.com/tex/?t=sand_01
+
+dirt-base1.jpg
+modifications: scaled-down recompressed tileable
+source: https://freestocktextures.com/texture/soil-dirt-ground,268.html
