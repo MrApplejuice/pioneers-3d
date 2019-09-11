@@ -165,36 +165,74 @@ namespace pogre {
 	}
 
 	void Engine :: updateNode(Node* node) {
-		if (mapRenderer && players.size()) {
-			auto sloc = mapRenderer->getSettlementLocation(node);
-			if (!sloc) {
-				LOGIC_ERROR("updateNode could not find node to update");
+		if (!mapRenderer || !players.size()) return;
+
+		auto sloc = mapRenderer->getSettlementLocation(node);
+		if (!sloc) {
+			LOGIC_ERROR(std::string(__FUNCTION__) + " could not find object to update");
+			return;
+		}
+
+		PlayerPiece* pp = nullptr;
+		if (sloc->location->getChildren().size()) {
+			Ogre::Node* n = sloc->location->getChild(0);
+			pp = Ogre::any_cast<PlayerPiece*>(n->getUserObjectBindings().getUserAny("playerpiece"));
+		}
+		if (node->owner == -1) {
+			if (pp) pp->returnToStock();
+		} else {
+			if (pp) {
+				if (pp->owner->playerId == node->owner) {
+					// Replace same player
+					pp->returnToStock();
+				} else {
+					// Replace other player
+					pp->returnToStock();
+				}
+			}
+			auto newOwner = players[node->owner];
+			auto newPiece = newOwner->getStockObject(node->type);
+			if (!newPiece) {
+				LOGIC_ERROR(std::string(__FUNCTION__) + ": Cannot place a piece that is not in stock");
 				return;
 			}
+			newPiece->moveSubPosition(sloc->location, Ogre::Vector3(0, 0, 0));
+		}
+	}
 
-			PlayerPiece* pp = nullptr;
-			if (sloc->location->getChildren().size()) {
-				Ogre::Node* n = sloc->location->getChild(0);
-				pp = Ogre::any_cast<PlayerPiece*>(n->getUserObjectBindings().getUserAny("playerpiece"));
-			}
-			if (node->owner == -1) {
-				if (pp) pp->returnToStock();
-			} else {
-				if (pp) {
-					if (pp->owner->playerId == node->owner) {
-						// Replace same player
-						pp->returnToStock();
-					} else {
-						// Replace other player
-						pp->returnToStock();
-					}
+	void Engine :: updateEdge(Edge* edge) {
+		if (!mapRenderer || !players.size()) return;
+
+		auto rloc = mapRenderer->getRoadLocation(edge);
+		if (!rloc) {
+			LOGIC_ERROR(std::string(__FUNCTION__) + " could not find object to update");
+			return;
+		}
+		PlayerPiece* pp = nullptr;
+		if (rloc->location->getChildren().size()) {
+			Ogre::Node* n = rloc->location->getChild(0);
+			pp = Ogre::any_cast<PlayerPiece*>(n->getUserObjectBindings().getUserAny("playerpiece"));
+		}
+		if (edge->owner == -1) {
+			if (pp) pp->returnToStock();
+		} else {
+			if (pp) {
+				if (pp->owner->playerId == edge->owner) {
+					// Replace same player
+					pp->returnToStock();
+				} else {
+					// Replace other player
+					pp->returnToStock();
 				}
-				auto newOwner = players[node->owner];
-				switch (node->type) {
-				case BUILD_SETTLEMENT: newOwner->getStockVillage()->moveSubPosition(sloc->location, Ogre::Vector3::ZERO); break;
-				default: ;
-				}
 			}
+			auto newOwner = players[edge->owner];
+			auto newPiece = newOwner->getStockObject(edge->type);
+			if (!newPiece) {
+				LOGIC_ERROR(std::string(__FUNCTION__) + ": Cannot place a piece that is not in stock");
+				return;
+			}
+			newPiece->moveSubPosition(rloc->location, Ogre::Vector3(0, 0, 0));
+			newPiece->setRotation(0);
 		}
 	}
 

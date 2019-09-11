@@ -44,7 +44,8 @@ namespace pogre {
 		virtual void startNewGame() = 0;
 		virtual void loadNewMap(Map* map) = 0;
 
-		virtual void updateNode(Node* map) = 0;
+		virtual void updateNode(Node* node) = 0;
+		virtual void updateEdge(Edge* edge) = 0;
 
 		virtual void updateWindowSize(int width, int height) = 0;
 	};

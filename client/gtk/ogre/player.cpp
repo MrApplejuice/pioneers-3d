@@ -162,7 +162,7 @@ namespace pogre {
 
 
 	template <typename T>
-	static int searchSlot(T& v, bool filled) {
+	static int searchSlot(const T& v, bool filled) {
 		int start = filled ? 0 : v.size() - 1;
 		int end = filled ? v.size() : -1;
 		for (int i = start; i != end; i += (end >= start ? 1 : -1)) {
@@ -174,31 +174,32 @@ namespace pogre {
 	}
 
 	int Player :: getNextObjectSlotIndex(int type, bool filled) const {
-		switch (type) {
-		case BUILD_SETTLEMENT: return searchSlot(villages, filled);
-		default: break;
+		int i = -1;
+		if (typedPlayerPieceList.find(type) != typedPlayerPieceList.end()) {
+			i = searchSlot(typedPlayerPieceList.at(type), filled);
+			if (i >= 0) return i;
 		}
 
-		LOGIC_ERROR("getNextObjectSlotIndex could not find a valid location");
+		LOGIC_ERROR("getNextObjectSlotIndex could not find a valid index");
 		return -1;
 	}
 
-	Village* Player :: getStockVillage() {
-		for (auto village : villages) {
-			if (village->inStock()) {
-				return village.get();
-			}
+	PlayerPiece::Ptr Player :: getStockObject(int type) const {
+		int i = getNextObjectSlotIndex(type, true);
+		if (i < 0) {
+			LOGIC_ERROR(std::string(__FUNCTION__) + " could not find stock object " + std::to_string(type));
+			return nullptr;
 		}
-		return nullptr;
+
+		return typedPlayerPieceList.at(type)[i];
 	}
 
 	void Player :: applyNewMap(MapRenderer::Ptr mapRenderer) {
 		// RESET OBJECTS
-		int i = 0;
-		for (auto village : villages) {
-			village->setSubPosition(sceneNode, getObjectPosition(BUILD_SETTLEMENT, i));
-			village->setRotation(getObjectRotation(BUILD_SETTLEMENT, i));
-			i++;
+		for (auto i : typedPlayerPieceList) {
+			for (auto item : i.second) {
+				item->returnToStock();
+			}
 		}
 
 		auto map = mapRenderer->getMap();
@@ -213,14 +214,30 @@ namespace pogre {
 					if (node->y != y) continue;
 
 					if (node->owner == playerId) {
-						if (node->type == BUILD_SETTLEMENT) {
-							// HACK
-							auto setLoc = mapRenderer->getSettlementLocation(node);
-							auto village = getStockVillage();
-							if (village) {
-								village->setSubPosition(setLoc->location, Ogre::Vector3::ZERO);
-							}
+						auto setLoc = mapRenderer->getSettlementLocation(node);
+						auto nodeObject = getStockObject(node->type);
+						if (!nodeObject) {
+							LOGIC_ERROR("Could not find a required node object");
+							return;
 						}
+						nodeObject->setSubPosition(setLoc->location, Ogre::Vector3::ZERO);
+					}
+				}
+				for (int ni = 0; ni < 6; ni++) {
+					Edge* edge = hex->edges[ni];
+					if (!edge) continue;
+					if (edge->x != x) continue;
+					if (edge->y != y) continue;
+
+					if (edge->owner == playerId) {
+						auto setLoc = mapRenderer->getRoadLocation(edge);
+						auto edgeObject = getStockObject(edge->type);
+						if (!edgeObject) {
+							LOGIC_ERROR("Could not find a required edge object");
+							return;
+						}
+						edgeObject->setSubPosition(setLoc->location, Ogre::Vector3::ZERO);
+						edgeObject->setRotation(0);
 					}
 				}
 			}
@@ -252,14 +269,8 @@ namespace pogre {
 	}
 
 	int Player :: countObjects(int type) const {
-		switch (type) {
-		case BUILD_SETTLEMENT:
-			return villages.size();
-		case BUILD_ROAD:
-			return roads.size();
-		default:
-			return 0;
-		};
+		if (typedPlayerPieceList.find(type) == typedPlayerPieceList.end()) return 0;
+		return typedPlayerPieceList.at(type).size();
 	}
 
 	template <typename T>
@@ -270,6 +281,7 @@ namespace pogre {
 			newItem->setSubPosition(player.sceneNode, player.getObjectPosition(T::STATIC_TYPE, i));
 			newItem->setRotation(player.getObjectRotation(T::STATIC_TYPE, i));
 			v.push_back(newItem);
+			player.typedPlayerPieceList[T::STATIC_TYPE].push_back(newItem);
 		}
 	}
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <map>
 #include <vector>
 
 #include "engine_base.h"
@@ -79,12 +80,15 @@ namespace pogre {
 	private:
 	public:
 		typedef std::shared_ptr<Player> Ptr;
+		typedef std::map<int, std::vector<PlayerPiece::Ptr>> TPPList;
 
 		const gint playerId;
 		Ogre::SceneNode* sceneNode;
 
 		std::vector<Village::Ptr> villages;
 		std::vector<Road::Ptr> roads;
+
+		TPPList typedPlayerPieceList;
 
 		Ogre::ColourValue colour;
 
@@ -93,7 +97,7 @@ namespace pogre {
 		float getObjectRotation(int type, int no) const;
 		int countObjects(int type) const;
 
-		Village* getStockVillage();
+		PlayerPiece::Ptr getStockObject(int type) const;
 
 		void applyNewMap(MapRenderer::Ptr mapRenderer);
 

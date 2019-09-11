@@ -15,6 +15,7 @@ void ogreb_cleanup();
 void ogreb_start_game();
 void ogreb_show_map(Map* map);
 void ogreb_map_node_updates(Node* node);
+void ogreb_map_edge_updates(Edge* edge);
 
 #ifdef __cplusplus
 }

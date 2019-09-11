@@ -48,6 +48,33 @@ namespace pogre {
 		}
 	};
 
+	class RoadLocation {
+	private:
+	public:
+		typedef std::shared_ptr<RoadLocation> Ptr;
+
+		Edge* edge;
+		Ogre::SceneNode* location;
+
+		RoadLocation(RoadLocation& other) = delete;
+		RoadLocation& operator=(RoadLocation& other) = delete;
+
+		RoadLocation(Ogre::SceneNode* parent, Edge* edge) : edge(edge) {
+			Ogre::Quaternion rot(Ogre::Degree(360.f / 6.f * (edge->pos)), Ogre::Vector3::UNIT_Z);
+
+			location = parent->createChildSceneNode("road_pos_" + std::to_string(edge->y) + "_" + std::to_string(edge->x) + "_" + std::to_string(edge->pos));
+			location->setPosition(rot * Ogre::Vector3::UNIT_X * HEX_X_WIDTH / 2);
+			location->setOrientation(rot * Ogre::Quaternion(Ogre::Degree(90), Ogre::Vector3::UNIT_Z));
+			location->setInitialState();
+			location->setVisible(true);
+		}
+
+		~RoadLocation() {
+			location->detachAllObjects();
+			mainEngine->mainScene->destroySceneNode(location);
+		}
+	};
+
 	class MapTile {
 	private:
 		Hex* hex;
@@ -59,6 +86,7 @@ namespace pogre {
 		typedef std::shared_ptr<MapTile> Ptr;
 
 		std::vector<SettlementLocation::Ptr> settlementLocations;
+		std::vector<RoadLocation::Ptr> roadLocations;
 
 		Hex* getHex() const { return hex; }
 
@@ -86,6 +114,7 @@ namespace pogre {
 
 		MapTile* getTile(Hex* hex) const;
 		SettlementLocation* getSettlementLocation(Node* node);
+		RoadLocation* getRoadLocation(Edge* edge);
 
 		MapRenderer(::Map* _map);
 		virtual ~MapRenderer();

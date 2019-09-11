@@ -58,6 +58,8 @@ static void frontend_draw_edge(Edge * edge)
 {
 	gui_draw_edge(edge);
 	frontend_gui_update();
+
+	ogreb_map_edge_updates(edge);
 }
 
 static void frontend_draw_node(Node * node)

@@ -253,4 +253,8 @@ extern "C" {
 	void ogreb_map_node_updates(Node* node) {
 		if (pogre::mainEngine) pogre::mainEngine->updateNode(node);
 	}
+
+	void ogreb_map_edge_updates(Edge* edge) {
+		if (pogre::mainEngine) pogre::mainEngine->updateEdge(edge);
+	}
 }

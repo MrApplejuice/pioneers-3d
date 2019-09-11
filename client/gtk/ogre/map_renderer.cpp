@@ -57,6 +57,13 @@ namespace pogre {
 
 			settlementLocations.push_back(SettlementLocation::Ptr(new SettlementLocation(sceneNode, node)));
 		}
+		for (Edge** edgePtr = hex->edges; edgePtr != hex->edges + 6; edgePtr++) {
+			Edge* edge = *edgePtr;
+			if (!edge) continue;
+			if ((edge->x != hex->x) || (edge->y != hex->y)) continue;
+
+			roadLocations.push_back(RoadLocation::Ptr(new RoadLocation(sceneNode, edge)));
+		}
 	}
 
 	MapTile :: ~MapTile() {
@@ -92,12 +99,23 @@ namespace pogre {
 		MapTile* mtile = getTile(hex);
 		if (!mtile) return nullptr;
 
-		int i = 0;
 		for (auto sl : mtile->settlementLocations) {
 			if (sl->node == node) {
-				return mtile->settlementLocations[i].get();
+				return sl.get();
 			}
-			i++;
+		}
+		return nullptr;
+	}
+
+	RoadLocation* MapRenderer :: getRoadLocation(Edge* edge) {
+		Hex* hex = edge->map->grid[edge->y][edge->x];
+		MapTile* mtile = getTile(hex);
+		if (!mtile) return nullptr;
+
+		for (auto rl : mtile->roadLocations) {
+			if (rl->edge == edge) {
+				return rl.get();
+			}
 		}
 		return nullptr;
 	}
