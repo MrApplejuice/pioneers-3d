@@ -91,6 +91,8 @@ namespace pogre {
 	}
 
 
+	const int Village :: STATIC_TYPE = BUILD_SETTLEMENT;
+
 	void Village :: loadEntity() {
 		auto hmesh = mainEngine->root->getMeshManager()->prepare("village.mesh", "map");
 		entity = mainEngine->mainScene->createEntity(hmesh);
@@ -113,15 +115,57 @@ namespace pogre {
 		sceneNode->setScale(Ogre::Vector3::UNIT_SCALE * 0.01);
 	}
 
-	Village :: Village(const Player* owner) : PlayerPiece(owner, BUILD_SETTLEMENT) {
+	Village :: Village(const Player* owner) : PlayerPiece(owner, Village::STATIC_TYPE) {
 	}
 
 	Village :: ~Village() {
 	}
 
+
+	const int Road :: STATIC_TYPE = BUILD_ROAD;
+	const float Road :: ROAD_HEIGHT = HEX_DIAMETER * 0.06;
+
+	void Road :: loadEntity() {
+		auto meshMan = mainEngine->root->getMeshManager();
+		auto mesh = meshMan->prepare("simpleroad.mesh", "map");
+
+		auto matman = Ogre::MaterialManager::getSingletonPtr();
+
+		std::string materialName = "player_road_material_" + std::to_string(owner->playerId);
+		Ogre::MaterialPtr material = matman->getByName(materialName, "map");
+		if (!material) {
+			auto baseMaterial = matman->getByName("road", "map");
+			material = baseMaterial->clone(materialName);
+
+			for (auto techique : material->getTechniques()) {
+				for (auto pass : techique->getPasses()) {
+					pass->setDiffuse(owner->colour);
+					pass->setAmbient(owner->colour);
+					pass->setEmissive(owner->colour * .2);
+				}
+			}
+		}
+
+		entity = mainEngine->mainScene->createEntity(mesh);
+		entity->setMaterial(material);
+
+		sceneNode->attachObject(entity);
+		sceneNode->setScale(Ogre::Vector3::UNIT_SCALE * HEX_DIAMETER / 2);
+	}
+
+	Road :: Road(const Player* owner) : PlayerPiece(owner, Road::STATIC_TYPE) {
+	}
+
+	Road :: ~Road() {
+	}
+
+
+
 	template <typename T>
 	static int searchSlot(T& v, bool filled) {
-		for (int i = 0; i < v.size(); i++) {
+		int start = filled ? 0 : v.size() - 1;
+		int end = filled ? v.size() : -1;
+		for (int i = start; i != end; i += (end >= start ? 1 : -1)) {
 			if (filled == (bool) v[i]->inStock()) {
 				return i;
 			}
@@ -185,8 +229,12 @@ namespace pogre {
 
 	Ogre::Vector3 Player :: getObjectPosition(int type, int no) const {
 		switch (type) {
+		case -1:
+			return Ogre::Vector3(0.2, 0.1, 0) * no;
 		case BUILD_SETTLEMENT:
-			return Ogre::Vector3(0.02, 0.01, 0) * no;
+			return getObjectPosition(-1, no) * HEX_DIAMETER;
+		case BUILD_ROAD:
+			return Ogre::Vector3(0.0, -0.05, 0) + getObjectPosition(-1, no) * 0.4 * HEX_DIAMETER;
 		default:
 			return Ogre::Vector3::ZERO;
 		}
@@ -196,6 +244,8 @@ namespace pogre {
 		switch (type) {
 		case BUILD_SETTLEMENT:
 			return -45 + ((no % 2) - 1) * 5 + ((no % 4) - 1) * 2;
+		case BUILD_ROAD:
+			return -45 + ((no % 4) - 1) * 2;
 		default:
 			return 0;
 		}
@@ -205,9 +255,22 @@ namespace pogre {
 		switch (type) {
 		case BUILD_SETTLEMENT:
 			return villages.size();
+		case BUILD_ROAD:
+			return roads.size();
 		default:
 			return 0;
 		};
+	}
+
+	template <typename T>
+	static void initPlayerObjects(Player& player, int count, std::vector<typename T::Ptr>& v) {
+		for (int i = 0; i < count; i++) {
+			typename T::Ptr newItem = typename T::Ptr(new T(&player));
+			newItem->postInit();
+			newItem->setSubPosition(player.sceneNode, player.getObjectPosition(T::STATIC_TYPE, i));
+			newItem->setRotation(player.getObjectRotation(T::STATIC_TYPE, i));
+			v.push_back(newItem);
+		}
 	}
 
 	Player :: Player(gint _playerId, int playerNumber) : playerId(_playerId), sceneNode(nullptr) {
@@ -231,19 +294,16 @@ namespace pogre {
 		std::cout << "Player id = " << playerId << std::endl;
 
 		auto gameParams = get_game_params();
-		for (int vi = 0; vi < gameParams->num_build_type[BUILD_SETTLEMENT]; vi++) {
-			auto newVillage = Village::Ptr(new Village(this));
-			newVillage->postInit();
-			newVillage->setSubPosition(sceneNode, getObjectPosition(BUILD_SETTLEMENT, vi));
-			newVillage->setRotation(getObjectRotation(BUILD_SETTLEMENT, vi));
-			villages.push_back(newVillage);
-		}
+
+		initPlayerObjects<Village>(*this, gameParams->num_build_type[BUILD_SETTLEMENT], villages);
+		initPlayerObjects<Road>(*this, gameParams->num_build_type[BUILD_ROAD], roads);
 
 		sceneNode->setVisible(true, true);
 	}
 
 	Player :: ~Player() {
 		villages.clear();
+		roads.clear();
 
 		if (sceneNode) {
 			mainEngine->mainScene->destroySceneNode(sceneNode);
