@@ -5,7 +5,33 @@
 #include "engine_base.h"
 
 namespace pogre {
-	MapTile :: MapTile(const Ogre::Vector2& hexPos, Ogre::SceneNode* parent, Hex* hex) : hex(hex), entityNode(nullptr), entity(nullptr) {
+	NumberChip :: NumberChip(MapTile* mapTile) : mapTile(mapTile), entity(nullptr), node(nullptr) {
+		auto meshman = mainEngine->root->getMeshManager();
+		auto mesh = meshman->prepare("numchip.mesh", "map");
+		if (!mesh) {
+			LOGIC_ERROR("numchip.mesh cannot be loaded");
+			return;
+		}
+
+		entity = mainEngine->mainScene->createEntity(mesh);
+		node = mainEngine->mainScene->createSceneNode();
+		node->setScale(Ogre::Vector3::UNIT_SCALE * HEX_DIAMETER * 0.3);
+		node->setOrientation(Ogre::Quaternion(Ogre::Degree(rand() % 360), Ogre::Vector3::UNIT_Z));
+
+		node->attachObject(entity);
+	}
+
+	NumberChip :: ~NumberChip() {
+		if (node) {
+			node->detachAllObjects();
+			mainEngine->mainScene->destroySceneNode(node);
+		}
+		if (entity) {
+			mainEngine->mainScene->destroyEntity(entity);
+		}
+	}
+
+	MapTile :: MapTile(const Ogre::Vector2& hexPos, Ogre::SceneNode* parent, Hex* hex) : hex(hex), numberChip(nullptr), entityNode(nullptr), entity(nullptr) {
 		// GRAPHICS
 		auto meshman = mainEngine->root->getMeshManager();
 
@@ -48,6 +74,11 @@ namespace pogre {
 			entity->setMaterial(mat);
 		}
 
+		if ((hex->roll >= 2) && (hex->roll <= 12)) {
+			numberChip = new NumberChip(this);
+			sceneNode->addChild(numberChip->node);
+		}
+
 		// LOGIC
 		for (Node** nodePtr = hex->nodes; nodePtr != hex->nodes + 6; nodePtr++) {
 			Node* node = *nodePtr;
@@ -67,6 +98,10 @@ namespace pogre {
 	}
 
 	MapTile :: ~MapTile() {
+		if (numberChip) {
+			delete numberChip;
+		}
+
 		auto scene = mainEngine->mainScene;
 
 		sceneNode->detachAllObjects();

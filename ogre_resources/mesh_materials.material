@@ -2,6 +2,35 @@
 import * from "default.material"
 
 
+material numchip : base_default {
+    technique {
+        pass {
+            diffuse 0.8000000715255737 0.6292181611061096 0.13965697586536407 1.0
+            specular 0.0 0.0 0.0 1.0 0.0
+            alpha_to_coverage off 
+            colour_write on 
+            cull_hardware clockwise 
+            depth_check on 
+            depth_func less_equal 
+            depth_write on 
+            illumination_stage  
+            light_clip_planes off 
+            light_scissor off 
+            normalise_normals off 
+            polygon_mode solid 
+            scene_blend one zero 
+            scene_blend_op add 
+            shading gouraud 
+
+			texture_unit {
+				texture num2.png
+				tex_coord_set 0
+			}
+        }
+    }
+}
+
+
 material road : base_default {
 	technique {
 		pass {
@@ -21,7 +50,6 @@ material road : base_default {
 			scene_blend one zero 
 			scene_blend_op add 
 			shading gouraud 
-			transparent_sorting on 
 
 			fragment_program_ref fragment/default_no_texture {}
 		}
@@ -73,7 +101,6 @@ material DesertMaterial : base_default {
 			scene_blend one zero 
 			scene_blend_op add 
 			shading gouraud
-			transparent_sorting on 
 
 			vertex_program_ref vertex/desert {}
 			fragment_program_ref fragment/desert {}
@@ -112,7 +139,6 @@ material village_material : base_default {
 			scene_blend one zero 
 			scene_blend_op add 
 			shading gouraud 
-			transparent_sorting on 
 
 			fragment_program_ref fragment/default_no_texture {}
 		}

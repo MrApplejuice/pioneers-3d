@@ -22,6 +22,8 @@ namespace pogre {
 			0.0,     -0.075,  0.0,
 			0.0,      0.0,    0.1);
 
+	class MapTile;
+
 	class SettlementLocation {
 	private:
 	public:
@@ -75,9 +77,22 @@ namespace pogre {
 		}
 	};
 
+	class NumberChip {
+	private:
+		const MapTile* mapTile;
+		Ogre::Entity* entity;
+	public:
+		Ogre::SceneNode* node;
+
+		NumberChip(MapTile* mapTile);
+		virtual ~NumberChip();
+	};
+
 	class MapTile {
 	private:
 		Hex* hex;
+
+		NumberChip* numberChip;
 
 		Ogre::SceneNode* sceneNode;
 		Ogre::SceneNode* entityNode;
