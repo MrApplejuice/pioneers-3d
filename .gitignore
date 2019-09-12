@@ -60,3 +60,11 @@ m4
 /build
 /ogre.cfg
 /*.log
+
+
+*~
+/vscode*
+/.settings
+/.vscode
+/pioneers-3d
+/*.desktop
