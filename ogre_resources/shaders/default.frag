@@ -2,6 +2,7 @@
 
 in vec3 color;
 in vec2 tex_uv;
+in vec2 overlay_uv;
 
 uniform sampler2D texture;
 

@@ -2,7 +2,7 @@
 import * from "default.material"
 
 
-material numchip : base_default {
+material numchip_base : base_overlay {
     technique {
         pass {
             diffuse 0.8000000715255737 0.6292181611061096 0.13965697586536407 1.0
@@ -23,11 +23,125 @@ material numchip : base_default {
             shading gouraud 
 
 			texture_unit {
-				texture num2.png
+				texture basechip.png
 				tex_coord_set 0
+			}
+			texture_unit {
+				texture numbers.png
+				tex_coord_set 1
 			}
         }
     }
+}
+
+material numchip : numchip_base {
+    technique {
+        pass {
+			vertex_program_ref vertex/default {
+				param_named overlay_offset float2 0.9375 0
+			}
+		}
+	}
+}
+
+material numchip-2 : numchip_base {
+    technique {
+        pass {
+			vertex_program_ref vertex/default {
+				param_named overlay_offset float2 0 0
+			}
+		}
+	}
+}
+
+material numchip-3 : numchip_base {
+    technique {
+        pass {
+			vertex_program_ref vertex/default {
+				param_named overlay_offset float2 0.0625 0
+			}
+		}
+	}
+}
+
+material numchip-4 : numchip_base {
+    technique {
+        pass {
+			vertex_program_ref vertex/default {
+				param_named overlay_offset float2 0.125 0
+			}
+		}
+	}
+}
+
+material numchip-5 : numchip_base {
+    technique {
+        pass {
+			vertex_program_ref vertex/default {
+				param_named overlay_offset float2 0.1875 0
+			}
+		}
+	}
+}
+
+material numchip-6 : numchip_base {
+    technique {
+        pass {
+			vertex_program_ref vertex/default {
+				param_named overlay_offset float2 0.25 0
+			}
+		}
+	}
+}
+
+material numchip-8 : numchip_base {
+    technique {
+        pass {
+			vertex_program_ref vertex/default {
+				param_named overlay_offset float2 0.3125 0
+			}
+		}
+	}
+}
+
+material numchip-9 : numchip_base {
+    technique {
+        pass {
+			vertex_program_ref vertex/default {
+				param_named overlay_offset float2 0.375 0
+			}
+		}
+	}
+}
+
+material numchip-10 : numchip_base {
+    technique {
+        pass {
+			vertex_program_ref vertex/default {
+				param_named overlay_offset float2 0.4375 0
+			}
+		}
+	}
+}
+
+material numchip-11 : numchip_base {
+    technique {
+        pass {
+			vertex_program_ref vertex/default {
+				param_named overlay_offset float2 0.5 0
+			}
+		}
+	}
+}
+
+material numchip-12 : numchip_base {
+    technique {
+        pass {
+			vertex_program_ref vertex/default {
+				param_named overlay_offset float2 0.5625 0
+			}
+		}
+	}
 }
 
 

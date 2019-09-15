@@ -3,6 +3,7 @@
 attribute vec4 vertex;
 attribute vec4 normal;
 attribute vec4 uv0;
+attribute vec4 uv1;
 
 uniform mat4 worldMatrix;
 uniform mat4 viewProjMatrix;
@@ -13,8 +14,11 @@ uniform vec3 diffuse;
 uniform vec3 lightPos;
 uniform vec4 lightAttenuation;
 
+uniform vec2 overlay_offset;
+
 out vec3 color;
 out vec2 tex_uv;
+out vec2 overlay_uv;
 
 void main() {
 	gl_Position = worldMatrix * vertex;
@@ -29,5 +33,6 @@ void main() {
 	gl_Position = viewProjMatrix * gl_Position;
 
 	tex_uv = vec2(uv0);
+	overlay_uv = vec2(uv1) + overlay_offset;
 	color = max(sceneColor, diffuse * intensity);
 }

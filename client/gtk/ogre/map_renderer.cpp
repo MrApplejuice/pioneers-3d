@@ -13,7 +13,14 @@ namespace pogre {
 			return;
 		}
 
+		auto matman = Ogre::MaterialManager::getSingletonPtr();
+		auto material = matman->getByName(std::string("numchip-") + std::to_string(mapTile->getHex()->roll), "map");
+
 		entity = mainEngine->mainScene->createEntity(mesh);
+		if (material) {
+			entity->setMaterial(material);
+		}
+
 		node = mainEngine->mainScene->createSceneNode();
 		node->setScale(Ogre::Vector3::UNIT_SCALE * HEX_DIAMETER * 0.3);
 		node->setOrientation(Ogre::Quaternion(Ogre::Degree(rand() % 360), Ogre::Vector3::UNIT_Z));

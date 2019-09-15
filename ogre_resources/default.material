@@ -11,3 +11,12 @@ material base_default {
 		}
 	}
 }
+
+material base_overlay : base_default {
+	technique {
+		pass {
+			fragment_program_ref fragment/default_overlay {
+			}
+		}
+	}
+}
