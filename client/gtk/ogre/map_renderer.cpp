@@ -23,7 +23,7 @@ namespace pogre {
 
 		node = mainEngine->mainScene->createSceneNode();
 		node->setScale(Ogre::Vector3::UNIT_SCALE * HEX_DIAMETER * 0.3);
-		node->setOrientation(Ogre::Quaternion(Ogre::Degree(rand() % 360), Ogre::Vector3::UNIT_Z));
+		node->setOrientation(Ogre::Quaternion(Ogre::Degree(rand() % 40 - 20), Ogre::Vector3::UNIT_Z));
 
 		node->attachObject(entity);
 	}
