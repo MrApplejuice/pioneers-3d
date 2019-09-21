@@ -7,5 +7,5 @@ jobs:
      - checkout
      - run: env
      - run: pwd
-     - run: sudo bash .circleci/install-requirements.sh
+     - run: bash .circleci/install-requirements.sh
      - run: sleep 30m
