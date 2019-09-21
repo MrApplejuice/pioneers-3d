@@ -8,4 +8,3 @@ jobs:
      - run: env
      - run: pwd
      - run: bash .circleci/install-requirements.sh
-     - run: sleep 30m

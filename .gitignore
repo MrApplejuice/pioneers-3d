@@ -15,7 +15,6 @@ pioneers-server-gtk.exe
 pioneers-metaserver.exe
 pioneers.exe
 config.h
-ltmain.sh
 libtool
 config.log
 config.status
@@ -26,7 +25,6 @@ mkinstalldirs
 stamp-h1
 autom4te.cache
 acinclude.m4
-missing
 aclocal.m4
 pioneers.nsi
 intltool-extract
