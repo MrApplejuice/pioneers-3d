@@ -8,16 +8,19 @@ wget -O /tmp/cmake.tgz https://github.com/Kitware/CMake/releases/download/v3.15.
 tar -x -C /opt/ -f /tmp/cmake.tgz
 mv /opt/cmake-* /opt/cmake
 
-wget -O /tmp/gtk.tar.xz http://ftp.gnome.org/pub/gnome/sources/gtk+/3.24/gtk+-3.24.11.tar.xz
-mkdir deps
-tar -x -C deps -f /tmp/gtk.tar.xz
+#mkdir $HOME/deps
 
-# cmake in: /opt/cmake/bin/
+#( 
+#  wget -O /tmp/gtk.tar.xz http://ftp.gnome.org/pub/gnome/sources/gtk+/3.24/gtk+-3.24.11.tar.xz ;
+#  tar -x -C $HOME/deps -f /tmp/gtk.tar.xz 
+#) &
+
+#(
+#  wget -O /tmp/glib.tar.xz http://ftp.gnome.org/pub/gnome/sources/glib/2.60/glib-2.60.7.tar.xz ;
+#  tar -x -C $HOME/deps -f /tmp/glib.tar.xz 
+#) &
 
 wait
-
-# Build
-apt-get install -y shtool
 
 # Build requirements
 apt-get install -y intltool libgtk2.0-dev libgtk-3-dev libnotify-dev yelp-tools
