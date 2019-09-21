@@ -27,8 +27,9 @@ apt-get install -y intltool libgtk2.0-dev libgtk-3-dev libnotify-dev yelp-tools
 apt-get install -y libavahi-client-dev libavahi-glib-dev gob2 librsvg2-bin
 
 apt-get install -y gcc make
+apt-get install -y libsdl2-dev
 
 # Install user
 apt-get install -y sudo
 adduser build < /dev/null
-chown -R build:build /root
+
