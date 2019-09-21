@@ -25,3 +25,10 @@ mv /opt/cmake-* /opt/cmake
 # Build requirements
 apt-get install -y intltool libgtk2.0-dev libgtk-3-dev libnotify-dev yelp-tools
 apt-get install -y libavahi-client-dev libavahi-glib-dev gob2 librsvg2-bin
+
+apt-get install -y gcc make
+
+# Install user
+apt-get install -y sudo
+adduser build < /dev/null
+chown -R build:build /root
