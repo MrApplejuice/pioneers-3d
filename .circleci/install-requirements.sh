@@ -3,7 +3,7 @@
 apt-get update > /dev/null &
 
 wget -O /tmp/cmake.tgz https://github.com/Kitware/CMake/releases/download/v3.15.3/cmake-3.15.3-Linux-x86_64.tar.gz
-tar -x -v -C /opt/ -f /tmp/cmake.tgz
+tar -x -C /opt/ -f /tmp/cmake.tgz
 mv /opt/cmake-* /opt/cmake
 
 # cmake in: /opt/cmake/bin/
