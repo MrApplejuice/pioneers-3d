@@ -4,11 +4,11 @@ jobs:
     docker:
       - image: ubuntu:18.04
     steps:
+     - checkout
      - run: bash .circleci/install-requirements.sh
      - run: wget -O /tmp/pioneers-15.5.tar.gz https://sourceforge.net/projects/pio/files/Source/pioneers-15.5.tar.gz/download
      - run: sudo -u build -i tar xfvz /tmp/pioneers-15.5.tar.gz
      - run: 'sudo -u build -i bash -c "cd pioneers-15.5 && autoreconf && ./configure && make -j4"'
-     - checkout
      - run: chown -R build:build /root
      - run: 'sudo -u build -i cp -var /root/project/. pioneers-15.5/'
      - run: 'sudo -u build -i mkdir bin'
