@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: ubuntu:18.04
+      - image: mrapplejuice/pioneers-3d-build-container:latest
     steps:
      - checkout
      - run: bash .circleci/install-requirements.sh

@@ -2,16 +2,6 @@
 
 set -e
 
-apt-get update
-
-apt-get install -y wget tar
-
-wget -O /tmp/cmake.tgz https://github.com/Kitware/CMake/releases/download/v3.15.3/cmake-3.15.3-Linux-x86_64.tar.gz
-tar -x -C /opt/ -f /tmp/cmake.tgz
-mv /opt/cmake-* /opt/cmake
-
-#mkdir $HOME/deps
-
 #( 
 #  wget -O /tmp/gtk.tar.xz http://ftp.gnome.org/pub/gnome/sources/gtk+/3.24/gtk+-3.24.11.tar.xz ;
 #  tar -x -C $HOME/deps -f /tmp/gtk.tar.xz 
@@ -23,13 +13,6 @@ mv /opt/cmake-* /opt/cmake
 #) &
 
 # Build requirements
-apt-get install -y intltool libgtk2.0-dev libgtk-3-dev libnotify-dev yelp-tools
-apt-get install -y libavahi-client-dev libavahi-glib-dev gob2 librsvg2-bin
 
-apt-get install -y gcc make
-apt-get install -y libsdl2-dev
 
-# Install user
-apt-get install -y sudo
-adduser build < /dev/null
-
+sudo -i -u build bash -c "cd /home/build/ogre-1.12.2/build && make -j6"
