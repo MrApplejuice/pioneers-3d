@@ -33,6 +33,9 @@ RUN sudo -i -u build bash -c "cd /home/build/ogre-1.12.2 && \
 
 COPY install-requirements.sh /
 RUN bash /install-requirements.sh
+RUN cp /home/build/ogre-1.12.2/build/Dependencies/lib/libzzip-0.so* /home/build/libs/ogre/lib/
 
-RUN sudo -i -u build bash -c "cd /home/build/ogre-1.12.2/build && \
-        make install"
+RUN sudo -i -u build bash -c "cd /home/build/ogre-1.12.2/build && make install"
+
+USER build
+WORKDIR /home/build/

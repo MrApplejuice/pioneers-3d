@@ -5,11 +5,15 @@ jobs:
       - image: mrapplejuice/pioneers-3d-build-container:latest
     steps:
      - checkout
-     - run: bash .circleci/install-requirements.sh
-     - run: wget -O /tmp/pioneers-15.5.tar.gz https://sourceforge.net/projects/pio/files/Source/pioneers-15.5.tar.gz/download
-     - run: sudo -u build -i tar xfvz /tmp/pioneers-15.5.tar.gz
-     - run: 'sudo -u build -i bash -c "cd pioneers-15.5 && autoreconf && ./configure && make -j4"'
-     - run: chown -R build:build /root
-     - run: 'sudo -u build -i cp -var /root/project/. pioneers-15.5/'
-     - run: 'sudo -u build -i mkdir bin'
-     - run: 'sudo -u build -i bash -c "cd bin && /opt/cmake/bin/cmake ../pioneers-15.5/ -DGTK3_DIR:PATH=$HOME/pioneers-15.5/.circleci/"'
+     - run: "bash -c 'cp -vr ../ogre-1.12.2/build/Dependencies/lib/. ../libs/ogre/lib'"
+     - run: "wget -O /tmp/pioneers-15.5.tar.gz https://sourceforge.net/projects/pio/files/Source/pioneers-15.5.tar.gz/download"
+     - run: "cd ../ && tar xfvz /tmp/pioneers-15.5.tar.gz"
+     - run: 'bash -c "cd ../pioneers-15.5 && autoreconf && ./configure --prefix=/home/build/pioneers-install/ && make -j4 install"'
+     - run: 'cd ../ && mv project p-temp && mv pioneers-15.5 project && cp -vr p-temp/. project/.'
+     - run: 'cd ../ && mkdir bin && pwd'
+     - run: 'cd ../bin && ls && ls ../project/ && /opt/cmake/bin/cmake ../project/
+          -DGTK3_DIR:PATH=../project/.circleci/ 
+          -DOGRE_DIR=/home/build/libs/ogre/lib/OGRE/cmake/ 
+          -DCMAKE_INSTALL_PREFIX=/home/build/pioneers-install/'
+     - run: 'cd ../bin && make -j4'
+
