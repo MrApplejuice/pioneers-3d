@@ -122,6 +122,37 @@ namespace pogre {
 	}
 
 
+	const int City :: STATIC_TYPE = BUILD_CITY;
+
+	void City :: loadEntity() {
+		auto hmesh = mainEngine->root->getMeshManager()->prepare("city.mesh", "map");
+		entity = mainEngine->mainScene->createEntity(hmesh);
+
+		auto matman = Ogre::MaterialManager::getSingletonPtr();
+		auto baseMaterial = matman->getByName("village_material", "map");
+
+		material = baseMaterial->clone("player_village_material_" + std::to_string((long long) this));
+		for (auto techique : material->getTechniques()) {
+			for (auto pass : techique->getPasses()) {
+				pass->setDiffuse(owner->colour);
+				pass->setAmbient(owner->colour);
+				pass->setEmissive(owner->colour * .2);
+			}
+		}
+
+		entity->setMaterial(material);
+
+		sceneNode->attachObject(entity);
+		sceneNode->setScale(Ogre::Vector3::UNIT_SCALE * 0.01);
+	}
+
+	City :: City(const Player* owner) : PlayerPiece(owner, City::STATIC_TYPE) {
+	}
+
+	City :: ~City() {
+	}
+
+
 	const int Road :: STATIC_TYPE = BUILD_ROAD;
 	const float Road :: ROAD_HEIGHT = HEX_DIAMETER * 0.06;
 
@@ -250,6 +281,8 @@ namespace pogre {
 			return Ogre::Vector3(0.2, 0.1, 0) * no;
 		case BUILD_SETTLEMENT:
 			return getObjectPosition(-1, no) * HEX_DIAMETER;
+		case BUILD_CITY:
+			return getObjectPosition(-1, no + this->villages.size()) * HEX_DIAMETER;
 		case BUILD_ROAD:
 			return Ogre::Vector3(0.0, -0.05, 0) + getObjectPosition(-1, no) * 0.4 * HEX_DIAMETER;
 		default:
@@ -260,6 +293,7 @@ namespace pogre {
 	float Player :: getObjectRotation(int type, int no) const {
 		switch (type) {
 		case BUILD_SETTLEMENT:
+		case BUILD_CITY:
 			return -45 + ((no % 2) - 1) * 5 + ((no % 4) - 1) * 2;
 		case BUILD_ROAD:
 			return -45 + ((no % 4) - 1) * 2;
@@ -308,6 +342,7 @@ namespace pogre {
 		auto gameParams = get_game_params();
 
 		initPlayerObjects<Village>(*this, gameParams->num_build_type[BUILD_SETTLEMENT], villages);
+		initPlayerObjects<City>(*this, gameParams->num_build_type[BUILD_CITY], cities);
 		initPlayerObjects<Road>(*this, gameParams->num_build_type[BUILD_ROAD], roads);
 
 		sceneNode->setVisible(true, true);

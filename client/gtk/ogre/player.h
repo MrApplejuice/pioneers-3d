@@ -76,6 +76,18 @@ namespace pogre {
 		virtual ~Village();
 	};
 
+	class City : public PlayerPiece {
+	protected:
+		virtual void loadEntity() override;
+	public:
+		static const int STATIC_TYPE;
+
+		typedef std::shared_ptr<City> Ptr;
+
+		City(const Player* owner);
+		virtual ~City();
+	};
+
 	class Player {
 	private:
 	public:
@@ -86,6 +98,7 @@ namespace pogre {
 		Ogre::SceneNode* sceneNode;
 
 		std::vector<Village::Ptr> villages;
+		std::vector<City::Ptr> cities;
 		std::vector<Road::Ptr> roads;
 
 		TPPList typedPlayerPieceList;

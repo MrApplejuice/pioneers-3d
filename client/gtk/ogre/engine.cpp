@@ -119,7 +119,7 @@ namespace pogre {
 			if (!my_player_spectator() && (player->playerId == my_player_num())) {
 				pos = Ogre::Vector3(0, -getBoardHeight() / 2 - 0.1, 0);
 			} else {
-				pos = Ogre::Vector3(leftRight, getBoardHeight() / 2 + 0.1, 0);
+				pos = Ogre::Vector3(leftRight, getBoardHeight() / 2 + 0.2, 0);
 				rot.FromAngleAxis(Ogre::Degree(180), Ogre::Vector3::UNIT_Z);
 
 				leftRight += leftRightInc;
