@@ -106,9 +106,9 @@ namespace pogre {
 	}
 
 	void Engine :: placePlayers() {
-		int oponents = players.size() - (my_player_spectator() ? 0 : 1);
-		float leftRightInc = oponents > 1 ? (getBoardWidth() - 0.01 * 2) / (oponents - 1) : 0;
-		float leftRight = -(getBoardWidth() / 2 - 0.01);
+		int opponents = players.size() - (my_player_spectator() ? 0 : 1);
+		float leftOffsetInc = opponents > 1 ? (getBoardWidth() - 0.01 * 2) / (opponents - 1) : 0;
+		float leftOffset = -(getBoardWidth() / 2 - 0.01);
 
 		for (auto player : players) {
 			Ogre::Quaternion rot;
@@ -119,10 +119,10 @@ namespace pogre {
 			if (!my_player_spectator() && (player->playerId == my_player_num())) {
 				pos = Ogre::Vector3(0, -getBoardHeight() / 2 - 0.1, 0);
 			} else {
-				pos = Ogre::Vector3(leftRight, getBoardHeight() / 2 + 0.2, 0);
+				pos = Ogre::Vector3(leftOffset, getBoardHeight() / 2 + 0.2, 0);
 				rot.FromAngleAxis(Ogre::Degree(180), Ogre::Vector3::UNIT_Z);
 
-				leftRight += leftRightInc;
+				leftOffset += leftOffsetInc;
 			}
 
 			player->sceneNode->setPosition(pos);
@@ -150,8 +150,6 @@ namespace pogre {
 			if (!player_is_spectator(playerId)) {
 				auto player = Player::Ptr(new Player(playerId, playerNumber++));
 				players.push_back(player);
-
-				Ogre::Vector3 a = player->villages[2]->sceneNode->convertLocalToWorldPosition(Ogre::Vector3::ZERO);
 			}
 		}
 
@@ -160,8 +158,10 @@ namespace pogre {
 
 	void Engine :: loadNewMap(Map* map) {
 		mapRenderer.reset();
-		if (map) mapRenderer = MapRenderer::Ptr(new pogre::MapRenderer(map));
-		placePlayers();
+		if (map) {
+			mapRenderer = MapRenderer::Ptr(new pogre::MapRenderer(map));
+			placePlayers();
+		}
 	}
 
 	void Engine :: updateNode(Node* node) {
