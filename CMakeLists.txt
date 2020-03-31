@@ -79,6 +79,8 @@ set(P3D_OGRE_SRC
 	client/gtk/ogre/engine.cpp
 	client/gtk/ogre/main.h
 	client/gtk/ogre/main.cpp
+	client/gtk/ogre/map_entities.h
+	client/gtk/ogre/map_entities.cpp
 )
 
 set(P3D_COMMON_SRC

@@ -157,10 +157,15 @@ namespace pogre {
 	}
 
 	void Engine :: loadNewMap(Map* map) {
+		robber->remove();
 		mapRenderer.reset();
 		if (map) {
 			mapRenderer = MapRenderer::Ptr(new pogre::MapRenderer(map));
 			placePlayers();
+			if (map->robber_hex) {
+				auto tile = mapRenderer->getTile(map->robber_hex);
+				robber->setTile(tile);
+			}
 		}
 	}
 
@@ -326,9 +331,13 @@ namespace pogre {
 		std::cout << "init shader man " << Ogre::RTShader::ShaderGenerator::initialize() << std::endl;
 		auto rtshare = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
 		rtshare->addSceneManager(mainScene);
+
+		// Create standard entities
+		robber = std::shared_ptr<Robber>(new Robber());
 	}
 
 	Engine :: ~Engine() {
+		robber.reset();
 		players.clear();
 		mapRenderer.reset();
 		cameraControls.reset();

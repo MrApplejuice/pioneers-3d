@@ -38,6 +38,7 @@ namespace pogre {
 		}
 	}
 
+
 	MapTile :: MapTile(const Ogre::Vector2& hexPos, Ogre::SceneNode* parent, Hex* hex) : hex(hex), numberChip(nullptr), entityNode(nullptr), entity(nullptr) {
 		// GRAPHICS
 		auto meshman = mainEngine->root->getMeshManager();
@@ -102,6 +103,7 @@ namespace pogre {
 
 			roadLocations.push_back(RoadLocation::Ptr(new RoadLocation(sceneNode, edge)));
 		}
+		location = HexLocation::Ptr(new HexLocation(sceneNode, hex));
 	}
 
 	MapTile :: ~MapTile() {
@@ -115,6 +117,8 @@ namespace pogre {
 		entityNode->detachAllObjects();
 
 		settlementLocations.clear();
+		roadLocations.clear();
+		location.reset();
 
 		scene->destroySceneNode(sceneNode);
 		scene->destroySceneNode(entityNode);
@@ -196,7 +200,7 @@ namespace pogre {
 			Ogre::MeshManager* meshman = mainEngine->root->getMeshManager();
 			auto tableMesh = meshman->createPlane(
 					"table-background", "map", Ogre::Plane(0, 0, 1, 0),
-					fabs(center.x) * 2 + .5, fabs(center.y) * 2 + .5,
+					fabs(center.x) * 2 + .75, fabs(center.y) * 2 + .75,
 					40, 40, true, 1, 6, 4);
 			tableEntity = mainEngine->mainScene->createEntity(tableMesh);
 			tableEntity->setMaterialName("wooden_base", "map");

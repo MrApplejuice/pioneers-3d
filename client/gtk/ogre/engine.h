@@ -19,6 +19,7 @@ extern "C" {
 #include "engine_base.h"
 
 #include "player.h"
+#include "map_entities.h"
 #include "map_renderer.h"
 
 namespace pogre {
@@ -54,6 +55,7 @@ namespace pogre {
 	class Engine : public EngineBase {
 	private:
 		std::vector<Player::Ptr> players;
+		std::shared_ptr<Robber> robber;
 
 		bool enableLightMovement;
 

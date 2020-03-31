@@ -24,13 +24,20 @@ namespace pogre {
 
 	class MapTile;
 
-	class SettlementLocation {
+	class MapLocation {
+	private:
+	public:
+		Ogre::SceneNode* location;
+
+		virtual ~MapLocation() {}
+	};
+
+	class SettlementLocation : public MapLocation {
 	private:
 	public:
 		typedef std::shared_ptr<SettlementLocation> Ptr;
 
 		Node* node;
-		Ogre::SceneNode* location;
 
 		SettlementLocation(SettlementLocation& other) = delete;
 		SettlementLocation& operator=(SettlementLocation& other) = delete;
@@ -50,13 +57,12 @@ namespace pogre {
 		}
 	};
 
-	class RoadLocation {
+	class RoadLocation : public MapLocation {
 	private:
 	public:
 		typedef std::shared_ptr<RoadLocation> Ptr;
 
 		Edge* edge;
-		Ogre::SceneNode* location;
 
 		RoadLocation(RoadLocation& other) = delete;
 		RoadLocation& operator=(RoadLocation& other) = delete;
@@ -74,6 +80,62 @@ namespace pogre {
 		~RoadLocation() {
 			location->detachAllObjects();
 			mainEngine->mainScene->destroySceneNode(location);
+		}
+	};
+
+	enum class HexSceneNodeType {
+		ROBBER = 0,
+		Count
+	};
+
+	class HexLocation : public MapLocation {
+	private:
+		Ogre::SceneNode* specialNodes[2];
+
+		void newSpecialNode(HexSceneNodeType type, const Ogre::Vector3& relLocation) {
+			auto name = location->getName() + "_type:" + std::to_string((int) type);
+			specialNodes[(int) type] = location->createChildSceneNode(name, relLocation);
+		}
+	public:
+		typedef std::shared_ptr<HexLocation> Ptr;
+
+		Hex* hex;
+
+		virtual Ogre::SceneNode* getSpecialSceneNode(HexSceneNodeType type) {
+			if (type < HexSceneNodeType::Count) {
+				if (specialNodes[(int) type]) {
+					return specialNodes[(int) type];
+				}
+			}
+			return location;
+		}
+
+		HexLocation(HexLocation& other) = delete;
+		HexLocation& operator=(HexLocation& other) = delete;
+
+		HexLocation(Ogre::SceneNode* parent, Hex* hex) : hex(hex) {
+			for (int i = 0; i < (int) HexSceneNodeType::Count; i++) {
+				specialNodes[i] = nullptr;
+			}
+
+			location = parent->createChildSceneNode("hex_pos_" + std::to_string(hex->y) + "_" + std::to_string(hex->x));
+			location->setPosition(Ogre::Vector3(0, 0, 0));
+			location->setInitialState();
+			location->setVisible(true);
+
+			newSpecialNode(HexSceneNodeType::ROBBER, Ogre::Vector3(-0.4, 0.3, 0) * HEX_DIAMETER / 2);
+		}
+
+		~HexLocation() {
+			location->detachAllObjects();
+			mainEngine->mainScene->destroySceneNode(location);
+
+			for (int i = 0; i < (int) HexSceneNodeType::Count; i++) {
+				if (specialNodes[i]) {
+					specialNodes[i]->detachAllObjects();
+					mainEngine->mainScene->destroySceneNode(specialNodes[i]);
+				}
+			}
 		}
 	};
 
@@ -102,6 +164,7 @@ namespace pogre {
 
 		std::vector<SettlementLocation::Ptr> settlementLocations;
 		std::vector<RoadLocation::Ptr> roadLocations;
+		HexLocation::Ptr location;
 
 		Hex* getHex() const { return hex; }
 
