@@ -81,7 +81,7 @@ namespace pogre {
 		camera->setFarClipDistance(10);
 
 		location = s->getRootSceneNode()->createChildSceneNode("camera location");
-		location->setPosition(0, -.5, .5);
+		location->setPosition(0, -.5, 1);
 		location->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TransformSpace::TS_WORLD);
 
 		tiltNode = location->createChildSceneNode("camera tilt");
